@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Manager
+  - Player
+  - Projectile
+  - Punch Boulder
+  - Boulder
+  - Turret
   layers:
   - Default
   - TransparentFX
