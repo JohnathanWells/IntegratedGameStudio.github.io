@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Manager
-  - Player
   - Projectile
   - Punch Boulder
   - Boulder
   - Turret
+  - Fire
   layers:
   - Default
   - TransparentFX

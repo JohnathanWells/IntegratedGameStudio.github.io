@@ -6,13 +6,12 @@ public class ProjectileScript : MonoBehaviour {
     public bool canBePunched = true;
     public bool blockedByStanding = false;
     public bool timedExplosion = false;
+    public bool upAndDown = false;
     public float angleOfDesviation = 180;
     public int Damage = 100;
     public float speed = 2;
     public float halflife = 10;
     public Transform subExplosions;
-    public int ExpWavePointA = 0;
-    public int ExpWavePointB = 5;
     public ParticleSystem projectileCollision;
     public AudioClip destructionSound;
     public AudioClip explosionSound;
@@ -20,6 +19,7 @@ public class ProjectileScript : MonoBehaviour {
 
     private float lifeTime = 0;
     private bool beingReturned = false;
+    private bool directionChanging = false;
     private Vector2 pointOfOrigin;
     private int originalDamage;
     private bool playingSound = false;
@@ -32,6 +32,9 @@ public class ProjectileScript : MonoBehaviour {
         SFX = manager.SFX;
         pointOfOrigin = transform.position;
         originalDamage = Damage;
+
+        if (Mathf.Abs(angleOfDesviation) != 180)
+            directionChanging = true;
 	}
 	
 	void Update () {
@@ -55,6 +58,9 @@ public class ProjectileScript : MonoBehaviour {
         }
 
         transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+
+        if (directionChanging)
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 	}
 
     public bool checkIfBeingReturned()
@@ -76,9 +82,12 @@ public class ProjectileScript : MonoBehaviour {
 
     void generateExpansiveWave(Vector2 mainExplosion)
     {
-        for (int a = ExpWavePointA; a <= ExpWavePointB; a++)
+        int b = Mathf.RoundToInt(manager.minPos.y);
+        int c = Mathf.RoundToInt(manager.maxPos.y);
+
+        for (int a = b; a <= c; a++)
         {
-            Transform exp = Instantiate(subExplosions, new Vector2(mainExplosion.x, a), Quaternion.identity) as Transform;
+            Transform exp = Instantiate(subExplosions, new Vector3(mainExplosion.x, a, a), Quaternion.identity) as Transform;
         }
     }
 

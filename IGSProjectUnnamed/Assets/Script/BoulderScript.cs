@@ -8,8 +8,7 @@ public class BoulderScript : MonoBehaviour {
     public ParticleSystem boulderBreak;
     public bool soundWhenCrash = true;
     public AudioClip crashSound;
-    public bool punchable = false;
-    public bool harmful = false;
+    public bool punchable = true;
     public int damage = 100;
     public float objectiveHeight;
     public float halflife = 10f;
@@ -37,12 +36,6 @@ public class BoulderScript : MonoBehaviour {
         }
 
         transform.Translate(new Vector2(horizontalSpeed * Time.deltaTime, -fallSpeed * Time.deltaTime));
-        
-        if (transform.position.y - 1 <= objectiveHeight)
-        {
-            harmful = true;
-            punchable = true;
-        }
         
         if (transform.position.y <= objectiveHeight && !beingDesviated)
         {

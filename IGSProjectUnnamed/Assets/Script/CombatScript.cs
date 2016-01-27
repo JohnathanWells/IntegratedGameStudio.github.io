@@ -4,6 +4,7 @@ using System.Collections;
 public class CombatScript : MonoBehaviour {
 
     public int initialHealth = 100;
+    public bool godMode = false;
     private int currentHealth;
 
     bool punching = false;
@@ -24,7 +25,9 @@ public class CombatScript : MonoBehaviour {
     private GameManager manager;
     private SoundEffectManager SFX;
 
-    
+    private int burningDamage = 0;
+    private bool burning = false;
+    private float burnTaim = 0;
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
@@ -33,51 +36,77 @@ public class CombatScript : MonoBehaviour {
         currentHealth = initialHealth;
 	}
 
-    void OnTriggerEnter2D(Collider2D c)
+    void OnTriggerEnter(Collider c)
     {
         if (c.CompareTag("Projectile"))
         {
-            //Debug.Log("Projectile here");
             ProjectileScript Proj = c.GetComponent<ProjectileScript>();
 
-            if ((punching && Proj.canBePunched) || (!punching && Proj.blockedByStanding))
+            if (!Proj.checkIfBeingReturned())
             {
-                SFX.PlaySound(returnProjectileSound);
-                Proj.changeDirection(transform.position);
+                if ((punching && Proj.canBePunched) || (!punching && Proj.blockedByStanding))
+                {
+                    SFX.PlaySound(returnProjectileSound);
+                    Proj.changeDirection(transform.position);
+                }
+                else
+                {
+                    receiveDamage(Proj.Damage);
+                    StartCoroutine(damageColorChange());
+                    Proj.DestroyProjectile();
+                }
             }
-            else
-            {
-                receiveDamage(Proj.Damage);
-                StartCoroutine(damageColorChange());
-                Proj.DestroyProjectile();
-            }
+        }
+
+        if (c.CompareTag("Fire"))
+        {
+            burningDamage = c.GetComponent<fireScript>().damagePerSecond;
+            burning = true;
         }
     }
 
-    void OnTriggerStay2D(Collider2D c)
+    void OnTriggerStay(Collider c)
     {
-        
-        if(c.CompareTag("Boulder"))
-        {
-            BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
 
-            if (boulderProperties.harmful && c.transform.position.y > transform.position.y)
-            {
-                receiveDamage(boulderProperties.damage);
-                boulderProperties.DestroyBoulder();
-            }
-        }
-
-        if(c.CompareTag("Punch Boulder"))
+        if (c.CompareTag("Punch Boulder"))
         {
             BoulderScript Boulder = c.GetComponentInParent<BoulderScript>();
 
             if (Boulder.punchable && punching)
                 Boulder.PunchBoulder();
         }
+
+        if (c.CompareTag("Boulder"))
+        {
+            BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
+            
+            receiveDamage(boulderProperties.damage);
+            boulderProperties.DestroyBoulder();
+        }
+    }
+
+    void OnTriggerExit(Collider c)
+    {
+        if (c.CompareTag("Fire"))
+        {
+            burning = false;
+            burnTaim = 0;
+        }
     }
 
 	void Update () {
+
+        if (burning)
+        {
+            burnTaim += Time.deltaTime;
+
+            if (burnTaim >= 1)
+            {
+                receiveDamage(burningDamage);
+                burnTaim = 0;
+            }
+        }
+
         if (Input.GetButtonDown("Fire1") && canPunch)
         {
             StartCoroutine(punchStuff());
@@ -122,7 +151,11 @@ public class CombatScript : MonoBehaviour {
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            manager.SendMessage("GameOver");
+
+            if (!godMode)
+                manager.SendMessage("GameOver");
         }
     }
+
+
 }

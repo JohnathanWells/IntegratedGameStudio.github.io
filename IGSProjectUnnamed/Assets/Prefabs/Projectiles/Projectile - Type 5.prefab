@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 421790}
   - 212: {fileID: 21231034}
-  - 58: {fileID: 5859686}
   - 114: {fileID: 11499908}
+  - 135: {fileID: 13547034}
+  - 54: {fileID: 5470364}
   m_Layer: 0
   m_Name: Projectile - Type 5
   m_TagString: Projectile
@@ -26,23 +27,25 @@ Transform:
   m_GameObject: {fileID: 109838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13, y: -.0199999996, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &5859686
-CircleCollider2D:
+--- !u!54 &5470364
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109838}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .5
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &11499908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,19 +60,30 @@ MonoBehaviour:
   canBePunched: 1
   blockedByStanding: 0
   timedExplosion: 1
+  upAndDown: 0
   angleOfDesviation: 180
   Damage: 150
   speed: 4
   halflife: 3
   subExplosions: {fileID: 421790, guid: 836b7dd6ee82b6346b71b6076752b1c6, type: 2}
-  ExpWavePointA: -5
-  ExpWavePointB: 0
   projectileCollision: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4,
     type: 2}
   destructionSound: {fileID: 8300000, guid: 0ea155c59eca3204f95c12e51d0558c3, type: 3}
   explosionSound: {fileID: 8300000, guid: 46fd75b12dc531048b8a525afa38d584, type: 3}
   beforeExplosionSound: {fileID: 8300000, guid: 3bbeb31e19b32894c853a6a8e62ecb38,
     type: 3}
+--- !u!135 &13547034
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21231034
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,11 +155,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: .5
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: .5
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
@@ -188,6 +202,22 @@ Prefab:
       propertyPath: destructionSound
       value: 
       objectReference: {fileID: 8300000, guid: 0ea155c59eca3204f95c12e51d0558c3, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109838}

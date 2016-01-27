@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
     public Transform player;
     public CombatScript PlayerCombat;
     public Transform ProjectilesFolder;
+    public Transform LeftDownCorner;
+    public Transform RightUpCorner;
     public ParticleManager PM;
     public SoundEffectManager SFX;
     public Vector2 minPos;
@@ -19,18 +21,23 @@ public class GameManager : MonoBehaviour {
     private Vector2 HealthTextSize;
 
     private Transform []Enemies;
-    public int numberOfPossibleEnemies;
+    public int numberOfLanes;
 
     public bool BouldersActivated = false;
+    public bool randomBoulderFall = true;
     public Transform Boulder;
     public float cooldownBetweenTraps = 30f;
     private float trapCooldown = 0;
 
     void Start()
     {
-        Enemies = new Transform[numberOfPossibleEnemies];
+        //Enemies = new Transform[numberOfLanes];
         HealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
         style.fontSize = style.fontSize * Screen.width/ 551;
+        minPos = LeftDownCorner.position;
+        maxPos = RightUpCorner.position;
+
+        Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
     }
 
     void Update()
@@ -40,8 +47,19 @@ public class GameManager : MonoBehaviour {
             trapCooldown += Time.deltaTime;
             if (trapCooldown >= cooldownBetweenTraps)
             {
+                Transform trap;
+                int yLane = Mathf.RoundToInt(Random.Range(minPos.y, maxPos.y));
                 trapCooldown = 0;
-                Transform trap = Instantiate(Boulder, new Vector3(Mathf.RoundToInt(Random.Range(minPos.x, maxPos.x)), Mathf.RoundToInt(Random.Range(minPos.y, maxPos.y)), 9), Quaternion.identity) as Transform;
+
+                if (randomBoulderFall)
+                {
+                    trap = Instantiate(Boulder, new Vector3(Mathf.RoundToInt(Random.Range(minPos.x, maxPos.x)), yLane, yLane), Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
+                }
+                else
+                {
+                    trap = Instantiate(Boulder, player.position, Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
+                }
+                
                 trap.parent = ProjectilesFolder;
             }
         }
@@ -73,5 +91,15 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         Destroy(system.gameObject);
+    }
+
+    public float getDistanceBetweenLanes()
+    {
+        float angle = LeftDownCorner.eulerAngles.x;
+
+        if (angle != 0)
+            return LeftDownCorner.parent.parent.lossyScale.y * Mathf.Sin(LeftDownCorner.eulerAngles.x);
+        else
+            return LeftDownCorner.parent.parent.lossyScale.y * angle;
     }
 }

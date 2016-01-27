@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 421790}
   - 212: {fileID: 21231034}
-  - 58: {fileID: 5859686}
   - 114: {fileID: 11499908}
+  - 135: {fileID: 13562600}
+  - 54: {fileID: 5430438}
   m_Layer: 0
   m_Name: Projectile - Type 2
   m_TagString: Projectile
@@ -30,19 +31,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &5859686
-CircleCollider2D:
+--- !u!54 &5430438
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109838}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .5
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &11499908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,10 +60,11 @@ MonoBehaviour:
   canBePunched: 0
   blockedByStanding: 0
   timedExplosion: 0
+  upAndDown: 1
   angleOfDesviation: 180
   Damage: 100
   speed: 5.5
-  halflife: 5
+  halflife: 20
   subExplosions: {fileID: 0}
   ExpWavePointA: 0
   ExpWavePointB: 5
@@ -69,6 +73,18 @@ MonoBehaviour:
   destructionSound: {fileID: 8300000, guid: 0ea155c59eca3204f95c12e51d0558c3, type: 3}
   explosionSound: {fileID: 0}
   beforeExplosionSound: {fileID: 0}
+--- !u!135 &13562600
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21231034
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -104,7 +120,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: halflife
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
@@ -139,6 +155,30 @@ Prefab:
       propertyPath: destructionSound
       value: 
       objectReference: {fileID: 8300000, guid: 0ea155c59eca3204f95c12e51d0558c3, type: 3}
+    - target: {fileID: 0}
+      propertyPath: upAndDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speedOfUpAndDown
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109838}

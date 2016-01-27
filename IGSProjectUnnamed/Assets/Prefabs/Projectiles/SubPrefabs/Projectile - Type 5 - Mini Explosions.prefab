@@ -9,11 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 421790}
   - 212: {fileID: 21231034}
-  - 58: {fileID: 5859686}
-  - 114: {fileID: 11499908}
+  - 65: {fileID: 6594184}
+  - 54: {fileID: 5473148}
+  - 114: {fileID: 11415536}
   m_Layer: 0
   m_Name: Projectile - Type 5 - Mini Explosions
-  m_TagString: Projectile
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,20 +31,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &5859686
-CircleCollider2D:
+--- !u!54 &5473148
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109838}
-  m_Enabled: 1
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6594184
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109838}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .5
---- !u!114 &11499908
+  m_Size: {x: 1, y: 1, z: .200000003}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11415536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,19 +66,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 109838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cacffda6fa7f61469a175a3a91ad2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBePunched: 0
-  blockedByStanding: 0
-  timedExplosion: 0
-  angleOfDesviation: -170
-  Damage: 100
-  speed: 0
-  halflife: 1
-  subExplosions: {fileID: 0}
-  ExpWavePointA: 0
-  ExpWavePointB: 5
+  damagePerSecond: 10
+  burningTime: 8
+  lifetime: 0
 --- !u!212 &21231034
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -146,6 +154,27 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: dc2ecd49b23062549ae69736504c955f,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: projectileCollision
+      value: 
+      objectReference: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: burningTime
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109838}
