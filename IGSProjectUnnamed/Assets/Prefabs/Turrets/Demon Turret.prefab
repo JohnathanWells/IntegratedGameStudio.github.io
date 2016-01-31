@@ -10,8 +10,12 @@ GameObject:
   - 4: {fileID: 477978}
   - 212: {fileID: 21271640}
   - 114: {fileID: 11476534}
+<<<<<<< HEAD
   - 61: {fileID: 6140110}
   - 50: {fileID: 5045818}
+=======
+  - 65: {fileID: 6582432}
+>>>>>>> master
   m_Layer: 0
   m_Name: Demon Turret
   m_TagString: Untagged
@@ -26,11 +30,16 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 13, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: 13.0071011, y: -.75, z: -10}
+>>>>>>> master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+<<<<<<< HEAD
 --- !u!50 &5045818
 Rigidbody2D:
   serializedVersion: 2
@@ -50,10 +59,15 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!61 &6140110
 BoxCollider2D:
+=======
+--- !u!65 &6582432
+BoxCollider:
+>>>>>>> master
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
+<<<<<<< HEAD
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -62,6 +76,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+=======
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .75, y: .75, z: .5}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> master
 --- !u!114 &11476534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,8 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443434f13131c4046aec931c45ca6cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   cooldownTime: 3
   burstCooling: 1
+=======
+  cooldownTime: 16
+  burstCooling: 3
+>>>>>>> master
   projectile:
   - {fileID: 421790, guid: d47cf0519a4a11b4eb6275d986c64179, type: 2}
   sizeOfArray: 1
@@ -165,18 +192,27 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+<<<<<<< HEAD
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
+=======
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+>>>>>>> master
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 04cc4c826cdad2045806e25016788bb8, type: 3}
+<<<<<<< HEAD
   m_Color: {r: 0.85294116, g: 0.5117647, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+=======
+  m_Color: {r: .852941155, g: .511764705, b: 0, a: 1}
+>>>>>>> master
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -186,7 +222,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: projectile.Array.size
+<<<<<<< HEAD
       value: 1
+=======
+      value: 5
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: style.m_Normal.m_TextColor.r
@@ -202,7 +242,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cooldownTime
+<<<<<<< HEAD
       value: 3
+=======
+      value: 16
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.r
@@ -242,7 +286,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sizeOfArray
+<<<<<<< HEAD
       value: 1
+=======
+      value: 5
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -254,7 +302,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: burstCooling
+<<<<<<< HEAD
       value: 1
+=======
+      value: 3
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: currentHealth
@@ -273,17 +325,46 @@ Prefab:
       value: 
       objectReference: {fileID: 8300000, guid: b31d12b8335c97245bd8bcbc897f49b3, type: 3}
     - target: {fileID: 0}
+<<<<<<< HEAD
       propertyPath: projectile.Array.data[1]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+=======
+>>>>>>> master
       propertyPath: projectile.Array.data[4]
       value: 
       objectReference: {fileID: 421790, guid: 8bdbcd12880f24b4aa78259dd5e89bae, type: 2}
     - target: {fileID: 0}
+<<<<<<< HEAD
       propertyPath: projectile.Array.data[3]
       value: 
       objectReference: {fileID: 421790, guid: 8bdbcd12880f24b4aa78259dd5e89bae, type: 2}
+=======
+      propertyPath: m_Offset.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .75
+      objectReference: {fileID: 0}
+>>>>>>> master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 129680}

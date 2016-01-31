@@ -12,12 +12,20 @@ public class PlayerMovement : MonoBehaviour {
 
     private float VerticalD;
     private float HorizontalD;
+    private float roundedMovementVertical = 1;
+    private int lane = 0;
 
     GameManager manager;
 
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        minPos = manager.LeftDownCorner.position;
+        maxPos = manager.RightUpCorner.position;
+        roundedMovementVertical = manager.getDistanceBetweenLanes();
+        lane = Mathf.RoundToInt(maxPos.y - transform.position.y);
+        //Debug.Log(lane);
+
     }
 
 	void Update () {
@@ -71,9 +79,26 @@ public class PlayerMovement : MonoBehaviour {
 
                 transform.Translate(new Vector3(0, VerticalD, 0));
                 Mathf.RoundToInt(transform.position.y);
+                transform.Translate(new Vector3(0, VerticalD, VerticalD));
+            }
+            else if (Input.GetButtonDown("Vertical") && squareMovementY)
+            {
+                int dir = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+
+                if (lane - dir >= 0 && lane - dir <= manager.numberOfLanes - 1)
+                {
+                    lane -= dir;
+
+                    VerticalD = (lane) * roundedMovementVertical;
+                    Debug.Log(roundedMovementVertical);
+
+                    //if (transform.position.y + VerticalD >= minPos.y && transform.position.y + VerticalD <= maxPos.y)
+                    transform.position = new Vector3(transform.position.x, maxPos.y - VerticalD, maxPos.y - VerticalD);
+                }
             }
         }
 
 
 	}
+
 }

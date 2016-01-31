@@ -10,7 +10,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: IGS Project -Unnamed-
+  productName: IGSProjectUnnamed
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -96,7 +96,7 @@ PlayerSettings:
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
-  productGUID: 6c840f13cd007f54cbbf43b62d09f208
+  productGUID: aa534d70e5246b440b318ba664c72fd2
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
@@ -325,14 +325,14 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols: {}
-  metroPackageName: IGS Project -Unnamed-
+  metroPackageName: IGSProjectUnnamed
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: IGS Project -Unnamed-
+  metroApplicationDescription: IGSProjectUnnamed
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -342,9 +342,10 @@ PlayerSettings:
   metroWideTileShowName: 0
   metroDefaultTileSize: 1
   metroTileForegroundText: 1
-  metroTileBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  metroSplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  metroSplashScreenUseBackgroundColor: 0
+  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
+  metroSplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628,
+    a: 1}
+  metroSplashScreenUseBackgroundColor: 1
   platformCapabilities: {}
   metroFTAName: 
   metroFTAFileTypes: []
@@ -409,38 +410,12 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   intPropertyNames:
-  - Metro::ScriptingBackend
-  - Standalone::ScriptingBackend
-  - WP8::ScriptingBackend
-  - WebGL::ScriptingBackend
-  - WebGL::audioCompressionFormat
-  - WebGL::exceptionSupport
-  - WebGL::memorySize
-  - iOS::Architecture
-  - iOS::ScriptingBackend
-  Metro::ScriptingBackend: 2
-  Standalone::ScriptingBackend: 0
-  WP8::ScriptingBackend: 2
-  WebGL::ScriptingBackend: 1
-  WebGL::audioCompressionFormat: 4
-  WebGL::exceptionSupport: 1
-  WebGL::memorySize: 256
-  iOS::Architecture: 2
-  iOS::ScriptingBackend: 1
+  - WebPlayer::ScriptingBackend
+  WebPlayer::ScriptingBackend: 0
   boolPropertyNames:
-  - WebGL::analyzeBuildSize
-  - WebGL::dataCaching
-  - WebGL::useEmbeddedResources
   - XboxOne::enus
-  WebGL::analyzeBuildSize: 0
-  WebGL::dataCaching: 0
-  WebGL::useEmbeddedResources: 0
   XboxOne::enus: 1
-  stringPropertyNames:
-  - WebGL::emscriptenArgs
-  - WebGL::template
-  WebGL::emscriptenArgs: 
-  WebGL::template: APPLICATION:Default
+  stringPropertyNames: []
   cloudProjectId: 
   projectName: 
   organizationId: 

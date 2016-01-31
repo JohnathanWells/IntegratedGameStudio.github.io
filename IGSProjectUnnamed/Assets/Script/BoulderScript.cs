@@ -43,7 +43,6 @@ public class BoulderScript : MonoBehaviour {
             harmful = true;
             punchable = true;
         }
-        
         if (transform.position.y <= objectiveHeight && !beingDesviated)
         {
             DestroyBoulder();

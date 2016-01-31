@@ -55,6 +55,10 @@
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\Script\ProjectileScript.cs" />
      <Compile Include="Assets\Script\SoundEffectManager.cs" />
+<<<<<<< HEAD
+=======
+     <Compile Include="Assets\Script\fireScript.cs" />
+>>>>>>> master
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

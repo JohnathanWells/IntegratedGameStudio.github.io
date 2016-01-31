@@ -11,9 +11,13 @@ GameObject:
   - 212: {fileID: 21217644}
   - 114: {fileID: 11429756}
   - 114: {fileID: 11468104}
+<<<<<<< HEAD
   - 50: {fileID: 5082524}
   - 60: {fileID: 6096634}
   - 61: {fileID: 6156350}
+=======
+  - 65: {fileID: 6574332}
+>>>>>>> master
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,11 +32,16 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: -5.72372246, y: 1.6240685, z: 0}
+>>>>>>> master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+<<<<<<< HEAD
 --- !u!50 &5082524
 Rigidbody2D:
   serializedVersion: 2
@@ -51,10 +60,15 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!60 &6096634
 PolygonCollider2D:
+=======
+--- !u!65 &6574332
+BoxCollider:
+>>>>>>> master
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197008}
+<<<<<<< HEAD
   m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -79,6 +93,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+=======
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: .399999976, z: 0}
+>>>>>>> master
 --- !u!114 &11429756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,15 +130,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 1000
+<<<<<<< HEAD
   punchingTime: .75
   punchCooldown: 1
+=======
+  godMode: 1
+  punchingTime: .75
+  punchCooldown: 0
+>>>>>>> master
   punchingColor: {r: 1, g: 0, b: .972414017, a: 1}
   damageColor: {r: .691176474, g: 0, b: 0, a: 1}
   chargingColor: {r: .257352948, g: 0, b: 0, a: 1}
   receiveDamageSound: {fileID: 8300000, guid: 0018c4a19e11217449236d813beeae0f, type: 3}
+<<<<<<< HEAD
   returnProjectileSound: {fileID: 8300000, guid: 120bed60a0275064891408e7f014d2ea,
     type: 3}
   punchSound: {fileID: 8300000, guid: b4faf4c54b4514e4fb487100cdc0cbf2, type: 3}
+=======
+  returnProjectileSound: {fileID: 8300000, guid: a102647b7ad7d1545b6fd9381b845d35,
+    type: 3}
+  punchSound: {fileID: 8300000, guid: 120bed60a0275064891408e7f014d2ea, type: 3}
+>>>>>>> master
   renderer: {fileID: 21217644}
 --- !u!212 &21217644
 SpriteRenderer:

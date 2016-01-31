@@ -10,8 +10,12 @@ GameObject:
   - 4: {fileID: 477978}
   - 212: {fileID: 21271640}
   - 114: {fileID: 11476534}
+<<<<<<< HEAD
   - 61: {fileID: 6140110}
   - 50: {fileID: 5045818}
+=======
+  - 65: {fileID: 6594828}
+>>>>>>> master
   m_Layer: 0
   m_Name: Hot Wind Blowing
   m_TagString: Untagged
@@ -26,18 +30,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 13, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: 12.9856472, y: -2.27964401, z: -10}
+>>>>>>> master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+<<<<<<< HEAD
 --- !u!50 &5045818
 Rigidbody2D:
   serializedVersion: 2
+=======
+--- !u!65 &6594828
+BoxCollider:
+>>>>>>> master
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
+<<<<<<< HEAD
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -62,6 +76,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+=======
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .75, y: .75, z: .5}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> master
 --- !u!114 &11476534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,7 +98,11 @@ MonoBehaviour:
   cooldownTime: 3
   burstCooling: 1
   projectile:
+<<<<<<< HEAD
   - {fileID: 421790, guid: 8bdbcd12880f24b4aa78259dd5e89bae, type: 2}
+=======
+  - {fileID: 421790, guid: d068c9033a77c244e8798352d3215422, type: 2}
+>>>>>>> master
   sizeOfArray: 1
   InitialHealth: 50
   Name: Cutter
@@ -165,18 +191,27 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+<<<<<<< HEAD
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
+=======
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+>>>>>>> master
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 04cc4c826cdad2045806e25016788bb8, type: 3}
+<<<<<<< HEAD
   m_Color: {r: 0.7352941, g: 0.625, b: 0.4595588, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+=======
+  m_Color: {r: 0, g: .118000031, b: 1, a: 1}
+>>>>>>> master
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -186,7 +221,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: projectile.Array.size
+<<<<<<< HEAD
       value: 1
+=======
+      value: 4
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: style.m_Normal.m_TextColor.r
@@ -231,7 +270,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: projectile.Array.data[2]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 0}
+=======
+      objectReference: {fileID: 421790, guid: 8bdbcd12880f24b4aa78259dd5e89bae, type: 2}
+>>>>>>> master
     - target: {fileID: 0}
       propertyPath: canReturnProjectiles
       value: 1
@@ -242,7 +285,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sizeOfArray
+<<<<<<< HEAD
       value: 1
+=======
+      value: 4
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -263,7 +310,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: projectile.Array.data[3]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 0}
+=======
+      objectReference: {fileID: 421790, guid: d068c9033a77c244e8798352d3215422, type: 2}
+>>>>>>> master
     - target: {fileID: 0}
       propertyPath: returnSound
       value: 
@@ -277,8 +328,33 @@ Prefab:
       value: 
       objectReference: {fileID: 8300000, guid: b31d12b8335c97245bd8bcbc897f49b3, type: 3}
     - target: {fileID: 0}
+<<<<<<< HEAD
       propertyPath: projectile.Array.data[1]
       value: 
+=======
+      propertyPath: m_Offset.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .75
+>>>>>>> master
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

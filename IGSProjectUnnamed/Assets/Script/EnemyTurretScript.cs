@@ -41,6 +41,19 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D c)
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+	}
+
+    void OnTriggerEnter(Collider c)
+    {
+        if (c.CompareTag("Boulder"))
+        {
+            BoulderScript bould = c.GetComponent<BoulderScript>();
+
+            ReceiveDamage(bould.damage);
+            bould.DestroyBoulder();
+        }
+
         if (c.CompareTag("Projectile"))
         {
             //Debug.Log("Turret received attack");
@@ -79,6 +92,7 @@ public class EnemyTurretScript : MonoBehaviour {
             {
                 shotsFired = 0;
                 currentAmmo = Random.Range(0, sizeOfArray);
+                currentAmmo = Random.Range(0, sizeOfArray - 1);
                 coolingDown = false;
                 currentCool = 0;
             }
@@ -137,6 +151,7 @@ public class EnemyTurretScript : MonoBehaviour {
     void DestroyTurret()
     {
         PartM.spawnParticles(explosion, transform.position, explosion.duration);
+        PartM.spawnParticles(explosion, new Vector3(transform.position.x, transform.position.y, -9.9f), explosion.duration);
         SFX.PlaySound(explosionSound);
         Destroy(gameObject);
     }
