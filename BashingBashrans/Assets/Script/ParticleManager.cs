@@ -6,13 +6,13 @@ public class ParticleManager : MonoBehaviour {
 
     public void spawnParticles(ParticleSystem particles, Vector3 location, float despawnTime)
     {
-        Transform PS = Instantiate(particles, location, Quaternion.identity) as Transform;
-        mementoMori(PS, despawnTime);
+        ParticleSystem part = Instantiate(particles, location, Quaternion.identity) as ParticleSystem;
+        StartCoroutine(mementoMori(part, despawnTime));
     }
 
-    IEnumerator mementoMori(Transform system, float time)
+    IEnumerator mementoMori(ParticleSystem particles, float time)
     {
         yield return new WaitForSeconds(time);
-        Destroy(system.gameObject);
+        Destroy(particles.gameObject);
     }
 }

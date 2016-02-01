@@ -24,7 +24,7 @@ public class CombatScript : MonoBehaviour {
     public AudioClip punchSound;
 
     [Header("Other Scripts Access")]
-    public SpriteRenderer renderer;
+    public Light light;
     private GameManager manager;
     private SoundEffectManager SFX;
 
@@ -40,7 +40,7 @@ public class CombatScript : MonoBehaviour {
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
-        originalColor = renderer.color;
+        originalColor = light.color;
         currentHealth = initialHealth;
 	}
 
@@ -125,25 +125,25 @@ public class CombatScript : MonoBehaviour {
     {
         canPunch = false;
         punching = true;
-        renderer.color = punchingColor;
+        light.color = punchingColor;
         SFX.PlaySound(punchSound);
         yield return new WaitForSeconds(punchingTime);
-        renderer.color = chargingColor;
+        light.color = chargingColor;
         punching = false;
         yield return new WaitForSeconds(punchCooldown);
-        renderer.color = originalColor;
+        light.color = originalColor;
         canPunch = true;
     }
 
     IEnumerator damageColorChange()
     {
-        renderer.color = damageColor;
+        light.color = damageColor;
         yield return new WaitForSeconds(0.3f);
         
         if (canPunch)
-            renderer.color = originalColor;
+            light.color = originalColor;
         else
-            renderer.color = chargingColor;
+            light.color = chargingColor;
     }
 
     public int getHealth()

@@ -36,7 +36,7 @@ public class BoulderFallScript : MonoBehaviour {
         }
 
         //Note, we may need to change the z axis later because I'm assuming here that the coordinates are always gonna be negative
-        Transform boulder = Instantiate(Boulder, new Vector3(transform.position.x, roofHeight, transform.position.y), Quaternion.identity) as Transform;
+        Transform boulder = Instantiate(Boulder, new Vector3(transform.position.x, roofHeight, transform.position.z), Quaternion.identity) as Transform;
         boulder.GetComponent<BoulderScript>().objectiveHeight = transform.position.y;
         Destroy(gameObject);
     }

@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         getLimits();
         numberOfLanes = manager.numberOfLanes;
-        lane = manager.getPlayerLane();
+        lane = manager.getLane(transform);
         distanceBetweenLanes = manager.distanceBetweenLanes;
         //Debug.Log(lane);
         //Debug.Log(minPos + "\n" + maxPos);
