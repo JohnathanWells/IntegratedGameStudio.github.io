@@ -8,7 +8,6 @@ public class ProjectileScript : MonoBehaviour {
     public bool blockedByStanding = false;
     public float angleOfDesviation = 180;
     private bool beingReturned = false;
-    private bool directionChanging = false;
     private Vector2 pointOfOrigin;
     
     [Header("Damage, Halflife, Trayectory and Explosion")]
@@ -16,6 +15,8 @@ public class ProjectileScript : MonoBehaviour {
     public int Damage = 100;
     private int originalDamage;
     public float speed = 2;
+    public float desviationSpeed = 4;
+    private float originalSpeed;
     public float halflife = 10;
     private float lifeTime = 0;
     public bool timedExplosion = false;
@@ -37,9 +38,7 @@ public class ProjectileScript : MonoBehaviour {
         SFX = manager.SFX;
         pointOfOrigin = transform.position;
         originalDamage = Damage;
-
-        if (Mathf.Abs(angleOfDesviation) != 180)
-            directionChanging = true;
+        originalSpeed = speed;
 	}
 	
 	void Update () {
@@ -63,9 +62,6 @@ public class ProjectileScript : MonoBehaviour {
         }
 
         transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-
-        if (directionChanging)
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 	}
 
     public bool checkIfBeingReturned()
@@ -75,12 +71,10 @@ public class ProjectileScript : MonoBehaviour {
 
     public void changeDirection(Vector2 pointOfReturn)
     {
-        transform.Rotate(new Vector3(0, 0, angleOfDesviation));
+        transform.Rotate(new Vector3(0, angleOfDesviation, 0));
         beingReturned = true;
-        
         canBePunched = false;
-        
-        //Damage = Mathf.Abs(Mathf.RoundToInt( Damage * 3 / Vector2.Distance(pointOfReturn, pointOfOrigin)));
+        speed = desviationSpeed;        
         Damage = Mathf.Abs(Mathf.RoundToInt(Damage * 4 / (pointOfReturn.x - pointOfOrigin.x)));
         lifeTime = 0;
     }
@@ -92,7 +86,7 @@ public class ProjectileScript : MonoBehaviour {
 
         for (int a = b; a <= c; a++)
         {
-            Transform exp = Instantiate(subExplosions, new Vector3(mainExplosion.x, a, a), Quaternion.identity) as Transform;
+            Transform exp = Instantiate(subExplosions, new Vector3(mainExplosion.x, transform.position.y, a), Quaternion.Euler(subExplosions.eulerAngles)) as Transform;
         }
     }
 
@@ -103,13 +97,13 @@ public class ProjectileScript : MonoBehaviour {
 
     public void EnemyReturnsAttack()
     {
-        transform.Rotate(new Vector3(0, 0, angleOfDesviation));
+        transform.Rotate(new Vector3(angleOfDesviation, 0, 0));
         beingReturned = false;
-
         canBePunched = true;
 
         //Damage = Mathf.Abs(Mathf.RoundToInt( Damage * 3 / Vector2.Distance(pointOfReturn, pointOfOrigin)));
         Damage = originalDamage;
+        speed = originalSpeed;
         lifeTime = 0;
     }
 

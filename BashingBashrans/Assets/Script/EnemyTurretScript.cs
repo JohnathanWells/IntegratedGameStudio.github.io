@@ -7,6 +7,7 @@ public class EnemyTurretScript : MonoBehaviour {
     public float cooldownTime = 1f;
     public float burstCooling = 0.5f;
     public int projectilesByBurst = 1;
+    public Vector3 offsetShooting;
     public Transform[] projectile;
     public int sizeOfArray = 1;
     int shotsFired = 0;
@@ -15,6 +16,7 @@ public class EnemyTurretScript : MonoBehaviour {
     float currentCool = 0;
     float burstCool = 0;
     int currentAmmo;
+    int lane;
 
     [Header("Stats")]
     public int InitialHealth = 200;
@@ -48,8 +50,10 @@ public class EnemyTurretScript : MonoBehaviour {
         SFX = manager.SFX;
         projectileFolder = manager.ProjectilesFolder;
         currentHealth = InitialHealth;
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         initialXPos = transform.position.x;
+        lane = manager.getLane(transform.parent);
+        //Debug.Log(Name + ": #" + lane);
+        manager.lanesOccupied[lane] = true;
 	}
 
     void OnTriggerEnter(Collider c)
@@ -112,7 +116,7 @@ public class EnemyTurretScript : MonoBehaviour {
             if (currentCool >= cooldownTime)
             {
                 shotsFired = 0;
-                currentAmmo = Random.Range(0, sizeOfArray - 1);
+                currentAmmo = Random.Range(0, sizeOfArray);
                 coolingDown = false;
                 currentCool = 0;
             }
@@ -147,12 +151,12 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Box(new Rect(new Vector2(80 * -transform.position.y + 10, Screen.height * (1.75f/2)), new Vector2(400, 800)), Name + "\n" + currentHealth + "/" + InitialHealth, style);
+        GUI.Box(new Rect(new Vector2(80 -200, Screen.height + transform.position.z * 80), new Vector2(400, 800)), Name + "\n" + currentHealth + "/" + InitialHealth, style);
     }
 
     void Shoot()
     {
-        Transform shoot = Instantiate(projectile[currentAmmo], transform.position, Quaternion.identity) as Transform;
+        Transform shoot = Instantiate(projectile[currentAmmo], transform.position + offsetShooting, Quaternion.Euler(projectile[currentAmmo].eulerAngles)) as Transform;
         shoot.parent = projectileFolder;
     }
 
@@ -170,14 +174,16 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void DestroyTurret()
     {
-        PartM.spawnParticles(explosion, new Vector3(transform.position.x, transform.position.y, -9.9f), explosion.duration);
-        //manager.PlayerCombat.addKillCount();
+        PartM.spawnParticles(explosion, transform.position, explosion.duration);
+        manager.lanesOccupied[lane] = false;
         SFX.PlaySound(explosionSound);
+
+        if (manager.enemiesInQueue[lane] > 0)
+        {
+            manager.spawnEnemy(-1, transform.parent.position);
+            manager.enemiesInQueue[lane]--;
+        }
+
         Destroy(gameObject);
     }
-
-    //public void AreYouAlive()
-    //{
-    //    manager.IAmAlive();
-    //}
 }

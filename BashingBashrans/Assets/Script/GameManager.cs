@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("Array Sizes")]
     public int numberOfLanes;
-    //public int numberOfAvailableEnemies;
+    public int numberOfAvailableEnemies;
 
     [Header("Other Elements in Level")]
     public Transform player;
@@ -15,21 +15,24 @@ public class GameManager : MonoBehaviour {
     public Transform enemiesFolder;
     public ParticleManager PM;
     public SoundEffectManager SFX;
-    //private CombatScript playerScript;
+    public bool[] lanesOccupied;
+    public int maxNumberOfEnemiesInQueue = 3;
+    private CombatScript playerScript;
 
     [Header("Game Over, Conditions and Enemy Respawn Management")]
     public bool gameOver = false;
     private bool paused = false;
-    //public bool conditionIsEnemiesDefeated = false;
+    public int[] enemiesInQueue;
+    public bool conditionIsAllEnemiesDefeated = false;
     //public bool conditionIsTime = false;
-    //public int secondsBetweenRecount = 30;
-    //private int secondsBeforeRecount = 0;
+    public int secondsBetweenRecount = 30;
+    private int secondsBeforeRecount = 0;
     //public int enemyDefeatedCondition = 7;
-    //public int enemiesRespawnEveryRecount = 3;
+    public int enemiesRespawnEveryRecount = 3;
     //private int enemiesAlive = 0;
-    //public bool enemiesMove = false;
-    //public Transform[] availableEnemies;
-    //public Vector2[] EnemySpawnpoints;
+    public bool enemiesMove = false;
+    public Transform[] availableEnemies;
+    public Vector3[] EnemySpawnpoints;
     public AudioClip gameOverSound;
 
     [Header("UI")]
@@ -48,16 +51,20 @@ public class GameManager : MonoBehaviour {
     public Vector2 maxPos;
     public float distanceBetweenLanes;
 
-    void Start()
+    void Awake()
     {
-        //StartCoroutine(startTimeCount());
+        StartCoroutine(startTimeCount());
         //availableEnemies = new Transform[numberOfAvailableEnemies];
-        HealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
+        //HealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
+        enemiesInQueue = new int[numberOfLanes];
+        lanesOccupied = new bool[numberOfLanes];
+        HealthTextSize = new Vector2(300, 300);
         style.fontSize = style.fontSize * Screen.width/ 551;
         distanceBetweenLanes = getDistanceBetweenLanes();
-        //playerScript = player.GetComponent<CombatScript>();
+        playerScript = player.GetComponent<CombatScript>();
 
         Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
+        Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
 
     void Update()
@@ -67,20 +74,7 @@ public class GameManager : MonoBehaviour {
             trapCooldown += Time.deltaTime;
             if (trapCooldown >= cooldownBetweenTraps)
             {
-                Transform trap;
-                int yLane = Mathf.RoundToInt(Random.Range(minPos.y, maxPos.y));
-                trapCooldown = 0;
-
-                if (randomBoulderFall)
-                {
-                    trap = Instantiate(Boulder, new Vector3(Mathf.RoundToInt(Random.Range(minPos.x, maxPos.x)), yLane, yLane), Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
-                }
-                else
-                {
-                    trap = Instantiate(Boulder, player.position, Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
-                }
-                
-                trap.parent = ProjectilesFolder;
+                setFallingRock(randomBoulderFall);
             }
         }
 
@@ -92,7 +86,7 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI()
     {
-        //GUI.Box(new Rect(new Vector2(2, 2), HealthTextSize), "HP: " + PlayerCombat.getHealth(), style);
+        //GUI.Box(new Rect(new Vector2(2, 2), HealthTextSize), "HP: " + playerScript.getHealth(), style);
         
         //string objectiveText;
 
@@ -106,6 +100,25 @@ public class GameManager : MonoBehaviour {
         //}
 
         //GUI.Box(new Rect(new Vector2(Screen.width - 300, Screen.height - 300), new Vector2(200, 200)), "Recount in: " + secondsBeforeRecount + "\n" + objectiveText, style); 
+    }
+
+    void setFallingRock(bool isRandom)
+    {
+        trapCooldown = 0;
+
+        Transform trap;
+
+        if (!isRandom)
+        {
+            trap = Instantiate(Boulder, player.position, Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
+            trap.parent = ProjectilesFolder;
+        }
+        else if (randomBoulderFall)
+        {
+            int yLane = Mathf.RoundToInt(Random.Range(minPos.y, maxPos.y));
+            trap = Instantiate(Boulder, new Vector3(Mathf.RoundToInt(Random.Range(minPos.x, maxPos.x)), yLane, yLane), Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
+            trap.parent = ProjectilesFolder;
+        }
     }
 
     Vector2 getPlayerPos()
@@ -125,46 +138,44 @@ public class GameManager : MonoBehaviour {
         Destroy(system.gameObject);
     }
 
-    //IEnumerator startTimeCount()
-    //{
-    //    while(true)
-    //    {
-    //        bool conditionAccomplished = false;
-    //        secondsBeforeRecount = secondsBetweenRecount;
-    //        for (int a = 0; a < secondsBetweenRecount; a++)
-    //        {
-    //            yield return new WaitForSeconds(1);
-    //            secondsBeforeRecount--;
-    //        }
+    IEnumerator startTimeCount()
+    {
+        while (true)
+        {
+            bool conditionAccomplished = false;
+            secondsBeforeRecount = secondsBetweenRecount;
+            for (int a = 0; a < secondsBetweenRecount; a++)
+            {
+                yield return new WaitForSeconds(1);
+                secondsBeforeRecount--;
+            }
 
-    //        if (conditionIsTime)
-    //        {
-    //            enemiesFolder.BroadcastMessage("AreYouAlive", null, SendMessageOptions.DontRequireReceiver);
-    //            print(enemiesAlive);
-    //            if (enemiesAlive > 0)
-    //                spawnMoreEnemies();
-    //            else
-    //                conditionAccomplished = true;
-    //        }
-    //        else if (conditionIsEnemiesDefeated)
-    //        {
-    //            if (playerScript.getEnemiesDefeated() < enemyDefeatedCondition)
-    //            {
-    //                spawnMoreEnemies();
-    //            }
-    //            else
-    //                conditionAccomplished = true;
-    //        }
+            if (conditionIsAllEnemiesDefeated)
+            {
+                if (areEnemiesAlive())
+                    addMoreEnemies();
+                else
+                    conditionAccomplished = true;
+            }
+            //else if (conditionIsAllEnemiesDefeated)
+            //{
+            //    if (playerScript.getEnemiesDefeated() < enemyDefeatedCondition)
+            //    {
+            //        spawnMoreEnemies();
+            //    }
+            //    else
+            //        conditionAccomplished = true;
+            //}
 
-    //        if (conditionAccomplished)
-    //            break;
-    //    }
-    //}
+            for (int a = 0; a < numberOfLanes; a++)
+            {
+                Debug.Log("Lane " + a + ": " + enemiesInQueue[a] + " Occ: " + lanesOccupied[a]);
+            }
 
-    //public void IAmAlive()
-    //{
-    //    enemiesAlive++;
-    //}
+            if (conditionAccomplished)
+                break;
+        }
+    }
 
     //void spawnMoreEnemies()
     //{
@@ -180,14 +191,103 @@ public class GameManager : MonoBehaviour {
     //            enemy.GetComponent<EnemyTurretScript>().moveToTheLeft = true;
     //    }
     //}
+    
+    void addMoreEnemies()
+    {
+        int numberOfEnemiesPlaced = 0;
+        bool[] laneChecked = new bool[numberOfLanes];
+        int lanesFull = 0;
+        int howManyLanesChecked = 0;
+        int ran = 0;
+
+        for (int b = 0; b < 100; b++)
+        {            
+            ran = Random.Range(0, numberOfLanes);
+
+            if (!laneChecked[ran])
+            {
+                if (lanesOccupied[ran] && enemiesInQueue[ran] < maxNumberOfEnemiesInQueue)
+                {
+                    enemiesInQueue[ran]++;
+                    numberOfEnemiesPlaced++;
+                }
+                else if (!lanesOccupied[ran] && enemiesInQueue[ran] == 0)
+                {
+                    spawnEnemy(-1, EnemySpawnpoints[ran]);
+                    numberOfEnemiesPlaced++;
+                }
+
+                if (lanesOccupied[ran] && enemiesInQueue[ran] == maxNumberOfEnemiesInQueue)
+                {
+                    lanesFull++;
+                }
+
+                laneChecked[ran] = true;
+                howManyLanesChecked++;
+
+                if (numberOfEnemiesPlaced >= enemiesRespawnEveryRecount)
+                    break;
+                else
+                {
+                    if (howManyLanesChecked == numberOfLanes)
+                    {
+                        if (lanesFull >= numberOfLanes)
+                            break;
+                        else
+                        {
+                            for (int a = 0; a < numberOfLanes; a++)
+                            {
+                                laneChecked[a] = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void spawnEnemy(int negativeForRandom, Vector3 position)
+    {
+        int enemyNum = 0; 
+
+        if (negativeForRandom < 0 || negativeForRandom > numberOfAvailableEnemies)
+        {
+            enemyNum = Random.Range(0, numberOfAvailableEnemies);
+        }
+        else
+        {
+            enemyNum = negativeForRandom;
+        }
+
+        Transform enemy = Instantiate(availableEnemies[enemyNum], position, Quaternion.identity) as Transform;
+        enemy.GetComponentInChildren<EnemyTurretScript>().moveToTheLeft = enemiesMove;
+        enemy.parent = enemiesFolder;
+    }
 
     public float getDistanceBetweenLanes()
     {
-        return Mathf.Abs((RightUpCorner.position.z - LeftDownCorner.position.z) / numberOfLanes);
+        return Mathf.Abs((RightUpCorner.position.z - LeftDownCorner.position.z + LeftDownCorner.lossyScale.z/2 + RightUpCorner.lossyScale.z/2) / numberOfLanes);
     }
 
-    public int getPlayerLane()
+    public int getLane(Transform questioner)
     {
-        return Mathf.RoundToInt((player.position.z - LeftDownCorner.position.z)/distanceBetweenLanes);
+        return Mathf.FloorToInt((questioner.position.z - LeftDownCorner.position.z)/distanceBetweenLanes);
+    }
+
+    bool areEnemiesAlive()
+    {
+        bool areAlive = false;
+
+        for (int a = 0; a < numberOfLanes; a++)
+        {
+            if (lanesOccupied[a])
+            {
+                areAlive = true;
+                break;
+            }
+        }
+
+        return areAlive;
     }
 }
