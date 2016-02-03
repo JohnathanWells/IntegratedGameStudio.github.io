@@ -18,8 +18,10 @@ public class ProjectileScript : MonoBehaviour {
     public float desviationSpeed = 4;
     private float originalSpeed;
     public float halflife = 10;
+    private float floordistance = 1;
     private float lifeTime = 0;
     public bool timedExplosion = false;
+    public bool isBomb = false;
     public Transform subExplosions;
 
     [Header("Particles and Sounds")]
@@ -39,6 +41,10 @@ public class ProjectileScript : MonoBehaviour {
         pointOfOrigin = transform.position;
         originalDamage = Damage;
         originalSpeed = speed;
+        if (isBomb)
+        {
+           floordistance = manager.getDistanceBetweenLanes();
+        }
 	}
 	
 	void Update () {
@@ -52,7 +58,12 @@ public class ProjectileScript : MonoBehaviour {
 
         if (lifeTime >= halflife)
         {
-            if (timedExplosion)
+            if (isBomb)
+            {
+                BombExplosion();
+            }
+
+            else if (timedExplosion)
             {
                 SFX.PlaySound(explosionSound);
                 generateExpansiveWave(transform.position);
@@ -112,5 +123,50 @@ public class ProjectileScript : MonoBehaviour {
         manager.PM.spawnParticles(projectileCollision, transform.position, 1);
         SFX.PlaySound(destructionSound);
         Destroy(gameObject);
+    }
+    
+    public void BombExplosion()
+    {
+        SFX.PlaySound(explosionSound);
+        if (transform.position.x + 1 <= manager.maxPos.x && transform.position.y + 1 <= manager.maxPos.y)
+        {
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x + 1 <= manager.minPos.x && transform.position.y <= manager.maxPos.y)
+        {
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x + 1 <= manager.maxPos.x && transform.position.y - 1 >= manager.minPos.y)
+        {
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y - 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x <= manager.maxPos.x && transform.position.y - 1 >= manager.minPos.y)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y - 1 >= manager.minPos.y)
+        {
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y - 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y >= manager.minPos.y)
+        {
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y + 1 <= manager.maxPos.y)
+        {
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y + 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
+        if (transform.position.x <= manager.maxPos.x && transform.position.y + 1 <= manager.maxPos.y)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        }
     }
 }
