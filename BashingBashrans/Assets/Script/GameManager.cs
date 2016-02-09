@@ -3,10 +3,6 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    [Header("Array Sizes")]
-    public int numberOfLanes;
-    public int numberOfAvailableEnemies;
-
     [Header("Other Elements in Level")]
     public Transform player;
     public Transform ProjectilesFolder;
@@ -33,7 +29,9 @@ public class GameManager : MonoBehaviour {
     public bool enemiesMove = false;
     public Transform[] availableEnemies;
     public Vector3[] EnemySpawnpoints;
-    public AudioClip gameOverSound;
+    public AudioClip gameOverSound; 
+    public int numberOfLanes;
+    private int numberOfAvailableEnemies;
 
     [Header("UI")]
     public GUIStyle style;
@@ -44,6 +42,7 @@ public class GameManager : MonoBehaviour {
     public bool randomBoulderFall = true;
     public Transform Boulder;
     public float cooldownBetweenTraps = 30f;
+    public Vector3 offsetOfTrap;
     private float trapCooldown = 0;
 
     [Header("Others")]
@@ -55,16 +54,15 @@ public class GameManager : MonoBehaviour {
     {
         StartCoroutine(startTimeCount());
         //availableEnemies = new Transform[numberOfAvailableEnemies];
-        //HealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
+        numberOfAvailableEnemies = availableEnemies.Length;
+        HealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
         enemiesInQueue = new int[numberOfLanes];
         lanesOccupied = new bool[numberOfLanes];
-        HealthTextSize = new Vector2(300, 300);
         style.fontSize = style.fontSize * Screen.width/ 551;
         distanceBetweenLanes = getDistanceBetweenLanes();
-        playerScript = player.GetComponent<CombatScript>();
-
-        Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
-        Debug.Log("Distance between lanes: " + distanceBetweenLanes);
+        playerScript = player.GetComponentInChildren<CombatScript>();
+        //Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
+        //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
 
     void Update()
@@ -86,7 +84,7 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI()
     {
-        //GUI.Box(new Rect(new Vector2(2, 2), HealthTextSize), "HP: " + playerScript.getHealth(), style);
+        GUI.Box(new Rect(new Vector2(2,2), HealthTextSize), "HP: " + playerScript.getHealth(), style);
         
         //string objectiveText;
 
@@ -110,7 +108,7 @@ public class GameManager : MonoBehaviour {
 
         if (!isRandom)
         {
-            trap = Instantiate(Boulder, player.position, Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
+            trap = Instantiate(Boulder, player.position + offsetOfTrap, Quaternion.Euler(new Vector3(90, 0, 0))) as Transform;
             trap.parent = ProjectilesFolder;
         }
         else if (randomBoulderFall)

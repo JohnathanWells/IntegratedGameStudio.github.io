@@ -4,6 +4,9 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
     public float XVelocity = 2f;
+    public bool canMoveToRight = true;
+    public bool canMoveToLeft = true;
+    public Transform playerModel;
     //public float YVelocity = 1f;
     //public bool squareMovementX = false;
     //public bool squareMovementY = false;
@@ -13,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     private float distanceBetweenLanes = 0;
     private int lane = 0;
     private int numberOfLanes = 2;
+    private bool canMove = true;
     private Vector2 minPos;
     private Vector2 maxPos;
 
@@ -33,12 +37,16 @@ public class PlayerMovement : MonoBehaviour {
 
         if (!manager.gameOver)
         {
-            if (Input.GetButton("Horizontal"))
+            float Ax = Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetButton("Horizontal") && ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft)))
             {
+                changeFacingDirection(Ax);
+
                 HorizontalD = XVelocity * Time.deltaTime * Input.GetAxisRaw("Horizontal");
 
-                if (transform.position.x + HorizontalD < minPos.x || transform.position.x + HorizontalD > maxPos.x)
-                    HorizontalD = 0;
+                //if (transform.position.x + HorizontalD < minPos.x || transform.position.x + HorizontalD > maxPos.x)
+                //    HorizontalD = 0;
 
                 transform.Translate(new Vector3(HorizontalD, 0, 0));
             }
@@ -94,6 +102,18 @@ public class PlayerMovement : MonoBehaviour {
     {
         minPos = manager.minPos;
         maxPos = manager.maxPos;
+    }
+
+    void changeFacingDirection(float dir)
+    {
+        if (dir > 0)
+        {
+            playerModel.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+        }
+        else if (dir < 0)
+        {
+            playerModel.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
     }
 
 }

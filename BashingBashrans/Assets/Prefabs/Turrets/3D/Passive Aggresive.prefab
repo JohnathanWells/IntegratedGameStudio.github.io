@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.5, y: 6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496404}
@@ -188,9 +188,9 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_FontSize: 12
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 2
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -207,6 +207,12 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: b31d12b8335c97245bd8bcbc897f49b3, type: 3}
   returnSound: {fileID: 8300000, guid: 2d4aabdee5c8bc74d90181152b867a46, type: 3}
   explosion: {fileID: 19820456, guid: b25b893056e0600419cd0cc9f53c5fa1, type: 2}
+  HealthBox:
+    serializedVersion: 2
+    x: 430
+    y: 0
+    width: 100
+    height: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

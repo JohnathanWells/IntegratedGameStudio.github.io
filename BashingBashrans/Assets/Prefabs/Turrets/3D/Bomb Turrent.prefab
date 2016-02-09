@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5072902}
   - 61: {fileID: 6146572}
   m_Layer: 0
-  m_Name: Unstoppable Turret 1
+  m_Name: Bomb Turrent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,10 +38,9 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
-  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -55,7 +54,6 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129680}
   m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -74,14 +72,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1.5
-  burstCooling: 0.5
+  burstCooling: .5
+  projectilesByBurst: 2
+  offsetShooting: {x: 0, y: 0, z: 0}
   projectile:
-  - {fileID: 421790, guid: 3329f71bebf531a4f89f7e212f36718b, type: 2}
-  sizeOfArray: 1
+  - {fileID: 0}
   InitialHealth: 200
   Name: Nonstop
-  projectilesByBurst: 2
-  explosion: {fileID: 19820456, guid: b25b893056e0600419cd0cc9f53c5fa1, type: 2}
+  currentHealth: 0
   canReturnProjectiles: 0
   OddsAgaisntReturningProjectile: 1
   style:
@@ -143,10 +141,19 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  currentHealth: 0
+  moveToTheLeft: 0
+  speedToTheLeft: 1
+  distanceTraveledBeforeDeath: 10
   damageSound: {fileID: 8300000, guid: 00637a73f52fa2a4b90daae9909977a5, type: 3}
   explosionSound: {fileID: 8300000, guid: b31d12b8335c97245bd8bcbc897f49b3, type: 3}
   returnSound: {fileID: 8300000, guid: 2d4aabdee5c8bc74d90181152b867a46, type: 3}
+  explosion: {fileID: 19820456, guid: b25b893056e0600419cd0cc9f53c5fa1, type: 2}
+  HealthBox:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
 --- !u!212 &21271640
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -165,18 +172,14 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 23ba152a67fc26d4c841d277c59b5ec0, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

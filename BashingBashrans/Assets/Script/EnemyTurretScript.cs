@@ -9,7 +9,7 @@ public class EnemyTurretScript : MonoBehaviour {
     public int projectilesByBurst = 1;
     public Vector3 offsetShooting;
     public Transform[] projectile;
-    public int sizeOfArray = 1;
+    private int sizeOfArray = 1;
     int shotsFired = 0;
     bool coolingDown = false;
     bool burstCooldown = false;
@@ -44,16 +44,22 @@ public class EnemyTurretScript : MonoBehaviour {
     public AudioClip returnSound;
     public ParticleSystem explosion;
 
+    [Header("UI")]
+    public Rect HealthBox;
+
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         PartM = manager.PM;
         SFX = manager.SFX;
+        sizeOfArray = projectile.Length;
         projectileFolder = manager.ProjectilesFolder;
         currentHealth = InitialHealth;
         initialXPos = transform.position.x;
         lane = manager.getLane(transform.parent);
         //Debug.Log(Name + ": #" + lane);
         manager.lanesOccupied[lane] = true;
+        HealthBox = new Rect(new Vector2(Screen.width * HealthBox.position.x / 551, (Screen.height * HealthBox.position.y / 310) + transform.position.z * (Screen.height * HealthBox.size.y / 310)), new Vector2(Screen.width * HealthBox.size.x / 551, Screen.height * HealthBox.size.y / 310));
+        style.fontSize = (Screen.width * style.fontSize) / 551;
 	}
 
     void OnTriggerEnter(Collider c)
@@ -132,7 +138,7 @@ public class EnemyTurretScript : MonoBehaviour {
             }
         }
         	
-        if (!coolingDown && !burstCooldown && Random.Range(0, 2) == 0)
+        if (!coolingDown && !burstCooldown)
         {
             Shoot();
             shotsFired++;
@@ -151,7 +157,7 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Box(new Rect(new Vector2(80 -200, Screen.height + transform.position.z * 80), new Vector2(400, 800)), Name + "\n" + currentHealth + "/" + InitialHealth, style);
+        GUI.Box(HealthBox, Name + "\n" + currentHealth + "/" + InitialHealth, style);
     }
 
     void Shoot()
