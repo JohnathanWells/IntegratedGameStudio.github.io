@@ -62,7 +62,7 @@ public class EnemyTurretScript : MonoBehaviour {
         style.fontSize = (Screen.width * style.fontSize) / 551;
 	}
 
-    void OnTriggerEnter(Collider c)
+    void OnTriggerStay(Collider c)
     {
         if (c.CompareTag("Boulder"))
         {
@@ -162,7 +162,8 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void Shoot()
     {
-        Transform shoot = Instantiate(projectile[currentAmmo], transform.position + offsetShooting, Quaternion.Euler(projectile[currentAmmo].eulerAngles)) as Transform;
+        Vector3 rot = transform.rotation.eulerAngles;
+        Transform shoot = Instantiate(projectile[currentAmmo], transform.position + offsetShooting, Quaternion.Euler(rot)) as Transform;
         shoot.parent = projectileFolder;
     }
 

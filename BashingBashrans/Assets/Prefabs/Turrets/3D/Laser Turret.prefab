@@ -129,13 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443434f13131c4046aec931c45ca6cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
+  cooldownTime: 2
   burstCooling: .100000001
   projectilesByBurst: 5
   offsetShooting: {x: 0, y: 0, z: 0}
   projectile:
   - {fileID: 428542, guid: 7204c632a4bd3764281ad62fd734ad4d, type: 2}
-  sizeOfArray: 1
   InitialHealth: 500
   Name: Labrys
   currentHealth: 0
@@ -243,6 +242,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cooldownTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -14,9 +14,10 @@ public class CombatScript : MonoBehaviour {
     public Color punchingColor;
     public Color damageColor;
     public Color chargingColor;
-    private bool punching = false;
+    //private bool punching = false;
     private bool canPunch = true;
     public LayerMask punchableLayers;
+    public WeaponScript weapon;
 
     [Header("Sounds")]
     public AudioClip receiveDamageSound;
@@ -52,7 +53,7 @@ public class CombatScript : MonoBehaviour {
 
             if (!Proj.checkIfBeingReturned())
             {
-                if ((punching && Proj.canBePunched) || (!punching && Proj.blockedByStanding))
+                if ((!weapon.punching && Proj.blockedByStanding))
                 {
                     SFX.PlaySound(returnProjectileSound);
                     Proj.changeDirection(transform.position);
@@ -76,13 +77,13 @@ public class CombatScript : MonoBehaviour {
     void OnTriggerStay(Collider c)
     {
 
-        if (c.CompareTag("Punch Boulder"))
-        {
-            BoulderScript Boulder = c.GetComponentInParent<BoulderScript>();
+        //if (c.CompareTag("Punch Boulder"))
+        //{
+        //    BoulderScript Boulder = c.GetComponentInParent<BoulderScript>();
 
-            if (Boulder.punchable && punching)
-                Boulder.PunchBoulder();
-        }
+        //    if (Boulder.punchable && punching)
+        //        Boulder.PunchBoulder();
+        //}
 
         if (c.CompareTag("Boulder"))
         {
@@ -124,12 +125,12 @@ public class CombatScript : MonoBehaviour {
     IEnumerator punchStuff()
     {
         canPunch = false;
-        punching = true;
+        weapon.punching = true;
         light.color = punchingColor;
         SFX.PlaySound(punchSound);
         yield return new WaitForSeconds(punchingTime);
         light.color = chargingColor;
-        punching = false;
+        weapon.punching = false;
         yield return new WaitForSeconds(punchCooldown);
         light.color = originalColor;
         canPunch = true;

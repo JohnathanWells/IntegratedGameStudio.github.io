@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool canMoveToRight = true;
     public bool canMoveToLeft = true;
     public Transform playerModel;
+    //public Animation animation;
     //public float YVelocity = 1f;
     //public bool squareMovementX = false;
     //public bool squareMovementY = false;
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
             if (Input.GetButton("Horizontal") && ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft)))
             {
                 changeFacingDirection(Ax);
+                //animation.Play("Take 001");
 
                 HorizontalD = XVelocity * Time.deltaTime * Input.GetAxisRaw("Horizontal");
 

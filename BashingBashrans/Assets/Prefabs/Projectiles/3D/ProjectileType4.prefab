@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2373198}
   - 114: {fileID: 11489220}
   - 108: {fileID: 10868650}
+  - 54: {fileID: 5478946}
   m_Layer: 0
   m_Name: ProjectileType4
   m_TagString: Projectile
@@ -63,6 +64,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140492}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5478946
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140492}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!108 &10868650
 Light:
   m_ObjectHideFlags: 1
@@ -111,10 +127,11 @@ MonoBehaviour:
   angleOfDesviation: -170
   upAndDown: 0
   Damage: 25
-  speed: 4
+  speed: 3
   desviationSpeed: 8
-  halflife: 5
+  halflife: 8
   timedExplosion: 0
+  isBomb: 0
   subExplosions: {fileID: 0}
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
@@ -190,6 +207,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: desviationSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: halflife
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
