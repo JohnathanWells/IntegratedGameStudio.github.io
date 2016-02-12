@@ -135,6 +135,7 @@ MonoBehaviour:
   offsetShooting: {x: 0, y: 0, z: 0}
   projectile:
   - {fileID: 428542, guid: 7204c632a4bd3764281ad62fd734ad4d, type: 2}
+  shootMode: 1
   InitialHealth: 500
   Name: Labrys
   currentHealth: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 50
+  UIActivated: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -135,7 +135,7 @@ MonoBehaviour:
   offsetShooting: {x: 0, y: 0, z: 0}
   projectile:
   - {fileID: 417636, guid: f12de8290ba771f49a0fd8e00b0b9328, type: 2}
-  sizeOfArray: 1
+  shootMode: 1
   InitialHealth: 150
   Name: Hella
   currentHealth: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 50
+  UIActivated: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

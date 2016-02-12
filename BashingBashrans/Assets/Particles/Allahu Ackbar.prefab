@@ -1210,6 +1210,10 @@ Prefab:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[5].value
       value: .969696999
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161878}
