@@ -14,7 +14,6 @@ public class CombatScript : MonoBehaviour {
     public Color punchingColor;
     public Color damageColor;
     public Color chargingColor;
-    //private bool punching = false;
     private bool canPunch = true;
     public WeaponScript weapon;
 
@@ -24,26 +23,21 @@ public class CombatScript : MonoBehaviour {
     public AudioClip punchSound;
 
     [Header("Other Scripts Access")]
-    //public Light light;
     public Animation animation;
     public PlayerMovement movementScript;
     private GameManager manager;
     private SoundEffectManager SFX;
 
-    //Burning Variables
+    [Header("Effects")]
+    public float timeBetweenBurningDamage = 1;
     private int burningDamage = 0;
-    //private int enemiesDefeated = 0;
     private bool burning = false;
     private float burnTaim = 0;
-
-    //Others
-    Color originalColor;
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
         weapon.manager = manager;
-        //originalColor = light.color;
         currentHealth = initialHealth;
 	}
 
@@ -53,18 +47,17 @@ public class CombatScript : MonoBehaviour {
         {
             ProjectileScript Proj = c.GetComponent<ProjectileScript>();
 
-            if (!Proj.checkIfBeingReturned())
+            if (!Proj.getBeingReturned())
             {
                 if ((!weapon.getPunching() && Proj.blockedByStanding))
                 {
                     SFX.PlaySound(returnPassiveProjectileSound);
-                    Proj.changeDirection(transform.position);
+                    Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
                 }
                 else
                 {
                     receiveDamage(Proj.Damage);
-                    //StartCoroutine(damageColorChange());
-                    Proj.DestroyProjectile();
+                    Proj.projectileCrash();
                 }
             }
         }
@@ -78,15 +71,6 @@ public class CombatScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-
-        //if (c.CompareTag("Punch Boulder"))
-        //{
-        //    BoulderScript Boulder = c.GetComponentInParent<BoulderScript>();
-
-        //    if (Boulder.punchable && punching)
-        //        Boulder.PunchBoulder();
-        //}
-
         if (c.CompareTag("Boulder"))
         {
             BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
@@ -109,13 +93,11 @@ public class CombatScript : MonoBehaviour {
 
         if (burning)
         {
-            burnTaim += Time.deltaTime;
-
-            if (burnTaim >= 1)
-            {
-                receiveDamage(burningDamage);
-                burnTaim = 0;
-            }
+            Burn();
+        }
+        else if (!burning && burnTaim > 0)
+        {
+            burnTaim -= Time.deltaTime;
         }
 
         if (Input.GetButtonDown("Swing Direction") && canPunch)
@@ -124,36 +106,32 @@ public class CombatScript : MonoBehaviour {
         }
 	}
 
+    void Burn()
+    {
+        burnTaim += Time.deltaTime;
+
+        if (burnTaim >= timeBetweenBurningDamage)
+        {
+            receiveDamage(burningDamage);
+            burnTaim = 0;
+        }
+    }
+
     IEnumerator punchStuff(int direction)
     {
         rotateInDirection(direction);
         canPunch = false;
         movementScript.SendMessage("changeCanMove", false);
         weapon.SendMessage("changeSwingingVar", true);
-        //light.color = punchingColor;
         SFX.PlaySound(punchSound);
-        //animation.Play("Take 001");
         yield return new WaitForSeconds(punchingTime);
-        //light.color = chargingColor;
         weapon.SendMessage("changeSwingingVar", false);
         yield return new WaitForSeconds(punchCooldown);
-        //light.color = originalColor;
         weapon.animationHappening = false;
         canPunch = true;
         movementScript.SendMessage("changeCanMove", true);
         rotateInDirection(-direction);
     }
-
-    //IEnumerator damageColorChange()
-    //{
-    //    light.color = damageColor;
-    //    yield return new WaitForSeconds(0.3f);
-        
-    //    if (canPunch)
-    //        light.color = originalColor;
-    //    else
-    //        light.color = chargingColor;
-    //}
 
     public int getHealth()
     {
@@ -173,16 +151,6 @@ public class CombatScript : MonoBehaviour {
                 manager.SendMessage("GameOver");
         }
     }
-
-    //public void addKillCount()
-    //{
-    //    enemiesDefeated++;
-    //}
-
-    //public int getEnemiesDefeated()
-    //{
-    //    return enemiesDefeated;
-    //}
 
     private void rotateInDirection(int dir)
     {

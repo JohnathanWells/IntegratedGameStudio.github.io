@@ -32,70 +32,20 @@ public class PlayerMovement : MonoBehaviour {
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
         distanceBetweenLanes = manager.distanceBetweenLanes;
-        //Debug.Log(lane);
-        //Debug.Log(minPos + "\n" + maxPos);
     }
 
 	void Update () {
 
         if (!manager.gameOver && canMove)
         {
-            float Ax = Input.GetAxisRaw("Horizontal");
-
-            if (Input.GetButton("Horizontal") && ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft)))
+            if (Input.GetButton("Horizontal"))
             {
-                //changeFacingDirection(Ax);
-                //animation.Play("Take 001");
-
-                HorizontalD = XVelocity * Time.deltaTime * Input.GetAxisRaw("Horizontal");
-
-                //if (transform.position.x + HorizontalD < minPos.x || transform.position.x + HorizontalD > maxPos.x)
-                //    HorizontalD = 0;
-
-                transform.Translate(new Vector3(HorizontalD, 0, 0));
+                moveHorizontally(Input.GetAxisRaw("Horizontal"));
             }
-
-#region OldCode
-            //else if (Input.GetButtonDown("Horizontal") && squareMovementX)
-            //{
-            //    HorizontalD = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-
-            //    if (transform.position.x + HorizontalD < minPos.x)
-            //        HorizontalD = 0;
-            //    else if (transform.position.x + HorizontalD > maxPos.x)
-            //        HorizontalD = 0;
-
-            //    transform.Translate(new Vector3(HorizontalD, 0, 0));
-            //    Mathf.RoundToInt(transform.position.x);
-            //}
-
-
-            //if (!squareMovementY)
-            //{
-            //    VerticalD = YVelocity * Time.deltaTime * Input.GetAxisRaw("Vertical");
-
-            //    if (transform.position.y + VerticalD < minPos.y)
-            //        VerticalD = 0;
-            //    else if (transform.position.y + VerticalD > maxPos.y)
-            //        VerticalD = 0;
-
-            //    transform.Translate(new Vector3(0, VerticalD, VerticalD));
-            //}
-            //else 
-#endregion
 
             if (Input.GetButtonDown("Vertical"))
             {
-                int dir = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-
-                if (((dir < 0 && canMoveDown && lane + dir >= 0) || (dir > 0 && canMoveUp && lane + dir < numberOfLanes)) /*&& (lane + dir >= 0 && lane + dir <= numberOfLanes - 1)*/)
-                {
-                    lane += dir;
-
-                    VerticalD = distanceBetweenLanes * dir;
-
-                    transform.Translate(new Vector3(0, 0, VerticalD));
-                }
+                moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
             }
         }
 
@@ -107,18 +57,6 @@ public class PlayerMovement : MonoBehaviour {
         minPos = manager.minPos;
         maxPos = manager.maxPos;
     }
-
-    //void changeFacingDirection(float dir)
-    //{
-    //    if (dir > 0)
-    //    {
-    //        playerModel.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-    //    }
-    //    else if (dir < 0)
-    //    {
-    //        playerModel.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
-    //    }
-    //}
 
     public void receiveDetection(Vector2 direction, bool value)
     {
@@ -145,4 +83,24 @@ public class PlayerMovement : MonoBehaviour {
         canMove = val;
     }
 
+    void moveHorizontally(float Ax)
+    {
+        if ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft))
+        {
+            HorizontalD = XVelocity * Time.deltaTime * Input.GetAxisRaw("Horizontal");
+            transform.Translate(new Vector3(HorizontalD, 0, 0));
+        }
+    }
+
+    void moveVertically(int dir)
+    {
+        if (((dir < 0 && canMoveDown && lane + dir >= 0) || (dir > 0 && canMoveUp && lane + dir < numberOfLanes)) /*&& (lane + dir >= 0 && lane + dir <= numberOfLanes - 1)*/)
+        {
+            lane += dir;
+
+            VerticalD = distanceBetweenLanes * dir;
+
+            transform.Translate(new Vector3(0, 0, VerticalD));
+        }
+    }
 }

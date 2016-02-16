@@ -21,13 +21,13 @@ public class WeaponScript : MonoBehaviour {
             {
                 ProjectileScript Proj = c.GetComponent<ProjectileScript>();
 
-                if (!Proj.checkIfBeingReturned())
+                if (!Proj.getBeingReturned())
                 {
                     if (Proj.canBePunched)
                     {
                         SFX.PlaySound(returnProjectileSound);
                         
-                        Proj.changeDirection(transform.position);
+                        Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
                     }
                 }
             }

@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour {
     //public bool enemiesMove = false;
     //public Transform[] availableEnemies;
     //public Vector3[] EnemySpawnpoints;
-    public AudioClip gameOverSound; 
+    public AudioClip gameOverSound;
+    public string nextLevelName;
     //private int numberOfAvailableEnemies;
 
     [Header("UI")]
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour {
         //StartCoroutine(startTimeCount());
         //availableEnemies = new Transform[numberOfAvailableEnemies];
         //numberOfAvailableEnemies = availableEnemies.Length;
+        Time.timeScale = 1f;
         PlayerHealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
         //enemiesInQueue = new int[numberOfLanes];
         //lanesOccupied = new bool[numberOfLanes];
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0f;
 
             if (GUI.Button(new Rect(new Vector2(Screen.width / 2 - 100, Screen.height / 2 - 50), new Vector2(200, 100)), "Enemies Defeated\nContinue"))
-                Application.LoadLevel(Application.loadedLevel + 1);//Add the code here
+                Application.LoadLevel(nextLevelName);//Add the code here
         }
 
         if (UIActivated)

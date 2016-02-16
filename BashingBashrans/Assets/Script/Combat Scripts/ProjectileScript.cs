@@ -1,30 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectileScript : MonoBehaviour {
+//Curvy and Bouncy still do nothing
+public enum typeMovement { Horizontal, Vertical, Curvy, Bouncy }
+public enum movementDirection { left, right};
+//The effects still do nothing
+public enum Effect { fragmented, fire, poison, freeze }
+public enum conditionForDestruction { timed, distanceBased }
 
-    [Header("Desviation")]
+public class ProjectileScript : MonoBehaviour
+{
+
+    #region variables
+    [Header("Movement")]
+    public typeMovement movement;
+    public movementDirection direction;
     public bool canBePunched = true;
     public bool blockedByStanding = false;
+    public float frequencyOfCurve;
+    public float angleOfBounciness;
     public float angleOfDesviation = 180;
-    private bool beingReturned = false;
-    private Vector2 pointOfOrigin;
-    public Material desviationMaterial;
-    public MeshRenderer renderer;
-    
-    [Header("Damage, Halflife, Trayectory and Explosion")]
-    public bool upAndDown = false;
-    public int Damage = 100;
-    private int originalDamage;
     public float speed = 2;
     public float desviationSpeed = 4;
     private float originalSpeed;
+    private bool beingReturned = false;
+    public Material desviationMaterial;
+    public MeshRenderer renderer;
+    private int directionOfProjectile;
+
+    [Header("Damage, Halflife, Trayectory and Explosion")]
+    public Effect effectOfProjectile;
+    public conditionForDestruction condition;
+    public int Damage = 100;
+    private int originalDamage;
     public float halflife = 10;
+    private float distanceForDestruction = 10;
     private float floordistance = 1;
     private float lifeTime = 0;
-    public bool timedExplosion = false;
-    public bool isBomb = false;
-    public Transform subExplosions;
+    private float distanceTraveled = 0;
 
     [Header("Particles and Sounds")]
     public ParticleSystem projectileCollision;
@@ -39,80 +52,67 @@ public class ProjectileScript : MonoBehaviour {
     GameManager manager;
     SoundEffectManager SFX;
     Material originalMaterial;
+    #endregion
 
-	void Start () {
+    void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
-        pointOfOrigin = transform.position;
         originalDamage = Damage;
         originalSpeed = speed;
         originalMaterial = renderer.material;
 
-        if (isBomb)
-        {
-           floordistance = manager.obtainDistanceBetweenLanes();
-        }
+        if (direction == movementDirection.left)
+            directionOfProjectile = -1;
+        else
+            directionOfProjectile = 1;
 	}
 	
-	void Update () {
-        lifeTime += Time.deltaTime;
-
-        if (lifeTime + 1f >= halflife && playingSound)
-        {
-            SFX.PlaySound(beforeExplosionSound);
-            playingSound = true;
-        }
-
-        if (lifeTime >= halflife)
-        {
-            if (isBomb)
-            {
-                BombExplosion();
-            }
-
-            else if (timedExplosion)
-            {
-                SFX.PlaySound(explosionSound);
-                generateExpansiveWave(transform.position);
-            }
-            
-            Destroy(gameObject);
-        }
-
-        transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-	}
-
-    public bool checkIfBeingReturned()
+	void Update () 
     {
-        return beingReturned;
+        if (condition == conditionForDestruction.timed)
+        {
+            lifeTime += Time.deltaTime;
+
+            if (lifeTime >= halflife)
+                Destroy(gameObject);
+        }
+        else
+        {
+            distanceTraveled += Time.deltaTime * speed;
+
+            if (distanceTraveled >= distanceForDestruction)
+                Destroy(gameObject);
+        }
+
+
+        projectileMovement();
+	}
+    
+    void projectileMovement()
+    {
+        Vector2 translation = Vector2.zero;
+
+        if (movement == typeMovement.Horizontal)
+        {
+            translation = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+        }
+        else if (movement == typeMovement.Vertical)
+        {
+            translation = new Vector2(0, directionOfProjectile * speed * Time.deltaTime);
+        }
+
+        transform.Translate(translation);
     }
 
-    public void changeDirection(Vector2 pointOfReturn)
+    public void changeDirection(float angleOfReturn)
     {
-        transform.Rotate(new Vector3(0, angleOfDesviation, 0));
+        transform.Rotate(new Vector3(0, angleOfReturn, 0));
         beingReturned = true;
         canBePunched = false;
         speed = desviationSpeed;        
         //Damage = getNewDamage(pointOfReturn);
         lifeTime = 0;
         switchColors();
-    }
-
-    void generateExpansiveWave(Vector2 mainExplosion)
-    {
-        int b = Mathf.RoundToInt(manager.minPos.y);
-        int c = Mathf.RoundToInt(manager.maxPos.y);
-
-        for (int a = b; a <= c; a++)
-        {
-            Transform explosion = Instantiate(subExplosions, new Vector3(mainExplosion.x, transform.position.y, a), Quaternion.Euler(subExplosions.eulerAngles)) as Transform;
-            explosion.parent = manager.ProjectilesFolder;
-        }
-    }
-
-    int getOriginalDamage()
-    {
-        return originalDamage;
     }
 
     public void EnemyReturnsAttack()
@@ -127,73 +127,6 @@ public class ProjectileScript : MonoBehaviour {
         lifeTime = 0;
     }
 
-    public void DestroyProjectile()
-    {
-        manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        SFX.PlaySound(destructionSound);
-        Destroy(gameObject);
-    }
-    
-    public void BombExplosion()
-    {
-        SFX.PlaySound(explosionSound);
-        if (transform.position.x + 1 <= manager.maxPos.x && transform.position.y + 1 <= manager.maxPos.y)
-        {
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x + 1 <= manager.minPos.x && transform.position.y <= manager.maxPos.y)
-        {
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x + 1 <= manager.maxPos.x && transform.position.y - 1 >= manager.minPos.y)
-        {
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y - 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x <= manager.maxPos.x && transform.position.y - 1 >= manager.minPos.y)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y - 1 >= manager.minPos.y)
-        {
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y - 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y >= manager.minPos.y)
-        {
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x - 1 >= manager.minPos.x && transform.position.y + 1 <= manager.maxPos.y)
-        {
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y + 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-        if (transform.position.x <= manager.maxPos.x && transform.position.y + 1 <= manager.maxPos.y)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        }
-    }
-
-    private float obtainNewDamage(Vector2 pointOfReturn)
-    {
-        return Mathf.Abs(Mathf.RoundToInt(Damage * 4 / (pointOfReturn.x - pointOfOrigin.x)));
-    }
-
-    public ParticleSystem getMuzzleParticles()
-    {
-        return muzzleParticles;
-    }
-
-    public AudioClip getShootingSound()
-    {
-        return shootingSound;
-    }
-
     public void switchColors()
     {
         if (beingReturned)
@@ -205,4 +138,51 @@ public class ProjectileScript : MonoBehaviour {
             renderer.material = originalMaterial;
         }
     }
+
+    public void projectileCrash()
+    {
+        manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+        SFX.PlaySound(destructionSound);
+        Destroy(gameObject);
+    }
+
+    //Get Functions
+    public ParticleSystem getMuzzleParticles()
+    {
+        return muzzleParticles;
+    }
+
+    public AudioClip getShootingSound()
+    {
+        return shootingSound;
+    }
+
+    int getOriginalDamage()
+    {
+        return originalDamage;
+    }
+
+    public bool getBeingReturned()
+    {
+        return beingReturned;
+    }
+
+    public float rotateRelativelyToHit(Vector3 hitPos)
+    {
+        if ((hitPos.x > transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)) || (hitPos.x < transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)))
+        {
+            return angleOfDesviation;
+        }
+        else if ((hitPos.x < transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)) || (hitPos.x > transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)))
+        {
+            return angleOfDesviation;
+        }
+        else
+            return 0;
+    }
+
+    //private float obtainNewDamage(Vector2 pointOfReturn)
+    //{
+    //    return Mathf.Abs(Mathf.RoundToInt(Damage * 4 / (pointOfReturn.x - pointOfOrigin.x)));
+    //}
 }
