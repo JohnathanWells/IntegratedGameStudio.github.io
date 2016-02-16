@@ -122,6 +122,7 @@ MonoBehaviour:
   gameOver: 0
   paused: 0
   gameOverSound: {fileID: 0}
+  nextLevelName: 
   PlayerFont:
     m_Name: 
     m_Normal:
