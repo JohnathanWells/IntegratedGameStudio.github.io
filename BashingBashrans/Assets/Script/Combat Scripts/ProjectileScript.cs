@@ -169,9 +169,12 @@ public class ProjectileScript : MonoBehaviour
 
     public float rotateRelativelyToHit(Vector3 hitPos)
     {
-        if ((hitPos.x > transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)) || (hitPos.x < transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)))
+        if (direction == movementDirection.left)
         {
-            return angleOfDesviation;
+            if ((transform.position.x > hitPos.x && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)) || (hitPos.x > transform.position.x && (transform.eulerAngles.y <= 270 && transform.eulerAngles.y > 90)))
+                return angleOfDesviation;
+            else
+                return 0;
         }
         else if ((hitPos.x < transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)) || (hitPos.x > transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)))
         {
