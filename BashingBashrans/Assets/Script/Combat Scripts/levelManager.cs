@@ -11,6 +11,12 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
 
+    public int orderTransX = 0;
+    public int orderTransY = 0;
+    public int orderTransZ = 0;
+
+    private int currentTransCount = 0;
+
     private int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
 
@@ -40,6 +46,8 @@ public class levelManager : MonoBehaviour {
     {
         //Debug.Log("Changing room camera to: " + newObjective);
         objectiveManagerNumber = newObjective;
+
+        currentTransCount = 0;
     }
 
     public void moveCamera()
@@ -48,7 +56,31 @@ public class levelManager : MonoBehaviour {
         if (CoolTransition)
         {
             float step = Time.deltaTime * speedOfTransition;
-            cameras[currentManagerCount].position = Vector3.MoveTowards(cameras[currentManagerCount].position, cameras[objectiveManagerNumber].position, step);
+            Vector3 temp = transform.position;
+
+            if (currentTransCount * 3 == orderTransX + orderTransY + orderTransZ)
+            {
+                temp = cameras[objectiveManagerNumber].position;
+            }
+            else
+            {
+                if (orderTransX == currentTransCount)
+                {
+                    temp = new Vector3(cameras[objectiveManagerNumber].position.x, temp.y, temp.z);
+                }
+
+                if (orderTransY == currentTransCount)
+                {
+                    temp = new Vector3(temp.x, cameras[objectiveManagerNumber].position.y, temp.z);
+                }
+
+                if (orderTransZ == currentTransCount)
+                {
+                    temp = new Vector3(temp.x, temp.y, cameras[objectiveManagerNumber].position.z);
+                }
+            }
+
+            cameras[currentManagerCount].position = Vector3.MoveTowards(new Vector3(cameras[currentManagerCount].position.x, 0, 0), cameras[objectiveManagerNumber].position, step);
             cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step);
         }
         else
@@ -57,7 +89,21 @@ public class levelManager : MonoBehaviour {
             cameras[currentManagerCount].rotation = cameras[objectiveManagerNumber].rotation;
         }
 
-        if (cameras[currentManagerCount].position == cameras[objectiveManagerNumber].position && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
+        //Check what transition is done
+        if (orderTransX == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
+        {
+            currentTransCount++;
+        }
+        else if (orderTransY == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
+        {
+            currentTransCount++;
+        }
+        else if (orderTransZ == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
+        {
+            currentTransCount++;
+        }
+
+        if (currentTransCount >= 2 && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
         {
             changeManager(currentManagerCount, objectiveManagerNumber);
             currentManagerCount = objectiveManagerNumber;
