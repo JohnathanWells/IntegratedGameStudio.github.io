@@ -23,20 +23,29 @@ public class PlayerMovement : MonoBehaviour {
     private bool canMoveUp = true;
     private bool canMoveDown = true;
 
+    public CombatScript combatScript;
+
     public GameManager manager;
+
+    [Header("Transition")]
+    public bool coolTransition = true;
+    private Vector3 pointTowards;
+    private Quaternion angleTowards;
+    private bool inTransition = false;
+    private int currentRoom;
 
     void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        obtainLimits();
-        numberOfLanes = manager.numberOfLanes;
-        lane = manager.obtainLane(transform);
-        distanceBetweenLanes = manager.distanceBetweenLanes;
+        setManager();
     }
 
 	void Update () {
 
-        if (!manager.gameOver && canMove)
+        if (inTransition)
+        {
+            transitionMove();
+        }
+        else if (!manager.gameOver && canMove && !inTransition)
         {
             if (Input.GetButton("Horizontal"))
             {
@@ -48,9 +57,50 @@ public class PlayerMovement : MonoBehaviour {
                 moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
             }
         }
-
-
 	}
+
+    void transitionMove()
+    {
+        Time.timeScale = 1f;
+        if (coolTransition)
+        {
+            float step = Time.deltaTime * XVelocity;
+            transform.position = Vector3.MoveTowards(transform.position, pointTowards, step);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, angleTowards, step);
+        }
+        else
+        {
+            transform.position = pointTowards;
+            transform.rotation = angleTowards;
+        }
+
+        if (transform.position == pointTowards && transform.rotation == angleTowards)
+        {
+            inTransition = false;
+            combatScript.transitionHappening(false);
+            manager.transitionFunction(false, currentRoom);
+        }
+    }
+
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom)
+    {
+        inTransition = true;
+        currentRoom = newRoom;
+        combatScript.transitionHappening(true);
+        manager.transitionFunction(true, 0);
+        pointTowards = posTo;
+        angleTowards = angTo;
+    }
+
+    void setManager()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        obtainLimits();
+        numberOfLanes = manager.numberOfLanes;
+        lane = manager.obtainLane(transform);
+        Debug.Log(lane);
+        distanceBetweenLanes = manager.distanceBetweenLanes;
+    }
 
     void obtainLimits()
     {
@@ -103,4 +153,9 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(new Vector3(0, 0, VerticalD));
         }
     }
+
+    //public void transitionHappening(bool happening)
+    //{
+    //    inTransition = happening;
+    //}
 }

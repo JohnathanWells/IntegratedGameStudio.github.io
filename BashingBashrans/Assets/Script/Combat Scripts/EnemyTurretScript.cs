@@ -40,7 +40,7 @@ public class EnemyTurretScript : MonoBehaviour {
     Vector3 screenPos;
 
     [Header("Other Scripts")]
-    GameManager manager;
+    public GameManager manager;
     SoundEffectManager SFX;
     ParticleManager PartM;
     Transform projectileFolder;
@@ -54,10 +54,12 @@ public class EnemyTurretScript : MonoBehaviour {
 
     int originalFontSize;
     Transform feet;
+    bool playerInRoom = false;
 
 	void Start () {
-        setOtherScripts();
-        setValues();
+        setManager();
+        direction = Random.Range(0, 2) * 2 - 1;
+        setBasics();
 	}
 
     void OnTriggerStay(Collider c)
@@ -75,26 +77,36 @@ public class EnemyTurretScript : MonoBehaviour {
 
 	void Update () 
     {
-        if (moveUpAndDown)
-            turretMovement();
+        if (manager != null)
+        {
+            if (moveUpAndDown)
+                turretMovement();
 
-        simpleShooting();
+            simpleShooting();
+        }
+        else
+            Debug.Log("MANAGER IS NULL");
 	}
 
     void OnGUI()
     {
-        screenPos = Camera.main.WorldToScreenPoint(transform.parent.position);
-        screenPositionOfText = new Vector2(screenPos.x, screenPos.y);
-        screenPositionOfText += offsetName;
-        UIName.position = screenPositionOfText;
-        GUI.Box(UIName, Name + "\n" + currentHealth + "/" + InitialHealth, enemyFont);
+        if (manager != null)
+        {
+            screenPos = Camera.main.WorldToScreenPoint(transform.parent.position);
+            screenPositionOfText = new Vector2(screenPos.x, screenPos.y);
+            screenPositionOfText += offsetName;
+            UIName.position = screenPositionOfText;
+            GUI.Box(UIName, Name + "\n" + currentHealth + "/" + InitialHealth, enemyFont);
+        }
     }
 
     void turretMovement()
     {
-        if (feet.position.z > numberOfLanes)
+        float downCorner = manager.LeftDownCorner.position.z;
+
+        if (feet.position.z > numberOfLanes + downCorner)
             direction = -1;
-        else if (feet.position.z <= 0)
+        else if (feet.position.z <= downCorner)
             direction = 1;
 
         feet.Translate(0, 0, speed * direction * Time.deltaTime);
@@ -132,7 +144,7 @@ public class EnemyTurretScript : MonoBehaviour {
             }
         }
 
-        if (!coolingDown && !burstCooldown && checkMarginOfErrorOFPosition())
+        if (!coolingDown && !burstCooldown && ((moveUpAndDown && checkMarginOfErrorOFPosition()) || !moveUpAndDown))
         {
             shootCannons();
             shotsFired++;
@@ -225,25 +237,25 @@ public class EnemyTurretScript : MonoBehaviour {
         ReceiveDamage(bould.damage);
         bould.DestroyBoulder();
     }
-
-    void setOtherScripts()
-    {
-        direction = Random.Range(0, 2) * 2 - 1;
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        manager.SendMessage("addEnemyInLevel");
-        PartM = manager.PM;
-        SFX = manager.SFX;
-        projectileFolder = manager.ProjectilesFolder;
-    }
     
-    void setValues()
+    void setBasics()
     {
         currentHealth = InitialHealth;
-        lane = manager.obtainLane(transform.parent);
         feet = transform.parent;
-        numberOfLanes = manager.numberOfLanes - 1;
+        manager.SendMessage("addEnemyInLevel");
+        //Debug.Log(Name + " Joined the session at " + feet.position);
         originalFontSize = enemyFont.fontSize;
         enemyFont.fontSize = Mathf.RoundToInt((Screen.width * originalFontSize) / ruleOfThreeBasicResolution.x);
         offsetName = new Vector2((Screen.width * offsetName.x) / ruleOfThreeBasicResolution.x, (Screen.height * offsetName.y) / ruleOfThreeBasicResolution.y);
+    }
+
+    public void setManager()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        PartM = manager.PM;
+        SFX = manager.SFX;
+        projectileFolder = manager.ProjectilesFolder;
+        lane = manager.obtainLane(transform.parent);
+        numberOfLanes = manager.numberOfLanes - 1;
     }
 }

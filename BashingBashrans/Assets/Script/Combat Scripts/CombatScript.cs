@@ -34,41 +34,53 @@ public class CombatScript : MonoBehaviour {
     private bool burning = false;
     private float burnTaim = 0;
 
+    private bool inTransition = false;
+
 	void Start () {
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        SFX = manager.SFX;
-        weapon.manager = manager;
+        setManager();
         currentHealth = initialHealth;
 	}
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.CompareTag("Projectile"))
+        if (!inTransition)
         {
-            ProjectileScript Proj = c.GetComponent<ProjectileScript>();
-
-            if (!Proj.getBeingReturned())
+            if (c.CompareTag("Projectile"))
             {
-                if ((!weapon.getPunching() && Proj.blockedByStanding))
+                ProjectileScript Proj = c.GetComponent<ProjectileScript>();
+
+                if (!Proj.getBeingReturned())
                 {
-                    SFX.PlaySound(returnPassiveProjectileSound);
-                    Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
-                }
-                else
-                {
-                    receiveDamage(Proj.Damage);
-                    Proj.projectileCrash();
+                    if ((!weapon.getPunching() && Proj.blockedByStanding))
+                    {
+                        SFX.PlaySound(returnPassiveProjectileSound);
+                        Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
+                    }
+                    else
+                    {
+                        receiveDamage(Proj.Damage);
+                        Proj.projectileCrash();
+                    }
                 }
             }
-        }
 
-        if (c.CompareTag("Fire"))
+            if (c.CompareTag("Fire"))
+            {
+                burningDamage = c.GetComponent<fireScript>().damagePerSecond;
+                burning = true;
+            }
+        }
+        else
         {
-            burningDamage = c.GetComponent<fireScript>().damagePerSecond;
-            burning = true;
+
         }
     }
 
+    public void transitionHappening(bool value)
+    {
+        inTransition = value;
+    }
+    
     void OnTriggerStay(Collider c)
     {
         if (c.CompareTag("Boulder"))
@@ -155,5 +167,12 @@ public class CombatScript : MonoBehaviour {
     private void rotateInDirection(int dir)
     {
         transform.Rotate(new Vector3(0, dir * 90, 0));
+    }
+
+    public void setManager()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        SFX = manager.SFX;
+        weapon.manager = manager;
     }
 }

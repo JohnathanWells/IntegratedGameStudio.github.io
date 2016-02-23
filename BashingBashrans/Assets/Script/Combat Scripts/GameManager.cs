@@ -12,31 +12,22 @@ public class GameManager : MonoBehaviour {
     public Transform enemiesFolder;
     public ParticleManager PM;
     public SoundEffectManager SFX;
-    //public bool[] lanesOccupied;
-    //public int maxNumberOfEnemiesInQueue = 3;
+    public Transform entryDoor;
+    public Transform exitDoor;
     private CombatScript playerScript;
+    private levelManager highManager;
     int enemiesAtBeginning = 0;
     int enemiesDestroyed = 0;
 
     [Header("Game Over, Conditions and Enemy Respawn Management")]
     public bool gameOver = false;
     public bool paused = false;
-    //public int[] enemiesInQueue;
-    //public bool conditionIsAllEnemiesDefeated = false;
-    //public bool conditionIsTime = false;
-    //public int secondsBetweenRecount = 30;
-    //private int secondsBeforeRecount = 0;
-    //public int enemyDefeatedCondition = 7;
-    //public int enemiesRespawnEveryRecount = 3;
-    //private int enemiesAlive = 0;
-    //public bool enemiesMove = false;
-    //public Transform[] availableEnemies;
-    //public Vector3[] EnemySpawnpoints;
     public AudioClip gameOverSound;
     public string nextLevelName;
-    //private int numberOfAvailableEnemies;
+    private bool stageCleared = false;
 
     [Header("UI")]
+    public Camera cameraLinked;
     public GUIStyle PlayerFont;
     private Vector2 PlayerHealthTextSize;
     public bool UIActivated = true;
@@ -57,39 +48,27 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        //StartCoroutine(startTimeCount());
-        //availableEnemies = new Transform[numberOfAvailableEnemies];
-        //numberOfAvailableEnemies = availableEnemies.Length;
-        Time.timeScale = 1f;
-        PlayerHealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
-        //enemiesInQueue = new int[numberOfLanes];
-        //lanesOccupied = new bool[numberOfLanes];
-        PlayerFont.fontSize = PlayerFont.fontSize * Screen.width/ 551;
-        distanceBetweenLanes = obtainDistanceBetweenLanes();
-        playerScript = player.GetComponentInChildren<CombatScript>();
-        //Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
-        //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
+        setStart();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (!gameOver)
         {
-            switchPause();
-        }
-
-        if (BouldersActivated)
-        {
-            trapCooldown += Time.deltaTime;
-            if (trapCooldown >= cooldownBetweenTraps)
+            if (Input.GetButtonDown("Pause"))
             {
-                setFallingRock(randomBoulderFall);
+                switchPause();
+            }
+
+            if (BouldersActivated)
+            {
+                boulderSetCount();
             }
         }
 
         if (gameOver)
         {
-            Time.timeScale = 0f;
+            gameIsOver();
         }
     }
 
@@ -102,16 +81,28 @@ public class GameManager : MonoBehaviour {
                 switchPause();
         }
 
-        if (enemiesDestroyed == enemiesAtBeginning)
-        {
-            Time.timeScale = 0f;
-
-            if (GUI.Button(new Rect(new Vector2(Screen.width / 2 - 100, Screen.height / 2 - 50), new Vector2(200, 100)), "Enemies Defeated\nContinue"))
-                Application.LoadLevel(nextLevelName);//Add the code here
-        }
+        //if (enemiesDestroyed == enemiesAtBeginning)
+        //{
+        //    if (GUI.Button(new Rect(new Vector2(Screen.width / 2 - 100, Screen.height / 2 - 50), new Vector2(200, 100)), "Enemies Defeated\nContinue"))
+        //    {
+        //        Time.timeScale = 1f;
+        //        //Application.LoadLevel(nextLevelName);
+        //        nextBattle();
+        //    }
+        //}
 
         if (UIActivated)
             GUI.Box(new Rect(new Vector2(2,2), PlayerHealthTextSize), "HP: " + playerScript.getHealth(), PlayerFont);
+    }
+
+    public void transitionFunction(bool isHappening, int newRoomNumber)
+    {
+        //highManager.SendMessage("playerTransition", isHappening);
+
+        if (!isHappening)
+        {
+            highManager.SendMessage("changePoint", newRoomNumber);
+        }
     }
 
     void setFallingRock(bool isRandom)
@@ -130,6 +121,20 @@ public class GameManager : MonoBehaviour {
             int yLane = Mathf.RoundToInt(Random.Range(minPos.y, maxPos.y));
             trap = Instantiate(Boulder, new Vector3(Mathf.RoundToInt(Random.Range(minPos.x, maxPos.x)), yLane, yLane), Quaternion.Euler(new Vector3(45, 0, 0))) as Transform;
             trap.parent = ProjectilesFolder;
+        }
+    }
+
+    void gameIsOver()
+    {
+        Time.timeScale = 0f;
+    }
+
+    void boulderSetCount()
+    {
+        trapCooldown += Time.deltaTime;
+        if (trapCooldown >= cooldownBetweenTraps)
+        {
+            setFallingRock(randomBoulderFall);
         }
     }
 
@@ -310,5 +315,64 @@ public class GameManager : MonoBehaviour {
     public void addEnemyDestroyed()
     {
         enemiesDestroyed++;
+
+        Debug.Log(enemiesDestroyed + "/" + enemiesAtBeginning);
+
+        if (enemiesDestroyed == enemiesAtBeginning)
+        {
+            stageIsCleared();
+            openExit();
+        }
+    }
+
+    void nextBattle()
+    {
+        highManager.SendMessage("goToNextPoint");
+    }
+
+    public void setStart()
+    {
+        //StartCoroutine(startTimeCount());
+        //availableEnemies = new Transform[numberOfAvailableEnemies];
+        //numberOfAvailableEnemies = availableEnemies.Length;
+        Time.timeScale = 1f;
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
+        player = highManager.Player;
+        PlayerHealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
+        //enemiesInQueue = new int[numberOfLanes];
+        //lanesOccupied = new bool[numberOfLanes];
+        PlayerFont.fontSize = PlayerFont.fontSize * Screen.width / 551;
+        distanceBetweenLanes = obtainDistanceBetweenLanes();
+        playerScript = player.GetComponentInChildren<CombatScript>();
+        //Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
+        //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
+    }
+
+    public void switchUI(bool value)
+    {
+        if (UIActivated)
+            UIActivated = value;
+        else
+            UIActivated = value;
+    }
+
+    private void stageIsCleared()
+    {
+        stageCleared = true;
+    }
+
+    public bool getStatusOfStage()
+    {
+        return stageCleared;
+    }
+
+    public void closeEntry()
+    {
+        entryDoor.gameObject.SetActive(true);
+    }
+
+    public void openExit()
+    {
+        exitDoor.gameObject.SetActive(false);
     }
 }

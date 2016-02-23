@@ -6,16 +6,16 @@ public class SensorScript : MonoBehaviour {
     public PlayerMovement movementScript;
     public bool horizontalSensor = true;
     public bool verticalSensor = false;
+    public bool fixPosition = true;
     public Vector2 directionWithPlayer;
 
     GameManager manager;
 
     void Start()
     {
-        manager = movementScript.manager;
+        setManager();
         obtainDirectionWithPlayer();
-
-        if (verticalSensor)
+        if (verticalSensor && fixPosition)
         {
             fixPositionOfSensor(Mathf.RoundToInt(directionWithPlayer.y));
         }
@@ -32,7 +32,8 @@ public class SensorScript : MonoBehaviour {
         {
             sendDetection(true);
         }
-        else
+        
+        if (c.tag != "Floor")
         {
             sendDetection(false);
         }
@@ -51,7 +52,6 @@ public class SensorScript : MonoBehaviour {
 
     void fixPositionOfSensor(int direction)
     {
-        
         transform.position = new Vector3(0, 0, manager.distanceBetweenLanes * transform.position.z / 1);
     }
 
@@ -71,5 +71,10 @@ public class SensorScript : MonoBehaviour {
             else
                 directionWithPlayer = Vector2.down;
         }
+    }
+
+    public void setManager()
+    {
+        manager = movementScript.manager;
     }
 }
