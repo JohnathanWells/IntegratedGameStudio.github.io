@@ -32,6 +32,8 @@ public class ProjectileScript : MonoBehaviour
     public Effect effectOfProjectile;
     public conditionForDestruction condition;
     public int Damage = 100;
+    public int Peffecttmemin = 1;
+    public int Peffecttmemax = 10;
     private int originalDamage;
     public float halflife = 10;
     private float distanceForDestruction = 10;
@@ -48,6 +50,17 @@ public class ProjectileScript : MonoBehaviour
     public AudioClip beforeExplosionSound;
     private bool playingSound = false;
 
+    [Header("Effect")]
+    public float minSick;
+    public float maxSick;
+
+    [Header("Curvy")]
+    Vector2 crv;
+
+    [Header("Bouncy")]
+    public float bnceAng = 45.0f;
+
+
     [Header("Other Elements")]
     GameManager manager;
     SoundEffectManager SFX;
@@ -57,6 +70,7 @@ public class ProjectileScript : MonoBehaviour
     void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
+  
         originalDamage = Damage;
         originalSpeed = speed;
         originalMaterial = renderer.material;
@@ -92,16 +106,48 @@ public class ProjectileScript : MonoBehaviour
     {
         Vector2 translation = Vector2.zero;
 
+        if (movement == typeMovement.Curvy)
+        {
+            int choice = Random.Range(0, 1);
+            if (choice == 1)
+            {
+                transform.Translate(new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
+                crv = new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
+                crv = crv = new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime);
+            }
+            curvy(crv);
+            transform.Translate(translation);
+        }
+
+        if (movement == typeMovement.Bouncy)
+        {
+            int choice = Random.Range(0, 1);
+            if (choice == 1)
+            {
+                transform.Translate(new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
+                transform.Translate(translation);
+            }
+            else
+            {
+                transform.Translate(new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
+                transform.Translate(translation);
+            }
+        }
+
         if (movement == typeMovement.Horizontal)
         {
             translation = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+            transform.Translate(translation);
         }
         else if (movement == typeMovement.Vertical)
         {
             translation = new Vector2(0, directionOfProjectile * speed * Time.deltaTime);
+            transform.Translate(translation);
         }
-
-        transform.Translate(translation);
     }
 
     public void changeDirection(float angleOfReturn)
@@ -146,6 +192,23 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void curvy(Vector2 crv)
+    {   
+           if (crv.y >= 5 && speed >= 5)
+           {
+               transform.Rotate(0, crv.y * crv.y, 0);
+           }
+           if (crv.y <= -5 && speed >= 5)
+           {
+               transform.Rotate(0, crv.y * crv.y, 0);
+           }
+    }
+
+    public void bouncy()
+    {
+        transform.Rotate(0, bnceAng, 0);
+    }
+  
     //Get Functions
     public ParticleSystem getMuzzleParticles()
     {
@@ -165,6 +228,11 @@ public class ProjectileScript : MonoBehaviour
     public bool getBeingReturned()
     {
         return beingReturned;
+    }
+
+    public string getEffectType()
+    {
+        return effectOfProjectile.ToString();
     }
 
     public float rotateRelativelyToHit(Vector3 hitPos)

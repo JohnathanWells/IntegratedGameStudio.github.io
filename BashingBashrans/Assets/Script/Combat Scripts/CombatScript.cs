@@ -28,11 +28,22 @@ public class CombatScript : MonoBehaviour {
     private GameManager manager;
     private SoundEffectManager SFX;
 
-    [Header("Effects")]
+    [Header("Burns")]
     public float timeBetweenBurningDamage = 1;
     private int burningDamage = 0;
     private bool burning = false;
     private float burnTaim = 0;
+
+    [Header("Poison")]
+    public float minsick = 2;
+    public float maxsick = 10;
+    public float sick = 0;
+    public float Etime = 0;
+
+    [Header("Freeze")]
+    public float freeztme = 10;
+    public float freezeffct = 2;
+    public float freeztart = 0;
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
@@ -56,6 +67,16 @@ public class CombatScript : MonoBehaviour {
                 }
                 else
                 {
+                    if (Proj.getEffectType() == "Poison")
+                    {
+                        sick = Random.Range(Proj.minSick, Proj.maxSick);
+                        sick = (int)sick;
+                        poison();
+                    }
+                    if (Proj.getEffectType() == "freeze")
+                    {
+                        freeze(c);
+                    }
                     receiveDamage(Proj.Damage);
                     Proj.projectileCrash();
                 }
@@ -155,5 +176,27 @@ public class CombatScript : MonoBehaviour {
     private void rotateInDirection(int dir)
     {
         transform.Rotate(new Vector3(0, dir * 90, 0));
+    }
+
+    public void freeze(Collider a)
+    {
+        PlayerMovement plm = a.GetComponent<PlayerMovement>();
+        while (freeztart <= freeztme)
+        {
+            freeztart += Time.deltaTime;
+            plm.moveHorizontally(Input.GetAxisRaw("Horizontal") / freezeffct);
+            plm.moveVertically((int) (Input.GetAxisRaw("Vertical") / freezeffct));
+        }
+        plm.moveHorizontally(Input.GetAxisRaw("Horizontal"));
+        plm.moveVertically((int)(Input.GetAxisRaw("Vertical")));
+    }
+
+    public void poison()
+    {
+        while (Etime <= sick)
+        {
+            Etime += Time.deltaTime;
+            currentHealth -= (int)(sick * Time.deltaTime);
+        }
     }
 }
