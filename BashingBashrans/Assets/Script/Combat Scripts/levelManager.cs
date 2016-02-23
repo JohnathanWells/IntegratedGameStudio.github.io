@@ -11,6 +11,7 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
 
+    [Tooltip("Needs to be between 0 and 2")]
     public int orderTransX = 0;
     public int orderTransY = 0;
     public int orderTransZ = 0;
@@ -58,7 +59,7 @@ public class levelManager : MonoBehaviour {
             float step = Time.deltaTime * speedOfTransition;
             Vector3 temp = transform.position;
 
-            if (currentTransCount * 3 == orderTransX + orderTransY + orderTransZ)
+            if (orderTransX == orderTransY && orderTransX == orderTransZ)
             {
                 temp = cameras[objectiveManagerNumber].position;
             }
@@ -80,7 +81,7 @@ public class levelManager : MonoBehaviour {
                 }
             }
 
-            cameras[currentManagerCount].position = Vector3.MoveTowards(new Vector3(cameras[currentManagerCount].position.x, 0, 0), cameras[objectiveManagerNumber].position, step);
+            cameras[currentManagerCount].position = Vector3.MoveTowards(cameras[currentManagerCount].position, temp, step);
             cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step);
         }
         else
