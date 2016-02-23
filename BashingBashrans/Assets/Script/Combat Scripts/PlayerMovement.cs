@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour {
         canMove = val;
     }
 
-    void moveHorizontally(float Ax)
+    public void moveHorizontally(float Ax)
     {
         if ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft))
         {
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void moveVertically(int dir)
+    public void moveVertically(int dir)
     {
         if (((dir < 0 && canMoveDown && lane + dir >= 0) || (dir > 0 && canMoveUp && lane + dir < numberOfLanes)) /*&& (lane + dir >= 0 && lane + dir <= numberOfLanes - 1)*/)
         {
