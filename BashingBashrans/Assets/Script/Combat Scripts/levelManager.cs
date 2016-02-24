@@ -11,9 +11,11 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
 
-    [Tooltip("Needs to be between 0 and 2")]
+    [Range(0, 2)]
     public int orderTransX = 0;
+    [Range(0, 2)]
     public int orderTransY = 0;
+    [Range(0, 2)]
     public int orderTransZ = 0;
 
     private int currentTransCount = 0;
@@ -79,6 +81,25 @@ public class levelManager : MonoBehaviour {
                 {
                     temp = new Vector3(temp.x, temp.y, cameras[objectiveManagerNumber].position.z);
                 }
+
+                //Check what transition is done
+                if (orderTransX == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
+                {
+                    currentTransCount++;
+                    Debug.Log("Xdone");
+                }
+
+                if (orderTransY == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
+                {
+                    currentTransCount++;
+                    Debug.Log("Ydone");
+                }
+
+                if (orderTransZ == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
+                {
+                    currentTransCount++;
+                    Debug.Log("Zdone");
+                }
             }
 
             cameras[currentManagerCount].position = Vector3.MoveTowards(cameras[currentManagerCount].position, temp, step);
@@ -90,21 +111,7 @@ public class levelManager : MonoBehaviour {
             cameras[currentManagerCount].rotation = cameras[objectiveManagerNumber].rotation;
         }
 
-        //Check what transition is done
-        if (orderTransX == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
-        {
-            currentTransCount++;
-        }
-        else if (orderTransY == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
-        {
-            currentTransCount++;
-        }
-        else if (orderTransZ == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
-        {
-            currentTransCount++;
-        }
-
-        if (currentTransCount >= 2 && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
+        if (cameras[currentManagerCount].position == cameras[objectiveManagerNumber].position && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
         {
             changeManager(currentManagerCount, objectiveManagerNumber);
             currentManagerCount = objectiveManagerNumber;
