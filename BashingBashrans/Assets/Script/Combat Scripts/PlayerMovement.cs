@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour {
     private int lane = 0;
     private int numberOfLanes = 2;
     private bool canMove = true;
-    private Vector2 minPos;
-    private Vector2 maxPos;
+    //private Vector2 minPos;
+    //private Vector2 maxPos;
     private bool canMoveToRight = true;
     private bool canMoveToLeft = true;
     private bool canMoveUp = true;
@@ -95,18 +95,18 @@ public class PlayerMovement : MonoBehaviour {
     void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        obtainLimits();
+        //obtainLimits();
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
         Debug.Log(lane);
-        distanceBetweenLanes = manager.distanceBetweenLanes;
+        distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
     }
 
-    void obtainLimits()
-    {
-        minPos = manager.minPos;
-        maxPos = manager.maxPos;
-    }
+    //void obtainLimits()
+    //{
+    //    minPos = manager.minPos;
+    //    maxPos = manager.maxPos;
+    //}
 
     public void receiveDetection(Vector2 direction, bool value)
     {

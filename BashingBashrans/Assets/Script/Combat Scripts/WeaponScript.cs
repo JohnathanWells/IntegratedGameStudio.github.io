@@ -10,7 +10,7 @@ public class WeaponScript : MonoBehaviour {
     public int damage = 100;
     public bool animationHappening = false;
 
-    private bool swinging = false;
+    //private bool swinging = false;
     public GameManager manager;
 
     void OnTriggerStay(Collider c)

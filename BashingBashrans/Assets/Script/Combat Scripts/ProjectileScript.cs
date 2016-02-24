@@ -37,7 +37,7 @@ public class ProjectileScript : MonoBehaviour
     private int originalDamage;
     public float halflife = 10;
     private float distanceForDestruction = 10;
-    private float floordistance = 1;
+    //private float floordistance = 1;
     private float lifeTime = 0;
     private float distanceTraveled = 0;
 

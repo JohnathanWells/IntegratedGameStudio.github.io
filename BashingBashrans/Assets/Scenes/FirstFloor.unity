@@ -854,8 +854,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337388772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.5, y: 4, z: 0}
-  m_LocalScale: {x: 2.12599993, y: 1, z: 1}
+  m_LocalPosition: {x: -.486000001, y: 4, z: 0}
+  m_LocalScale: {x: 1.89999998, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 818702631}
   m_RootOrder: 0
@@ -1755,7 +1755,7 @@ Transform:
   m_GameObject: {fileID: 669841935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.4989996, y: 4, z: 1.14999998}
-  m_LocalScale: {x: 1.98000002, y: 1.38, z: .5}
+  m_LocalScale: {x: .100000001, y: 1.38, z: .5}
   m_Children:
   - {fileID: 1538519882}
   m_Father: {fileID: 868106744}
@@ -4917,7 +4917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1588900677
 Transform:
   m_ObjectHideFlags: 0
@@ -5382,6 +5382,9 @@ MonoBehaviour:
   UISwitch: 0
   Player: {fileID: 1450091625}
   CoolTransition: 1
+  orderTransX: 0
+  orderTransY: 0
+  orderTransZ: 0
   objectiveManagerNumber: 0
 --- !u!4 &1698584205
 Transform:
@@ -5619,6 +5622,14 @@ Prefab:
     - target: {fileID: 11420892, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: XVelocity
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 485392, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0419999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 462670, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0419999994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}

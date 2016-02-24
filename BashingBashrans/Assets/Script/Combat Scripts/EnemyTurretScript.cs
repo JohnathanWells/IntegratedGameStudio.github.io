@@ -43,7 +43,7 @@ public class EnemyTurretScript : MonoBehaviour {
     public GameManager manager;
     SoundEffectManager SFX;
     ParticleManager PartM;
-    Transform projectileFolder;
+    //Transform projectileFolder;
     public cannonScript[] muzzles;
 
     [Header("Sounds and Particles")]
@@ -54,7 +54,6 @@ public class EnemyTurretScript : MonoBehaviour {
 
     int originalFontSize;
     Transform feet;
-    bool playerInRoom = false;
 
 	void Start () {
         setManager();
@@ -254,7 +253,7 @@ public class EnemyTurretScript : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         PartM = manager.PM;
         SFX = manager.SFX;
-        projectileFolder = manager.ProjectilesFolder;
+        //projectileFolder = manager.ProjectilesFolder;
         lane = manager.obtainLane(transform.parent);
         numberOfLanes = manager.numberOfLanes - 1;
     }

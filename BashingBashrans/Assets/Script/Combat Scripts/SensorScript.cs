@@ -28,14 +28,13 @@ public class SensorScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-        if (c.CompareTag("Floor"))
-        {
-            sendDetection(true);
-        }
-        
         if (c.tag != "Floor")
         {
             sendDetection(false);
+        }
+        else
+        {
+            sendDetection(true);
         }
     }
 
