@@ -72,7 +72,7 @@ public class CombatScript : MonoBehaviour {
                         receiveDamage(Proj.Damage);
                         Proj.projectileCrash();
                     }
-                    if (Proj.getEffectType() == "Poison")
+                    if (Proj.getEffectType() == "poison")
                     {
                         sick = Random.Range(Proj.minSick, Proj.maxSick);
                         sick = (int)sick;
@@ -217,7 +217,7 @@ public class CombatScript : MonoBehaviour {
         while (Etime <= sick)
         {
             Etime += Time.deltaTime;
-            currentHealth -= (int)(sick * Time.deltaTime);
+            currentHealth -= (int)(sick * sick);
         }
     }
 }

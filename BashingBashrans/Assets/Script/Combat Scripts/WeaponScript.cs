@@ -19,6 +19,7 @@ public class WeaponScript : MonoBehaviour {
         {
             if (c.CompareTag("Projectile"))
             {
+                Debug.Log("Nothing will happen");
                 ProjectileScript Proj = c.GetComponent<ProjectileScript>();
 
                 if (!Proj.getBeingReturned())
