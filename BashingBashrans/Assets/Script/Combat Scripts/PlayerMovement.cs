@@ -34,6 +34,12 @@ public class PlayerMovement : MonoBehaviour {
     private bool inTransition = false;
     private int currentRoom;
 
+    [Header("Freeze")]
+    public bool isff;
+    public float freesztme = 10;
+    public float freezeffct = 2;
+    public float freeztart = 0;
+
     void Start()
     {
         setManager();
@@ -45,7 +51,11 @@ public class PlayerMovement : MonoBehaviour {
         {
             transitionMove();
         }
-        else if (!manager.gameOver && canMove && !inTransition)
+        else if(isff)
+        {
+            froze();
+        }
+        else if (!manager.gameOver && canMove && !inTransition && isff == false)
         {
             if (Input.GetButton("Horizontal"))
             {
@@ -58,6 +68,30 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 	}
+
+   public void froze()
+    {
+       isff = true;
+       if (freeztart == 0)
+       {
+           XVelocity = (XVelocity / freezeffct);
+       }
+       if (Input.GetButton("Horizontal"))
+       {
+           moveHorizontally(Input.GetAxisRaw("Horizontal"));
+       }
+       if (Input.GetButtonDown("Vertical"))
+       {
+           moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
+       }
+       freeztart+= Time.deltaTime;
+       if(freeztart >= freesztme)
+       {
+           freeztart = 0;
+           isff = false;
+           XVelocity = (XVelocity * freezeffct);
+       }
+    }
 
     void transitionMove()
     {

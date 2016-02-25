@@ -38,14 +38,12 @@ public class CombatScript : MonoBehaviour {
 
     [Header("Poison")]
     public float minsick = 2;
-    public float maxsick = 10;
+    public float maxsick = 4;
     public float sick = 0;
-    public float Etime = 0;
+    public float ptime = 0;
+    public bool isp = false;
 
-    [Header("Freeze")]
-    public float freeztme = 10;
-    public float freezeffct = 2;
-    public float freeztart = 0;
+    public PlayerMovement pm;
 
 	void Start () {
         setManager();
@@ -75,12 +73,13 @@ public class CombatScript : MonoBehaviour {
                     if (Proj.getEffectType() == "poison")
                     {
                         sick = Random.Range(Proj.minSick, Proj.maxSick);
+                        ptime = Random.Range(minsick, maxsick);
                         sick = (int)sick;
-                        poison();
+                        isp = true;
                     }
                     if (Proj.getEffectType() == "freeze")
                     {
-                        freeze(c);
+                        movementScript.froze();
                     }
                     receiveDamage(Proj.Damage);
                     Proj.projectileCrash();
@@ -126,6 +125,10 @@ public class CombatScript : MonoBehaviour {
 
 	void Update () {
 
+        if (isp && ptime > 0)
+        {
+            poison();
+        }
         if (burning)
         {
             Burn();
@@ -199,7 +202,7 @@ public class CombatScript : MonoBehaviour {
         weapon.manager = manager;
     }
 
-    public void freeze(Collider a)
+    /*public void freeze(Collider a)
     {
         PlayerMovement plm = a.GetComponent<PlayerMovement>();
         while (freeztart <= freeztme)
@@ -210,14 +213,31 @@ public class CombatScript : MonoBehaviour {
         }
         plm.moveHorizontally(Input.GetAxisRaw("Horizontal"));
         plm.moveVertically((int)(Input.GetAxisRaw("Vertical")));
-    }
+    }*/
 
-    public void poison()
+    /*public void poison()
     {
         while (Etime <= sick)
         {
             Etime += Time.deltaTime;
             currentHealth -= (int)(sick * sick);
+        }
+    }*/
+
+    public void poison()
+    {
+        if (currentHealth <= 100)
+        {
+            currentHealth = 0;
+        }
+        else if (currentHealth > 100)
+        {
+            currentHealth -= (int)(sick * sick);
+        }
+        ptime -= (Time.deltaTime * 60);
+        if (ptime <= 0)
+        {
+            isp = false;
         }
     }
 }
