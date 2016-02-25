@@ -42,24 +42,31 @@ public class Boss01 : MonoBehaviour {
     [Header("Health Variables")]
     public int Health = 1000;
     public string Name = "Pedro";
+    public int Phase2StartsAt = 300;
     private int currentHealth;
 
     [Header("UI")]
     public Rect positionOfHealth;
 
     [Header("Attack Variables")]
+    [TextArea(4, 20)]
     public string[] PatternsTexts;
     public cannonScript[] muzzles;
     public Attack[] attacks;
+    public float[] cooldownsBetweenSteps;
+    public int[] phase1Attacks;
+    public int[] phase2Attacks;
     public int attackToTest = 0;
+    public bool testingAttacks = true;
     public float cooldownTime = 1;
-    public float cooldownBetweenSteps = 1;
     //Make private later
     public float currentCooldown = 0;
     public float currentStepCooldown = 0;
     public bool cooled = true;
     public bool stepCooled = true;
     private int countOfStep = 0;
+    private int currentAttack;
+    private bool dead = false;
 
     private GameManager manager;
 
@@ -67,33 +74,44 @@ public class Boss01 : MonoBehaviour {
         attacks = new Attack[PatternsTexts.Length];
         currentHealth = Health;
         setListOfAttacks(attacks, PatternsTexts);
+
+        if (testingAttacks)
+            currentAttack = attackToTest;
 	}
 
     void Update()
     {
-        if (!cooled)
+        if (!dead)
         {
-            currentCooldown += Time.deltaTime;
-
-            if (currentCooldown >= cooldownTime)
+            if (!cooled)
             {
-                cooled = true;
-                currentCooldown = 0;
+                currentCooldown += Time.deltaTime;
+
+                if (currentCooldown >= cooldownTime)
+                {
+                    cooled = true;
+                    currentCooldown = 0;
+
+                    if (!testingAttacks)
+                    {
+                        nextAttack();
+                    }
+                }
             }
-        }
 
-        if (!stepCooled)
-        {
-            currentStepCooldown += Time.deltaTime;
-
-            if (currentStepCooldown >= cooldownBetweenSteps)
+            if (!stepCooled)
             {
-                stepCooled = true;
-                currentStepCooldown = 0;
-            }
-        }
+                currentStepCooldown += Time.deltaTime;
 
-        testShooting();
+                if (currentStepCooldown >= cooldownsBetweenSteps[currentAttack])
+                {
+                    stepCooled = true;
+                    currentStepCooldown = 0;
+                }
+            }
+
+            attackShooting(currentAttack);
+        }
     }
 
     void OnGUI()
@@ -114,6 +132,22 @@ public class Boss01 : MonoBehaviour {
         }
     }
 
+    void nextAttack()
+    {
+        int nextAttack;
+
+        if (currentHealth > Phase2StartsAt)
+        {
+            nextAttack = phase1Attacks[Random.Range(0, phase1Attacks.Length)];
+        }
+        else
+        {
+            nextAttack = phase2Attacks[Random.Range(0, phase2Attacks.Length)];
+        }
+
+        currentAttack = nextAttack;
+    }
+    
     void shoot(int muzzleNum, int projType)
     {
         //Debug.Log("Muzzle: " + muzzleNum + "\nProj: " + projType);
@@ -124,11 +158,11 @@ public class Boss01 : MonoBehaviour {
         }
     }
 
-    void testShooting()
+    void attackShooting(int attackSelected)
     {
         if (cooled && stepCooled)
         {
-            Step temp = attacks[attackToTest].steps[countOfStep];
+            Step temp = attacks[attackSelected].steps[countOfStep];
             //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
@@ -141,7 +175,7 @@ public class Boss01 : MonoBehaviour {
             //Debug.Log("Step: " + countOfStep);
             stepCooled = false;
 
-            if (countOfStep == attacks[attackToTest].steps.Length)
+            if (countOfStep == attacks[attackSelected].steps.Length)
             {
                 countOfStep = 0;
                 cooled = false;

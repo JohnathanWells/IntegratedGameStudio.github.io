@@ -464,7 +464,7 @@ BoxCollider:
   m_GameObject: {fileID: 106395565}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1250,23 +1250,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1000
   Name: Pedro
+  Phase2StartsAt: 300
   positionOfHealth:
     serializedVersion: 2
-    x: 100
+    x: 500
     y: 0
     width: 100
     height: 50
   PatternsTexts:
   - (21)(31)(41)(51)(11)(21)(31)(41)(00)(00)(00)(52)(42)(32)(22)(12)
+  - (31)(2141)(51)(2242)(32)
+  - (31)(2141)(11)(2242)(32)
+  - (31)(11213141)(00)(00)(4151)(213141)(00)(00)(11213141)(00)(00)(00)(00)(314151)(31)(31)(314151)(11314151)(1151)(213151)(3151)(00)(00)(00)(2141)(32)(32)
+  - (31)(2141)(11)(2242)(32)
   muzzles:
   - {fileID: 1333223259}
   - {fileID: 1523425981}
   - {fileID: 106395566}
   - {fileID: 915866463}
   - {fileID: 818488271}
-  attackToTest: 0
-  cooldownTime: 5
-  cooldownBetweenSteps: .300000012
+  cooldownsBetweenSteps:
+  - .300000012
+  - .25
+  - .25
+  - .25
+  - .25
+  phase1Attacks: 000000000100000002000000
+  phase2Attacks: 03000000
+  attackToTest: 3
+  testingAttacks: 0
+  cooldownTime: 3
   currentCooldown: 0
   currentStepCooldown: 0
   cooled: 1
@@ -1819,8 +1832,8 @@ Transform:
   m_PrefabParentObject: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 624164992}
-  m_LocalRotation: {x: .350043923, y: 0, z: 0, w: .936733305}
-  m_LocalPosition: {x: 5.88999987, y: 10.25, z: 24.2999992}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 5, y: 28.7700005, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1686331563}
@@ -1845,7 +1858,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 60
+  field of view: 19
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2754,7 +2767,7 @@ BoxCollider:
   m_GameObject: {fileID: 818488270}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3147,7 +3160,7 @@ BoxCollider:
   m_GameObject: {fileID: 915866462}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3803,7 +3816,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: cooldownTime
-      value: 1.75
+      value: 1.29999995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -4673,7 +4686,7 @@ BoxCollider:
   m_GameObject: {fileID: 1333223258}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5622,7 +5635,7 @@ BoxCollider:
   m_GameObject: {fileID: 1523425980}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6427,7 +6440,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686331562}
   m_LocalRotation: {x: -.258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: 0, y: -.665063143, z: 3.84807634}
+  m_LocalPosition: {x: -6.4000001, y: -.665063143, z: 3.84807634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 624164993}
