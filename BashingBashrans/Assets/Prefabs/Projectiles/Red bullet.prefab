@@ -12,9 +12,8 @@ GameObject:
   - 135: {fileID: 13578206}
   - 23: {fileID: 2320700}
   - 114: {fileID: 11445604}
-  - 108: {fileID: 10827816}
   m_Layer: 0
-  m_Name: ProjectilePoison
+  m_Name: Red bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 169498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: bb0fa0cf35f3d1b4a9107393125dbecb, type: 2}
+  - {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -50,10 +49,8 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -65,39 +62,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169498}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &10827816
-Light:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
-  m_Enabled: 0
-  serializedVersion: 6
-  m_Type: 2
-  m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
-  m_Intensity: 0.01
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_BounceIntensity: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11445604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 3
+  movement: 0
   direction: 0
   canBePunched: 1
   blockedByStanding: 0
@@ -118,11 +82,11 @@ MonoBehaviour:
   angleOfDesviation: 180
   speed: 6
   desviationSpeed: 8
-  desviationMaterial: {fileID: 2100000, guid: bb0fa0cf35f3d1b4a9107393125dbecb, type: 2}
+  desviationMaterial: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
   renderer: {fileID: 2320700}
-  effectOfProjectile: 2
+  effectOfProjectile: 0
   condition: 0
-  Damage: 30
+  Damage: 100
   Peffecttmemin: 1
   Peffecttmemax: 10
   halflife: 6.75
@@ -133,8 +97,8 @@ MonoBehaviour:
   destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
   explosionSound: {fileID: 0}
   beforeExplosionSound: {fileID: 0}
-  minSick: 1
-  maxSick: 5
+  minSick: 0
+  maxSick: 0
   bnceAng: 45
 --- !u!135 &13578206
 SphereCollider:
@@ -146,7 +110,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -158,7 +122,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bb0fa0cf35f3d1b4a9107393125dbecb, type: 2}
+      objectReference: {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: .5
@@ -247,38 +211,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: desviationMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: bb0fa0cf35f3d1b4a9107393125dbecb, type: 2}
+      objectReference: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
     - target: {fileID: 0}
       propertyPath: renderer
       value: 
       objectReference: {fileID: 2320700}
     - target: {fileID: 0}
-      propertyPath: effectOfProjectile
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: maxSick
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: minSick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Name
-      value: ProjectilePoison
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: Damage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: canBePunched
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: movement
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

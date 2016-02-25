@@ -12,9 +12,8 @@ GameObject:
   - 135: {fileID: 13578206}
   - 23: {fileID: 2320700}
   - 114: {fileID: 11445604}
-  - 108: {fileID: 10827816}
   m_Layer: 0
-  m_Name: ProjectileType1
+  m_Name: Yellow bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
+  - {fileID: 2100000, guid: 4e4fcb3f64b37e2478ad8abdde3b8629, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -63,38 +62,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169498}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &10827816
-Light:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
-  m_Enabled: 0
-  serializedVersion: 6
-  m_Type: 2
-  m_Color: {r: 0, g: 1, b: .172413826, a: 1}
-  m_Intensity: .00999999978
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_BounceIntensity: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11445604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0
   direction: 0
-  canBePunched: 1
+  canBePunched: 0
   blockedByStanding: 0
   frequencyOfCurve: 0
   angleOfBounciness: 0
@@ -120,6 +87,8 @@ MonoBehaviour:
   effectOfProjectile: 0
   condition: 0
   Damage: 100
+  Peffecttmemin: 1
+  Peffecttmemax: 10
   halflife: 6.75
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
@@ -128,6 +97,9 @@ MonoBehaviour:
   destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
   explosionSound: {fileID: 0}
   beforeExplosionSound: {fileID: 0}
+  minSick: 0
+  maxSick: 0
+  bnceAng: 45
 --- !u!135 &13578206
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -150,7 +122,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
+      objectReference: {fileID: 2100000, guid: 4e4fcb3f64b37e2478ad8abdde3b8629, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: .5
@@ -244,6 +216,14 @@ Prefab:
       propertyPath: renderer
       value: 
       objectReference: {fileID: 2320700}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canBePunched
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169498}

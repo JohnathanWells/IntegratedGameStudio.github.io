@@ -32,7 +32,7 @@ public class bombScript : MonoBehaviour {
     private float lifeTime = 0;
     private float distanceTraveled = 0;
     private float originalSpeed;
-    private float distanceBetweenLanes = 1;
+    //private float distanceBetweenLanes = 1;
     private int switches = 0;
     private int switchesActivated = 0;
 
@@ -58,7 +58,7 @@ public class bombScript : MonoBehaviour {
         PM = manager.PM;
         lane = manager.obtainLane(transform);
         floordistance = manager.obtainDistanceBetweenLanes();
-        distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
+        //distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
         projectileFolder = manager.ProjectilesFolder;
 	}
 

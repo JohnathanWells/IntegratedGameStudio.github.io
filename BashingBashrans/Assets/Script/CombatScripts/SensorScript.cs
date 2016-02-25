@@ -8,6 +8,7 @@ public class SensorScript : MonoBehaviour {
     public bool verticalSensor = false;
     public bool fixPosition = true;
     public Vector2 directionWithPlayer;
+    public Transform feet;
 
     GameManager manager;
 
@@ -28,14 +29,13 @@ public class SensorScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-        if (c.CompareTag("Floor"))
-        {
-            sendDetection(true);
-        }
-        
         if (c.tag != "Floor")
         {
             sendDetection(false);
+        }
+        else
+        {
+            sendDetection(true);
         }
     }
 
@@ -52,7 +52,7 @@ public class SensorScript : MonoBehaviour {
 
     void fixPositionOfSensor(int direction)
     {
-        transform.position = new Vector3(0, 0, manager.distanceBetweenLanes * transform.position.z / 1);
+        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * transform.position.z / 1);
     }
 
     void obtainDirectionWithPlayer()
