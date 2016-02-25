@@ -39,6 +39,15 @@ public class Boss01 : MonoBehaviour {
 
     //A step is simultaneous attacks. For example if the enemy shoots at lane 0 and 4 at the same time, that's a step.
     //Each step must be expressed between parenthesis. Each bullet has two values: A number and a letter. The number decides the lane it will be shooted at, the letter what type of projectile it is.
+    [Header("Health Variables")]
+    public int Health = 1000;
+    public string Name = "Pedro";
+    private int currentHealth;
+
+    [Header("UI")]
+    public Rect positionOfHealth;
+
+    [Header("Attack Variables")]
     public string[] PatternsTexts;
     public cannonScript[] muzzles;
     public Attack[] attacks;
@@ -52,8 +61,11 @@ public class Boss01 : MonoBehaviour {
     public bool stepCooled = true;
     private int countOfStep = 0;
 
+    private GameManager manager;
+
 	void Awake () {
         attacks = new Attack[PatternsTexts.Length];
+        currentHealth = Health;
         setListOfAttacks(attacks, PatternsTexts);
 	}
 
@@ -82,19 +94,34 @@ public class Boss01 : MonoBehaviour {
         }
 
         testShooting();
+    }
 
-        if (countOfStep > 13)
+    void OnGUI()
+    {
+        GUI.Box(positionOfHealth, Name +": " + currentHealth + "/" + Health);
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        if (c.CompareTag("Projectile"))
         {
-            cooled = false;
-            countOfStep = 0;
+            ProjectileScript proj = c.GetComponent<ProjectileScript>();
+
+            if (proj.getBeingReturned())
+            {
+                ReceiveDamage(proj.Damage);
+            }
         }
     }
 
     void shoot(int muzzleNum, int projType)
     {
         //Debug.Log("Muzzle: " + muzzleNum + "\nProj: " + projType);
-        muzzles[muzzleNum].setCurrentAmmo(projType);
-        muzzles[muzzleNum].SendMessage("Shoot");
+        if (projType >= 0 && muzzleNum >= 0)
+        {
+            muzzles[muzzleNum].setCurrentAmmo(projType);
+            muzzles[muzzleNum].SendMessage("Shoot");
+        }
     }
 
     void testShooting()
@@ -106,13 +133,19 @@ public class Boss01 : MonoBehaviour {
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
             {
-                Debug.Log("Step: " + countOfStep + ", Bullet: " + (a + 1) + "/" + temp.muzzleNumber.Length + ", Muzzle: " + temp.muzzleNumber[a] + ", Type: " + temp.type[a]);
+                //Debug.Log("Step: " + countOfStep + ", Bullet: " + (a + 1) + "/" + temp.muzzleNumber.Length + ", Muzzle: " + temp.muzzleNumber[a] + ", Type: " + temp.type[a]);
                 shoot(temp.muzzleNumber[a], temp.type[a]);
             }
 
             countOfStep++;
             //Debug.Log("Step: " + countOfStep);
             stepCooled = false;
+
+            if (countOfStep == attacks[attackToTest].steps.Length)
+            {
+                countOfStep = 0;
+                cooled = false;
+            }
         }
     }
 
@@ -127,6 +160,8 @@ public class Boss01 : MonoBehaviour {
                 count++;
         }
 
+        Debug.Log("Num of Steps: " + count);
+
         return count;
     }
 
@@ -138,7 +173,7 @@ public class Boss01 : MonoBehaviour {
 
         for (int a = 0; a < lenght; a++)
         {
-            Debug.Log("textNum" + a + ": " + stTxt[a]);
+            //Debug.Log("textNum" + a + ": " + stTxt[a]);
             result.steps[a] = new Step(stTxt[a].Length/2);
             result.steps[a].setStep(stTxt[a]);
             //Debug.Log("attack step" + a + "shoots " + result.steps[a].type.Length + " @same time");
@@ -154,7 +189,6 @@ public class Boss01 : MonoBehaviour {
     {
         int start = 1;
         int end = 0;
-        int count = 0;
 
         string[] result = new string[numberOfSteps];
 
@@ -205,6 +239,24 @@ public class Boss01 : MonoBehaviour {
         for (int a = 0; a < attack.steps.Length; a++)
         {
             Debug.Log("Step: " + a + ", Muzzle: " + attack.steps[a].muzzleNumber + ", Proj: " + attack.steps[a].type);
+        }
+    }
+
+    public void setManager()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+    }
+
+    public void ReceiveDamage(int damage)
+    {
+        //SFX.PlaySound(damageSound);
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Debug.Log("Enemy defeated");
+            //DestroyTurret();
         }
     }
 }

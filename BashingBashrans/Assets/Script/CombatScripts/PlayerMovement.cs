@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     public CombatScript combatScript;
 
     public GameManager manager;
+    private levelManager highManager;
 
     [Header("Transition")]
     public bool coolTransition = true;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start()
     {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
     }
 
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             transitionMove();
         }
-        else if (!manager.gameOver && canMove && !inTransition)
+        else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
         {
             if (Input.GetButton("Horizontal"))
             {
@@ -100,6 +102,7 @@ public class PlayerMovement : MonoBehaviour {
         lane = manager.obtainLane(transform);
         Debug.Log(lane);
         distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
+        Debug.Log(distanceBetweenLanes);
     }
 
     //void obtainLimits()

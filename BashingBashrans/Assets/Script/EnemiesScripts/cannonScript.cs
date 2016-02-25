@@ -91,6 +91,7 @@ public class cannonScript : MonoBehaviour {
 
     public void setCurrentAmmo(int NewAmmo)
     {
-        currentAmmo = NewAmmo;
+        if (NewAmmo >= 0)
+            currentAmmo = NewAmmo;
     }
 }
