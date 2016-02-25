@@ -289,6 +289,7 @@ public class Boss01 : MonoBehaviour {
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            dead = true;
             Debug.Log("Enemy defeated");
             //DestroyTurret();
         }
