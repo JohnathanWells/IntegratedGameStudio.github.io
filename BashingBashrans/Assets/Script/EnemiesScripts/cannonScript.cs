@@ -88,4 +88,9 @@ public class cannonScript : MonoBehaviour {
     {
         currentAmmo = Random.Range(0, sizeOfArray);
     }
+
+    public void setCurrentAmmo(int NewAmmo)
+    {
+        currentAmmo = NewAmmo;
+    }
 }
