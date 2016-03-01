@@ -37,7 +37,7 @@ public class ProjectileScript : MonoBehaviour
     private int originalDamage;
     public float halflife = 10;
     private float distanceForDestruction = 10;
-    private float floordistance = 1;
+    //private float floordistance = 1;
     private float lifeTime = 0;
     private float distanceTraveled = 0;
 
@@ -58,8 +58,8 @@ public class ProjectileScript : MonoBehaviour
     Vector2 crv;
 
     [Header("Bouncy")]
-    public float bnceAng = 45.0f;
-
+    public float bnceAng = 90.0f;
+    Vector3 bnc;
 
     [Header("Other Elements")]
     GameManager manager;
@@ -111,13 +111,14 @@ public class ProjectileScript : MonoBehaviour
             int choice = Random.Range(0, 1);
             if (choice == 1)
             {
-                transform.Translate(new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
-                crv = new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime);
+                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
+                crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+                Debug.Log("Moved in this direction.");
             }
             else
             {
-                transform.Translate(new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
-                crv = crv = new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime);
+                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
+                crv = crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
             }
             curvy(crv);
             transform.Translate(translation);
@@ -125,17 +126,9 @@ public class ProjectileScript : MonoBehaviour
 
         if (movement == typeMovement.Bouncy)
         {
-            int choice = Random.Range(0, 1);
-            if (choice == 1)
-            {
-                transform.Translate(new Vector2(45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
-                transform.Translate(translation);
-            }
-            else
-            {
-                transform.Translate(new Vector2(-45 * directionOfProjectile * speed * Time.deltaTime, directionOfProjectile * speed * Time.deltaTime));
-                transform.Translate(translation);
-            }
+            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, directionOfProjectile * speed * Time.deltaTime * -1));
+            transform.Translate(translation);
+            
         }
 
         if (movement == typeMovement.Horizontal)
@@ -193,14 +186,15 @@ public class ProjectileScript : MonoBehaviour
     }
 
     public void curvy(Vector2 crv)
-    {   
-           if (crv.y >= 5 && speed >= 5)
+    {
+        Debug.Log("Function is called");
+           if (crv.x >= 5)
            {
-               transform.Rotate(0, crv.y * crv.y, 0);
+               transform.Rotate(crv.x * crv.x, 0, 0);
            }
-           if (crv.y <= -5 && speed >= 5)
+           if (crv.x <= -5)
            {
-               transform.Rotate(0, crv.y * crv.y, 0);
+               transform.Rotate(crv.x * crv.x, 0, 0);
            }
     }
 
@@ -237,7 +231,7 @@ public class ProjectileScript : MonoBehaviour
 
     public float rotateRelativelyToHit(Vector3 hitPos)
     {
-        if ((hitPos.x > transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)) || (hitPos.x < transform.position.x && direction == movementDirection.left && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)))
+        if ((transform.position.x > hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y >= -90 && transform.eulerAngles.y < 90)) || (transform.position.x < hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y < 270 && transform.eulerAngles.y >= 90)))
         {
             return angleOfDesviation;
         }

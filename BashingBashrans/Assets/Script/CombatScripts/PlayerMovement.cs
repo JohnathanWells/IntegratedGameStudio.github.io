@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour {
     private int lane = 0;
     private int numberOfLanes = 2;
     private bool canMove = true;
-    private Vector2 minPos;
-    private Vector2 maxPos;
+    //private Vector2 minPos;
+    //private Vector2 maxPos;
     private bool canMoveToRight = true;
     private bool canMoveToLeft = true;
     private bool canMoveUp = true;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     public CombatScript combatScript;
 
     public GameManager manager;
+    private levelManager highManager;
 
     [Header("Transition")]
     public bool coolTransition = true;
@@ -34,11 +35,21 @@ public class PlayerMovement : MonoBehaviour {
     private bool inTransition = false;
     private int currentRoom;
 
+<<<<<<< HEAD:BashingBashrans/Assets/Script/Combat Scripts/PlayerMovement.cs
     [Header("Animation Things")]
     public Animator PlayerAnimator;
     //PlayerAnimator.SetBool("Walking", true);
+=======
+    [Header("Freeze")]
+    public bool isff;
+    public float freesztme = 10;
+    public float freezeffct = 2;
+    public float freeztart = 0;
+
+>>>>>>> b489673f225686517133ff1194822da16c94f36d:BashingBashrans/Assets/Script/CombatScripts/PlayerMovement.cs
     void Start()
     {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
     }
 
@@ -48,7 +59,13 @@ public class PlayerMovement : MonoBehaviour {
         {
             transitionMove();
         }
-        else if (!manager.gameOver && canMove && !inTransition)
+        else if(isff)
+        {
+            froze();
+        }
+        else if (!manager.gameOver && canMove && !inTransition && isff == false)
+
+        //else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
         {
             if (Input.GetButton("Horizontal"))
             {
@@ -68,6 +85,30 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 	}
+
+   public void froze()
+    {
+       isff = true;
+       if (freeztart == 0)
+       {
+           XVelocity = (XVelocity / freezeffct);
+       }
+       if (Input.GetButton("Horizontal"))
+       {
+           moveHorizontally(Input.GetAxisRaw("Horizontal"));
+       }
+       if (Input.GetButtonDown("Vertical"))
+       {
+           moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
+       }
+       freeztart+= Time.deltaTime;
+       if(freeztart >= freesztme)
+       {
+           freeztart = 0;
+           isff = false;
+           XVelocity = (XVelocity * freezeffct);
+       }
+    }
 
     void transitionMove()
     {
@@ -106,18 +147,19 @@ public class PlayerMovement : MonoBehaviour {
     void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        obtainLimits();
+        //obtainLimits();
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
         Debug.Log(lane);
-        distanceBetweenLanes = manager.distanceBetweenLanes;
+        distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
+        Debug.Log(distanceBetweenLanes);
     }
 
-    void obtainLimits()
-    {
-        minPos = manager.minPos;
-        maxPos = manager.maxPos;
-    }
+    //void obtainLimits()
+    //{
+    //    minPos = manager.minPos;
+    //    maxPos = manager.maxPos;
+    //}
 
     public void receiveDetection(Vector2 direction, bool value)
     {

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Wall_Script : MonoBehaviour {
 
-    GameManager manager;
+    //GameManager manager;
 	// Use this for initialization
 	void Start () {
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        //manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame

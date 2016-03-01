@@ -19,7 +19,7 @@ public class levelManager : MonoBehaviour {
     public int orderTransZ = 0;
 
     private int currentTransCount = 0;
-
+    private bool inTransition = false;
     private int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
 
@@ -41,8 +41,11 @@ public class levelManager : MonoBehaviour {
 	void Update () {
         if (objectiveManagerNumber != currentManagerCount)
         {
+            inTransition = true;
             moveCamera();
         }
+        else
+            inTransition = false;
 	}
 
     public void changePoint(int newObjective)
@@ -132,5 +135,10 @@ public class levelManager : MonoBehaviour {
     public void playerTransition(bool isHappening)
     {
         levelParents[currentManagerCount].BroadcastMessage("transitionHappening", isHappening);
+    }
+
+    public bool getStatusOfTransition()
+    {
+        return inTransition;
     }
 }

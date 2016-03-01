@@ -19,13 +19,13 @@ public class cannonScript : MonoBehaviour {
     [Header("Other Scripts")]
     GameManager manager;
     SoundEffectManager SFX;
-    ParticleManager PartM;
+    //ParticleManager PartM;
     Transform projectileFolder;
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
-        PartM = manager.PM;
+        //PartM = manager.PM;
         projectileFolder = manager.ProjectilesFolder;
         mainBody = transform.parent;
         sizeOfArray = possibleAmmo.Length;
@@ -87,5 +87,11 @@ public class cannonScript : MonoBehaviour {
     public void changeAmmo()
     {
         currentAmmo = Random.Range(0, sizeOfArray);
+    }
+
+    public void setCurrentAmmo(int NewAmmo)
+    {
+        if (NewAmmo >= 0)
+            currentAmmo = NewAmmo;
     }
 }

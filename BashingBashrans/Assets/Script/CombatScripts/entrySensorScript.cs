@@ -7,12 +7,12 @@ public class entrySensorScript : MonoBehaviour {
     public Transform playerObjective;
     public GameManager managerOfRoom;
 
-    private levelManager cameraControl;
+    //private levelManager cameraControl;
 
     void Start()
     {
         //When the player touches the sensor, the camera moves to the position of the camera of the room. 
-        cameraControl = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
+        //cameraControl = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
     }
 
     void OnTriggerEnter(Collider c)
