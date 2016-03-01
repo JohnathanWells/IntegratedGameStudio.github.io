@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour {
     private bool inTransition = false;
     private int currentRoom;
 
+    [Header("Animation Things")]
+    public Animator PlayerAnimator;
+    //PlayerAnimator.SetBool("Walking", true);
     void Start()
     {
         setManager();
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (Input.GetButton("Horizontal"))
             {
+               
                 moveHorizontally(Input.GetAxisRaw("Horizontal"));
             }
 
@@ -56,6 +60,12 @@ public class PlayerMovement : MonoBehaviour {
             {
                 moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
             }
+            if (Input.GetButtonUp("Horizontal"))
+            {
+
+                PlayerAnimator.SetBool("Walking", false);
+            }
+
         }
 	}
 
@@ -79,6 +89,7 @@ public class PlayerMovement : MonoBehaviour {
             inTransition = false;
             combatScript.transitionHappening(false);
             manager.transitionFunction(false, currentRoom);
+            PlayerAnimator.SetBool("Walking", false);
         }
     }
 
@@ -126,6 +137,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             canMoveDown = value;
         }
+      
     }
 
     public void changeCanMove(bool val)
@@ -137,9 +149,16 @@ public class PlayerMovement : MonoBehaviour {
     {
         if ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft))
         {
+            
+
             HorizontalD = XVelocity * Time.deltaTime * Input.GetAxisRaw("Horizontal");
             transform.Translate(new Vector3(HorizontalD, 0, 0));
+            PlayerAnimator.SetBool("Walking", true);
         }
+         else
+        { PlayerAnimator.SetBool("Walking", false); }
+                  
+      
     }
 
     public void moveVertically(int dir)
