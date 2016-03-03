@@ -120,12 +120,13 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom)
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, Vector3 newOrder)
     {
         inTransition = true;
         currentRoom = newRoom;
         combatScript.transitionHappening(true);
-        manager.transitionFunction(true, 0);
+        highManager.SendMessage("changeOrderOfTrans", newOrder);
+
         pointTowards = posTo;
         angleTowards = angTo;
     }

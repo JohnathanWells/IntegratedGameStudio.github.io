@@ -7,12 +7,15 @@ public class EnemyTurretScript : MonoBehaviour {
     public float cooldownTime = 1f;
     public float burstCooling = 0.5f;
     public int projectilesByBurst = 1;
+    public bool randomBullets = false;
+    public bool shootBurstInSingleLine = false;
     int shotsFired = 0;
     bool coolingDown = false;
     bool burstCooldown = false;
     float currentCool = 0;
     float burstCool = 0;
     int lane;
+    bool canMove = false;
 
     [Header("Stats")]
     public int InitialHealth = 200;
@@ -26,6 +29,8 @@ public class EnemyTurretScript : MonoBehaviour {
     public float speed = 1f;
     public int direction = 0;
     public float marginOFDisplacement = 0.1f;
+    public int minLane = 0;
+    public int maxLane = 4;
     int numberOfLanes;
     //public bool moveToTheLeft = false;
     //public float distanceTraveledBeforeDeath = 10f;
@@ -101,21 +106,39 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void turretMovement()
     {
-        float downCorner = manager.LeftDownCorner.position.z;
+        if (!shootBurstInSingleLine || (shootBurstInSingleLine && canMove))
+        {
+            float downCorner = manager.LeftDownCorner.position.z;
+            float Max = downCorner + maxLane;
+            float Min = downCorner + minLane;
 
-        if (feet.position.z > numberOfLanes + downCorner)
-            direction = -1;
-        else if (feet.position.z <= downCorner)
-            direction = 1;
+            //Debug.Log(Max + "M, " + Min + "m, " + feet.position.z + "p, " + direction + "d");
 
-        feet.Translate(0, 0, speed * direction * Time.deltaTime);
+            if (feet.position.z >= Max)
+                direction = -1;
+            else if (feet.position.z <= Min)
+                direction = 1;
+
+            feet.Translate(0, 0, speed * direction * Time.deltaTime);
+        }
     }
 
     void shootCannons()
     {
         for (int a = 0; a < muzzles.Length; a++)
-        {
+        {            
             muzzles[a].SendMessage("Shoot");
+        }
+    }
+
+    void changeCannonAmmo()
+    {
+        for (int a = 0; a < muzzles.Length; a++)
+        {
+            if (randomBullets)
+                muzzles[a].SendMessage("changeAmmo");
+            else
+                muzzles[a].SendMessage("nextAmmo");
         }
     }
 
@@ -128,6 +151,7 @@ public class EnemyTurretScript : MonoBehaviour {
             {
                 shotsFired = 0;
 
+                changeCannonAmmo();
                 coolingDown = false;
                 currentCool = 0;
             }
@@ -143,18 +167,26 @@ public class EnemyTurretScript : MonoBehaviour {
             }
         }
 
+        //If its cooled down, it has cooled between burst, the condition for shootburstsingleline is fulfilled (or doesn't need the condition), is alligned or doesn't move up and down
         if (!coolingDown && !burstCooldown && ((moveUpAndDown && checkMarginOfErrorOFPosition()) || !moveUpAndDown))
         {
-            shootCannons();
-            shotsFired++;
+            if (canMove && currentCool == 0)
+                canMove = false;
 
-            if (shotsFired >= projectilesByBurst)
+            if (!shootBurstInSingleLine || (shootBurstInSingleLine && !canMove))
             {
-                coolingDown = true;
-            }
-            else
-            {
-                burstCooldown = true;
+                shootCannons();
+                shotsFired++;
+
+                if (shotsFired >= projectilesByBurst)
+                {
+                    coolingDown = true;
+                    canMove = true;
+                }
+                else
+                {
+                    burstCooldown = true;
+                }
             }
         }
     }
@@ -256,5 +288,7 @@ public class EnemyTurretScript : MonoBehaviour {
         //projectileFolder = manager.ProjectilesFolder;
         lane = manager.obtainLane(transform.parent);
         numberOfLanes = manager.numberOfLanes - 1;
+        if (maxLane > numberOfLanes)
+            maxLane = numberOfLanes;
     }
 }

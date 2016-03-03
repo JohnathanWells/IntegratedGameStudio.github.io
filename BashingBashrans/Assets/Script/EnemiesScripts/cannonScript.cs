@@ -70,8 +70,8 @@ public class cannonScript : MonoBehaviour {
     IEnumerator activateMuzzleLight(ParticleSystem partSys)
     {
         //Debug.Log("CA = " + currentAmmo);
-        partSys.gameObject.SetActive(true);
         partSys.time = 0;
+        partSys.gameObject.SetActive(true);
         yield return new WaitForSeconds(partSys.duration);
         partSys.gameObject.SetActive(false);
     }
@@ -87,6 +87,17 @@ public class cannonScript : MonoBehaviour {
     public void changeAmmo()
     {
         currentAmmo = Random.Range(0, sizeOfArray);
+    }
+
+    public void nextAmmo()
+    {
+        if (sizeOfArray > 1)
+        {
+            if (currentAmmo + 1 >= sizeOfArray)
+                currentAmmo = 0;
+            else
+                currentAmmo++;
+        }
     }
 
     public void setCurrentAmmo(int NewAmmo)

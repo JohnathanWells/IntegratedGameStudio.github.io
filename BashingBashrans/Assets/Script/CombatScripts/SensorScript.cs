@@ -29,13 +29,13 @@ public class SensorScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-        if (c.tag != "Floor")
+        if (c.CompareTag("Floor"))
         {
-            sendDetection(false);
+            sendDetection(true);
         }
         else
         {
-            sendDetection(true);
+            sendDetection(false);
         }
     }
 
@@ -52,7 +52,7 @@ public class SensorScript : MonoBehaviour {
 
     void fixPositionOfSensor(int direction)
     {
-        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * transform.position.z / 1);
+        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * direction + transform.position.z);
     }
 
     void obtainDirectionWithPlayer()

@@ -11,12 +11,9 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
 
-    [Range(0, 2)]
-    public int orderTransX = 0;
-    [Range(0, 2)]
-    public int orderTransY = 0;
-    [Range(0, 2)]
-    public int orderTransZ = 0;
+    private Vector3 orderOfTrans;
+    private Camera tempCam;
+    private Camera tempObCam;
 
     private int currentTransCount = 0;
     private bool inTransition = false;
@@ -52,8 +49,14 @@ public class levelManager : MonoBehaviour {
     {
         //Debug.Log("Changing room camera to: " + newObjective);
         objectiveManagerNumber = newObjective;
-
+        tempCam = cameras[currentManagerCount].GetComponent<Camera>();
+        tempObCam = cameras[objectiveManagerNumber].GetComponent<Camera>();
         currentTransCount = 0;
+    }
+
+    public void changeOrderOfTrans(Vector3 nO)
+    {
+        orderOfTrans = nO;
     }
 
     public void moveCamera()
@@ -62,43 +65,43 @@ public class levelManager : MonoBehaviour {
         if (CoolTransition)
         {
             float step = Time.deltaTime * speedOfTransition;
-            Vector3 temp = transform.position;
+            Vector3 temp = cameras[currentManagerCount].position;
 
-            if (orderTransX == orderTransY && orderTransX == orderTransZ)
+            if (orderOfTrans.x == orderOfTrans.y && orderOfTrans.x == orderOfTrans.z)
             {
                 temp = cameras[objectiveManagerNumber].position;
             }
             else
             {
-                if (orderTransX == currentTransCount)
+                if (orderOfTrans.x== currentTransCount)
                 {
                     temp = new Vector3(cameras[objectiveManagerNumber].position.x, temp.y, temp.z);
                 }
 
-                if (orderTransY == currentTransCount)
+                if (orderOfTrans.y == currentTransCount)
                 {
                     temp = new Vector3(temp.x, cameras[objectiveManagerNumber].position.y, temp.z);
                 }
 
-                if (orderTransZ == currentTransCount)
+                if (orderOfTrans.z == currentTransCount)
                 {
                     temp = new Vector3(temp.x, temp.y, cameras[objectiveManagerNumber].position.z);
                 }
 
                 //Check what transition is done
-                if (orderTransX == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
+                if (orderOfTrans.x == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
                 {
                     currentTransCount++;
                     Debug.Log("Xdone");
                 }
 
-                if (orderTransY == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
+                if (orderOfTrans.y == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
                 {
                     currentTransCount++;
                     Debug.Log("Ydone");
                 }
 
-                if (orderTransZ == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
+                if (orderOfTrans.z == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
                 {
                     currentTransCount++;
                     Debug.Log("Zdone");
@@ -107,6 +110,9 @@ public class levelManager : MonoBehaviour {
 
             cameras[currentManagerCount].position = Vector3.MoveTowards(cameras[currentManagerCount].position, temp, step);
             cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step);
+            
+            if (tempCam.fieldOfView != tempObCam.fieldOfView)
+                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition);
         }
         else
         {
@@ -122,12 +128,23 @@ public class levelManager : MonoBehaviour {
         }
     }
 
+    private float floatDamp(float current, float objective, float speed)
+    {
+        float result = current + speed * Time.deltaTime;
+
+        if (result <= objective)
+            return result;
+        else
+            return objective;
+    }
+
     private void changeManager(int oldManager, int newManager)
     {
         cameras[oldManager].gameObject.SetActive(false);
         cameras[newManager].gameObject.SetActive(true);
         managers[oldManager].enemiesFolder.gameObject.SetActive(false);
         managers[newManager].enemiesFolder.gameObject.SetActive(true);
+        //managers[oldManager].ProjectilesFolder.SendMessage("hideProjectiles", false);
         Player.BroadcastMessage("setManager");
         levelParents[newManager].BroadcastMessage("setManager");
     }
