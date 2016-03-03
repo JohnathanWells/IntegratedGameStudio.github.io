@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public SoundEffectManager SFX;
     public Transform entryDoor;
     public Transform exitDoor;
+    public Animator DoorAnimator;
     private CombatScript playerScript;
     private levelManager highManager;
     int enemiesAtBeginning = 0;
@@ -346,6 +347,7 @@ public class GameManager : MonoBehaviour {
         playerScript = player.GetComponentInChildren<CombatScript>();
         //Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
         //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
+      //  DoorAnimator = FindGameObjectWithTag "Door";
     }
 
     public void switchUI(bool value)
@@ -359,6 +361,8 @@ public class GameManager : MonoBehaviour {
     private void stageIsCleared()
     {
         stageCleared = true;
+        DoorAnimator.SetBool("Open", true);
+
     }
 
     public bool getStatusOfStage()
