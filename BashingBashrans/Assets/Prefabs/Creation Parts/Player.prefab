@@ -509,6 +509,7 @@ GameObject:
   - 4: {fileID: 450188}
   - 65: {fileID: 6538778}
   - 114: {fileID: 11430914}
+  - 54: {fileID: 5405012}
   m_Layer: 0
   m_Name: WeaponCollider
   m_TagString: Untagged
@@ -985,9 +986,10 @@ GameObject:
   - 65: {fileID: 6526894}
   - 111: {fileID: 11152758}
   - 114: {fileID: 11436656}
+  - 54: {fileID: 5425800}
   m_Layer: 0
   m_Name: SwingAnim
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1456,7 +1458,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.84263706, y: .358543396, z: -11.9926176}
+  m_LocalPosition: {x: -10, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426336}
@@ -1717,8 +1719,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148714}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 0, z: .465000004}
-  m_LocalScale: {x: .170000002, y: .5, z: .5}
+  m_LocalPosition: {x: 0, y: 0, z: .49000001}
+  m_LocalScale: {x: .200000003, y: .5, z: .400000006}
   m_Children: []
   m_Father: {fileID: 426336}
   m_RootOrder: 2
@@ -1841,7 +1843,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125564}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: .75, y: 0, z: 0}
+  m_LocalPosition: {x: .75, y: .0419999994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426868}
@@ -2035,7 +2037,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164988}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -.75, y: 0, z: 0}
+  m_LocalPosition: {x: -.75, y: .0419999994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426868}
@@ -2125,6 +2127,36 @@ Rigidbody:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164988}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5405012
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148714}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5425800
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188426}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -2225,7 +2257,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .460000008, y: .879999995, z: .430000007}
+  m_Size: {x: .370000005, y: .879999995, z: .430000007}
   m_Center: {x: 0, y: 0, z: .159999996}
 --- !u!65 &6528034
 BoxCollider:
@@ -2293,9 +2325,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d3721585d03a94dad494920113f608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XVelocity: 5.5999999
-  playerModel: {fileID: 0}
+  XVelocity: 8
+  playerModel: {fileID: 426336}
+  combatScript: {fileID: 11436656}
   manager: {fileID: 0}
+  coolTransition: 1
+  isff: 0
+  freesztme: 10
+  freezeffct: 2
+  freeztart: 0
 --- !u!114 &11430878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2310,7 +2348,9 @@ MonoBehaviour:
   movementScript: {fileID: 11420892}
   horizontalSensor: 0
   verticalSensor: 1
+  fixPosition: 1
   directionWithPlayer: {x: 0, y: 0}
+  feet: {fileID: 426868}
 --- !u!114 &11430914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2326,7 +2366,7 @@ MonoBehaviour:
   returnProjectileSound: {fileID: 8300000, guid: d9b3c20568762e240b4da9b9568fc87b,
     type: 3}
   meleeAttackSound: {fileID: 8300000, guid: 6153021afbda1ed48823c6561e94680c, type: 3}
-  damage: 100
+  damage: 400
   animationHappening: 0
   manager: {fileID: 0}
 --- !u!114 &11436656
@@ -2340,7 +2380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f191831c633e167479250a123d452eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 500
+  initialHealth: 700
   godMode: 1
   punchingTime: .300000012
   punchCooldown: 0
@@ -2354,6 +2394,12 @@ MonoBehaviour:
   animation: {fileID: 11152758}
   movementScript: {fileID: 11420892}
   timeBetweenBurningDamage: 1
+  minsick: 2
+  maxsick: 4
+  sick: 0
+  ptime: 0
+  isp: 0
+  pm: {fileID: 0}
 --- !u!114 &11462052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2368,7 +2414,9 @@ MonoBehaviour:
   movementScript: {fileID: 11420892}
   horizontalSensor: 0
   verticalSensor: 1
+  fixPosition: 1
   directionWithPlayer: {x: 0, y: 0}
+  feet: {fileID: 426868}
 --- !u!114 &11464530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2383,7 +2431,9 @@ MonoBehaviour:
   movementScript: {fileID: 11420892}
   horizontalSensor: 1
   verticalSensor: 0
+  fixPosition: 1
   directionWithPlayer: {x: 0, y: 0}
+  feet: {fileID: 426868}
 --- !u!114 &11498386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2398,7 +2448,9 @@ MonoBehaviour:
   movementScript: {fileID: 11420892}
   horizontalSensor: 1
   verticalSensor: 0
+  fixPosition: 1
   directionWithPlayer: {x: 0, y: 0}
+  feet: {fileID: 426868}
 --- !u!137 &13709448
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

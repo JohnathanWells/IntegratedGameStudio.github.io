@@ -19,13 +19,13 @@ public class cannonScript : MonoBehaviour {
     [Header("Other Scripts")]
     GameManager manager;
     SoundEffectManager SFX;
-    ParticleManager PartM;
+    //ParticleManager PartM;
     Transform projectileFolder;
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
-        PartM = manager.PM;
+        //PartM = manager.PM;
         projectileFolder = manager.ProjectilesFolder;
         mainBody = transform.parent;
         sizeOfArray = possibleAmmo.Length;
@@ -70,8 +70,8 @@ public class cannonScript : MonoBehaviour {
     IEnumerator activateMuzzleLight(ParticleSystem partSys)
     {
         //Debug.Log("CA = " + currentAmmo);
-        partSys.gameObject.SetActive(true);
         partSys.time = 0;
+        partSys.gameObject.SetActive(true);
         yield return new WaitForSeconds(partSys.duration);
         partSys.gameObject.SetActive(false);
     }
@@ -87,5 +87,22 @@ public class cannonScript : MonoBehaviour {
     public void changeAmmo()
     {
         currentAmmo = Random.Range(0, sizeOfArray);
+    }
+
+    public void nextAmmo()
+    {
+        if (sizeOfArray > 1)
+        {
+            if (currentAmmo + 1 >= sizeOfArray)
+                currentAmmo = 0;
+            else
+                currentAmmo++;
+        }
+    }
+
+    public void setCurrentAmmo(int NewAmmo)
+    {
+        if (NewAmmo >= 0)
+            currentAmmo = NewAmmo;
     }
 }

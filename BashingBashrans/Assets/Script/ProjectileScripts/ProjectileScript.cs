@@ -32,10 +32,12 @@ public class ProjectileScript : MonoBehaviour
     public Effect effectOfProjectile;
     public conditionForDestruction condition;
     public int Damage = 100;
+    public int Peffecttmemin = 1;
+    public int Peffecttmemax = 10;
     private int originalDamage;
     public float halflife = 10;
     private float distanceForDestruction = 10;
-    private float floordistance = 1;
+    //private float floordistance = 1;
     private float lifeTime = 0;
     private float distanceTraveled = 0;
 
@@ -48,6 +50,17 @@ public class ProjectileScript : MonoBehaviour
     public AudioClip beforeExplosionSound;
     private bool playingSound = false;
 
+    [Header("Effect")]
+    public float minSick;
+    public float maxSick;
+
+    [Header("Curvy")]
+    Vector2 crv;
+
+    [Header("Bouncy")]
+    public float bnceAng = 90.0f;
+    Vector3 bnc;
+
     [Header("Other Elements")]
     GameManager manager;
     SoundEffectManager SFX;
@@ -57,6 +70,7 @@ public class ProjectileScript : MonoBehaviour
     void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
+  
         originalDamage = Damage;
         originalSpeed = speed;
         originalMaterial = renderer.material;
@@ -92,16 +106,41 @@ public class ProjectileScript : MonoBehaviour
     {
         Vector2 translation = Vector2.zero;
 
+        if (movement == typeMovement.Curvy)
+        {
+            int choice = Random.Range(0, 1);
+            if (choice == 1)
+            {
+                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
+                crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+                Debug.Log("Moved in this direction.");
+            }
+            else
+            {
+                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
+                crv = crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+            }
+            curvy(crv);
+            transform.Translate(translation);
+        }
+
+        if (movement == typeMovement.Bouncy)
+        {
+            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, directionOfProjectile * speed * Time.deltaTime * -1));
+            transform.Translate(translation);
+            
+        }
+
         if (movement == typeMovement.Horizontal)
         {
             translation = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+            transform.Translate(translation);
         }
         else if (movement == typeMovement.Vertical)
         {
             translation = new Vector2(0, directionOfProjectile * speed * Time.deltaTime);
+            transform.Translate(translation);
         }
-
-        transform.Translate(translation);
     }
 
     public void changeDirection(float angleOfReturn)
@@ -146,6 +185,24 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void curvy(Vector2 crv)
+    {
+        Debug.Log("Function is called");
+           if (crv.x >= 5)
+           {
+               transform.Rotate(crv.x * crv.x, 0, 0);
+           }
+           if (crv.x <= -5)
+           {
+               transform.Rotate(crv.x * crv.x, 0, 0);
+           }
+    }
+
+    public void bouncy()
+    {
+        transform.Rotate(0, bnceAng, 0);
+    }
+  
     //Get Functions
     public ParticleSystem getMuzzleParticles()
     {
@@ -167,14 +224,16 @@ public class ProjectileScript : MonoBehaviour
         return beingReturned;
     }
 
+    public string getEffectType()
+    {
+        return effectOfProjectile.ToString();
+    }
+
     public float rotateRelativelyToHit(Vector3 hitPos)
     {
-        if (direction == movementDirection.left)
+        if ((transform.position.x > hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y >= -90 && transform.eulerAngles.y < 90)) || (transform.position.x < hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y < 270 && transform.eulerAngles.y >= 90)))
         {
-            if ((transform.position.x > hitPos.x && (transform.eulerAngles.y > -90 && transform.eulerAngles.y <= 90)) || (hitPos.x > transform.position.x && (transform.eulerAngles.y <= 270 && transform.eulerAngles.y > 90)))
-                return angleOfDesviation;
-            else
-                return 0;
+            return angleOfDesviation;
         }
         else if ((hitPos.x < transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)) || (hitPos.x > transform.position.x && direction == movementDirection.right && (transform.eulerAngles.z <= -90 && transform.eulerAngles.z > 90)))
         {

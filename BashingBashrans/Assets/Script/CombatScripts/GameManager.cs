@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour {
 
         if (!isHappening)
         {
-            highManager.SendMessage("changePoint", newRoomNumber);
+            highManager.changePoint(newRoomNumber);
         }
     }
 
@@ -374,5 +374,10 @@ public class GameManager : MonoBehaviour {
     public void openExit()
     {
         exitDoor.gameObject.SetActive(false);
+    }
+
+    public void hideProjectiles(bool value)
+    {
+        ProjectilesFolder.gameObject.SetActive(value);
     }
 }

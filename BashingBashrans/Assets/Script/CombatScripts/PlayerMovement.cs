@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour {
     private int lane = 0;
     private int numberOfLanes = 2;
     private bool canMove = true;
-    private Vector2 minPos;
-    private Vector2 maxPos;
+    //private Vector2 minPos;
+    //private Vector2 maxPos;
     private bool canMoveToRight = true;
     private bool canMoveToLeft = true;
     private bool canMoveUp = true;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     public CombatScript combatScript;
 
     public GameManager manager;
+    private levelManager highManager;
 
     [Header("Transition")]
     public bool coolTransition = true;
@@ -34,8 +35,15 @@ public class PlayerMovement : MonoBehaviour {
     private bool inTransition = false;
     private int currentRoom;
 
+    [Header("Freeze")]
+    public bool isff;
+    public float freesztme = 10;
+    public float freezeffct = 2;
+    public float freeztart = 0;
+
     void Start()
     {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
     }
 
@@ -45,7 +53,13 @@ public class PlayerMovement : MonoBehaviour {
         {
             transitionMove();
         }
-        else if (!manager.gameOver && canMove && !inTransition)
+        else if(isff)
+        {
+            froze();
+        }
+        else if (!manager.gameOver && canMove && !inTransition && isff == false)
+
+        //else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
         {
             if (Input.GetButton("Horizontal"))
             {
@@ -58,6 +72,30 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 	}
+
+   public void froze()
+    {
+       isff = true;
+       if (freeztart == 0)
+       {
+           XVelocity = (XVelocity / freezeffct);
+       }
+       if (Input.GetButton("Horizontal"))
+       {
+           moveHorizontally(Input.GetAxisRaw("Horizontal"));
+       }
+       if (Input.GetButtonDown("Vertical"))
+       {
+           moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
+       }
+       freeztart+= Time.deltaTime;
+       if(freeztart >= freesztme)
+       {
+           freeztart = 0;
+           isff = false;
+           XVelocity = (XVelocity * freezeffct);
+       }
+    }
 
     void transitionMove()
     {
@@ -82,12 +120,13 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom)
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, Vector3 newOrder)
     {
         inTransition = true;
         currentRoom = newRoom;
         combatScript.transitionHappening(true);
-        manager.transitionFunction(true, 0);
+        highManager.SendMessage("changeOrderOfTrans", newOrder);
+
         pointTowards = posTo;
         angleTowards = angTo;
     }
@@ -95,18 +134,19 @@ public class PlayerMovement : MonoBehaviour {
     void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        obtainLimits();
+        //obtainLimits();
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
         Debug.Log(lane);
-        distanceBetweenLanes = manager.distanceBetweenLanes;
+        distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
+        Debug.Log(distanceBetweenLanes);
     }
 
-    void obtainLimits()
-    {
-        minPos = manager.minPos;
-        maxPos = manager.maxPos;
-    }
+    //void obtainLimits()
+    //{
+    //    minPos = manager.minPos;
+    //    maxPos = manager.maxPos;
+    //}
 
     public void receiveDetection(Vector2 direction, bool value)
     {
@@ -133,7 +173,7 @@ public class PlayerMovement : MonoBehaviour {
         canMove = val;
     }
 
-    void moveHorizontally(float Ax)
+    public void moveHorizontally(float Ax)
     {
         if ((Ax > 0 && canMoveToRight) || (Ax < 0 && canMoveToLeft))
         {
@@ -142,7 +182,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void moveVertically(int dir)
+    public void moveVertically(int dir)
     {
         if (((dir < 0 && canMoveDown && lane + dir >= 0) || (dir > 0 && canMoveUp && lane + dir < numberOfLanes)) /*&& (lane + dir >= 0 && lane + dir <= numberOfLanes - 1)*/)
         {

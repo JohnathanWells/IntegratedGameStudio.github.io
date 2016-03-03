@@ -28,13 +28,22 @@ public class CombatScript : MonoBehaviour {
     private GameManager manager;
     private SoundEffectManager SFX;
 
-    [Header("Effects")]
+    [Header("Burns")]
     public float timeBetweenBurningDamage = 1;
     private int burningDamage = 0;
     private bool burning = false;
     private float burnTaim = 0;
 
     private bool inTransition = false;
+
+    [Header("Poison")]
+    public float minsick = 2;
+    public float maxsick = 4;
+    public float sick = 0;
+    public float ptime = 0;
+    public bool isp = false;
+
+    public PlayerMovement pm;
 
 	void Start () {
         setManager();
@@ -61,6 +70,19 @@ public class CombatScript : MonoBehaviour {
                         receiveDamage(Proj.Damage);
                         Proj.projectileCrash();
                     }
+                    if (Proj.getEffectType() == "poison")
+                    {
+                        sick = Random.Range(Proj.minSick, Proj.maxSick);
+                        ptime = Random.Range(minsick, maxsick);
+                        sick = (int)sick;
+                        isp = true;
+                    }
+                    if (Proj.getEffectType() == "freeze")
+                    {
+                        movementScript.froze();
+                    }
+                    receiveDamage(Proj.Damage);
+                    Proj.projectileCrash();
                 }
             }
 
@@ -103,6 +125,10 @@ public class CombatScript : MonoBehaviour {
 
 	void Update () {
 
+        if (isp && ptime > 0)
+        {
+            poison();
+        }
         if (burning)
         {
             Burn();
@@ -174,5 +200,44 @@ public class CombatScript : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
         weapon.manager = manager;
+    }
+
+    /*public void freeze(Collider a)
+    {
+        PlayerMovement plm = a.GetComponent<PlayerMovement>();
+        while (freeztart <= freeztme)
+        {
+            freeztart += Time.deltaTime;
+            plm.moveHorizontally(Input.GetAxisRaw("Horizontal") / freezeffct);
+            plm.moveVertically((int) (Input.GetAxisRaw("Vertical") / freezeffct));
+        }
+        plm.moveHorizontally(Input.GetAxisRaw("Horizontal"));
+        plm.moveVertically((int)(Input.GetAxisRaw("Vertical")));
+    }*/
+
+    /*public void poison()
+    {
+        while (Etime <= sick)
+        {
+            Etime += Time.deltaTime;
+            currentHealth -= (int)(sick * sick);
+        }
+    }*/
+
+    public void poison()
+    {
+        if (currentHealth <= 100)
+        {
+            currentHealth = 0;
+        }
+        else if (currentHealth > 100)
+        {
+            currentHealth -= (int)(sick * sick);
+        }
+        ptime -= (Time.deltaTime * 60);
+        if (ptime <= 0)
+        {
+            isp = false;
+        }
     }
 }
