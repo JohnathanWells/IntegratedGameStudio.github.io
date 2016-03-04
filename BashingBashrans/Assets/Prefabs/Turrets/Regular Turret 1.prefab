@@ -60,7 +60,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112284}
-  m_LocalRotation: {x: 0.000000115202326, y: 0.7071067, z: 0.7071068, w: -0.00000011520231}
+  m_LocalRotation: {x: -0.00000011520229, y: -0.70710695, z: -0.7071066, w: 0.00000011520235}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 3.35, z: -1}
+  m_LocalPosition: {x: 15.19, y: 3.41, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409484}
@@ -211,7 +211,7 @@ MonoBehaviour:
   offsetShooting: {x: 0.2, y: 0, z: 0}
   flashOffset: {x: 0.2, y: 0, z: 0}
   possibleAmmo:
-  - {fileID: 417626, guid: 4e66e5b86b7bd324fba4da988cbaa8c0, type: 2}
+  - {fileID: 417626, guid: fe856e848369da848a225529f609eb0a, type: 2}
   mainBody: {fileID: 409484}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -227,9 +227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443434f13131c4046aec931c45ca6cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 2
+  cooldownTime: 1.75
   burstCooling: 0.7
   projectilesByBurst: 3
+  randomBullets: 0
+  shootBurstInSingleLine: 0
   InitialHealth: 300
   Name: Normie
   currentHealth: 0
@@ -239,6 +241,8 @@ MonoBehaviour:
   speed: 1
   direction: 0
   marginOFDisplacement: 0.01
+  minLane: 0
+  maxLane: 4
   enemyFont:
     m_Name: 
     m_Normal:

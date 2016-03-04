@@ -361,7 +361,6 @@ public class GameManager : MonoBehaviour {
     private void stageIsCleared()
     {
         stageCleared = true;
-        DoorAnimator.SetBool("Open", true);
 
     }
 
@@ -377,6 +376,8 @@ public class GameManager : MonoBehaviour {
 
     public void openExit()
     {
+        DoorAnimator.SetBool("Open", true);
+
         exitDoor.gameObject.SetActive(false);
     }
 
