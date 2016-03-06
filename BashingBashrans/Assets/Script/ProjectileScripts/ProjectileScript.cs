@@ -104,7 +104,7 @@ public class ProjectileScript : MonoBehaviour
     
     void projectileMovement()
     {
-        Vector2 translation = Vector2.zero;
+        Vector3 translation = Vector3.zero;
 
         if (movement == typeMovement.Curvy)
         {
@@ -118,7 +118,7 @@ public class ProjectileScript : MonoBehaviour
             else
             {
                 transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
-                crv = crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
+                crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
             }
             curvy(crv);
             transform.Translate(translation);
@@ -126,9 +126,10 @@ public class ProjectileScript : MonoBehaviour
 
         if (movement == typeMovement.Bouncy)
         {
-            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, directionOfProjectile * speed * Time.deltaTime * -1));
+            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime));
+            bnc = new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime);
+            print(bnc.y);
             transform.Translate(translation);
-            
         }
 
         if (movement == typeMovement.Horizontal)

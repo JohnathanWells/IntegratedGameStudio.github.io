@@ -46,6 +46,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -70,6 +71,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -80,6 +82,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -90,6 +93,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -100,6 +104,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11444214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,10 +124,14 @@ MonoBehaviour:
   enemiesFolder: {fileID: 0}
   PM: {fileID: 11466002}
   SFX: {fileID: 11451822}
+  entryDoor: {fileID: 0}
+  exitDoor: {fileID: 0}
+  DoorAnimator: {fileID: 0}
   gameOver: 0
   paused: 0
   gameOverSound: {fileID: 0}
   nextLevelName: 
+  cameraLinked: {fileID: 0}
   PlayerFont:
     m_Name: 
     m_Normal:
@@ -187,7 +196,7 @@ MonoBehaviour:
   randomBoulderFall: 0
   Boulder: {fileID: 457644, guid: f6604bbe2224e7143b533974b45fb47e, type: 2}
   cooldownBetweenTraps: 30
-  offsetOfTrap: {x: 0, y: .600000024, z: 0}
+  offsetOfTrap: {x: 0, y: 0.6, z: 0}
   minPos: {x: -5, y: 0}
   maxPos: {x: 5, y: 5}
   distanceBetweenLanes: 1
@@ -220,7 +229,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 181558}

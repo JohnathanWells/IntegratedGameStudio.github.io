@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2320700}
   - 114: {fileID: 11445604}
   - 108: {fileID: 10827816}
+  - 54: {fileID: 5422724}
   m_Layer: 0
   m_Name: ProjectilePoison
   m_TagString: Projectile
@@ -65,6 +66,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169498}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5422724
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169498}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!108 &10827816
 Light:
   m_ObjectHideFlags: 1
@@ -109,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 0
+  movement: 3
   direction: 0
   canBePunched: 1
   blockedByStanding: 0
@@ -135,7 +151,7 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 1
   maxSick: 5
-  bnceAng: 45
+  bnceAng: 90
 --- !u!135 &13578206
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -274,11 +290,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: canBePunched
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movement
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: angleOfBounciness
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bnceAng
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
