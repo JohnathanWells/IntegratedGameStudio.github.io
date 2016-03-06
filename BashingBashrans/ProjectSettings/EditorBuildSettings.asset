@@ -6,8 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Demo Levels/First Turret.unity
-  - enabled: 1
-    path: Assets/Scenes/Demo Levels/First Hostile Turret.unity
-  - enabled: 1
-    path: Assets/Scenes/Demo Levels/Moving Turrets.unity
+    path: Assets/Scenes/FirstFloor.unity
