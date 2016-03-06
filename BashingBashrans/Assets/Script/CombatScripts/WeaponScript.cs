@@ -76,4 +76,9 @@ public class WeaponScript : MonoBehaviour {
         enemy.SendMessage("ReceiveDamage", damage);
         animationHappening = true;
     }
+
+    public void changeSoundEffectManager(SoundEffectManager newSFX)
+    {
+        SFX = newSFX;
+    }
 }

@@ -52,7 +52,7 @@ public class SensorScript : MonoBehaviour {
 
     void fixPositionOfSensor(int direction)
     {
-        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * direction + transform.position.z);
+        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * direction + feet.position.z);
     }
 
     void obtainDirectionWithPlayer()

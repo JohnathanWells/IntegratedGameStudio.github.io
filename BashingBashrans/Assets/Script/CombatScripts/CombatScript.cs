@@ -200,6 +200,7 @@ public class CombatScript : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         SFX = manager.SFX;
         weapon.manager = manager;
+        weapon.SendMessage("changeSoundEffectManager", SFX);
     }
 
     /*public void freeze(Collider a)
