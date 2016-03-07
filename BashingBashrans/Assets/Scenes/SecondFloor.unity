@@ -308,7 +308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
-      value: (Level Organization) Room 2
+      value: Room 2
       objectReference: {fileID: 0}
     - target: {fileID: 8212634, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: panLevelCustomCurve.m_RotationOrder
@@ -320,7 +320,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.y
@@ -368,7 +368,7 @@ Prefab:
       objectReference: {fileID: 9563190, guid: f81661738ac59e84584dd4edf6c3f32b, type: 2}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: numberOfLanes
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: RightUpCorner
@@ -408,7 +408,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: roomNumber
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -496,7 +496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -516,7 +516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11430914, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: manager
@@ -1182,7 +1182,7 @@ Transform:
   - {fileID: 883176574}
   - {fileID: 1284084844}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!1 &415374949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
-      value: (Level Organization) Room 6
+      value: Room 6
       objectReference: {fileID: 0}
     - target: {fileID: 406068, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_RootOrder
@@ -1859,7 +1859,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8212634, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: panLevelCustomCurve.m_RotationOrder
@@ -1931,6 +1931,10 @@ Prefab:
       objectReference: {fileID: 2086588140}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: roomNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: numberOfLanes
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3532,7 +3536,7 @@ MonoBehaviour:
   - {fileID: 1942193958}
   - {fileID: 2010725424}
   - {fileID: 337017209}
-  - {fileID: 1218139918}
+  - {fileID: 536807280}
   speedOfTransition: 13
   UISwitch: 0
   Player: {fileID: 2086588140}
@@ -3549,7 +3553,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
 --- !u!1001 &1163950117
 Prefab:
   m_ObjectHideFlags: 0
@@ -3965,7 +3969,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
-      value: (Level Organization) Room 3
+      value: Room 3
       objectReference: {fileID: 0}
     - target: {fileID: 406068, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_RootOrder
@@ -4005,7 +4009,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4061,7 +4065,7 @@ Prefab:
       objectReference: {fileID: 2086588140}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: numberOfLanes
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: exitDoor
@@ -4093,7 +4097,7 @@ Prefab:
       objectReference: {fileID: 2086588140}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: roomNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -4247,7 +4251,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1301739246}
   m_Layer: 0
-  m_Name: (Level Organization) Room 1
+  m_Name: Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4270,7 +4274,7 @@ Transform:
   - {fileID: 703034139}
   - {fileID: 286341801}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &1315993892 stripped
 Transform:
   m_PrefabParentObject: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -4316,11 +4320,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
-      value: (Level Organization) Room 5
+      value: Room 5
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4368,7 +4372,7 @@ Prefab:
       objectReference: {fileID: 348285473}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: numberOfLanes
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
@@ -4396,7 +4400,7 @@ Prefab:
       objectReference: {fileID: 337017209}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: roomNumber
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: playerObjective
@@ -5297,11 +5301,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
-      value: (Level Organization) Room 4
+      value: Room 4
       objectReference: {fileID: 0}
     - target: {fileID: 190698, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5353,7 +5357,7 @@ Prefab:
       objectReference: {fileID: 9563190, guid: f81661738ac59e84584dd4edf6c3f32b, type: 2}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: numberOfLanes
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: RightUpCorner
@@ -5377,7 +5381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430640, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -19.065
+      value: -18.13
       objectReference: {fileID: 0}
     - target: {fileID: 430640, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5405,7 +5409,7 @@ Prefab:
       objectReference: {fileID: 2086588140}
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: roomNumber
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -6014,16 +6018,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1736206128}
-  - 33: {fileID: 1736206131}
-  - 65: {fileID: 1736206130}
-  - 23: {fileID: 1736206129}
   m_Layer: 0
-  m_Name: EntryPoint
+  m_Name: Objective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1736206128
 Transform:
   m_ObjectHideFlags: 0
@@ -6031,56 +6032,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1736206127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.35, y: -0.422, z: 0}
+  m_LocalPosition: {x: 7.779999, y: -1.179, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1983911496}
   m_RootOrder: 0
---- !u!23 &1736206129
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736206127}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!65 &1736206130
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736206127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1736206131
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736206127}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1745871555
 Prefab:
   m_ObjectHideFlags: 0
@@ -6887,9 +6843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a731b9f450b2447b8b5c4e202ee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
-  playerObjective: {fileID: 0}
-  managerOfRoom: {fileID: 0}
+  roomNumber: 1
+  playerObjective: {fileID: 1736206128}
+  managerOfRoom: {fileID: 1847867733}
   orderTransX: 0
   orderTransY: 0
   orderTransZ: 0
