@@ -7,20 +7,25 @@ public class entrySensorScript : MonoBehaviour {
     public Transform playerObjective;
     public GameManager managerOfRoom;
 
-    [Range(0, 2)]
+    [Range(0, 4)]
     public int orderTransX = 0;
-    [Range(0, 2)]
+    [Range(0, 4)]
     public int orderTransY = 0;
-    [Range(0, 2)]
+    [Range(0, 4)]
     public int orderTransZ = 0;
+    [Range(0, 4)]
+    public int orderTransR = 0;
+    [Range(0, 4)]
+    public int orderTransF = 0;
 
-    private Vector3 orderOfTrans;
+    private int [] orderOfTrans;
 
     //private levelManager cameraControl;
 
     void Start()
     {
-        orderOfTrans = new Vector3(orderTransX, orderTransY, orderTransZ);
+        int [] temp = { orderTransX, orderTransY, orderTransZ, orderTransR, orderTransF };
+        orderOfTrans = temp;
         //When the player touches the sensor, the camera moves to the position of the camera of the room. 
         //cameraControl = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
     }

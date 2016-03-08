@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, Vector3 newOrder)
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, int [] newOrder)
     {
         inTransition = true;
         currentRoom = newRoom;

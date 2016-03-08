@@ -59,6 +59,8 @@ public class EnemyTurretScript : MonoBehaviour {
 
     int originalFontSize;
     Transform feet;
+    float downCornerPos;
+    float distanceBetweenLanes;
 
 	void Start () {
         setManager();
@@ -168,7 +170,7 @@ public class EnemyTurretScript : MonoBehaviour {
         }
 
         //If its cooled down, it has cooled between burst, the condition for shootburstsingleline is fulfilled (or doesn't need the condition), is alligned or doesn't move up and down
-        if (!coolingDown && !burstCooldown && ((moveUpAndDown && checkMarginOfErrorOFPosition()) || !moveUpAndDown))
+        if (!coolingDown && !burstCooldown && ((moveUpAndDown && checkMarginOfErrorOFPosition(direction)) || !moveUpAndDown))
         {
             if (canMove && currentCool == 0)
                 canMove = false;
@@ -216,19 +218,35 @@ public class EnemyTurretScript : MonoBehaviour {
         return currentHealth;
     }
 
-    bool checkMarginOfErrorOFPosition()
+    bool checkMarginOfErrorOFPosition(int dir)
     {
-        if ((direction > 0) && (Mathf.RoundToInt(feet.position.z) - marginOFDisplacement <= feet.position.z))
+        if (dir > 0)
         {
-            feet.position = new Vector3(feet.position.x, feet.position.y, Mathf.RoundToInt(feet.position.z));
-            //Debug.Log((Mathf.RoundToInt(feet.position.z) - marginOFDisplacement));
-            return true;
+            int nextLaneNum = Mathf.RoundToInt((feet.position.z - downCornerPos) / distanceBetweenLanes);
+            float nextLanePos = (nextLaneNum * distanceBetweenLanes) + downCornerPos;
+
+            if (feet.position.z >= nextLanePos - marginOFDisplacement)
+            {
+                feet.position = new Vector3(feet.position.x, feet.position.y, nextLanePos);
+                //Debug.Log("Player: " + feet.position.z + "\n positionForshooting: " + nextLanePos);
+                return true;
+            }
+            else
+                return false;
         }
-        else if ((direction < 0) && (Mathf.FloorToInt(feet.position.z) + marginOFDisplacement >= feet.position.z))
+        else if (dir < 0)
         {
-            //Debug.Log((Mathf.FloorToInt(feet.position.z) + marginOFDisplacement));
-            feet.position = new Vector3(feet.position.x, feet.position.y, Mathf.FloorToInt(feet.position.z));
-            return true;
+            int nextLaneNum = Mathf.FloorToInt((feet.position.z - downCornerPos) / distanceBetweenLanes);
+            float nextLanePos = (nextLaneNum * distanceBetweenLanes) + downCornerPos;
+
+            if (feet.position.z <= nextLanePos + marginOFDisplacement)
+            {
+                //Debug.Log("Player: " + feet.position.z + "\n positionForshooting: " + nextLanePos);
+                feet.position = new Vector3(feet.position.x, feet.position.y, nextLanePos);
+                return true;
+            }
+            else
+                return false;
         }
         else
             return false;
@@ -288,6 +306,8 @@ public class EnemyTurretScript : MonoBehaviour {
         //projectileFolder = manager.ProjectilesFolder;
         lane = manager.obtainLane(transform.parent);
         numberOfLanes = manager.numberOfLanes - 1;
+        downCornerPos = manager.LeftDownCorner.position.z;
+        distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
         if (maxLane > numberOfLanes)
             maxLane = numberOfLanes;
     }

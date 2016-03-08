@@ -11,7 +11,7 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
 
-    private Vector3 orderOfTrans;
+    private int[] orderOfTrans;
     private Camera tempCam;
     private Camera tempObCam;
 
@@ -54,9 +54,10 @@ public class levelManager : MonoBehaviour {
         currentTransCount = 0;
     }
 
-    public void changeOrderOfTrans(Vector3 nO)
+    public void changeOrderOfTrans(int[] nO)
     {
         orderOfTrans = nO;
+        Debug.Log(orderOfTrans[0] + ", " + orderOfTrans[1] + ", " + orderOfTrans[2] + ", " + orderOfTrans[3] + ", " + orderOfTrans[4]);
     }
 
     public void moveCamera()
@@ -64,60 +65,77 @@ public class levelManager : MonoBehaviour {
         Time.timeScale = 1f;
         if (CoolTransition)
         {
+            //Debug.Log("Current Count: " + currentTransCount);
             float step = Time.deltaTime * speedOfTransition;
             Vector3 temp = cameras[currentManagerCount].position;
 
-            if (orderOfTrans.x == orderOfTrans.y && orderOfTrans.x == orderOfTrans.z)
+            //if (orderOfTrans[0] == orderOfTrans[1] && orderOfTrans[1] == orderOfTrans[2])
+            //{
+            //    temp = cameras[objectiveManagerNumber].position;
+            //}
+            //else
+            //{
+            //Check what transition is done
+            if (orderOfTrans[0] == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
             {
-                temp = cameras[objectiveManagerNumber].position;
+                currentTransCount++;
+                Debug.Log("Xdone");
             }
-            else
+            if (orderOfTrans[1] == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
             {
-                if (orderOfTrans.x== currentTransCount)
-                {
-                    temp = new Vector3(cameras[objectiveManagerNumber].position.x, temp.y, temp.z);
-                }
-
-                if (orderOfTrans.y == currentTransCount)
-                {
-                    temp = new Vector3(temp.x, cameras[objectiveManagerNumber].position.y, temp.z);
-                }
-
-                if (orderOfTrans.z == currentTransCount)
-                {
-                    temp = new Vector3(temp.x, temp.y, cameras[objectiveManagerNumber].position.z);
-                }
-
-                //Check what transition is done
-                if (orderOfTrans.x == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
-                {
-                    currentTransCount++;
-                    Debug.Log("Xdone");
-                }
-
-                if (orderOfTrans.y == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
-                {
-                    currentTransCount++;
-                    Debug.Log("Ydone");
-                }
-
-                if (orderOfTrans.z == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
-                {
-                    currentTransCount++;
-                    Debug.Log("Zdone");
-                }
+                currentTransCount++;
+                Debug.Log("Ydone");
             }
+            if (orderOfTrans[2] == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
+            {
+                currentTransCount++;
+                Debug.Log("Zdone");
+            }
+            if (orderOfTrans[3] == currentTransCount && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
+            {
+                currentTransCount++;
+                Debug.Log("Rdone");
+            }
+            if (orderOfTrans[4] == currentTransCount && tempCam.fieldOfView == tempObCam.fieldOfView)
+            {
+                currentTransCount++;
+                Debug.Log("Fdone");
+            }
+
+            //Check what to transition right now
+            if (orderOfTrans[0] == currentTransCount)
+            {
+                temp = new Vector3(cameras[objectiveManagerNumber].position.x, temp.y, temp.z);
+            }
+            if (orderOfTrans[1] == currentTransCount)
+            {
+                temp = new Vector3(temp.x, cameras[objectiveManagerNumber].position.y, temp.z);
+            }
+            if (orderOfTrans[2] == currentTransCount)
+            {
+                temp = new Vector3(temp.x, temp.y, cameras[objectiveManagerNumber].position.z);
+            }
+            if (orderOfTrans[3] == currentTransCount)
+            {
+                cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step * 2);
+            }
+            if (orderOfTrans[4] == currentTransCount)
+            {
+                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition);
+            }
+            //}
 
             cameras[currentManagerCount].position = Vector3.MoveTowards(cameras[currentManagerCount].position, temp, step);
-            cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step);
+            //cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step * 2);
             
-            if (tempCam.fieldOfView != tempObCam.fieldOfView)
-                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition * 2);
+            //if (tempCam.fieldOfView != tempObCam.fieldOfView)
+            //    tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition * 2);
         }
         else
         {
             cameras[currentManagerCount].position = cameras[objectiveManagerNumber].position;
             cameras[currentManagerCount].rotation = cameras[objectiveManagerNumber].rotation;
+            tempCam.fieldOfView = tempObCam.fieldOfView;
         }
 
         if (cameras[currentManagerCount].position == cameras[objectiveManagerNumber].position && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation && tempCam.fieldOfView == tempObCam.fieldOfView)
@@ -131,7 +149,7 @@ public class levelManager : MonoBehaviour {
     private float floatDamp(float current, float objective, float speed)
     {
         float result = current + speed * Time.deltaTime;
-        Debug.Log(result);
+        //Debug.Log(result);
 
         if (result <= objective)
             return result;

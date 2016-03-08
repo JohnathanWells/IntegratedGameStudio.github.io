@@ -29,7 +29,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 494752}
   - 33: {fileID: 3351154}
-  - 65: {fileID: 6550490}
   - 114: {fileID: 11442588}
   m_Layer: 0
   m_Name: Muzzle
@@ -59,7 +58,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112284}
-  m_LocalRotation: {x: -1.1520229e-07, y: -.707106948, z: -.70710659, w: 1.15202347e-07}
+  m_LocalRotation: {x: -0.00000011520229, y: -0.70710695, z: -0.7071066, w: 0.00000011520235}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -73,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1899996, y: 3.41000009, z: -7}
+  m_LocalPosition: {x: -12.421881, y: -0.5270095, z: -3.740466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409484}
@@ -85,9 +84,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159204}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -1.62920685e-07}
-  m_LocalPosition: {x: 1.26999998, y: .00999999978, z: 1.19000006}
-  m_LocalScale: {x: .312500626, y: .134999946, z: .0775155723}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
+  m_LocalPosition: {x: 1.27, y: 0.01, z: 1.19}
+  m_LocalScale: {x: 0.31250063, y: 0.13499995, z: 0.07751557}
   m_Children: []
   m_Father: {fileID: 409484}
   m_RootOrder: 0
@@ -109,8 +108,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -138,7 +139,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -154,20 +155,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.83869493}
-  m_Center: {x: 7.26104452e-13, y: 2.16499575e-06, z: .83869642}
---- !u!65 &6550490
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159204}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.8386949}
+  m_Center: {x: 7.2610445e-13, y: 0.0000021649957, z: 0.8386964}
 --- !u!114 &11442588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c46e83c30be9964e84cde25679e9681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetShooting: {x: .200000003, y: 0, z: 0}
-  flashOffset: {x: .200000003, y: 0, z: 0}
+  offsetShooting: {x: 0.2, y: 0, z: 0}
+  flashOffset: {x: 0.2, y: 0, z: 0}
   possibleAmmo:
   - {fileID: 417626, guid: fe856e848369da848a225529f609eb0a, type: 2}
   mainBody: {fileID: 409484}
@@ -199,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1.75
-  burstCooling: .699999988
+  burstCooling: 0.7
   projectilesByBurst: 3
   randomBullets: 0
   shootBurstInSingleLine: 0
@@ -211,7 +200,7 @@ MonoBehaviour:
   moveUpAndDown: 0
   speed: 1
   direction: 0
-  marginOFDisplacement: .00999999978
+  marginOFDisplacement: 0.01
   minLane: 0
   maxLane: 4
   enemyFont:
