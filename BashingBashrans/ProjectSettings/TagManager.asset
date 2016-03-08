@@ -14,7 +14,8 @@ TagManager:
   - Turret
   - Wall
   - High Game Manager
-  - Door
+  - ClosedDoor
+  - OpenDoor
   layers:
   - Default
   - TransparentFX

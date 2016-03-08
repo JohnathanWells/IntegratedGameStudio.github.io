@@ -137,9 +137,9 @@ public class PlayerMovement : MonoBehaviour {
         //obtainLimits();
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
-        Debug.Log(lane);
+        Debug.Log("Lane" + lane);
         distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
-        Debug.Log(distanceBetweenLanes);
+        Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
 
     //void obtainLimits()

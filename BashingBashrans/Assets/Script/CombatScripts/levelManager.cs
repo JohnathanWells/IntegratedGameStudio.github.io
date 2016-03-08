@@ -112,7 +112,7 @@ public class levelManager : MonoBehaviour {
             cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step);
             
             if (tempCam.fieldOfView != tempObCam.fieldOfView)
-                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition);
+                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition * 2);
         }
         else
         {
@@ -120,7 +120,7 @@ public class levelManager : MonoBehaviour {
             cameras[currentManagerCount].rotation = cameras[objectiveManagerNumber].rotation;
         }
 
-        if (cameras[currentManagerCount].position == cameras[objectiveManagerNumber].position && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
+        if (cameras[currentManagerCount].position == cameras[objectiveManagerNumber].position && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation && tempCam.fieldOfView == tempObCam.fieldOfView)
         {
             changeManager(currentManagerCount, objectiveManagerNumber);
             currentManagerCount = objectiveManagerNumber;
@@ -131,6 +131,7 @@ public class levelManager : MonoBehaviour {
     private float floatDamp(float current, float objective, float speed)
     {
         float result = current + speed * Time.deltaTime;
+        Debug.Log(result);
 
         if (result <= objective)
             return result;

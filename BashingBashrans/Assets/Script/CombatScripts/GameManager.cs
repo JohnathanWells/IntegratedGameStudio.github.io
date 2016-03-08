@@ -371,14 +371,14 @@ public class GameManager : MonoBehaviour {
 
     public void closeEntry()
     {
-        entryDoor.gameObject.SetActive(true);
+        entryDoor.gameObject.tag = "ClosedDoor";
     }
 
     public void openExit()
     {
         DoorAnimator.SetBool("Open", true);
 
-        exitDoor.gameObject.SetActive(false);
+        exitDoor.gameObject.tag = "OpenDoor";
     }
 
     public void hideProjectiles(bool value)

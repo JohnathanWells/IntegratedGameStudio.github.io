@@ -29,7 +29,7 @@ public class SensorScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-        if (c.CompareTag("Floor"))
+        if (c.tag == "Floor" || c.tag == "OpenDoor")
         {
             sendDetection(true);
         }
@@ -41,7 +41,7 @@ public class SensorScript : MonoBehaviour {
 
     void OnTriggerExit(Collider c)
     {
-        if (c.CompareTag("Floor"))
+        if (c.tag == "Floor" || c.tag == "OpenDoor")
             sendDetection(false);
     }
 
@@ -52,7 +52,7 @@ public class SensorScript : MonoBehaviour {
 
     void fixPositionOfSensor(int direction)
     {
-        transform.position = new Vector3(feet.position.x, feet.position.y, manager.distanceBetweenLanes * direction + feet.position.z);
+        transform.position = new Vector3(feet.position.x, feet.position.y, feet.position.z + manager.distanceBetweenLanes * direction);
     }
 
     void obtainDirectionWithPlayer()

@@ -44,6 +44,7 @@ public class CombatScript : MonoBehaviour {
     public bool isp = false;
 
     public PlayerMovement pm;
+    public Transform feet;
 
 	void Start () {
         setManager();
@@ -192,7 +193,7 @@ public class CombatScript : MonoBehaviour {
 
     private void rotateInDirection(int dir)
     {
-        transform.Rotate(new Vector3(0, dir * 90, 0));
+        feet.Rotate(new Vector3(0, dir * 90, 0));
     }
 
     public void setManager()
