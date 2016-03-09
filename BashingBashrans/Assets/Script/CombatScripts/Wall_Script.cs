@@ -20,7 +20,10 @@ public class Wall_Script : MonoBehaviour {
         if (w.CompareTag("Projectile"))
         {
             ProjectileScript pr = w.GetComponent<ProjectileScript>();
-            pr.bouncy();
+            if (pr.movement == typeMovement.Bouncy)
+                pr.bouncy();
+            else
+                pr.SendMessage("projectileCrash");
         }
     }
 }

@@ -67,6 +67,7 @@ public class Boss01 : MonoBehaviour {
     private int countOfStep = 0;
     private int currentAttack;
     private bool dead = false;
+    private bool inTrans = true;
 
     private GameManager manager;
 
@@ -81,7 +82,7 @@ public class Boss01 : MonoBehaviour {
 
     void Update()
     {
-        if (!dead)
+        if (inTrans && !dead)
         {
             if (!cooled)
             {
@@ -125,6 +126,7 @@ public class Boss01 : MonoBehaviour {
         {
             ProjectileScript proj = c.GetComponent<ProjectileScript>();
 
+            Destroy(c.gameObject);
             if (proj.getBeingReturned())
             {
                 ReceiveDamage(proj.Damage);
@@ -293,5 +295,10 @@ public class Boss01 : MonoBehaviour {
             Debug.Log("Enemy defeated");
             //DestroyTurret();
         }
+    }
+
+    public void inTransition(bool value)
+    {
+        inTrans = value;
     }
 }

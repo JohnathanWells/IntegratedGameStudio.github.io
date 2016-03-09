@@ -6,12 +6,13 @@ public class levelManager : MonoBehaviour {
     public GameObject[] levelParents;
     public Transform[] cameras;
     public GameManager[] managers;
-    public float speedOfTransition = 1f;
+    //public float speedOfTransition = 1f;
     public bool UISwitch = false;
     public Transform Player;
     public bool CoolTransition = true;
 
     private int[] orderOfTrans;
+    private float[] speedsOfTrans;
     private Camera tempCam;
     private Camera tempObCam;
 
@@ -19,6 +20,8 @@ public class levelManager : MonoBehaviour {
     private bool inTransition = false;
     private int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
+
+    private float time = 0;
 
 	void Start () {
         Time.timeScale = 1f;
@@ -36,6 +39,8 @@ public class levelManager : MonoBehaviour {
 	}
 	
 	void Update () {
+        time += Time.deltaTime;
+
         if (objectiveManagerNumber != currentManagerCount)
         {
             inTransition = true;
@@ -44,6 +49,13 @@ public class levelManager : MonoBehaviour {
         else
             inTransition = false;
 	}
+
+    void OnGUI()
+    {
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        GUI.Box(new Rect(new Vector2(0, Screen.height - 50), new Vector2(100, 10)), minutes + " : " + seconds);
+    }
 
     public void changePoint(int newObjective)
     {
@@ -54,9 +66,11 @@ public class levelManager : MonoBehaviour {
         currentTransCount = 0;
     }
 
-    public void changeOrderOfTrans(int[] nO)
+    public void changeOrderOfTrans(int[] nO, float[] nS, bool nT)
     {
         orderOfTrans = nO;
+        speedsOfTrans = nS;
+        CoolTransition = nT;
         Debug.Log(orderOfTrans[0] + ", " + orderOfTrans[1] + ", " + orderOfTrans[2] + ", " + orderOfTrans[3] + ", " + orderOfTrans[4]);
     }
 
@@ -65,8 +79,10 @@ public class levelManager : MonoBehaviour {
         Time.timeScale = 1f;
         if (CoolTransition)
         {
-            //Debug.Log("Current Count: " + currentTransCount);
-            float step = Time.deltaTime * speedOfTransition;
+            //0 is position transition speed, 1 is rotation transition speed and 2 is field of view transition speed
+            float step = Time.deltaTime * speedsOfTrans[0];
+            float stepR = Time.deltaTime * speedsOfTrans[1];
+            float stepF = Time.deltaTime * speedsOfTrans[2];
             Vector3 temp = cameras[currentManagerCount].position;
 
             //if (orderOfTrans[0] == orderOfTrans[1] && orderOfTrans[1] == orderOfTrans[2])
@@ -117,11 +133,11 @@ public class levelManager : MonoBehaviour {
             }
             if (orderOfTrans[3] == currentTransCount)
             {
-                cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, step * 2);
+                cameras[currentManagerCount].rotation = Quaternion.RotateTowards(cameras[currentManagerCount].rotation, cameras[objectiveManagerNumber].rotation, speedsOfTrans[1]);
             }
             if (orderOfTrans[4] == currentTransCount)
             {
-                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedOfTransition);
+                tempCam.fieldOfView = floatDamp(tempCam.fieldOfView, tempObCam.fieldOfView, speedsOfTrans[2]);
             }
             //}
 

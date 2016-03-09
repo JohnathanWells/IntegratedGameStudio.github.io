@@ -18,7 +18,7 @@ public class SensorScript : MonoBehaviour {
         obtainDirectionWithPlayer();
         if (verticalSensor && fixPosition)
         {
-            fixPositionOfSensor(Mathf.RoundToInt(directionWithPlayer.y));
+            fixPositionOfSensor();
         }
     }
 
@@ -50,9 +50,10 @@ public class SensorScript : MonoBehaviour {
         movementScript.receiveDetection(directionWithPlayer, detected);
     }
 
-    void fixPositionOfSensor(int direction)
+    void fixPositionOfSensor()
     {
-        transform.position = new Vector3(feet.position.x, feet.position.y, feet.position.z + manager.distanceBetweenLanes * direction);
+        int direction = Mathf.RoundToInt(directionWithPlayer.y);
+        transform.position = new Vector3(feet.position.x, feet.position.y, feet.position.z + manager.obtainDistanceBetweenLanes() * direction);
     }
 
     void obtainDirectionWithPlayer()
@@ -76,5 +77,11 @@ public class SensorScript : MonoBehaviour {
     public void setManager()
     {
         manager = movementScript.manager;
+        
+        if (verticalSensor && fixPosition)
+        {
+            obtainDirectionWithPlayer();
+            fixPositionOfSensor();
+        }
     }
 }

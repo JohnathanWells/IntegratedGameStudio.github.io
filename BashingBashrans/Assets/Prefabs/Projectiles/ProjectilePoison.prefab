@@ -151,6 +151,7 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 1
   maxSick: 5
+  amplitude: 0
   bnceAng: 90
 --- !u!135 &13578206
 SphereCollider:

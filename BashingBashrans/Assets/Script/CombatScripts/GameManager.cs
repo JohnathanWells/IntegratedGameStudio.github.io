@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     [Header("Game Over, Conditions and Enemy Respawn Management")]
     public bool gameOver = false;
     public bool paused = false;
+    public bool emptyRoom = false;
     public AudioClip gameOverSound;
     public string nextLevelName;
     private bool stageCleared = false;
@@ -319,11 +320,7 @@ public class GameManager : MonoBehaviour {
 
         Debug.Log(enemiesDestroyed + "/" + enemiesAtBeginning);
 
-        if (enemiesDestroyed == enemiesAtBeginning)
-        {
-            stageIsCleared();
-            openExit();
-        }
+        checkIfCleared();
     }
 
     void nextBattle()
@@ -345,9 +342,10 @@ public class GameManager : MonoBehaviour {
         PlayerFont.fontSize = PlayerFont.fontSize * Screen.width / 551;
         distanceBetweenLanes = obtainDistanceBetweenLanes();
         playerScript = player.GetComponentInChildren<CombatScript>();
-        //Debug.Log("MinPos " + minPos + "\nMaxPos " + maxPos);
-        //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
-      //  DoorAnimator = FindGameObjectWithTag "Door";
+        //DoorAnimator = exitDoor.GetComponent<Animator>();
+
+        if (emptyRoom)
+            checkIfCleared();
     }
 
     public void switchUI(bool value)
@@ -384,5 +382,14 @@ public class GameManager : MonoBehaviour {
     public void hideProjectiles(bool value)
     {
         ProjectilesFolder.gameObject.SetActive(value);
+    }
+
+    void checkIfCleared()
+    {
+        if (enemiesDestroyed == enemiesAtBeginning)
+        {
+            stageIsCleared();
+            openExit();
+        }
     }
 }

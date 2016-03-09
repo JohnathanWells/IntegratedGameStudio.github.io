@@ -120,12 +120,12 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, int [] newOrder)
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, int [] newOrder, float [] newSpeeds, bool smoothTrans)
     {
         inTransition = true;
         currentRoom = newRoom;
         combatScript.transitionHappening(true);
-        highManager.SendMessage("changeOrderOfTrans", newOrder);
+        highManager.changeOrderOfTrans(newOrder, newSpeeds, smoothTrans);
 
         pointTowards = posTo;
         angleTowards = angTo;
@@ -141,12 +141,6 @@ public class PlayerMovement : MonoBehaviour {
         distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
         Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
-
-    //void obtainLimits()
-    //{
-    //    minPos = manager.minPos;
-    //    maxPos = manager.maxPos;
-    //}
 
     public void receiveDetection(Vector2 direction, bool value)
     {

@@ -55,7 +55,11 @@ public class ProjectileScript : MonoBehaviour
     public float maxSick;
 
     [Header("Curvy")]
+    public float amplitude;
     Vector2 crv;
+    private float maxZ;
+    private float minZ;
+    private float axis;
 
     [Header("Bouncy")]
     public float bnceAng = 90.0f;
@@ -75,6 +79,13 @@ public class ProjectileScript : MonoBehaviour
         originalSpeed = speed;
         originalMaterial = renderer.material;
 
+        if (movement == typeMovement.Curvy)
+        {
+            axis = transform.position.z;
+            maxZ = transform.position.z + amplitude;
+            minZ = transform.position.z - amplitude;
+        }
+
         if (direction == movementDirection.left)
             directionOfProjectile = -1;
         else
@@ -83,6 +94,8 @@ public class ProjectileScript : MonoBehaviour
 	
 	void Update () 
     {
+        distanceTraveled += Time.deltaTime * speed;
+
         if (condition == conditionForDestruction.timed)
         {
             lifeTime += Time.deltaTime;
@@ -92,8 +105,6 @@ public class ProjectileScript : MonoBehaviour
         }
         else
         {
-            distanceTraveled += Time.deltaTime * speed;
-
             if (distanceTraveled >= distanceForDestruction)
                 Destroy(gameObject);
         }
@@ -108,19 +119,9 @@ public class ProjectileScript : MonoBehaviour
 
         if (movement == typeMovement.Curvy)
         {
-            int choice = Random.Range(0, 1);
-            if (choice == 1)
-            {
-                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
-                crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
-                Debug.Log("Moved in this direction.");
-            }
-            else
-            {
-                transform.Translate(new Vector2(directionOfProjectile * speed * Time.deltaTime, 0));
-                crv = new Vector2(directionOfProjectile * speed * Time.deltaTime, 0);
-            }
-            curvy(crv);
+            float xMovement = directionOfProjectile * speed * Time.deltaTime;
+            float zMovement = Mathf.Cos(distanceTraveled) * speed * Time.deltaTime;
+            translation = new Vector3(xMovement, zMovement, 0);
             transform.Translate(translation);
         }
 
@@ -128,7 +129,6 @@ public class ProjectileScript : MonoBehaviour
         {
             transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime));
             bnc = new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime);
-            print(bnc.y);
             transform.Translate(translation);
         }
 
@@ -186,18 +186,18 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void curvy(Vector2 crv)
-    {
-        Debug.Log("Function is called");
-           if (crv.x >= 5)
-           {
-               transform.Rotate(crv.x * crv.x, 0, 0);
-           }
-           if (crv.x <= -5)
-           {
-               transform.Rotate(crv.x * crv.x, 0, 0);
-           }
-    }
+    //public void curvy(Vector2 crv)
+    //{
+    //    Debug.Log("Function is called");
+    //       if (crv.x >= 5)
+    //       {
+    //           transform.Rotate(crv.x * crv.x, 0, 0);
+    //       }
+    //       if (crv.x <= -5)
+    //       {
+    //           transform.Rotate(crv.x * crv.x, 0, 0);
+    //       }
+    //}
 
     public void bouncy()
     {
