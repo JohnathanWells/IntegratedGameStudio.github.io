@@ -68,6 +68,10 @@ public class Boss01 : MonoBehaviour {
     private int currentAttack;
     private bool dead = false;
     private bool inTrans = true;
+    private int phase = 1;
+
+    [Header("Animation")]
+    public Animator animator;
 
     private GameManager manager;
 
@@ -76,13 +80,17 @@ public class Boss01 : MonoBehaviour {
         currentHealth = Health;
         setListOfAttacks(attacks, PatternsTexts);
 
+        //animator = GetComponent<Animator>();
+
         if (testingAttacks)
+        {
             currentAttack = attackToTest;
+        }
 	}
 
     void Update()
     {
-        if (inTrans && !dead)
+        if (!inTrans && !dead)
         {
             if (!cooled)
             {
@@ -126,11 +134,12 @@ public class Boss01 : MonoBehaviour {
         {
             ProjectileScript proj = c.GetComponent<ProjectileScript>();
 
-            Destroy(c.gameObject);
             if (proj.getBeingReturned())
             {
                 ReceiveDamage(proj.Damage);
             }
+
+            proj.projectileCrash(0);
         }
     }
 
@@ -138,7 +147,7 @@ public class Boss01 : MonoBehaviour {
     {
         int nextAttack;
 
-        if (currentHealth > Phase2StartsAt)
+        if (phase == 1)
         {
             nextAttack = phase1Attacks[Random.Range(0, phase1Attacks.Length)];
         }
@@ -196,7 +205,7 @@ public class Boss01 : MonoBehaviour {
                 count++;
         }
 
-        Debug.Log("Num of Steps: " + count);
+        //Debug.Log("Num of Steps: " + count);
 
         return count;
     }
@@ -213,10 +222,7 @@ public class Boss01 : MonoBehaviour {
             result.steps[a] = new Step(stTxt[a].Length/2);
             result.steps[a].setStep(stTxt[a]);
             //Debug.Log("attack step" + a + "shoots " + result.steps[a].type.Length + " @same time");
-            //showArrayOfAttack(result);
         }
-
-        //showArrayOfAttack(result);
 
         return result;
     }
@@ -265,33 +271,44 @@ public class Boss01 : MonoBehaviour {
         for (int a = 0; a < lenght; a++)
         {
             list[a] = setAttack(texts[a]);
+            //showArrayOfAttack(a);
         }
-
-        //showArrayOfAttack(list[attackToTest]);
     }
 
-    void showArrayOfAttack(Attack attack)
+    void showArrayOfAttack(int numberOfAttack)
     {
-        for (int a = 0; a < attack.steps.Length; a++)
-        {
-            Debug.Log("Step: " + a + ", Muzzle: " + attack.steps[a].muzzleNumber + ", Proj: " + attack.steps[a].type);
-        }
+        Attack attack = attacks[numberOfAttack];
+        Debug.Log("Number: " + numberOfAttack + "\nNumber of Steps: " + attack.steps.Length + "\nCooldown Between Steps: " + cooldownsBetweenSteps[numberOfAttack]);
     }
 
     public void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        inTrans = false;
+        animator.SetInteger("Phase", 1);
     }
 
     public void ReceiveDamage(int damage)
     {
         //SFX.PlaySound(damageSound);
         currentHealth -= damage;
+        
+        if (currentHealth <= Phase2StartsAt)
+        {
+            phase = 2;
+        }
+        else
+        {
+            phase = 1;
+        }
+
+        animator.SetInteger("Phase", phase);
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             dead = true;
+            animator.SetBool("Dead", true);
             Debug.Log("Enemy defeated");
             //DestroyTurret();
         }

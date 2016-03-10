@@ -23,7 +23,7 @@ public class Wall_Script : MonoBehaviour {
             if (pr.movement == typeMovement.Bouncy)
                 pr.bouncy();
             else
-                pr.SendMessage("projectileCrash");
+                pr.SendMessage("projectileCrash", 2);
         }
     }
 }

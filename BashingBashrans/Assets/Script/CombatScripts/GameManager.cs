@@ -30,9 +30,6 @@ public class GameManager : MonoBehaviour {
 
     [Header("UI")]
     public Camera cameraLinked;
-    public GUIStyle PlayerFont;
-    private Vector2 PlayerHealthTextSize;
-    public bool UIActivated = true;
 
     [Header("Events")]
     public bool BouldersActivated = false;
@@ -93,8 +90,8 @@ public class GameManager : MonoBehaviour {
         //    }
         //}
 
-        if (UIActivated)
-            GUI.Box(new Rect(new Vector2(2,2), PlayerHealthTextSize), "HP: " + playerScript.getHealth(), PlayerFont);
+        //if (UIActivated)
+        //    GUI.Box(new Rect(new Vector2(2,2), PlayerHealthTextSize), "HP: " + playerScript.getHealth(), PlayerFont);
     }
 
     public void transitionFunction(bool isHappening, int newRoomNumber)
@@ -336,24 +333,16 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1f;
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         player = highManager.Player;
-        PlayerHealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
+        //PlayerHealthTextSize = new Vector2((Screen.width * 400) / 551, (Screen.height * 100) / 310);
         //enemiesInQueue = new int[numberOfLanes];
         //lanesOccupied = new bool[numberOfLanes];
-        PlayerFont.fontSize = PlayerFont.fontSize * Screen.width / 551;
+        //PlayerFont.fontSize = PlayerFont.fontSize * Screen.width / 551;
         distanceBetweenLanes = obtainDistanceBetweenLanes();
         playerScript = player.GetComponentInChildren<CombatScript>();
         //DoorAnimator = exitDoor.GetComponent<Animator>();
 
         if (emptyRoom)
             checkIfCleared();
-    }
-
-    public void switchUI(bool value)
-    {
-        if (UIActivated)
-            UIActivated = value;
-        else
-            UIActivated = value;
     }
 
     private void stageIsCleared()

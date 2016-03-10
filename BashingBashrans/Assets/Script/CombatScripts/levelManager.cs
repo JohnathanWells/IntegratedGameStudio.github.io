@@ -15,13 +15,20 @@ public class levelManager : MonoBehaviour {
     private float[] speedsOfTrans;
     private Camera tempCam;
     private Camera tempObCam;
+    private CombatScript playerScript;
 
     private int currentTransCount = 0;
     private bool inTransition = false;
     private int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
 
+    [Header("UI", order=1)]
+    public Rect timePosition;
+    public GUIStyle timeFont;
     private float time = 0;
+    [Space(10)]
+    public Rect healthPosition;
+    public GUIStyle healthFont;
 
 	void Start () {
         Time.timeScale = 1f;
@@ -35,6 +42,12 @@ public class levelManager : MonoBehaviour {
             //managers[a] = cameras[a].GetComponentInChildren<GameManager>();
         }
 
+        playerScript = Player.GetComponentInChildren<CombatScript>();
+
+        timePosition = new Rect(new Vector2(timePosition.position.x * Screen.width / 370, timePosition.position.y * Screen.height / 208), new Vector2(timePosition.size.x * Screen.width / 370, timePosition.size.y * Screen.height / 208));
+        healthPosition = new Rect(new Vector2(healthPosition.position.x * Screen.width / 370, healthPosition.position.y * Screen.height / 208), new Vector2(healthPosition.size.x * Screen.width / 370, healthPosition.size.y * Screen.height / 208));
+        healthFont.fontSize = healthFont.fontSize * Screen.width / 370;
+        timeFont.fontSize = timeFont.fontSize * Screen.width / 370;
         //levelParents[0].SetActive(true);
 	}
 	
@@ -54,7 +67,10 @@ public class levelManager : MonoBehaviour {
     {
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
-        GUI.Box(new Rect(new Vector2(0, Screen.height - 50), new Vector2(100, 10)), minutes + " : " + seconds);
+        int miliSeconds = Mathf.FloorToInt((time - Mathf.FloorToInt(time)) * 10);
+
+        GUI.Box(timePosition, minutes + " : " + seconds + " : " + miliSeconds, timeFont);
+        GUI.Box(healthPosition, "HP: " + playerScript.getHealth(), healthFont);
     }
 
     public void changePoint(int newObjective)
