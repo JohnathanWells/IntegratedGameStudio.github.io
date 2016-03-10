@@ -197,7 +197,9 @@ public class EnemyTurretScript : MonoBehaviour {
     {
         SFX.PlaySound(damageSound);
         currentHealth -= damage;
-        
+
+        Debug.Log("Received " + damage);
+
         if(currentHealth <= 0)
         {
             currentHealth = 0;
@@ -268,13 +270,15 @@ public class EnemyTurretScript : MonoBehaviour {
                 else
                 {
                     ReceiveDamage(properties.Damage);
-                    properties.projectileCrash();
+                    properties.projectileCrash(0);
+                    Destroy(c.gameObject);
                 }
             }
             else
             {
                 ReceiveDamage(properties.Damage);
-                properties.projectileCrash();
+                properties.projectileCrash(0);
+                Destroy(c.gameObject);
             }
         }
     }

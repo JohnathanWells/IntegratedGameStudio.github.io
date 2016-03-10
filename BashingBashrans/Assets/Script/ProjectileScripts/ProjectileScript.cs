@@ -17,8 +17,6 @@ public class ProjectileScript : MonoBehaviour
     public movementDirection direction;
     public bool canBePunched = true;
     public bool blockedByStanding = false;
-    public float frequencyOfCurve;
-    public float angleOfBounciness;
     public float angleOfDesviation = 180;
     public float speed = 2;
     public float desviationSpeed = 4;
@@ -43,6 +41,8 @@ public class ProjectileScript : MonoBehaviour
 
     [Header("Particles and Sounds")]
     public ParticleSystem projectileCollision;
+    public ParticleSystem playerHit;
+    public ParticleSystem enemyHit;
     public ParticleSystem muzzleParticles;
     public AudioClip shootingSound;
     public AudioClip destructionSound;
@@ -121,14 +121,14 @@ public class ProjectileScript : MonoBehaviour
         {
             float xMovement = directionOfProjectile * speed * Time.deltaTime;
             float zMovement = Mathf.Cos(distanceTraveled) * speed * Time.deltaTime;
-            translation = new Vector3(xMovement, zMovement, 0);
+            translation = new Vector3(xMovement, 0, zMovement);
             transform.Translate(translation);
         }
 
         if (movement == typeMovement.Bouncy)
         {
-            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime));
-            bnc = new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime);
+            transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, 0));
+            //bnc = new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime);
             transform.Translate(translation);
         }
 
@@ -146,6 +146,7 @@ public class ProjectileScript : MonoBehaviour
 
     public void changeDirection(float angleOfReturn)
     {
+
         transform.Rotate(new Vector3(0, angleOfReturn, 0));
         beingReturned = true;
         canBePunched = false;
@@ -179,10 +180,30 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
-    public void projectileCrash()
+    public void projectileCrash(int type)
     {
-        manager.PM.spawnParticles(projectileCollision, transform.position, 1);
-        SFX.PlaySound(destructionSound);
+        switch (type)
+        {
+            case 0:
+                {
+                    manager.PM.spawnParticles(enemyHit, transform.position, 1);
+                    break;
+                }
+            case 1:
+                {
+                    manager.PM.spawnParticles(playerHit, transform.position, 1);
+                    break;
+                }
+            default:
+                {
+                    manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+                    break;
+                }
+        }
+        
+        if (type != 2)
+            SFX.PlaySound(destructionSound);
+        
         Destroy(gameObject);
     }
 
@@ -201,6 +222,14 @@ public class ProjectileScript : MonoBehaviour
 
     public void bouncy()
     {
+        float angle = bnceAng;
+        Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad * (angle + transform.rotation.x)), 0, Mathf.Cos(Mathf.Deg2Rad * (angle + transform.rotation.z))) * angle; 
+
+        Debug.DrawRay(transform.position, direction);
+
+        if (Physics.Raycast(transform.position, direction))
+            angle = -bnceAng;
+
         transform.Rotate(0, bnceAng, 0);
     }
   

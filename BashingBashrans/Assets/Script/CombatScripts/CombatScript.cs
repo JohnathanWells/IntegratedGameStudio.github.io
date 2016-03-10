@@ -45,6 +45,7 @@ public class CombatScript : MonoBehaviour {
 
     public PlayerMovement pm;
     public Transform feet;
+    public Transform sensors;
 
 	void Start () {
         setManager();
@@ -61,16 +62,20 @@ public class CombatScript : MonoBehaviour {
 
                 if (!Proj.getBeingReturned())
                 {
-                    if ((!weapon.getPunching() && Proj.blockedByStanding))
-                    {
-                        SFX.PlaySound(returnPassiveProjectileSound);
-                        Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
-                    }
-                    else
-                    {
-                        receiveDamage(Proj.Damage);
-                        Proj.projectileCrash();
-                    }
+                    receiveDamage(Proj.Damage);
+                    Proj.projectileCrash(1);
+
+                    //if ((!weapon.getPunching() && Proj.blockedByStanding))
+                    //{
+                    //    SFX.PlaySound(returnPassiveProjectileSound);
+                    //    Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
+                    //}
+                    //else
+                    //{
+                    //    receiveDamage(Proj.Damage);
+                    //    Proj.projectileCrash(1);
+                    //}
+                    
                     if (Proj.getEffectType() == "poison")
                     {
                         sick = Random.Range(Proj.minSick, Proj.maxSick);
@@ -78,12 +83,11 @@ public class CombatScript : MonoBehaviour {
                         sick = (int)sick;
                         isp = true;
                     }
+                    
                     if (Proj.getEffectType() == "freeze")
                     {
                         movementScript.froze();
                     }
-                    receiveDamage(Proj.Damage);
-                    Proj.projectileCrash();
                 }
             }
 
@@ -182,6 +186,8 @@ public class CombatScript : MonoBehaviour {
         currentHealth -= damage;
         SFX.PlaySound(receiveDamageSound);
 
+        Debug.Log("HP: " + damage);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -194,6 +200,7 @@ public class CombatScript : MonoBehaviour {
     private void rotateInDirection(int dir)
     {
         feet.Rotate(new Vector3(0, dir * 90, 0));
+        sensors.Rotate(new Vector3(0, -dir * 90, 0));
     }
 
     public void setManager()

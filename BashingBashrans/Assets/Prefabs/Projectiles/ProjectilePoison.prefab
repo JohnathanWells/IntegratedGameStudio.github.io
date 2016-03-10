@@ -12,7 +12,6 @@ GameObject:
   - 135: {fileID: 13578206}
   - 23: {fileID: 2320700}
   - 114: {fileID: 11445604}
-  - 108: {fileID: 10827816}
   - 54: {fileID: 5422724}
   m_Layer: 0
   m_Name: ProjectilePoison
@@ -81,39 +80,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!108 &10827816
-Light:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
-  m_Enabled: 0
-  serializedVersion: 6
-  m_Type: 2
-  m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
-  m_Intensity: 0.01
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_BounceIntensity: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11445604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,23 +93,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 3
   direction: 0
-  canBePunched: 1
+  canBePunched: 0
   blockedByStanding: 0
-  frequencyOfCurve: 0
-  angleOfBounciness: 0
   angleOfDesviation: 180
-  speed: 6
+  speed: 4
   desviationSpeed: 8
   desviationMaterial: {fileID: 2100000, guid: bb0fa0cf35f3d1b4a9107393125dbecb, type: 2}
   renderer: {fileID: 2320700}
-  effectOfProjectile: 2
+  effectOfProjectile: 0
   condition: 0
-  Damage: 30
+  Damage: 50
   Peffecttmemin: 1
   Peffecttmemax: 10
   halflife: 6.75
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
+  playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
+  enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
   muzzleParticles: {fileID: 19811200, guid: 1dbf1a743286e8943a32cce61134b50c, type: 2}
   shootingSound: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
   destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
@@ -152,7 +118,7 @@ MonoBehaviour:
   minSick: 1
   maxSick: 5
   amplitude: 0
-  bnceAng: 90
+  bnceAng: -135
 --- !u!135 &13578206
 SphereCollider:
   m_ObjectHideFlags: 1

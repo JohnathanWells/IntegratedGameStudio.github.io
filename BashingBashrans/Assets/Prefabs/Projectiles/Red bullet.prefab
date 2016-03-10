@@ -110,6 +110,8 @@ MonoBehaviour:
   halflife: 6.75
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
+  playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
+  enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
   muzzleParticles: {fileID: 19811200, guid: 18c4c9dedbd582c4286cc282e12928ab, type: 2}
   shootingSound: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
   destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
