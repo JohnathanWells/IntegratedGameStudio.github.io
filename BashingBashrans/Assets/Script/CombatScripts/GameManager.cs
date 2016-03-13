@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("UI")]
     public Camera cameraLinked;
+    public GameObject gameOverScreen;
 
     [Header("Events")]
     public bool BouldersActivated = false;
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
+        gameOverScreen.SetActive(true);
         SFX.PlaySound(gameOverSound);
         gameOver = true;
     }

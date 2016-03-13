@@ -26,6 +26,7 @@ public class CombatScript : MonoBehaviour {
     public Animation animation;
     public PlayerMovement movementScript;
     private GameManager manager;
+    private levelManager highManager;
     private SoundEffectManager SFX;
 
     [Header("Burns")]
@@ -48,6 +49,7 @@ public class CombatScript : MonoBehaviour {
     public Transform sensors;
 
 	void Start () {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
         currentHealth = initialHealth;
 	}
@@ -184,6 +186,7 @@ public class CombatScript : MonoBehaviour {
     void receiveDamage(int damage)
     {
         currentHealth -= damage;
+        highManager.SendMessage("accumulateDamage", damage);
         SFX.PlaySound(receiveDamageSound);
 
         Debug.Log("HP: " + damage);

@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-m_EditorVersion: 5.1.1f1
-=======
 m_EditorVersion: 5.3.3f1
->>>>>>> March-3-Branch
 m_StandardAssetsVersion: 0

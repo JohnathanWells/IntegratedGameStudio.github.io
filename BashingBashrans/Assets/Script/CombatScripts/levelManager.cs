@@ -21,6 +21,8 @@ public class levelManager : MonoBehaviour {
     private bool inTransition = false;
     private int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
+    bool floorCleared = false;
+    int acumulatedDamage = 0;
 
     [Header("UI", order=1)]
     public Rect timePosition;
@@ -29,6 +31,10 @@ public class levelManager : MonoBehaviour {
     [Space(10)]
     public Rect healthPosition;
     public GUIStyle healthFont;
+
+    [Header("Passwords")]
+    public int floorNumber = 0;
+    public string[] passwords;
 
 	void Start () {
         Time.timeScale = 1f;
@@ -48,19 +54,23 @@ public class levelManager : MonoBehaviour {
         healthPosition = new Rect(new Vector2(healthPosition.position.x * Screen.width / 370, healthPosition.position.y * Screen.height / 208), new Vector2(healthPosition.size.x * Screen.width / 370, healthPosition.size.y * Screen.height / 208));
         healthFont.fontSize = healthFont.fontSize * Screen.width / 370;
         timeFont.fontSize = timeFont.fontSize * Screen.width / 370;
+        obtainPasswords();
         //levelParents[0].SetActive(true);
 	}
 	
 	void Update () {
-        time += Time.deltaTime;
-
-        if (objectiveManagerNumber != currentManagerCount)
+        if (!floorCleared)
         {
-            inTransition = true;
-            moveCamera();
+            time += Time.deltaTime;
+
+            if (objectiveManagerNumber != currentManagerCount)
+            {
+                inTransition = true;
+                moveCamera();
+            }
+            else
+                inTransition = false;
         }
-        else
-            inTransition = false;
 	}
 
     void OnGUI()
@@ -208,5 +218,44 @@ public class levelManager : MonoBehaviour {
     public bool getStatusOfTransition()
     {
         return inTransition;
+    }
+
+    public string getPassword(int numberOfPassword)
+    {
+        return passwords[numberOfPassword];
+    }
+
+    private void obtainPasswords()
+    {
+        SaveLoad.Load();
+        passwords = SaveLoad.savedGame.getAllPasswordsFromAFloor(floorNumber);
+
+        for (int a = 0; a < passwords.Length; a++)
+            Debug.Log("Password " + a + ": " + passwords[a]);
+    }
+
+    public float getTime()
+    {
+        return time;
+    }
+
+    public int getPlayerHealth()
+    {
+        return playerScript.getHealth();
+    }
+
+    public void floorIsCleared()
+    {
+        floorCleared = true;
+    }
+
+    public void accumulateDamage(int damage)
+    {
+        acumulatedDamage += damage;
+    }
+
+    public int getAccumulatedDamage()
+    {
+        return acumulatedDamage;
     }
 }

@@ -198,7 +198,7 @@ public class EnemyTurretScript : MonoBehaviour {
         SFX.PlaySound(damageSound);
         currentHealth -= damage;
 
-        Debug.Log("Received " + damage);
+        //Debug.Log("Received " + damage);
 
         if(currentHealth <= 0)
         {
