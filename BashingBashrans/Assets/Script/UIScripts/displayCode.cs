@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public enum typeOfDisplay {worldScreen, GUIText};
 
@@ -9,7 +10,7 @@ public class displayCode : MonoBehaviour {
 
     public int numberOfDisplayInFloor;
     public TextMesh textMesh;
-    public GUIText textUI;
+    public Text textUI;
     public typeOfDisplay displayType;
     public conditionForDisplay condition;
     public bool requiresPreviousLogs = false;

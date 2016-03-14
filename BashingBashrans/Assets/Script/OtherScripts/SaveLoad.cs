@@ -29,4 +29,10 @@ public static class SaveLoad{
         SaveLoad.savedGame = (Game)bf.Deserialize(file);
         file.Close();
     }
+
+    public static void Delete()
+    {
+        savedGame = new Game();
+        Save();
+    }
 }

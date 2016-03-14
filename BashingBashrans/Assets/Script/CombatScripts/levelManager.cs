@@ -38,6 +38,7 @@ public class levelManager : MonoBehaviour {
 
 	void Start () {
         Time.timeScale = 1f;
+        //SaveLoad.Delete();
         //cameras = new Transform[levelParents.Length];
         //managers = new GameManager[levelParents.Length];
 
@@ -97,7 +98,7 @@ public class levelManager : MonoBehaviour {
         orderOfTrans = nO;
         speedsOfTrans = nS;
         CoolTransition = nT;
-        Debug.Log(orderOfTrans[0] + ", " + orderOfTrans[1] + ", " + orderOfTrans[2] + ", " + orderOfTrans[3] + ", " + orderOfTrans[4]);
+        //Debug.Log(orderOfTrans[0] + ", " + orderOfTrans[1] + ", " + orderOfTrans[2] + ", " + orderOfTrans[3] + ", " + orderOfTrans[4]);
     }
 
     public void moveCamera()
@@ -121,27 +122,27 @@ public class levelManager : MonoBehaviour {
             if (orderOfTrans[0] == currentTransCount && cameras[currentManagerCount].position.x == cameras[objectiveManagerNumber].position.x)
             {
                 currentTransCount++;
-                Debug.Log("Xdone");
+                //Debug.Log("Xdone");
             }
             if (orderOfTrans[1] == currentTransCount && cameras[currentManagerCount].position.y == cameras[objectiveManagerNumber].position.y)
             {
                 currentTransCount++;
-                Debug.Log("Ydone");
+                //Debug.Log("Ydone");
             }
             if (orderOfTrans[2] == currentTransCount && cameras[currentManagerCount].position.z == cameras[objectiveManagerNumber].position.z)
             {
                 currentTransCount++;
-                Debug.Log("Zdone");
+                //Debug.Log("Zdone");
             }
             if (orderOfTrans[3] == currentTransCount && cameras[currentManagerCount].rotation == cameras[objectiveManagerNumber].rotation)
             {
                 currentTransCount++;
-                Debug.Log("Rdone");
+                //Debug.Log("Rdone");
             }
             if (orderOfTrans[4] == currentTransCount && tempCam.fieldOfView == tempObCam.fieldOfView)
             {
                 currentTransCount++;
-                Debug.Log("Fdone");
+                //Debug.Log("Fdone");
             }
 
             //Check what to transition right now
@@ -222,6 +223,7 @@ public class levelManager : MonoBehaviour {
 
     public string getPassword(int numberOfPassword)
     {
+        Debug.Log("Number: " + numberOfPassword);
         return passwords[numberOfPassword];
     }
 

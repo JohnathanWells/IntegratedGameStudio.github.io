@@ -17,7 +17,7 @@ public class Game
     public bool[] unlockedFloors;
 
     private int numberOfFloors = 3;
-    private int numberOfPasswords;
+    private int numberOfPasswords = 11;
 
     public Game()
     {
@@ -43,38 +43,52 @@ public class Game
             }
 
         } while (!checktIfThereAreRepetitions(listOfPasswords));
+
+        //for (int a = 0; a < numberOfPasswords; a++)
+        //    Debug.Log("Password " + a + ": " + listOfPasswords[a]);
     }
 
     private string generatePassword(int lenght)
     {
-        char[] result = new char[lenght];
+        string result = "";
+        char temp;
 
         for (int a = 0; a < lenght; a++)
         {
-            result[a] = transformIntoHexadecimal(Random.Range(0, 17));
+            temp = transformIntoHexadecimal(Random.Range(0, 17));
+            //Debug.Log(temp);
+            result += temp;
+            //Debug.Log(result[a]);
         }
 
-        return result.ToString();
+        //Debug.Log(result + "/");
+        
+        return result;
     }
 
     private char transformIntoHexadecimal(int number)
     {
         if (number >= 0 && number <= 9)
         {
+            //Debug.Log((char)(48 + number));
             return (char)(48 + number);
         }
         else if (number >= 10 && number <= 16)
         {
             number -= 9;
+            //Debug.Log((char)(65 + number));
             return (char)(65 + number);
         }
         else
+        {
+            //Debug.Log("X");
             return 'X';
+        }
     }
 
     private bool checktIfThereAreRepetitions(string[] passwords)
     {
-        bool everythingInOrder = true;
+        bool repetitionFound = false;
         int size = passwords.Length;
 
         for (int a = 0; a < size; a++)
@@ -83,33 +97,34 @@ public class Game
             {
                 if (passwords[a] == passwords[b])
                 {
-                    everythingInOrder = false;
+                    repetitionFound = true;
                     break;
                 }
             }
 
-            if (!everythingInOrder)
+            if (repetitionFound)
                 break;
         }
 
-        return everythingInOrder;
+        return repetitionFound;
     }
 
     public string[] getAllPasswordsFromAFloor(int floor)
     {
         int size = listOfPasswords.Length;
-        Debug.Log(size);
-        List<string> newArray = null;
+        //Debug.Log(size);
+        List<string> newArray = new List<string>();
 
         for (int a = 0; a < size; a++)
         {
             if (floorForEachPassword[a] == floor)
             {
-                Debug.Log(floorForEachPassword[a]);
+                //Debug.Log(listOfPasswords[a]);
                 newArray.Add(listOfPasswords[a]);
             }
         }
 
+        //Debug.Log(newArray);
         return newArray.ToArray();
     }
 }
