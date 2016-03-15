@@ -148,6 +148,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
   m_PrefabInternal: {fileID: 1801017293}
+--- !u!4 &84342865 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
+  m_PrefabInternal: {fileID: 251094199}
 --- !u!1001 &88795551
 Prefab:
   m_ObjectHideFlags: 0
@@ -478,6 +482,22 @@ Prefab:
       propertyPath: orderTransF
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: BouldersActivated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: randomBoulderFall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434416, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: cooldownBetweenTraps
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_IsPrefabParent: 0
@@ -669,11 +689,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 480399379}
+    m_TransformParent: {fileID: 1259026834}
     m_Modifications:
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.01
+      value: 20.41
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.y
@@ -681,7 +701,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -13.82
+      value: -8.2699995
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalRotation.x
@@ -701,7 +721,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.z
@@ -1118,7 +1138,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.z
@@ -1307,7 +1327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &405713173
 Transform:
   m_ObjectHideFlags: 0
@@ -1664,7 +1684,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 144112, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_Name
@@ -1734,7 +1754,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 144112, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_Name
@@ -1800,7 +1820,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.x
@@ -2092,6 +2112,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_IsPrefabParent: 0
@@ -2286,6 +2310,10 @@ MonoBehaviour:
   orderTransZ: 2
   orderTransR: 3
   orderTransF: 4
+  speedOfPositionTransition: 1
+  speedOfRotationTransition: 1
+  speedOfFieldTransition: 1
+  smoothTransition: 1
 --- !u!1 &630187627 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -2412,7 +2440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 144112, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_Name
@@ -3933,11 +3961,140 @@ MonoBehaviour:
   - {fileID: 2010725424}
   - {fileID: 337017209}
   - {fileID: 536807280}
-  speedOfTransition: 13
   UISwitch: 0
   Player: {fileID: 2086588140}
   CoolTransition: 1
   objectiveManagerNumber: 0
+  timePosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  timeFont:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  healthPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  healthFont:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!4 &1125098586
 Transform:
   m_ObjectHideFlags: 0
@@ -4290,6 +4447,18 @@ Prefab:
       propertyPath: source
       value: 
       objectReference: {fileID: 1125098584}
+    - target: {fileID: 11444214, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
+      propertyPath: BouldersActivated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444214, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
+      propertyPath: randomBoulderFall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444214, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
+      propertyPath: nextLevelName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
   m_IsPrefabParent: 0
@@ -4379,6 +4548,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 84342865}
   - {fileID: 68082929}
   - {fileID: 716719502}
   - {fileID: 1004070818}
@@ -4426,7 +4596,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.x
@@ -4737,6 +4907,10 @@ Prefab:
     - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: orderTransF
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -5666,6 +5840,10 @@ Prefab:
       propertyPath: orderTransF
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_IsPrefabParent: 0
@@ -5722,7 +5900,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 144112, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_Name
@@ -5784,7 +5962,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.x
@@ -6096,7 +6274,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 144112, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_Name
@@ -6699,7 +6877,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.x
@@ -6761,7 +6939,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.y
@@ -6983,69 +7161,10 @@ MonoBehaviour:
   DoorAnimator: {fileID: 1484656548}
   gameOver: 0
   paused: 0
+  emptyRoom: 0
   gameOverSound: {fileID: 0}
   nextLevelName: First Hostile Turret
   cameraLinked: {fileID: 1668459546}
-  PlayerFont:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  UIActivated: 1
   BouldersActivated: 0
   randomBoulderFall: 0
   Boulder: {fileID: 457644, guid: f6604bbe2224e7143b533974b45fb47e, type: 2}
@@ -7308,6 +7427,10 @@ MonoBehaviour:
   orderTransZ: 2
   orderTransR: 1
   orderTransF: 4
+  speedOfPositionTransition: 1
+  speedOfRotationTransition: 1
+  speedOfFieldTransition: 1
+  smoothTransition: 1
 --- !u!4 &2001899998 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: a45af35a64ef63946853eaef4396db7f, type: 3}
