@@ -6761,7 +6761,7 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: fe856e848369da848a225529f609eb0a, type: 2}
+      objectReference: {fileID: 417626, guid: f878de20ee7b299488c3a261b2ecc00a, type: 2}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: cooldownTime
       value: 1.25
@@ -7653,6 +7653,10 @@ Prefab:
     - target: {fileID: 11436656, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: defeatanimation
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 127652, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9594078, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}

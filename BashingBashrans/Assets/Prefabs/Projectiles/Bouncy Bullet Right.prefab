@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11445604}
   - 54: {fileID: 5422724}
   m_Layer: 0
-  m_Name: ProjectilePoison
+  m_Name: Bouncy Bullet Right
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: 3
-  direction: 0
+  direction: 1
   canBePunched: 0
   blockedByStanding: 0
   angleOfDesviation: 180
