@@ -41,35 +41,55 @@ public class PlayerMovement : MonoBehaviour {
     public float freezeffct = 2;
     public float freeztart = 0;
 
+
+   [Header("Animation")]
+
+    public Animator playerAnimator;
+
+
     void Start()
     {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
+
+       playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
+
     }
 
-	void Update () {
+    void Update () {
 
         if (inTransition)
         {
             transitionMove();
+          playerAnimator.SetBool("Walking", true);
         }
         else if(isff)
         {
             froze();
+
         }
         else if (!manager.gameOver && canMove && !inTransition && isff == false)
 
-        //else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
+       //else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
         {
             if (Input.GetButton("Horizontal"))
             {
                 moveHorizontally(Input.GetAxisRaw("Horizontal"));
+            playerAnimator.SetBool("Walking", true);
+
             }
+            if (Input.GetButtonUp("Horizontal"))
+            {
+               playerAnimator.SetBool("Walking", false);
+           }
 
             if (Input.GetButtonDown("Vertical"))
             {
                 moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
+              playerAnimator.SetBool("Walking", true);
+
             }
+           
         }
 	}
 

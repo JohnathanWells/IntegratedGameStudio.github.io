@@ -16,6 +16,8 @@ TagManager:
   - High Game Manager
   - ClosedDoor
   - OpenDoor
+  - Door
+  - PlayerModel
   layers:
   - Default
   - TransparentFX

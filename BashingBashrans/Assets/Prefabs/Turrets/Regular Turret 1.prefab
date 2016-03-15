@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2388376}
   - 54: {fileID: 5413180}
   - 114: {fileID: 11483516}
+  - 95: {fileID: 9527492}
   m_Layer: 0
   m_Name: Model
   m_TagString: Enemy
@@ -72,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.982088, y: -0.6793473, z: -0.15104938}
+  m_LocalPosition: {x: 19, y: 3.27, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409484}
@@ -157,6 +158,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.8386949}
   m_Center: {x: 7.2610445e-13, y: 0.0000021649957, z: 0.8386964}
+--- !u!95 &9527492
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35862c76693862944999a875fd3ceba3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11442588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,8 +192,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: fe856e848369da848a225529f609eb0a, type: 2}
   mainBody: {fileID: 409484}
   shootMode: 1
-  changeSpeedOfBullets: 0
-  newSpeed: []
+  changeSpeedOfBullets: 1
+  newSpeed:
+  - 5
 --- !u!114 &11483516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,9 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443434f13131c4046aec931c45ca6cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1.75
-  burstCooling: 0.7
-  projectilesByBurst: 3
+  cooldownTime: 1
+  burstCooling: 1
+  projectilesByBurst: 1
   randomBullets: 0
   shootBurstInSingleLine: 0
   InitialHealth: 300
@@ -200,9 +219,9 @@ MonoBehaviour:
   moveUpAndDown: 0
   speed: 1
   direction: 0
-  marginOFDisplacement: 0.01
+  marginOFDisplacement: 0
   minLane: 0
-  maxLane: 4
+  maxLane: 1
   enemyFont:
     m_Name: 
     m_Normal:

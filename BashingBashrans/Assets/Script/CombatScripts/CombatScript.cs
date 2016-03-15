@@ -48,8 +48,15 @@ public class CombatScript : MonoBehaviour {
     public Transform feet;
     public Transform sensors;
 
-	void Start () {
+    [Header("Animation")]
+    public Animator playerAnimator;
+   public float painanimation;
+    public float defeatanimation;
+    public float winanimation;
+    void Start () {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
+        playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
+
         setManager();
         currentHealth = initialHealth;
 	}
@@ -64,9 +71,11 @@ public class CombatScript : MonoBehaviour {
 
                 if (!Proj.getBeingReturned())
                 {
+                    playerAnimator.SetBool("Hurt", true);
+
                     receiveDamage(Proj.Damage);
                     Proj.projectileCrash(1);
-
+                    StartCoroutine(Pain());
                     //if ((!weapon.getPunching() && Proj.blockedByStanding))
                     //{
                     //    SFX.PlaySound(returnPassiveProjectileSound);
@@ -77,7 +86,7 @@ public class CombatScript : MonoBehaviour {
                     //    receiveDamage(Proj.Damage);
                     //    Proj.projectileCrash(1);
                     //}
-                    
+
                     if (Proj.getEffectType() == "poison")
                     {
                         sick = Random.Range(Proj.minSick, Proj.maxSick);
@@ -147,6 +156,7 @@ public class CombatScript : MonoBehaviour {
 
         if (Input.GetButtonDown("Swing Direction") && canPunch)
         {
+            playerAnimator.SetBool("Swinging", true);
             StartCoroutine(punchStuff(-Mathf.RoundToInt(Input.GetAxisRaw("Swing Direction"))));
         }
 	}
@@ -166,10 +176,12 @@ public class CombatScript : MonoBehaviour {
     {
         rotateInDirection(direction);
         canPunch = false;
+        
         movementScript.SendMessage("changeCanMove", false);
         weapon.SendMessage("changeSwingingVar", true);
         SFX.PlaySound(punchSound);
         yield return new WaitForSeconds(punchingTime);
+        playerAnimator.SetBool("Swinging", false);
         weapon.SendMessage("changeSwingingVar", false);
         yield return new WaitForSeconds(punchCooldown);
         weapon.animationHappening = false;
@@ -194,6 +206,7 @@ public class CombatScript : MonoBehaviour {
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            playerAnimator.SetBool("Alive", false);
 
             if (!godMode)
                 manager.SendMessage("GameOver");
@@ -252,4 +265,14 @@ public class CombatScript : MonoBehaviour {
             isp = false;
         }
     }
+    IEnumerator Pain()
+    {
+        Debug.Log("Begin");
+
+        yield return new WaitForSeconds(painanimation);
+        {
+            playerAnimator.SetBool("Hurt", false);
+        }
+    }
+
 }
