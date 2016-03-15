@@ -4095,6 +4095,8 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  floorNumber: 2
+  passwords: []
 --- !u!4 &1125098586
 Transform:
   m_ObjectHideFlags: 0
@@ -7165,6 +7167,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 0}
   nextLevelName: First Hostile Turret
   cameraLinked: {fileID: 1668459546}
+  gameOverScreen: {fileID: 0}
   BouldersActivated: 0
   randomBoulderFall: 0
   Boulder: {fileID: 457644, guid: f6604bbe2224e7143b533974b45fb47e, type: 2}
@@ -7427,9 +7430,9 @@ MonoBehaviour:
   orderTransZ: 2
   orderTransR: 1
   orderTransF: 4
-  speedOfPositionTransition: 1
-  speedOfRotationTransition: 1
-  speedOfFieldTransition: 1
+  speedOfPositionTransition: 16
+  speedOfRotationTransition: 16
+  speedOfFieldTransition: 32
   smoothTransition: 1
 --- !u!4 &2001899998 stripped
 Transform:
