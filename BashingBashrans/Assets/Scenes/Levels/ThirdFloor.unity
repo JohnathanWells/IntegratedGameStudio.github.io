@@ -2328,8 +2328,8 @@ MonoBehaviour:
   orderTransX: 1
   orderTransY: 2
   orderTransZ: 0
-  orderTransR: 0
-  orderTransF: 0
+  orderTransR: 3
+  orderTransF: 4
   speedOfPositionTransition: 20
   speedOfRotationTransition: 20
   speedOfFieldTransition: 20
@@ -3112,7 +3112,7 @@ Transform:
   - {fileID: 118099544}
   - {fileID: 440303326}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &909872234
 Prefab:
   m_ObjectHideFlags: 0
@@ -5954,7 +5954,7 @@ Transform:
   - {fileID: 222101298}
   - {fileID: 2075322326}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &1621448513
 Prefab:
   m_ObjectHideFlags: 0
