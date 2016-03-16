@@ -1327,7 +1327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &405713173
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,7 +2114,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -3824,22 +3824,6 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: possibleAmmo.Array.data[0]
-      value: 
-      objectReference: {fileID: 417626, guid: 8dffe0cb70f47d14fa3519619d5bbb81, type: 2}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: projectilesByBurst
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: burstCooling
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: cooldownTime
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -4928,7 +4912,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -5860,7 +5844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -6101,22 +6085,6 @@ Prefab:
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: possibleAmmo.Array.data[0]
-      value: 
-      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: projectilesByBurst
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: burstCooling
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: cooldownTime
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -6692,22 +6660,6 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_Name
       value: Regular Turret 1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: possibleAmmo.Array.data[0]
-      value: 
-      objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: burstCooling
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: projectilesByBurst
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
-      propertyPath: cooldownTime
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
