@@ -205,7 +205,6 @@ public class levelManager : MonoBehaviour {
         cameras[oldManager].gameObject.SetActive(false);
         cameras[newManager].gameObject.SetActive(true);
         managers[oldManager].enemiesFolder.gameObject.SetActive(false);
-        Debug.Log("OM: " + oldManager + "NM: " + newManager);
         managers[newManager].enemiesFolder.gameObject.SetActive(true);
         //managers[oldManager].ProjectilesFolder.SendMessage("hideProjectiles", false);
         Player.BroadcastMessage("setManager");
