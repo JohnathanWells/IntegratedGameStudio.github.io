@@ -1857,6 +1857,7 @@ GameObject:
   - 65: {fileID: 6526894}
   - 114: {fileID: 11436656}
   - 54: {fileID: 5425800}
+  - 33: {fileID: 3384804}
   m_Layer: 0
   m_Name: SwingAnim
   m_TagString: Player
@@ -2302,8 +2303,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154480}
-  m_LocalRotation: {x: 0, y: 0.92211455, z: 0, w: -0.386917}
-  m_LocalPosition: {x: 0.388, y: 0.495, z: 0.255}
+  m_LocalRotation: {x: 0, y: 0.70144576, z: 0, w: 0.7127229}
+  m_LocalPosition: {x: -0.6119261, y: 0.4949999, z: 0.08440292}
   m_LocalScale: {x: 1.495113, y: 1.4951133, z: 1.4951133}
   m_Children:
   - {fileID: 418512}
@@ -3850,6 +3851,13 @@ Transform:
   - {fileID: 437250}
   m_Father: {fileID: 461290}
   m_RootOrder: 0
+--- !u!33 &3384804
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188426}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5402018
 Rigidbody:
   m_ObjectHideFlags: 1
