@@ -33,7 +33,7 @@ public class bombScript : MonoBehaviour {
     private float distanceTraveled = 0;
     private float originalSpeed;
     //private float distanceBetweenLanes = 1;
-    private int switches = 0;
+    private int switches = 10;
     private int switchesActivated = 0;
 
     [Header("Particles and Sounds")]
@@ -97,6 +97,7 @@ public class bombScript : MonoBehaviour {
 
     void explodeBomb()
     {
+        Debug.Log("Boom");
         SFX.PlaySound(explosionSound);
         PM.spawnParticles(explosionParticle, transform.position, explosionParticle.duration);
 
@@ -246,7 +247,7 @@ public class bombScript : MonoBehaviour {
 
     void lineExplosion(Vector3 center, Vector3[] directions)
     {
-        for (int a = 1; a <= 2; a++)
+        for (int a = 0; a < 2; a++)
         {
             int numberOfExplosions = manager.numberOfLanes - lane;
 
