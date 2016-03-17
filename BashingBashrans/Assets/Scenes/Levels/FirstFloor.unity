@@ -2288,6 +2288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1001 &334111438
 Prefab:
   m_ObjectHideFlags: 0
@@ -2789,6 +2795,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!124 &391057990
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3785,6 +3797,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1 &535871998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4816,6 +4834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1 &626554238
 GameObject:
   m_ObjectHideFlags: 0
@@ -7273,6 +7297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1001 &906192244
 Prefab:
   m_ObjectHideFlags: 0
@@ -13748,6 +13778,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1 &1589245092
 GameObject:
   m_ObjectHideFlags: 0
@@ -15882,6 +15918,8 @@ GameObject:
   - 20: {fileID: 1319802256}
   - 92: {fileID: 1781897579}
   - 124: {fileID: 1781897578}
+  - 114: {fileID: 1781897580}
+  - 114: {fileID: 1781897577}
   m_Layer: 0
   m_Name: Main Camera 1
   m_TagString: MainCamera
@@ -15889,6 +15927,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1781897577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1781897576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: 0.22
+  m_SampleCount: 2
+  m_OcclusionIntensity: 2.04
+  m_Blur: 2
+  m_Downsampling: 2
+  m_OcclusionAttenuation: 1
+  m_MinZ: 0.01
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!124 &1781897578
 Behaviour:
   m_ObjectHideFlags: 0
@@ -15905,6 +15963,26 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1781897576}
   m_Enabled: 1
+--- !u!114 &1781897580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1781897576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730475ee64f9a894bbac0d9e6f22e813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 3
+  sensitivityDepth: 1
+  sensitivityNormals: 1
+  lumThreshold: 0.2
+  edgeExp: 0.99
+  sampleDist: 1.66
+  edgesOnly: 1
+  edgesOnlyBgColor: {r: 1, g: 1, b: 1, a: 1}
+  edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
 --- !u!1 &1790228891
 GameObject:
   m_ObjectHideFlags: 0
@@ -16788,6 +16866,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64b4f3a592f28b44bf19223ac8b6cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0.5
+  softness: 1
+  spread: 1
+  blurShader: {fileID: 0}
+  depthFetchShader: {fileID: 0}
+  creaseApplyShader: {fileID: 0}
 --- !u!1 &1923983663
 GameObject:
   m_ObjectHideFlags: 0
@@ -17711,6 +17795,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 13723762, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 89725f8e86254654f99a8db932423a6b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
   m_IsPrefabParent: 0
