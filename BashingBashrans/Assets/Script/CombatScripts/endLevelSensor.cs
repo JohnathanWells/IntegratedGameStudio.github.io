@@ -4,6 +4,7 @@ using System.Collections;
 public class endLevelSensor : MonoBehaviour {
 
     public GameObject floorClearedScreen;
+    public Animator playerAnimator;
     levelManager highManager;
 
 	void Start () {
@@ -16,6 +17,8 @@ public class endLevelSensor : MonoBehaviour {
         {
             highManager.SendMessage("floorIsCleared");
             floorClearedScreen.SetActive(true);
+            floorClearedScreen.BroadcastMessage("setManager");
+            playerAnimator.SetBool("Victory", true);
         }
     }
 }

@@ -69,25 +69,25 @@ public class PlayerMovement : MonoBehaviour {
 
         }
         else if (!manager.gameOver && canMove && !inTransition && isff == false)
-
-       //else if (!manager.gameOver && canMove && !inTransition && !highManager.getStatusOfTransition())
         {
             if (Input.GetButton("Horizontal"))
             {
                 moveHorizontally(Input.GetAxisRaw("Horizontal"));
-            playerAnimator.SetBool("Walking", true);
-
+                playerAnimator.SetBool("Walking", true);
             }
-            if (Input.GetButtonUp("Horizontal"))
+            else if (Input.GetButtonUp("Horizontal"))
             {
                playerAnimator.SetBool("Walking", false);
-           }
+            }
 
             if (Input.GetButtonDown("Vertical"))
             {
                 moveVertically(Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
-              playerAnimator.SetBool("Walking", true);
-
+                playerAnimator.SetBool("Walking", true);
+            }
+            else if (Input.GetButtonUp("Vertical"))
+            {
+                playerAnimator.SetBool("Walking", false);
             }
            
         }

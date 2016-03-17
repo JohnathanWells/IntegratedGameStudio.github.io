@@ -26,19 +26,6 @@ public class displayCode : MonoBehaviour {
     private levelManager highManager;
     private GameManager manager;
 
-	void Start () {
-        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
-
-        //if (displayType == typeOfDisplay.GUIText)
-        //{
-        //    textUI.text = 
-        //}
-        //else
-        //{
-        //    textMesh.text = highManager.getPassword(numberOfDisplayInFloor);
-        //}
-	}
-
     public bool shouldDisplay()
     {
         bool resultA;
@@ -78,6 +65,8 @@ public class displayCode : MonoBehaviour {
         else
             resultC = true;
 
+        Debug.Log("Priority is " + resultC);
+
         if (resultA && resultB && resultC)
             return true;
         else
@@ -106,6 +95,7 @@ public class displayCode : MonoBehaviour {
 
     public void setManager()
     {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         password = highManager.getPassword(numberOfDisplayInFloor);
 

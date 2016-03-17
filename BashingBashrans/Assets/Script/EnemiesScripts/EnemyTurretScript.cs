@@ -96,14 +96,14 @@ public class EnemyTurretScript : MonoBehaviour {
 
     void OnGUI()
     {
-        if (manager != null)
-        {
-            screenPos = Camera.main.WorldToScreenPoint(transform.parent.position);
-            screenPositionOfText = new Vector2(screenPos.x, screenPos.y);
-            screenPositionOfText += offsetName;
-            UIName.position = screenPositionOfText;
-            GUI.Box(UIName, Name + "\n" + currentHealth + "/" + InitialHealth, enemyFont);
-        }
+        //if (manager != null)
+        //{
+        //    screenPos = Camera.main.WorldToScreenPoint(transform.parent.position);
+        //    screenPositionOfText = new Vector2(screenPos.x, screenPos.y);
+        //    screenPositionOfText += offsetName;
+        //    UIName.position = screenPositionOfText;
+        //    GUI.Box(UIName, Name + "\n" + currentHealth + "/" + InitialHealth, enemyFont);
+        //}
     }
 
     void turretMovement()

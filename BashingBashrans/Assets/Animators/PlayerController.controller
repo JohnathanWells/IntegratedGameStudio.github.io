@@ -163,9 +163,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.0820611
   m_TransitionOffset: 0
-  m_ExitTime: 0.5
+  m_ExitTime: 0.08320615
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -211,9 +211,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.07595429
   m_TransitionOffset: 0
-  m_ExitTime: 0.8333333
+  m_ExitTime: 0.7608143
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -331,7 +331,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.53125
   m_HasExitTime: 0
@@ -397,8 +397,8 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Swing
-  m_Speed: 1
-  m_CycleOffset: 0
+  m_Speed: 3
+  m_CycleOffset: 1
   m_Transitions:
   - {fileID: 110179742}
   - {fileID: 110113674}
@@ -414,7 +414,7 @@ AnimatorState:
   m_Motion: {fileID: 7400004, guid: 129727094dc207c468376aeb61db830b, type: 3}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: Walking
   m_CycleOffsetParameter: 
 --- !u!1102 &110273102
 AnimatorState:
@@ -527,19 +527,19 @@ AnimatorStateMachine:
     m_Position: {x: 312, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110216484}
-    m_Position: {x: 552, y: 156, z: 0}
+    m_Position: {x: 672, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110287950}
-    m_Position: {x: 648, y: 48, z: 0}
+    m_Position: {x: 636, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110273102}
-    m_Position: {x: 312, y: 240, z: 0}
+    m_Position: {x: 420, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110278200}
     m_Position: {x: 672, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110278478}
-    m_Position: {x: 780, y: -48, z: 0}
+    m_Position: {x: 864, y: -84, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -547,6 +547,6 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 1152, y: 72, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110210052}

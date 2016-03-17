@@ -64,22 +64,22 @@ public class floorClearedScreen : MonoBehaviour {
         int minutes = Mathf.FloorToInt(num / 60);
         int seconds = Mathf.FloorToInt(num % 60);
         int miliseconds = Mathf.FloorToInt((num - Mathf.FloorToInt(num)) * 100);
-        string result = "";
+        string result = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + miliseconds;
 
-        if (minutes < 10)
-            result += "0";
+        //if (minutes < 10)
+        //    result += "0";
 
-        result += minutes + ":";
+        //result += minutes + ":";
 
-        if (seconds < 10)
-            result += "0";
+        //if (seconds < 10)
+        //    result += "0";
 
-        result += seconds + ":";
+        //result += seconds + ":";
 
-        if (miliseconds < 10)
-            result += "0";
+        //if (miliseconds < 10)
+        //    result += "0";
 
-        result += miliseconds;
+        //result += miliseconds;
 
         return result;
     }

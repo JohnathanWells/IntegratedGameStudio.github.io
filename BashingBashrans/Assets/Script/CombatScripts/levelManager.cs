@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class levelManager : MonoBehaviour {
 
@@ -24,19 +25,19 @@ public class levelManager : MonoBehaviour {
     bool floorCleared = false;
     int acumulatedDamage = 0;
 
-    [Header("UI", order=1)]
-    public Rect timePosition;
-    public GUIStyle timeFont;
+    [Header("UI", order = 1)]
+    public Text playerHealthText;
+    public Text TimeText;
+    public GameObject pauseMenu;
     private float time = 0;
-    [Space(10)]
-    public Rect healthPosition;
-    public GUIStyle healthFont;
+    private bool paused = false;
 
     [Header("Passwords")]
     public int floorNumber = 0;
     public string[] passwords;
 
 	void Start () {
+        SaveLoad.Load();
         Time.timeScale = 1f;
         //SaveLoad.Delete();
         //cameras = new Transform[levelParents.Length];
@@ -51,10 +52,10 @@ public class levelManager : MonoBehaviour {
 
         playerScript = Player.GetComponentInChildren<CombatScript>();
 
-        timePosition = new Rect(new Vector2(timePosition.position.x * Screen.width / 370, timePosition.position.y * Screen.height / 208), new Vector2(timePosition.size.x * Screen.width / 370, timePosition.size.y * Screen.height / 208));
-        healthPosition = new Rect(new Vector2(healthPosition.position.x * Screen.width / 370, healthPosition.position.y * Screen.height / 208), new Vector2(healthPosition.size.x * Screen.width / 370, healthPosition.size.y * Screen.height / 208));
-        healthFont.fontSize = healthFont.fontSize * Screen.width / 370;
-        timeFont.fontSize = timeFont.fontSize * Screen.width / 370;
+        //playerHealthText.rectTransform.position = new Vector2(playerHealthText.rectTransform.position.x / 558 * Screen.width, playerHealthText.rectTransform.position.y / 314 * Screen.height);
+        //playerHealthText.rectTransform.sizeDelta = new Vector2(playerHealthText.rectTransform.sizeDelta.x * Screen.width / 558, playerHealthText.rectTransform.sizeDelta.y / 314 * Screen.height);
+        //playerHealthText.fontSize = playerHealthText.fontSize * Screen.width / 558;
+        //TimeText.rectTransform.position = new Vector2(TimeText.rectTransform.position.x * Screen.width / 558, TimeText.rectTransform.position.y * Screen.height / 314);
         obtainPasswords();
         //levelParents[0].SetActive(true);
 	}
@@ -72,16 +73,47 @@ public class levelManager : MonoBehaviour {
             else
                 inTransition = false;
         }
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            togglePause();
+        }
 	}
 
     void OnGUI()
     {
+        //if (Input.GetButtonDown("Pause"))
+        //{
+        //    Debug.Log(paused);
+        //    togglePause();
+        //    Debug.Log("Went to " + paused);
+        //}
+
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
-        int miliSeconds = Mathf.FloorToInt((time - Mathf.FloorToInt(time)) * 10);
+        int miliSeconds = Mathf.FloorToInt((time - Mathf.FloorToInt(time)) * 100);
 
-        GUI.Box(timePosition, minutes + " : " + seconds + " : " + miliSeconds, timeFont);
-        GUI.Box(healthPosition, "HP: " + playerScript.getHealth(), healthFont);
+        TimeText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + miliSeconds.ToString("00");
+        playerHealthText.text = "HP: " + playerScript.getHealth();
+    }
+
+    void togglePause()
+    {
+        if (!paused)
+        {
+            paused = true;
+            playerHealthText.transform.parent.gameObject.SetActive(false);
+            pauseMenu.SetActive(true);
+            SaveLoad.Load();
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            playerHealthText.transform.parent.gameObject.SetActive(true);
+            pauseMenu.SetActive(false);
+            paused = false;
+        }
     }
 
     public void changePoint(int newObjective)

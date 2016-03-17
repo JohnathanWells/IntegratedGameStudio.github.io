@@ -7,6 +7,7 @@ public class CombatScript : MonoBehaviour {
     public int initialHealth = 100;
     public bool godMode = false;
     private int currentHealth;
+    private bool dead = false;
 
     [Header("Punching")]
     public float punchingTime = 0.5f;
@@ -53,6 +54,7 @@ public class CombatScript : MonoBehaviour {
    public float painanimation;
     public float defeatanimation;
     public float winanimation;
+
     void Start () {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
@@ -63,7 +65,7 @@ public class CombatScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        if (!inTransition)
+        if (!inTransition && !dead)
         {
             if (c.CompareTag("Projectile"))
             {
@@ -108,23 +110,39 @@ public class CombatScript : MonoBehaviour {
                 burning = true;
             }
         }
-        else
+    }
+
+	void Update () {
+
+        if (!dead)
         {
+            if (isp && ptime > 0)
+            {
+                poison();
+            }
+            if (burning)
+            {
+                Burn();
+            }
+            else if (!burning && burnTaim > 0)
+            {
+                burnTaim -= Time.deltaTime;
+            }
 
+            if (Input.GetButtonDown("Swing Direction") && canPunch)
+            {
+                playerAnimator.SetBool("Swinging", true);
+                StartCoroutine(punchStuff(-Mathf.RoundToInt(Input.GetAxisRaw("Swing Direction"))));
+            }
         }
-    }
+	}
 
-    public void transitionHappening(bool value)
-    {
-        inTransition = value;
-    }
-    
     void OnTriggerStay(Collider c)
     {
-        if (c.CompareTag("Boulder"))
+        if (c.CompareTag("Boulder") && !dead)
         {
             BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
-            
+
             receiveDamage(boulderProperties.damage);
             boulderProperties.DestroyBoulder();
         }
@@ -132,34 +150,17 @@ public class CombatScript : MonoBehaviour {
 
     void OnTriggerExit(Collider c)
     {
-        if (c.CompareTag("Fire"))
+        if (c.CompareTag("Fire") && !dead)
         {
             burning = false;
             burnTaim = 0;
         }
     }
 
-	void Update () {
-
-        if (isp && ptime > 0)
-        {
-            poison();
-        }
-        if (burning)
-        {
-            Burn();
-        }
-        else if (!burning && burnTaim > 0)
-        {
-            burnTaim -= Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Swing Direction") && canPunch)
-        {
-            playerAnimator.SetBool("Swinging", true);
-            StartCoroutine(punchStuff(-Mathf.RoundToInt(Input.GetAxisRaw("Swing Direction"))));
-        }
-	}
+    public void transitionHappening(bool value)
+    {
+        inTransition = value;
+    }
 
     void Burn()
     {
@@ -205,6 +206,8 @@ public class CombatScript : MonoBehaviour {
 
         if (currentHealth <= 0)
         {
+            dead = true;
+            manager.GameOver();
             currentHealth = 0;
             playerAnimator.SetBool("Alive", false);
 
