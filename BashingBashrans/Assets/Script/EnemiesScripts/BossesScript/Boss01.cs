@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Boss01 : MonoBehaviour {
 
@@ -46,7 +47,7 @@ public class Boss01 : MonoBehaviour {
     private int currentHealth;
 
     [Header("UI")]
-    public Rect positionOfHealth;
+    public Text healthText;
 
     [Header("Attack Variables")]
     [TextArea(4, 20)]
@@ -125,7 +126,7 @@ public class Boss01 : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Box(positionOfHealth, Name +": " + currentHealth + "/" + Health);
+        healthText.text = (Name +": " + currentHealth + "/" + Health);
     }
 
     void OnTriggerEnter(Collider c)

@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour {
 
     [Header("Game Over, Conditions and Enemy Respawn Management")]
     public bool gameOver = false;
-    public bool paused = false;
     public bool emptyRoom = false;
     public AudioClip gameOverSound;
     public string nextLevelName;
@@ -55,10 +54,10 @@ public class GameManager : MonoBehaviour {
     {
         if (!gameOver)
         {
-            if (Input.GetButtonDown("Pause"))
-            {
-                switchPause();
-            }
+            //if (Input.GetButtonDown("Pause"))
+            //{
+            //    switchPause();
+            //}
 
             if (BouldersActivated)
             {
@@ -75,11 +74,11 @@ public class GameManager : MonoBehaviour {
     void OnGUI()
     {
 
-        if (paused)
-        {
-            if (GUI.Button(new Rect(new Vector2(Screen.width / 2 - 100, Screen.height / 2 - 25), new Vector2(200, 50)), "Resume"))
-                switchPause();
-        }
+        //if (paused)
+        //{
+        //    if (GUI.Button(new Rect(new Vector2(Screen.width / 2 - 100, Screen.height / 2 - 25), new Vector2(200, 50)), "Resume"))
+        //        switchPause();
+        //}
 
         //if (enemiesDestroyed == enemiesAtBeginning)
         //{
@@ -294,19 +293,19 @@ public class GameManager : MonoBehaviour {
     //    return areAlive;
     //}
 
-    void switchPause()
-    {
-        if (paused)
-        {
-            paused = false;
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            paused = true;
-            Time.timeScale = 0f;
-        }
-    }
+    //void switchPause()
+    //{
+    //    if (paused)
+    //    {
+    //        paused = false;
+    //        Time.timeScale = 1f;
+    //    }
+    //    else
+    //    {
+    //        paused = true;
+    //        Time.timeScale = 0f;
+    //    }
+    //}
 
     public void addEnemyInLevel()
     {

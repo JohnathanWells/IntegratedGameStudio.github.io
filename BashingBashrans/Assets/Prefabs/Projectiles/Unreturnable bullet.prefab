@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4e4fcb3f64b37e2478ad8abdde3b8629, type: 2}
+  - {fileID: 2100000, guid: 2fabe6e4d55babe4bacc388496ef23f9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   angleOfDesviation: 180
   speed: 6
   desviationSpeed: 8
-  desviationMaterial: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
+  desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
   renderer: {fileID: 2320700}
   effectOfProjectile: 0
   condition: 0

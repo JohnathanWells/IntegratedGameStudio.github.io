@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d455f6c79a66a2f419bcfc678f5bb133
-timeCreated: 1458020353
+guid: 89725f8e86254654f99a8db932423a6b
+timeCreated: 1458238606
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -126,12 +126,12 @@ ModelImporter:
     400116: PLayerMesh
     400118: //RootNode
     4300000: PLayerMesh
-    7400000: PlayerIdle
-    7400002: PlayerMovement
-    7400004: PlayerSwing
-    7400006: PlayerHurt
-    7400008: PlayerDefeat
-    7400010: PlayerVictory
+    7400000: NewPlayerIdle
+    7400002: NewPlayerJump
+    7400004: NewPlayerSwing
+    7400006: NewPlayerHurt
+    7400008: NewPlayerDefeat
+    7400010: NewPlayerVictory
     9500000: //RootNode
     13700000: PLayerMesh
   materials:
@@ -156,10 +156,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: PlayerIdle
+      name: NewPlayerIdle
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -381,10 +381,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PlayerMovement
+      name: NewPlayerJump
       takeName: Take 001
-      firstFrame: 15
-      lastFrame: 60
+      firstFrame: 17
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -606,10 +606,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PlayerSwing
+      name: NewPlayerSwing
       takeName: Take 001
-      firstFrame: 60
-      lastFrame: 84
+      firstFrame: 69
+      lastFrame: 82
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -831,10 +831,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PlayerHurt
+      name: NewPlayerHurt
       takeName: Take 001
-      firstFrame: 84
-      lastFrame: 92
+      firstFrame: 87
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1056,9 +1056,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PlayerDefeat
+      name: NewPlayerDefeat
       takeName: Take 001
-      firstFrame: 84
+      firstFrame: 90
       lastFrame: 113
       wrapMode: 0
       orientationOffsetY: 0
@@ -1281,7 +1281,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PlayerVictory
+      name: NewPlayerVictory
       takeName: Take 001
       firstFrame: 114
       lastFrame: 165
@@ -1302,24 +1302,7 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves:
-      - name: Curve
-        curve:
-          serializedVersion: 2
-          curve:
-          - time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-          - time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-          preInfinity: 3
-          postInfinity: 3
-          rotationOrder: 0
+      curves: []
       events: []
       transformMask:
       - path: 
