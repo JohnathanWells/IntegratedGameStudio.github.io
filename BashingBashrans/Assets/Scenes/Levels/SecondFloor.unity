@@ -211,6 +211,10 @@ Prefab:
       propertyPath: minLane
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -506,6 +510,18 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfPositionTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfRotationTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfFieldTransition
+      value: 32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_IsPrefabParent: 0
@@ -633,6 +649,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &182743820 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 430640, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+  m_PrefabInternal: {fileID: 1601642708}
 --- !u!4 &204315655 stripped
 Transform:
   m_PrefabParentObject: {fileID: 495448, guid: d1ccf7aee3c9d36408b9fc0e96a0c2dc, type: 2}
@@ -683,6 +703,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &235688132 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 430640, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+  m_PrefabInternal: {fileID: 165376835}
 --- !u!4 &237329192 stripped
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
@@ -1335,7 +1359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &405713173
 Transform:
   m_ObjectHideFlags: 0
@@ -1973,10 +1997,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &527238311 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 446674, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
-  m_PrefabInternal: {fileID: 165376835}
 --- !u!1001 &536807275
 Prefab:
   m_ObjectHideFlags: 0
@@ -2122,7 +2142,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -2318,9 +2338,9 @@ MonoBehaviour:
   orderTransZ: 2
   orderTransR: 3
   orderTransF: 4
-  speedOfPositionTransition: 1
-  speedOfRotationTransition: 1
-  speedOfFieldTransition: 1
+  speedOfPositionTransition: 16
+  speedOfRotationTransition: 16
+  speedOfFieldTransition: 32
   smoothTransition: 1
 --- !u!1 &630187627 stripped
 GameObject:
@@ -2590,6 +2610,10 @@ Prefab:
       propertyPath: maxLane
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -2742,7 +2766,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: cooldownTime
-      value: 1.5
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: burstCooling
@@ -2758,7 +2782,7 @@ Prefab:
       objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: projectilesByBurst
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -2899,12 +2923,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: cooldownTime
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: randomBullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -2974,10 +3006,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762263354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.6975, y: 0, z: -8.4}
-  m_LocalScale: {x: 0.25, y: 2, z: 1}
+  m_LocalPosition: {x: -17.61, y: -1.175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1316233471}
+  m_Father: {fileID: 1892021445}
   m_RootOrder: 0
 --- !u!1001 &764622947
 Prefab:
@@ -3188,6 +3220,10 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -3388,6 +3424,10 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -3525,11 +3565,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 924006649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.436, y: 0, z: -25}
-  m_LocalScale: {x: 0.25, y: 2, z: 1}
+  m_LocalPosition: {x: 13.02, y: -1.085, z: 0.030000687}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1502189315}
-  m_RootOrder: 1
+  m_Father: {fileID: 1286358416}
+  m_RootOrder: 0
 --- !u!1 &924412228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,6 +3858,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -3864,6 +3908,10 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -4148,7 +4196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1126639422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,7 +4551,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11444214, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
       propertyPath: cooldownBetweenTraps
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce23fd839c89baa4ea5d0b0eb65d395e, type: 2}
@@ -4737,6 +4785,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: a45af35a64ef63946853eaef4396db7f, type: 3}
   m_PrefabInternal: {fileID: 1284084843}
+--- !u!4 &1286358416 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 430640, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+  m_PrefabInternal: {fileID: 1335061893}
 --- !u!1 &1301739245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,14 +4851,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 762263355}
   - {fileID: 1892021445}
   m_Father: {fileID: 941111532}
   m_RootOrder: 3
---- !u!4 &1331391160 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 446674, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
-  m_PrefabInternal: {fileID: 1601642708}
 --- !u!1001 &1335061893
 Prefab:
   m_ObjectHideFlags: 0
@@ -4956,7 +5003,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfPositionTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfRotationTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfFieldTransition
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -5248,10 +5307,6 @@ Animator:
   m_PrefabParentObject: {fileID: 9563190, guid: f81661738ac59e84584dd4edf6c3f32b,
     type: 2}
   m_PrefabInternal: {fileID: 357233469}
---- !u!4 &1502189315 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 446674, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
-  m_PrefabInternal: {fileID: 1335061893}
 --- !u!4 &1502999531 stripped
 Transform:
   m_PrefabParentObject: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -5435,12 +5490,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540311170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.246996, y: 0, z: -9.75}
-  m_LocalScale: {x: 0.25, y: 2, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071066, z: 0, w: -0.70710695}
+  m_LocalPosition: {x: -23, y: -1.25, z: 0}
+  m_LocalScale: {x: 0.25000003, y: 1, z: 4}
   m_Children: []
-  m_Father: {fileID: 527238311}
-  m_RootOrder: 1
+  m_Father: {fileID: 235688132}
+  m_RootOrder: 0
 --- !u!1001 &1541007065
 Prefab:
   m_ObjectHideFlags: 0
@@ -5888,7 +5943,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 468270, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 468270, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfPositionTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfRotationTransition
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450380, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
+      propertyPath: speedOfFieldTransition
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
@@ -6130,6 +6205,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -6277,12 +6356,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1685583149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1819973, y: 0, z: -23}
-  m_LocalScale: {x: 0.25, y: 2, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071066, z: 0, w: -0.70710695}
+  m_LocalPosition: {x: -18.519995, y: -0.75, z: -0.1119996}
+  m_LocalScale: {x: 0.25000003, y: 1, z: 4}
   m_Children: []
-  m_Father: {fileID: 1331391160}
-  m_RootOrder: 1
+  m_Father: {fileID: 182743820}
+  m_RootOrder: 0
 --- !u!1001 &1703200613
 Prefab:
   m_ObjectHideFlags: 0
@@ -6705,6 +6784,30 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: c83f5966e904b744abdadfc85de8e267, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: moveUpAndDown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: minLane
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: maxLane
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: marginOFDisplacement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: direction
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -7121,9 +7224,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.1, y: 2.35, z: -8.4}
   m_LocalScale: {x: 0.25, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 762263355}
   m_Father: {fileID: 1316233471}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &1899229561
 Prefab:
   m_ObjectHideFlags: 0
@@ -7215,7 +7319,7 @@ MonoBehaviour:
   BouldersActivated: 1
   randomBoulderFall: 0
   Boulder: {fileID: 457644, guid: f6604bbe2224e7143b533974b45fb47e, type: 2}
-  cooldownBetweenTraps: 30
+  cooldownBetweenTraps: 45
   offsetOfTrap: {x: 0, y: 0.6, z: 0}
   minPos: {x: -5, y: 0}
   maxPos: {x: 5, y: 5}
@@ -7406,7 +7510,7 @@ Transform:
   - {fileID: 1953635383}
   - {fileID: 1767648621}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &1973938072 stripped
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}

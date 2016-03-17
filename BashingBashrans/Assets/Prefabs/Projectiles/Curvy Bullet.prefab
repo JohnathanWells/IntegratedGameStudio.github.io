@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 2
   direction: 0
-  canBePunched: 1
+  canBePunched: 0
   blockedByStanding: 0
   angleOfDesviation: 90
   speed: 4
@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: canBePunched
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
