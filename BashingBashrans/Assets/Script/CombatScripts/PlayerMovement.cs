@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour {
         if (inTransition)
         {
             transitionMove();
-          playerAnimator.SetBool("Walking", true);
         }
         else if(isff)
         {
@@ -122,6 +121,7 @@ public class PlayerMovement : MonoBehaviour {
         Time.timeScale = 1f;
         if (coolTransition)
         {
+            playerAnimator.SetBool("Walking", true);
             float step = Time.deltaTime * XVelocity;
             transform.position = Vector3.MoveTowards(transform.position, pointTowards, step);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, angleTowards, step);
@@ -134,6 +134,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (transform.position == pointTowards && transform.rotation == angleTowards)
         {
+            playerAnimator.SetBool("Walking", false);
             inTransition = false;
             combatScript.transitionHappening(false);
             manager.transitionFunction(false, currentRoom);
