@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 3
   direction: 0
-  canBePunched: 0
+  canBePunched: 1
   blockedByStanding: 0
   angleOfDesviation: 180
   speed: 4

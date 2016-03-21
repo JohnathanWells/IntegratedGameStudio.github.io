@@ -9,6 +9,13 @@ public class Game
     public static Game current;
 
     public string nameOfPlayer;
+
+    #region settingsVariables
+    public float SFXVolume;
+    public float MusicVolume;
+    #endregion
+
+    #region passwordSystemVariables
     public float[] bestTimes;
     public int[] lessDamageReceivedByFloor;
     public string[] listOfPasswords;
@@ -19,9 +26,12 @@ public class Game
     private string[] messages = new string[11];
     private int numberOfFloors = 3;
     private int numberOfPasswords = 11;
+    #endregion
 
     public Game()
     {
+        MusicVolume = 1f;
+        SFXVolume = 1f;
         listOfPasswords = new string[numberOfPasswords];
         unlockedPasswords = new bool[numberOfPasswords];
         bestTimes = new float[numberOfFloors];
@@ -223,4 +233,9 @@ public class Game
         messages[10] = "Translating information.\n\nSecurity Level 3 - 21350001\n\n\nFate can be cruel.\nNo… there is no “can” here. Fate is a [untranslatable]. \n\nThe last hope of humanity… a machine that can turn atoms into other atoms. We were just one step away from disconnecting it from the main frame. I do not know if the operation was completed actually.\n\nSuddenly, the lab entered some sort of quarantine protocol. Some sort of glitch in the system. Every oxygen producer, temperature normalizer, everything is shut down now. We tried contacting the Chiefs, but we have no idea if the message reached them.\n\nIf it didn’t, we are dead. Minor detail of establishing a laboratory to save humanity in the [untranslatable] south pole: People die if the technology does not work properly.\nGuess I now know how the martians felt.\n\nMaybe we will live through this. Maybe the message will be received on time and transportation will arrive before the lack of oxygen kills us. In the very least, even if we are dead, they will be able to recover Vasili and take it back. They all should have IDs so the security protocols will not activate themselves. \n\n...Or maybe the message will never go through the snow storm and we will die, rot and banish into the unstoppable flow of time in these cold heartless facilities in the middle of nowhere. ...Our names unknown to anyone, our lives mere stains in the fabric of existence.\n\n...It’s weird… just the thought of dying scares the [untranslatable] outta me. We worked so far… come so far… but in the end… it may not matter.\n\n...I guess it’s easy to forget, in the middle of all the knowledge that comes with understanding a fragment of the universe… that we are mortals too… That regardless of how intelligent we are, there is an end to our story…\n\n...But I refuse to die here and now...\n\n...Please Allah… I was never a religious person… but please… let my work be for something. Let it work… and let me live enough to see it save everything…\n\n...Let me get through this… let me come back and see the world turn into a better place… let me fix the mistakes that us selfish humans have unleashed upon the Earth… There is so much I want to see… so much I want to do… Please Allah don’t let me die here...\n\n\n\n...I don’t want to die...";
     }
 
+    void setVolumes(float sfx, float music, float master)
+    {
+        SFXVolume = sfx * master;
+        MusicVolume = music * master;
+    }
 }

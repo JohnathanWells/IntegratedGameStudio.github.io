@@ -11,6 +11,7 @@ public class levelManager : MonoBehaviour {
     public bool UISwitch = false;
     public Transform Player;
     public bool CoolTransition = true;
+    public MusicScript musicManager;
 
     private int[] orderOfTrans;
     private float[] speedsOfTrans;
@@ -51,6 +52,8 @@ public class levelManager : MonoBehaviour {
         }
 
         playerScript = Player.GetComponentInChildren<CombatScript>();
+        //musicManager = GameObject.FindGameObjectWithTag("Music Manager").GetComponent<MusicScript>();
+        musicManager.SendMessage("playFloor");
 
         //playerHealthText.rectTransform.position = new Vector2(playerHealthText.rectTransform.position.x / 558 * Screen.width, playerHealthText.rectTransform.position.y / 314 * Screen.height);
         //playerHealthText.rectTransform.sizeDelta = new Vector2(playerHealthText.rectTransform.sizeDelta.x * Screen.width / 558, playerHealthText.rectTransform.sizeDelta.y / 314 * Screen.height);

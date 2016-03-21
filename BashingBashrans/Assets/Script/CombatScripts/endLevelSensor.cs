@@ -15,6 +15,7 @@ public class endLevelSensor : MonoBehaviour {
     {
         if (c.tag == "Player")
         {
+            highManager.musicManager.SendMessage("playVictory");
             highManager.SendMessage("floorIsCleared");
             floorClearedScreen.SetActive(true);
             floorClearedScreen.BroadcastMessage("setManager");

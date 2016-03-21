@@ -1114,6 +1114,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 0
+  typeOfRoom: 1
 --- !u!4 &209687318 stripped
 Transform:
   m_PrefabParentObject: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -1583,8 +1584,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 949335311}
   numberOfLanes: 4
   enemiesFolder: {fileID: 1441992878}
-  PM: {fileID: 1572692678}
-  SFX: {fileID: 1572692677}
   entryDoor: {fileID: 1285082745}
   exitDoor: {fileID: 251078952}
   DoorAnimator: {fileID: 251078953}
@@ -1937,6 +1936,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 0
+  typeOfRoom: 2
 --- !u!1 &322864139
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,8 +4206,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 1540401535}
   numberOfLanes: 3
   enemiesFolder: {fileID: 1464828568}
-  PM: {fileID: 1923983664}
-  SFX: {fileID: 1923983665}
   entryDoor: {fileID: 159715990}
   exitDoor: {fileID: 1413576512}
   DoorAnimator: {fileID: 848298126}
@@ -4468,6 +4466,18 @@ Prefab:
       propertyPath: m_Name
       value: Interface
       objectReference: {fileID: 0}
+    - target: {fileID: 108690, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420454, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.06791611
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420454, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.99769104
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
   m_IsPrefabParent: 0
@@ -4536,6 +4546,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 1
+  typeOfRoom: 0
 --- !u!1001 &671419270
 Prefab:
   m_ObjectHideFlags: 0
@@ -4623,8 +4634,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 688584455}
   - 114: {fileID: 688584458}
-  - 114: {fileID: 688584457}
-  - 114: {fileID: 688584456}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -4644,31 +4653,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1588900677}
   m_RootOrder: 0
---- !u!114 &688584456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 688584454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &688584457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 688584454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
 --- !u!114 &688584458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,8 +4671,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 878571513}
   numberOfLanes: 5
   enemiesFolder: {fileID: 1457547993}
-  PM: {fileID: 688584456}
-  SFX: {fileID: 688584457}
   entryDoor: {fileID: 1413576512}
   exitDoor: {fileID: 1647684806}
   DoorAnimator: {fileID: 2108578840}
@@ -4884,8 +4866,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 709159764}
   - 114: {fileID: 709159768}
-  - 114: {fileID: 709159767}
-  - 114: {fileID: 709159766}
   - 82: {fileID: 709159765}
   m_Layer: 0
   m_Name: Manager H
@@ -4981,31 +4961,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &709159766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 709159763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &709159767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 709159763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 709159765}
 --- !u!114 &709159768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5024,8 +4979,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 455897350}
   numberOfLanes: 1
   enemiesFolder: {fileID: 1947946599}
-  PM: {fileID: 709159766}
-  SFX: {fileID: 709159767}
   entryDoor: {fileID: 251078952}
   exitDoor: {fileID: 692140988}
   DoorAnimator: {fileID: 692140989}
@@ -5171,6 +5124,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 1
+  typeOfRoom: 0
 --- !u!1 &739863869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,6 +6002,23 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 108690, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
   m_PrefabInternal: {fileID: 668897802}
+--- !u!95 &859077023
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 859077020}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49f5b962a67c61d4aa23d559b93e1e7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &863189360
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,8 +7362,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1056312501}
   - 114: {fileID: 1056312504}
-  - 114: {fileID: 1056312503}
-  - 114: {fileID: 1056312502}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -7412,31 +7381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1921709051}
   m_RootOrder: 0
---- !u!114 &1056312502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1056312500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1056312503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1056312500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
 --- !u!114 &1056312504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7455,8 +7399,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 162807350}
   numberOfLanes: 4
   enemiesFolder: {fileID: 766349824}
-  PM: {fileID: 1056312502}
-  SFX: {fileID: 1056312503}
   entryDoor: {fileID: 1647684806}
   exitDoor: {fileID: 808856645}
   DoorAnimator: {fileID: 2077489118}
@@ -7807,8 +7749,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 337388776}
   numberOfLanes: 1
   enemiesFolder: {fileID: 1204251365}
-  PM: {fileID: 1643936882}
-  SFX: {fileID: 1193991174}
   entryDoor: {fileID: 0}
   exitDoor: {fileID: 2009520299}
   DoorAnimator: {fileID: 2009520298}
@@ -7826,19 +7766,6 @@ MonoBehaviour:
   minPos: {x: -5, y: 0}
   maxPos: {x: 5, y: 5}
   distanceBetweenLanes: 1
---- !u!114 &1193991174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1643936881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
 --- !u!1001 &1195305343
 Prefab:
   m_ObjectHideFlags: 0
@@ -8078,6 +8005,58 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
   m_PrefabInternal: {fileID: 210190157}
+--- !u!1001 &1222868577
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1698584205}
+    m_Modifications:
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -19.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1222868579 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1222868577}
+  m_Script: {fileID: 11500000, guid: 4ad0f2580cfa1e34cb951e3655bdae5a, type: 3}
+--- !u!4 &1222868581 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+  m_PrefabInternal: {fileID: 1222868577}
 --- !u!4 &1255532736 stripped
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
@@ -9016,6 +8995,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 1
+  typeOfRoom: 0
 --- !u!1001 &1379005495
 Prefab:
   m_ObjectHideFlags: 0
@@ -9937,6 +9917,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 1
+  typeOfRoom: 0
 --- !u!1 &1483383093
 GameObject:
   m_ObjectHideFlags: 0
@@ -10583,8 +10564,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1572692679}
   - 114: {fileID: 275835566}
-  - 114: {fileID: 1572692677}
-  - 114: {fileID: 1572692678}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -10592,31 +10571,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1572692677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1572692676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
---- !u!114 &1572692678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1572692676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1572692679
 Transform:
   m_ObjectHideFlags: 0
@@ -11208,8 +11162,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1643936883}
   - 114: {fileID: 1193991172}
-  - 114: {fileID: 1193991174}
-  - 114: {fileID: 1643936882}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -11217,18 +11169,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1643936882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1643936881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1643936883
 Transform:
   m_ObjectHideFlags: 0
@@ -11491,8 +11431,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1686331563}
   - 114: {fileID: 1686331567}
-  - 114: {fileID: 1686331566}
-  - 114: {fileID: 1686331565}
   - 82: {fileID: 1686331564}
   m_Layer: 0
   m_Name: Manager B
@@ -11587,31 +11525,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1686331565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1686331562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1686331566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1686331562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1686331564}
 --- !u!114 &1686331567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11630,8 +11543,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 356509454}
   numberOfLanes: 5
   enemiesFolder: {fileID: 665352373}
-  PM: {fileID: 1686331565}
-  SFX: {fileID: 1686331566}
   entryDoor: {fileID: 692140988}
   exitDoor: {fileID: 0}
   DoorAnimator: {fileID: 0}
@@ -11697,7 +11608,7 @@ MonoBehaviour:
   condition: 1
   requiresPreviousLogs: 0
   timeCondition: 0
-  healthCondition: 700
+  healthCondition: 1000
   requiredPreviouslyUnlockedLogs: 
   displayWithPriority: {fileID: 0}
 --- !u!102 &1697967597
@@ -11760,6 +11671,8 @@ GameObject:
   - 114: {fileID: 1698584204}
   - 82: {fileID: 1698584206}
   - 81: {fileID: 1698584207}
+  - 114: {fileID: 1698584209}
+  - 114: {fileID: 1698584208}
   m_Layer: 0
   m_Name: HighManager
   m_TagString: High Game Manager
@@ -11808,6 +11721,7 @@ MonoBehaviour:
   UISwitch: 0
   Player: {fileID: 804283708}
   CoolTransition: 1
+  musicManager: {fileID: 1222868579}
   objectiveManagerNumber: 0
   playerHealthText: {fileID: 1122580099}
   TimeText: {fileID: 1202082980}
@@ -11823,7 +11737,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.31, y: 19.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1222868581}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!82 &1698584206
@@ -11907,6 +11822,29 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1698584203}
   m_Enabled: 1
+--- !u!114 &1698584208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698584203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1698584209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698584203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 1698584206}
 --- !u!1 &1698918080
 GameObject:
   m_ObjectHideFlags: 0
@@ -13399,8 +13337,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1923983666}
   - 114: {fileID: 639920437}
-  - 114: {fileID: 1923983665}
-  - 114: {fileID: 1923983664}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -13408,31 +13344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1923983664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1923983663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1923983665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1923983663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
 --- !u!4 &1923983666
 Transform:
   m_ObjectHideFlags: 0
@@ -13627,6 +13538,7 @@ MonoBehaviour:
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
   smoothTransition: 1
+  typeOfRoom: 0
 --- !u!4 &1947754433
 Transform:
   m_ObjectHideFlags: 0
@@ -13858,8 +13770,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1961660811}
   - 114: {fileID: 1961660814}
-  - 114: {fileID: 1961660813}
-  - 114: {fileID: 1961660812}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -13879,31 +13789,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 905664077}
   m_RootOrder: 0
---- !u!114 &1961660812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11426650, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1961660809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0214ab40698499232bb46e12b42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1961660813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11432980, guid: f5415964b39a2034daa6c24d3e11fe79,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1961660809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c46b3bf786cbc4fb4bb7300705529f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 1698584206}
 --- !u!114 &1961660814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13922,8 +13807,6 @@ MonoBehaviour:
   RightUpCorner: {fileID: 919747012}
   numberOfLanes: 4
   enemiesFolder: {fileID: 1961660808}
-  PM: {fileID: 1961660812}
-  SFX: {fileID: 1961660813}
   entryDoor: {fileID: 808856645}
   exitDoor: {fileID: 1285082745}
   DoorAnimator: {fileID: 964159657}
@@ -14117,10 +14000,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 13723762, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 89725f8e86254654f99a8db932423a6b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
   m_IsPrefabParent: 0

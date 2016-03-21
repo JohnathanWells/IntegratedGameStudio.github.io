@@ -18,6 +18,7 @@ TagManager:
   - OpenDoor
   - Door
   - PlayerModel
+  - Music Manager
   layers:
   - Default
   - TransparentFX

@@ -48,6 +48,8 @@ public class ProjectileScript : MonoBehaviour
     public AudioClip destructionSound;
     public AudioClip explosionSound;
     public AudioClip beforeExplosionSound;
+    private ParticleManager PM;
+    private SoundEffectManager SFX;
     private bool playingSound = false;
 
     [Header("Effect")]
@@ -67,13 +69,13 @@ public class ProjectileScript : MonoBehaviour
 
     [Header("Other Elements")]
     GameManager manager;
-    SoundEffectManager SFX;
     Material originalMaterial;
     #endregion
 
     void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        SFX = manager.SFX;
+        SFX = manager.getSFX();
+        PM = manager.getPM();
   
         originalDamage = Damage;
         originalSpeed = speed;
@@ -186,17 +188,17 @@ public class ProjectileScript : MonoBehaviour
         {
             case 0:
                 {
-                    manager.PM.spawnParticles(enemyHit, transform.position, 1);
+                    PM.spawnParticles(enemyHit, transform.position, 1);
                     break;
                 }
             case 1:
                 {
-                    manager.PM.spawnParticles(playerHit, transform.position, 1);
+                    PM.spawnParticles(playerHit, transform.position, 1);
                     break;
                 }
             default:
                 {
-                    manager.PM.spawnParticles(projectileCollision, transform.position, 1);
+                    PM.spawnParticles(projectileCollision, transform.position, 1);
                     break;
                 }
         }

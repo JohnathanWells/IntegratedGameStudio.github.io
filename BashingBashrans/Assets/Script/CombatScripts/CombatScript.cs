@@ -225,7 +225,7 @@ public class CombatScript : MonoBehaviour {
     public void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        SFX = manager.SFX;
+        SFX = manager.getSFX();
         weapon.manager = manager;
         weapon.SendMessage("changeSoundEffectManager", SFX);
     }

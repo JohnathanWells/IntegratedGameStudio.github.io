@@ -23,15 +23,18 @@ public class entrySensorScript : MonoBehaviour {
     public float speedOfFieldTransition = 1f;
 
     public bool smoothTransition = true;
+    //0 is regular room, 1 is empty room, 2 is boss
+    public int typeOfRoom = 0;
 
     private float[] speedsOfTrans;
     private int [] orderOfTrans;
 
 
-    //private levelManager cameraControl;
+    private levelManager cameraControl;
 
     void Start()
     {
+        cameraControl = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         int [] temp = { orderTransX, orderTransY, orderTransZ, orderTransR, orderTransF };
         float[] tempF = { speedOfPositionTransition, speedOfRotationTransition, speedOfFieldTransition };
         speedsOfTrans = tempF;
@@ -46,8 +49,19 @@ public class entrySensorScript : MonoBehaviour {
         {
             c.GetComponentInParent<PlayerMovement>().startTransMovement(playerObjective.position, playerObjective.rotation, roomNumber, orderOfTrans, speedsOfTrans, smoothTransition);
             managerOfRoom.SendMessage("hideProjectiles", false);
-            //cameraControl.SendMessage("changePoint", roomNumber);
+            changeMusic();
         }
     }
 
+    void changeMusic()
+    {
+        if (typeOfRoom == 1)
+        {
+            cameraControl.musicManager.SendMessage("stopSong");
+        }
+        else if (typeOfRoom == 2)
+        {
+            cameraControl.musicManager.SendMessage("playBoss");
+        }
+    }
 }

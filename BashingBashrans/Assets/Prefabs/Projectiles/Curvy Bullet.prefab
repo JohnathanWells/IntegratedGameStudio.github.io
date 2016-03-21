@@ -136,7 +136,7 @@ MonoBehaviour:
   renderer: {fileID: 2373198}
   effectOfProjectile: 0
   condition: 0
-  Damage: 50
+  Damage: 25
   Peffecttmemin: 1
   Peffecttmemax: 10
   halflife: 3.8

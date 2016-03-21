@@ -75,6 +75,7 @@ public class Boss01 : MonoBehaviour {
     public Animator animator;
 
     private GameManager manager;
+    private levelManager highManager;
 
 	void Awake () {
         attacks = new Attack[PatternsTexts.Length];
@@ -285,6 +286,7 @@ public class Boss01 : MonoBehaviour {
     public void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         inTrans = false;
         animator.SetInteger("Phase", 1);
     }
@@ -309,6 +311,7 @@ public class Boss01 : MonoBehaviour {
         {
             currentHealth = 0;
             dead = true;
+            
             animator.SetBool("Dead", true);
             Debug.Log("Enemy defeated");
             //DestroyTurret();

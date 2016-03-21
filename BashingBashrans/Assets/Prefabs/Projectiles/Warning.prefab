@@ -23,7 +23,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147416}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 2, y: -3, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -40,12 +40,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bb54b3f8b42954c8bb61d57daa7f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roofHeight: 30
-  ColorA: {r: .596078455, g: .596078455, b: .596078455, a: .515999973}
-  ColorB: {r: 1, g: 0, b: 0, a: .522000015}
+  roofHeight: 20
+  ColorA: {r: 0.59607846, g: 0.59607846, b: 0.59607846, a: 0.516}
+  ColorB: {r: 1, g: 0, b: 0, a: 0.522}
   renderer: {fileID: 21287480}
   numberOfWarnings: 3
-  timeOfBlip: .400000006
+  timeOfBlip: 0.4
   Boulder: {fileID: 407380, guid: 4f38f85bfc9f3ed41816e99e4796d02b, type: 2}
   warningSound: {fileID: 8300000, guid: a1629aeb2183d164eb7d92d0c25668c4, type: 3}
   audibleWarning: 1
@@ -67,14 +67,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5226a100937bc414ea43c5f6f616d932, type: 3}
-  m_Color: {r: .597000003, g: .597000003, b: .597000003, a: .522000015}
+  m_Color: {r: 0.597, g: 0.597, b: 0.597, a: 0.522}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

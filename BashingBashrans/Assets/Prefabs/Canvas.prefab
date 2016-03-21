@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22420454}
   - 114: {fileID: 11494622}
+  - 95: {fileID: 9559110}
   m_Layer: 5
   m_Name: LevelClearedScreen
   m_TagString: Untagged
@@ -924,6 +925,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 22420454}
   m_RootOrder: 6
+--- !u!95 &9559110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108690}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49f5b962a67c61d4aa23d559b93e1e7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11405376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3864,7 +3882,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.06791611, w: 0.99769104}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

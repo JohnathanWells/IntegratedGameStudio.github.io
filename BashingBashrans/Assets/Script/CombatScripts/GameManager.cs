@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour {
     public Transform RightUpCorner;
     public int numberOfLanes;
     public Transform enemiesFolder;
-    public ParticleManager PM;
-    public SoundEffectManager SFX;
     public Transform entryDoor;
     public Transform exitDoor;
     public Animator DoorAnimator;
     private CombatScript playerScript;
     private levelManager highManager;
+    private ParticleManager PM;
+    private SoundEffectManager SFX;
     int enemiesAtBeginning = 0;
     int enemiesDestroyed = 0;
 
@@ -145,7 +145,8 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
-        SFX.PlaySound(gameOverSound);
+        //SFX.PlaySound(gameOverSound);
+        highManager.musicManager.SendMessage("playGameOver");
         gameOver = true;
     }
 
@@ -341,9 +342,21 @@ public class GameManager : MonoBehaviour {
         distanceBetweenLanes = obtainDistanceBetweenLanes();
         playerScript = player.GetComponentInChildren<CombatScript>();
         //DoorAnimator = exitDoor.GetComponent<Animator>();
+        SFX = highManager.transform.GetComponent<SoundEffectManager>();
+        PM = highManager.transform.GetComponent<ParticleManager>();
 
         if (emptyRoom)
             checkIfCleared();
+    }
+
+    public SoundEffectManager getSFX()
+    {
+        return SFX;
+    }
+
+    public ParticleManager getPM()
+    {
+        return PM;
     }
 
     private void stageIsCleared()

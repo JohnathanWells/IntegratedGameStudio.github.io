@@ -24,7 +24,7 @@ public class cannonScript : MonoBehaviour {
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        SFX = manager.SFX;
+        SFX = manager.getSFX();
         //PartM = manager.PM;
         projectileFolder = manager.ProjectilesFolder;
         mainBody = transform.parent;

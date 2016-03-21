@@ -148,13 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97db6c81131dbb459a6a0ccd088d682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 15
+  fallSpeed: 10
   desviationSpeed: 25
   boulderBreak: {fileID: 19885830, guid: 190e7fbcc8151cb4cba6b7bf0f46d6e4, type: 2}
   soundWhenCrash: 1
   crashSound: {fileID: 8300000, guid: 8293bd548715257499a82ff9243d9d86, type: 3}
   punchable: 1
-  damage: 500
+  damage: 250
   objectiveHeight: 0
   halflife: 10
 --- !u!135 &13583618

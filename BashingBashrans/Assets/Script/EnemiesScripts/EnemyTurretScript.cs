@@ -305,8 +305,8 @@ public class EnemyTurretScript : MonoBehaviour {
     public void setManager()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        PartM = manager.PM;
-        SFX = manager.SFX;
+        PartM = manager.getPM();
+        SFX = manager.getSFX();
         //projectileFolder = manager.ProjectilesFolder;
         lane = manager.obtainLane(transform.parent);
         numberOfLanes = manager.numberOfLanes - 1;

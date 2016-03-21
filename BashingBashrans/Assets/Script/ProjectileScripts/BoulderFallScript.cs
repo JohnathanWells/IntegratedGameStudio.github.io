@@ -29,7 +29,7 @@ public class BoulderFallScript : MonoBehaviour {
             yield return new WaitForSeconds(timeOfBlip);
             
             if (audibleWarning)
-                manager.SFX.PlaySound(warningSound);
+                manager.getSFX().PlaySound(warningSound);
             
             renderer.color = ColorB;
             yield return new WaitForSeconds(timeOfBlip);

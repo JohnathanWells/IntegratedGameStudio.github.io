@@ -54,8 +54,8 @@ public class bombScript : MonoBehaviour {
 
 	void Start () {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        SFX = manager.SFX;
-        PM = manager.PM;
+        SFX = manager.getSFX();
+        PM = manager.getPM();
         lane = manager.obtainLane(transform);
         floordistance = manager.obtainDistanceBetweenLanes();
         //distanceBetweenLanes = manager.obtainDistanceBetweenLanes();

@@ -23,8 +23,8 @@ public class BoulderScript : MonoBehaviour {
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        PM = manager.PM;
-        SFX = manager.SFX;
+        PM = manager.getPM();
+        SFX = manager.getSFX();
     }
 
 	void Update () {
