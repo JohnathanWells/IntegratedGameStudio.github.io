@@ -272,8 +272,8 @@ public class levelManager : MonoBehaviour {
         SaveLoad.Load();
         passwords = SaveLoad.savedGame.getAllPasswordsFromAFloor(floorNumber);
 
-        for (int a = 0; a < passwords.Length; a++)
-            Debug.Log("Password " + a + ": " + passwords[a]);
+        //for (int a = 0; a < passwords.Length; a++)
+            //Debug.Log("Password " + a + ": " + passwords[a]);
     }
 
     public float getTime()

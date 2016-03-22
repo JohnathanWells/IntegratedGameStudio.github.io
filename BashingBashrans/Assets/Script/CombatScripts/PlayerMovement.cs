@@ -158,9 +158,9 @@ public class PlayerMovement : MonoBehaviour {
         //obtainLimits();
         numberOfLanes = manager.numberOfLanes;
         lane = manager.obtainLane(transform);
-        Debug.Log("Lane" + lane);
+        //Debug.Log("Lane" + lane);
         distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
-        Debug.Log("Distance between lanes: " + distanceBetweenLanes);
+        //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
 
     public void receiveDetection(Vector2 direction, bool value)
