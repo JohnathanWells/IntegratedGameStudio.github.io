@@ -23,6 +23,7 @@ public class EnemyTurretScript : MonoBehaviour {
     public int currentHealth;
     public bool canReturnProjectiles = false;
     public int OddsAgaisntReturningProjectile = 1;
+    public bool meelable = true;
 
     [Header("Movement")]
     public bool moveUpAndDown = false;
@@ -218,6 +219,11 @@ public class EnemyTurretScript : MonoBehaviour {
     int getHealth()
     {
         return currentHealth;
+    }
+
+    public bool getIfMeelable()
+    {
+        return meelable;
     }
 
     bool checkMarginOfErrorOFPosition(int dir)

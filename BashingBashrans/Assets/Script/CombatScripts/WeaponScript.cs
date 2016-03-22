@@ -72,9 +72,12 @@ public class WeaponScript : MonoBehaviour {
 
     void meleeEnemy(EnemyTurretScript enemy)
     {
-        SFX.PlaySound(meleeAttackSound);
-        enemy.SendMessage("ReceiveDamage", damage);
-        animationHappening = true;
+        if (enemy.getIfMeelable())
+        {
+            SFX.PlaySound(meleeAttackSound);
+            enemy.SendMessage("ReceiveDamage", damage);
+            animationHappening = true;
+        }
     }
 
     public void changeSoundEffectManager(SoundEffectManager newSFX)
