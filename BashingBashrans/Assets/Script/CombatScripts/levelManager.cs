@@ -77,6 +77,11 @@ public class levelManager : MonoBehaviour {
                 inTransition = false;
         }
 
+        if (Input.GetKey(KeyCode.K))
+        {
+            Application.CaptureScreenshot("Screenshot.png");
+        }
+
         if (Input.GetButtonDown("Pause"))
         {
             togglePause();
