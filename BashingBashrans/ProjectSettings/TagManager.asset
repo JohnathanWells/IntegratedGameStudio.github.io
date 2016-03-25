@@ -19,6 +19,7 @@ TagManager:
   - Door
   - PlayerModel
   - Music Manager
+  - Bomb
   layers:
   - Default
   - TransparentFX

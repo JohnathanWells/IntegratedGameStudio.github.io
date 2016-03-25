@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: d1d7f181ee1b56649b386465fc7267d0,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -182,6 +183,10 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -286,7 +291,7 @@ GameObject:
   - 65: {fileID: 65701410}
   m_Layer: 0
   m_Name: Exit Sensor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,10 +303,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65701408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.309, y: 4, z: 0}
+  m_LocalPosition: {x: 76.41, y: -0.54, z: 0}
   m_LocalScale: {x: 0.35, y: 2, z: 1}
-  m_Children:
-  - {fileID: 1357479307}
+  m_Children: []
   m_Father: {fileID: 970166290}
   m_RootOrder: 0
 --- !u!65 &65701410
@@ -329,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a731b9f450b2447b8b5c4e202ee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 1
+  roomNumber: 3
   playerObjective: {fileID: 1357479307}
   managerOfRoom: {fileID: 625499837}
   orderTransX: 3
@@ -650,7 +654,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_LocalScale.x
@@ -940,7 +944,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 485866, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 152094, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
       propertyPath: m_Name
@@ -1214,7 +1218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -1379,7 +1383,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -1504,10 +1508,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 321149917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 49.29, y: 0, z: 0}
+  m_LocalScale: {x: 0.35, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 1377622428}
+  m_Father: {fileID: 625499833}
   m_RootOrder: 0
 --- !u!1001 &338399773
 Prefab:
@@ -1546,7 +1550,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -2059,6 +2063,10 @@ Prefab:
       propertyPath: m_Name
       value: Regular Turret 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -2192,6 +2200,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 321149918}
   - {fileID: 1133294686}
   - {fileID: 338399774}
   - {fileID: 117929912}
@@ -2258,7 +2267,7 @@ MonoBehaviour:
   ProjectilesFolder: {fileID: 2038817229}
   LeftDownCorner: {fileID: 237339365}
   RightUpCorner: {fileID: 1133294686}
-  numberOfLanes: 1
+  numberOfLanes: 3
   enemiesFolder: {fileID: 625499835}
   entryDoor: {fileID: 1609450521}
   exitDoor: {fileID: 1396498702}
@@ -2309,7 +2318,7 @@ Transform:
   - {fileID: 970166290}
   - {fileID: 625499836}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &629248857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2588,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -2640,8 +2653,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.47, y: 1.85, z: 0}
   m_LocalScale: {x: 0.25, y: 2, z: 1}
-  m_Children:
-  - {fileID: 2146698527}
+  m_Children: []
   m_Father: {fileID: 303913872}
   m_RootOrder: 0
 --- !u!65 &733308081
@@ -2985,6 +2997,7 @@ Transform:
   - {fileID: 429670000}
   - {fileID: 161783958}
   - {fileID: 1769944382}
+  - {fileID: 1443210069}
   m_Father: {fileID: 787727108}
   m_RootOrder: 1
 --- !u!4 &787727104
@@ -3085,7 +3098,7 @@ Transform:
   - {fileID: 787727105}
   - {fileID: 694221989}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &789064282
 Prefab:
   m_ObjectHideFlags: 0
@@ -3133,6 +3146,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -3355,7 +3372,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -3748,7 +3765,7 @@ Transform:
   - {fileID: 118099544}
   - {fileID: 440303326}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &886553165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,6 +4251,7 @@ Transform:
   - {fileID: 840855659}
   - {fileID: 1292081274}
   - {fileID: 2030895499}
+  - {fileID: 1588362323}
   m_Father: {fileID: 1005612838}
   m_RootOrder: 2
 --- !u!4 &1005612834
@@ -4331,7 +4349,7 @@ Transform:
   - {fileID: 1005612835}
   - {fileID: 573635261}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1001 &1005944553
 Prefab:
   m_ObjectHideFlags: 0
@@ -4374,6 +4392,10 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_Name
       value: Regular Turret 1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -4657,6 +4679,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -4933,6 +4959,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1091939719 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
+  m_PrefabInternal: {fileID: 1330405285}
 --- !u!1001 &1110802575
 Prefab:
   m_ObjectHideFlags: 0
@@ -5038,6 +5068,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5082,7 +5116,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -5146,6 +5180,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5325,7 +5363,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.z
@@ -5447,6 +5485,18 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5501,6 +5551,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5685,7 +5739,23 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: 6a957cdce8ee51543878b47aef7bc858, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5705,7 +5775,7 @@ GameObject:
   - 65: {fileID: 1291062332}
   m_Layer: 0
   m_Name: Exit Sensor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5717,10 +5787,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1291062330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.309, y: 4, z: 0}
+  m_LocalPosition: {x: 54.68, y: -1.3, z: -12.93}
   m_LocalScale: {x: 0.35, y: 2, z: 1}
-  m_Children:
-  - {fileID: 1588362323}
+  m_Children: []
   m_Father: {fileID: 2090035373}
   m_RootOrder: 0
 --- !u!65 &1291062332
@@ -5924,6 +5993,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 8dffe0cb70f47d14fa3519619d5bbb81, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5936,15 +6009,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1724669671}
     m_Modifications:
     - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.31
+      value: -14.62
       objectReference: {fileID: 0}
     - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -19.27
+      value: -38.54
       objectReference: {fileID: 0}
     - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5968,7 +6041,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474016, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: floorSong
@@ -6003,11 +6076,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1357479306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 77.28, y: 0, z: -13}
+  m_LocalScale: {x: 0.35, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 65701409}
-  m_RootOrder: 0
+  m_Father: {fileID: 1507619570}
+  m_RootOrder: 13
 --- !u!114 &1364878335 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9,
@@ -6196,7 +6269,7 @@ GameObject:
   - 65: {fileID: 1377622429}
   m_Layer: 0
   m_Name: Exit Sensor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6208,10 +6281,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377622427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.309, y: 4, z: 0}
+  m_LocalPosition: {x: 46.84, y: -0.46, z: 0}
   m_LocalScale: {x: 0.35, y: 2, z: 1}
-  m_Children:
-  - {fileID: 321149918}
+  m_Children: []
   m_Father: {fileID: 79808918}
   m_RootOrder: 0
 --- !u!65 &1377622429
@@ -6239,7 +6311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a731b9f450b2447b8b5c4e202ee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 1
+  roomNumber: 2
   playerObjective: {fileID: 321149918}
   managerOfRoom: {fileID: 1843068242}
   orderTransX: 3
@@ -6564,7 +6636,23 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: 596909c9d1bd2fb438c438bf5534a17f, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -6594,11 +6682,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1443210068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 35.89, y: -0.4, z: -40}
+  m_LocalScale: {x: 0.35, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 2137681894}
-  m_RootOrder: 0
+  m_Father: {fileID: 787727103}
+  m_RootOrder: 10
 --- !u!1001 &1469535361
 Prefab:
   m_ObjectHideFlags: 0
@@ -6812,6 +6900,7 @@ Transform:
   - {fileID: 1984991199}
   - {fileID: 985439170}
   - {fileID: 1469535362}
+  - {fileID: 1357479307}
   m_Father: {fileID: 1507619575}
   m_RootOrder: 1
 --- !u!4 &1507619571
@@ -6908,7 +6997,7 @@ Transform:
   - {fileID: 1507619572}
   - {fileID: 2090035373}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &1545018892 stripped
 Transform:
   m_PrefabParentObject: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
@@ -6965,7 +7054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -7008,11 +7097,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1588362322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 52.76, y: 0, z: -23}
+  m_LocalScale: {x: 0.35, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 1291062331}
-  m_RootOrder: 0
+  m_Father: {fileID: 1005612833}
+  m_RootOrder: 15
 --- !u!1001 &1589840537
 Prefab:
   m_ObjectHideFlags: 0
@@ -7108,7 +7197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.y
@@ -7282,7 +7371,7 @@ Transform:
   - {fileID: 222101298}
   - {fileID: 2075322326}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &1621448513
 Prefab:
   m_ObjectHideFlags: 0
@@ -7546,7 +7635,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 117060, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
       propertyPath: m_Name
@@ -7725,9 +7814,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.31, y: 19.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1091939719}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
 --- !u!114 &1724669672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7797,7 +7887,23 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: d1a18a4654af3c54983f213d8d8df521, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -7852,6 +7958,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 8dffe0cb70f47d14fa3519619d5bbb81, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -8258,6 +8368,7 @@ Transform:
   - {fileID: 296498622}
   - {fileID: 76777457}
   - {fileID: 2684531}
+  - {fileID: 2146698527}
   m_Father: {fileID: 1843068244}
   m_RootOrder: 1
 --- !u!4 &1843068240
@@ -8354,7 +8465,7 @@ Transform:
   - {fileID: 1843068241}
   - {fileID: 79808918}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1001 &1861331588
 Prefab:
   m_ObjectHideFlags: 0
@@ -8397,6 +8508,10 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_Name
       value: Regular Turret 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -9172,7 +9287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 13723762, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_Mesh
@@ -9794,6 +9909,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -9848,6 +9967,10 @@ Prefab:
       propertyPath: possibleAmmo.Array.data[0]
       value: 
       objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeSpeedOfBullets
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -9937,10 +10060,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2137681893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.309, y: 4, z: 0}
+  m_LocalPosition: {x: 37.1, y: -0.4, z: -27.24}
   m_LocalScale: {x: 0.35, y: 2, z: 1}
-  m_Children:
-  - {fileID: 1443210069}
+  m_Children: []
   m_Father: {fileID: 573635261}
   m_RootOrder: 0
 --- !u!65 &2137681895
@@ -10171,8 +10293,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2146698526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -0.95, z: 0}
-  m_LocalScale: {x: 4, y: 0.5, z: 1}
+  m_LocalPosition: {x: 23.595, y: -0.049999952, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 733308080}
-  m_RootOrder: 0
+  m_Father: {fileID: 1843068239}
+  m_RootOrder: 5

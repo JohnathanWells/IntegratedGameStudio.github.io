@@ -15,6 +15,7 @@ public class bombScript : MonoBehaviour {
     public MeshRenderer renderer;
     private bool beingReturned = false;
     private int lane = 0;
+    private int numOfLanes;
 
     [Header("Damage, Halflife, Trayectory and Explosion")]
     public typeOfBomb bombType;
@@ -33,8 +34,9 @@ public class bombScript : MonoBehaviour {
     private float distanceTraveled = 0;
     private float originalSpeed;
     //private float distanceBetweenLanes = 1;
-    private int switches = 10;
+    private int switches = 0;
     private int switchesActivated = 0;
+    private bool exploded = false;
 
     [Header("Particles and Sounds")]
     public ParticleSystem explosionParticle;
@@ -57,12 +59,18 @@ public class bombScript : MonoBehaviour {
         SFX = manager.getSFX();
         PM = manager.getPM();
         lane = manager.obtainLane(transform);
+        numOfLanes = manager.numberOfLanes;
         floordistance = manager.obtainDistanceBetweenLanes();
         //distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
         projectileFolder = manager.ProjectilesFolder;
+        //Debug.Log("Its alive");
 	}
 
 	void Update () {
+
+        if (!exploded)
+            moveHorizontally();
+
         if (condition == conditionForDestruction.timed)
         {
             lifeTime += Time.deltaTime;
@@ -73,8 +81,10 @@ public class bombScript : MonoBehaviour {
                 playingSound = true;
             }
 
-            if (lifeTime >= halflife)
+            if (lifeTime >= halflife && !exploded)
             {
+                exploded = true;
+
                 if (!playingSound)
                     SFX.PlaySound(explosionSound);
 
@@ -85,13 +95,14 @@ public class bombScript : MonoBehaviour {
         {
             distanceTraveled += Time.deltaTime * speed;
 
-            if (distanceTraveled >= distanceCondition)
+            if (distanceTraveled >= distanceCondition && !exploded)
             {
+                exploded = true;
                 explodeBomb();
             }
         }
 
-        if (switchesActivated == switches)
+        if (exploded && switchesActivated == switches)
             Destroy(gameObject);
 	}
 
@@ -151,18 +162,18 @@ public class bombScript : MonoBehaviour {
 
         if (lineDirection == directionOfLine.Left)
         {
-            direction[0] = new Vector3(0, -1, 0);
+            direction[0] = new Vector3(0, 0, -1);
             direction[1] = new Vector3(0, 0, 0);
         }
         else if (lineDirection == directionOfLine.Right)
         {
-            direction[0] = new Vector3(0, 1, 0);
+            direction[0] = new Vector3(0, 0, 1);
             direction[1] = new Vector3(0, 0, 0);
         }
         else
         {
-            direction[0] = new Vector3(0, -1, 0);
-            direction[1] = new Vector3(0, 1, 0);
+            direction[0] = new Vector3(0, 0, -1);
+            direction[1] = new Vector3(0, 0, 1);
         }
 
         lineExplosion(transform.position, direction);
@@ -247,38 +258,76 @@ public class bombScript : MonoBehaviour {
 
     void lineExplosion(Vector3 center, Vector3[] directions)
     {
+        int numberOfExplosionsA = numOfLanes - (lane + 1);
+        int numberOfExplosionsB = lane;
+        Debug.Log(transform.name + "\n" + numOfLanes + " - " + lane++);
+        //if (numberOfExplosionsA > lineRange)
+        //{
+        //    numberOfExplosionsA = lineRange;
+        //}
+        
+        Transform subExplosion = Instantiate(subExplosions, (center), Quaternion.Euler(subExplosions.eulerAngles)) as Transform;
+        subExplosion.parent = projectileFolder;
+
         for (int a = 0; a < 2; a++)
         {
-            int numberOfExplosions = manager.numberOfLanes - lane;
 
-            if (numberOfExplosions > lineRange)
+            //Debug.Log(transform.name + ": " + a + "\n" + numberOfExplosionsA + "\n" + numberOfExplosionsB);
+
+            if (directions[a].x > 0  && numberOfExplosionsA > 0)
             {
-                numberOfExplosions = lineRange;
+                switches++;
+                StartCoroutine(simultaneousDirections(numberOfExplosionsA, directions[a], center));
+            }
+            else if (directions[a].x < 0 && numberOfExplosionsB > 0)
+            {
+                switches++;
+                StartCoroutine(simultaneousDirections(numberOfExplosionsB, directions[a], center));
             }
 
-            if ((directions[a].x > 0 || directions[a].x < 0) && numberOfExplosions > 0)
+            if (directions[a].z > 0 && numberOfExplosionsA > 0)
             {
-                StartCoroutine(simultaneousDirections(numberOfExplosions, directions[a], center));
                 switches++;
+                StartCoroutine(simultaneousDirections(numberOfExplosionsA, directions[a], center));
             }
-
-            if ((directions[a].y > 0 || directions[a].y < 0) && numberOfExplosions > 0)
+            else if (directions[a].z < 0 && numberOfExplosionsB > 0)
             {
-                StartCoroutine(simultaneousDirections(numberOfExplosions, directions[a], center));
                 switches++;
+                StartCoroutine(simultaneousDirections(numberOfExplosionsB, directions[a], center));
             }
         }
     }
 
     IEnumerator simultaneousDirections(int numberOfExplosions, Vector3 direction, Vector3 center)
     {
-        for (int a = 1; a < numberOfExplosions; a++)
+        //print(direction);
+        for (int a = 1; a <= numberOfExplosions; a++)
         {
             Transform subExplosion = Instantiate(subExplosions, (center + (direction * a * floordistance)), Quaternion.Euler(subExplosions.eulerAngles)) as Transform;
-            subExplosions.parent = projectileFolder;
+            subExplosion.parent = projectileFolder;
             yield return new WaitForSeconds(timeBetweenSubExplosions);
         }
 
         switchesActivated++;
+    }
+
+    public ParticleSystem getMuzzleParticles()
+    {
+        return muzzleParticles;
+    }
+
+    public AudioClip getShootingSounds()
+    {
+        return shootingSound;
+    }
+
+    void moveHorizontally()
+    {
+        int dir = -1;
+
+        if (movementType == typeMovement.Horizontal)
+        {
+            transform.Translate(new Vector3(speed * dir * Time.deltaTime, 0, 0));
+        }
     }
 }

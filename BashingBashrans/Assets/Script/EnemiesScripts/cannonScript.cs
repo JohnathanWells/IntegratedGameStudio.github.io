@@ -54,12 +54,26 @@ public class cannonScript : MonoBehaviour {
         muzzleParticles = new ParticleSystem[sizeOfArray];
         ProjectilesSounds = new AudioClip[sizeOfArray];
         ProjectileScript temp;
+        bombScript Temp;
 
         for (int n = 0; n < sizeOfArray; n++)
         {
             temp = possibleAmmo[n].GetComponent<ProjectileScript>();
-            ParticleSystem part = Instantiate(temp.getMuzzleParticles(), Vector3.zero, Quaternion.Euler(new Vector3(0, -90, 0))) as ParticleSystem;
-            ProjectilesSounds[n] = temp.getShootingSound();
+            ParticleSystem part;
+
+            if (temp != null)
+            {
+                part = Instantiate(temp.getMuzzleParticles(), Vector3.zero, Quaternion.Euler(new Vector3(0, -90, 0))) as ParticleSystem;
+                ProjectilesSounds[n] = temp.getShootingSound();
+            }
+            else
+            {
+                Temp = possibleAmmo[n].GetComponent<bombScript>();
+                part = Instantiate(Temp.getMuzzleParticles(), Vector3.zero, Quaternion.Euler(new Vector3(0, -90, 0))) as ParticleSystem;
+                ProjectilesSounds[n] = Temp.getShootingSounds();
+
+            }
+
             part.transform.parent = transform;
             part.transform.localPosition = flashOffset;
             part.gameObject.SetActive(false);

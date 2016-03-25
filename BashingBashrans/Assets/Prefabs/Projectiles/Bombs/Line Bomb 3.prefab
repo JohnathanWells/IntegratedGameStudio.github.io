@@ -11,12 +11,11 @@ GameObject:
   - 33: {fileID: 3343496}
   - 135: {fileID: 13578206}
   - 23: {fileID: 2320700}
-  - 114: {fileID: 11445604}
   - 54: {fileID: 5479870}
   - 114: {fileID: 11466800}
   m_Layer: 0
-  m_Name: Bomb
-  m_TagString: Projectile
+  m_Name: Line Bomb 3
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,45 +80,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11445604
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 0
-  direction: 0
-  canBePunched: 1
-  blockedByStanding: 0
-  angleOfDesviation: 180
-  speed: 6
-  desviationSpeed: 8
-  desviationMaterial: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
-  renderer: {fileID: 2320700}
-  effectOfProjectile: 0
-  condition: 0
-  Damage: 100
-  Peffecttmemin: 1
-  Peffecttmemax: 10
-  halflife: 6.75
-  projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
-    type: 2}
-  playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
-  enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
-  muzzleParticles: {fileID: 19811200, guid: 18c4c9dedbd582c4286cc282e12928ab, type: 2}
-  shootingSound: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
-  destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
-  explosionSound: {fileID: 0}
-  beforeExplosionSound: {fileID: 0}
-  minSick: 0
-  maxSick: 0
-  amplitude: 0
-  bnceAng: 45
 --- !u!114 &11466800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,14 +98,14 @@ MonoBehaviour:
   renderer: {fileID: 2320700}
   bombType: 1
   lineDirection: 2
-  condition: 0
-  speed: 2
+  condition: 1
+  speed: 5
   desviationSpeed: 4
   lineRange: 4
   halflife: 2
-  distanceCondition: 5
+  distanceCondition: 9.5
   timeBetweenSubExplosions: 0
-  subExplosions: {fileID: 421790, guid: a21b3355d0dd2be4397900f3720c9a96, type: 2}
+  subExplosions: {fileID: 459216, guid: 3a07980cd44c0d543bb5806cfb22c2ff, type: 2}
   explosionParticle: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4, type: 2}
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
