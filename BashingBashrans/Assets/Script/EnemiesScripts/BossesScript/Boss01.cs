@@ -294,6 +294,8 @@ public class Boss01 : MonoBehaviour {
     public void ReceiveDamage(int damage)
     {
         //SFX.PlaySound(damageSound);
+        animator.SetTrigger("DamageReceived");
+
         currentHealth -= damage;
         
         if (currentHealth <= Phase2StartsAt)

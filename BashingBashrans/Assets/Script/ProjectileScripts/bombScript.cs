@@ -12,6 +12,7 @@ public class bombScript : MonoBehaviour {
     public bool canBePunched = false;
     public float angleOfDesviation = 180;
     public Material desviationMaterial;
+    public Material preExplosionMaterial;
     public MeshRenderer renderer;
     private bool beingReturned = false;
     private int lane = 0;
@@ -77,6 +78,7 @@ public class bombScript : MonoBehaviour {
 
             if (lifeTime + 1f >= halflife && !playingSound)
             {
+                renderer.material = preExplosionMaterial;
                 SFX.PlaySound(beforeExplosionSound);
                 playingSound = true;
             }
@@ -232,18 +234,18 @@ public class bombScript : MonoBehaviour {
         explosions[0] = Instantiate(subExplosions, center + Vector3.right * floordistance, angleOfSubs) as Transform;
         explosions[1] = Instantiate(subExplosions, center + Vector3.left * floordistance, angleOfSubs) as Transform;
 
-        if (lane++ <= manager.numberOfLanes)
+        if (lane + 1 <= manager.numberOfLanes)
         {
-            explosions[2] = Instantiate(subExplosions, center + Vector3.up * floordistance, angleOfSubs) as Transform;
-            explosions[3] = Instantiate(subExplosions, center + (Vector3.right + Vector3.up) * floordistance, angleOfSubs) as Transform;
-            explosions[4] = Instantiate(subExplosions, center + (Vector3.left + Vector3.up) * floordistance, angleOfSubs) as Transform;
+            explosions[2] = Instantiate(subExplosions, center + Vector3.forward * floordistance, angleOfSubs) as Transform;
+            explosions[3] = Instantiate(subExplosions, center + (Vector3.right + Vector3.forward) * floordistance, angleOfSubs) as Transform;
+            explosions[4] = Instantiate(subExplosions, center + (Vector3.left + Vector3.forward) * floordistance, angleOfSubs) as Transform;
         }
 
-        if (lane-- >= manager.numberOfLanes)
+        if (lane - 1 >= 0)
         {
-            explosions[5] = Instantiate(subExplosions, center + (Vector3.right + Vector3.down) * floordistance, angleOfSubs) as Transform;
-            explosions[6] = Instantiate(subExplosions, center + (Vector3.left + Vector3.down) * floordistance, angleOfSubs) as Transform;
-            explosions[7] = Instantiate(subExplosions, center + Vector3.down * floordistance, angleOfSubs) as Transform;
+            explosions[5] = Instantiate(subExplosions, center + (Vector3.right + Vector3.back) * floordistance, angleOfSubs) as Transform;
+            explosions[6] = Instantiate(subExplosions, center + (Vector3.left + Vector3.back) * floordistance, angleOfSubs) as Transform;
+            explosions[7] = Instantiate(subExplosions, center + Vector3.back * floordistance, angleOfSubs) as Transform;
         }
 
         explosions[8] = Instantiate(subExplosions, center, angleOfSubs) as Transform;

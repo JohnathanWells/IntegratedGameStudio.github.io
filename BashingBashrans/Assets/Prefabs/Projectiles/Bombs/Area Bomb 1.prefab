@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5479870}
   - 114: {fileID: 11466800}
   m_Layer: 0
-  m_Name: Line Bomb 1
+  m_Name: Area Bomb 1
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,14 +98,14 @@ MonoBehaviour:
   preExplosionMaterial: {fileID: 2100000, guid: 3f142bfe31f228c40ae3d80c9384ff86,
     type: 2}
   renderer: {fileID: 2320700}
-  bombType: 1
+  bombType: 3
   lineDirection: 2
   condition: 1
   speed: 5
   desviationSpeed: 4
   lineRange: 4
   halflife: 2
-  distanceCondition: 0.5
+  distanceCondition: 8
   timeBetweenSubExplosions: 0
   subExplosions: {fileID: 459216, guid: 3a07980cd44c0d543bb5806cfb22c2ff, type: 2}
   explosionParticle: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4, type: 2}

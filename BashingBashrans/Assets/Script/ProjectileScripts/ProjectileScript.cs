@@ -131,7 +131,7 @@ public class ProjectileScript : MonoBehaviour
         {
             transform.Translate(new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, 0));
             //bnc = new Vector3(directionOfProjectile * speed * Time.deltaTime, 0, -directionOfProjectile * speed * Time.deltaTime);
-            transform.Translate(translation);
+            //transform.Translate(translation);
         }
 
         if (movement == typeMovement.Horizontal)

@@ -29,6 +29,7 @@ GameObject:
   - 54: {fileID: 5462948}
   - 114: {fileID: 11420424}
   - 95: {fileID: 9574164}
+  - 65: {fileID: 6546986}
   m_Layer: 0
   m_Name: Model
   m_TagString: Enemy
@@ -156,8 +157,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.83, y: 1, z: 1.8386949}
-  m_Center: {x: 0.39, y: 0, z: 0.8386964}
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: 0.17, y: 0, z: 0.71}
+--- !u!65 &6546986
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.51}
+  m_Center: {x: 1.06, y: 0, z: 1.12}
 --- !u!95 &9574164
 Animator:
   serializedVersion: 3
@@ -186,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443434f13131c4046aec931c45ca6cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 2
-  burstCooling: 1
-  projectilesByBurst: 6
+  cooldownTime: 0.75
+  burstCooling: 0.5
+  projectilesByBurst: 3
   randomBullets: 0
   shootBurstInSingleLine: 0
   InitialHealth: 300

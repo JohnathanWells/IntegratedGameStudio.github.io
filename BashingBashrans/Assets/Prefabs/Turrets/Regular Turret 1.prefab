@@ -14,6 +14,7 @@ GameObject:
   - 54: {fileID: 5413180}
   - 114: {fileID: 11483516}
   - 95: {fileID: 9527492}
+  - 65: {fileID: 6501544}
   m_Layer: 0
   m_Name: Model
   m_TagString: Enemy
@@ -73,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4994068, y: 6.5062323, z: -21.274021}
+  m_LocalPosition: {x: 24.9856, y: 3.3206525, z: 6.812527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409484}
@@ -146,6 +147,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6501544
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85, y: 1, z: 1}
+  m_Center: {x: 0.96, y: 0, z: 1.28}
 --- !u!65 &6549490
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -156,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.83, y: 1, z: 1.8386949}
-  m_Center: {x: 0.39, y: 0, z: 0.8386964}
+  m_Size: {x: 1.03, y: 1, z: 1.8386949}
+  m_Center: {x: 0, y: 0, z: 0.8386964}
 --- !u!95 &9527492
 Animator:
   serializedVersion: 3
@@ -216,6 +229,7 @@ MonoBehaviour:
   currentHealth: 0
   canReturnProjectiles: 0
   OddsAgaisntReturningProjectile: 1
+  meelable: 1
   moveUpAndDown: 0
   speed: 1
   direction: 0
