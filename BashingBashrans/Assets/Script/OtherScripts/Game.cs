@@ -202,7 +202,7 @@ public class Game
             else
                 temp += input[a];
         }
-
+        Debug.Log("pass is " + temp);
         return temp;
     }
 
@@ -237,5 +237,10 @@ public class Game
     {
         SFXVolume = sfx * master;
         MusicVolume = music * master;
+    }
+
+    public void setUnlockFloor(int floor, bool value)
+    {
+        unlockedFloors[floor - 1] = value;
     }
 }

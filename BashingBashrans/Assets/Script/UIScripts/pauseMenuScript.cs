@@ -21,7 +21,7 @@ public class pauseMenuScript : MonoBehaviour {
 
     void OnGUI()
     {
-        if (Input.GetButtonDown("Enter"))
+        if (Input.GetKeyDown(KeyCode.Return))
             enterPassword();
     }
 
@@ -54,7 +54,7 @@ public class pauseMenuScript : MonoBehaviour {
         }
     }
 
-    void setActiveButtons()
+    public void setActiveButtons()
     {
         SaveLoad.Load();
         bool[] temp = SaveLoad.savedGame.unlockedPasswords;
