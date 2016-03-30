@@ -25,10 +25,14 @@ public class floorClearedScreen : MonoBehaviour {
         getFinalStats();
         SaveLoad.Load();
         recordDamage = SaveLoad.savedGame.lessDamageReceivedByFloor[floorNumber - 1];
+        transform.BroadcastMessage("setManager");
 
         if (timeTaken < SaveLoad.savedGame.bestTimes[floorNumber - 1])
         {
+            //Debug.Log(SaveLoad.savedGame.bestTimes[floorNumber - 1]);
             timeText.text = turnIntoTime(timeTaken) + "\nNew Record!";
+            SaveLoad.savedGame.setNewTimeRecord(timeTaken, floorNumber - 1);
+            SaveLoad.Save();
         }
         else
             timeText.text = turnIntoTime(timeTaken);
@@ -48,7 +52,10 @@ public class floorClearedScreen : MonoBehaviour {
 
         if (damageCount == damageReceived && recordDamage > damageReceived)
         {
+            //Debug.Log(recordDamage);
             damageReceivedText.text += "\nNewRecord!";
+            SaveLoad.savedGame.setDamageRecord(damageReceived, floorNumber - 1);
+            SaveLoad.Save();
         }
         //Debug.Log("Working");
     }

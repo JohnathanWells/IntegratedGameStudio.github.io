@@ -294,7 +294,7 @@ public class Boss01 : MonoBehaviour {
     public void ReceiveDamage(int damage)
     {
         //SFX.PlaySound(damageSound);
-        animator.SetTrigger("DamageReceived");
+        animator.Play("Damage");
 
         currentHealth -= damage;
         

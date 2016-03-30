@@ -264,7 +264,8 @@ public class levelManager : MonoBehaviour {
 
     public string getPassword(int numberOfPassword)
     {
-        Debug.Log("Number: " + numberOfPassword);
+        //Debug.Log("Number: " + numberOfPassword);
+        print(numberOfPassword + ": " + passwords[numberOfPassword]);
         return passwords[numberOfPassword];
     }
 

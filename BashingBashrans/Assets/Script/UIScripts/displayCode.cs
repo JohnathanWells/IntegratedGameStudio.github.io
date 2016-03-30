@@ -18,8 +18,9 @@ public class displayCode : MonoBehaviour {
     [Header("Conditions")]
     public float timeCondition;
     public int healthCondition;
-    public bool[] requiredPreviouslyUnlockedLogs;
+    public bool[] requiredPreviouslyUnlockedLogs = new bool[11];
     public displayCode displayWithPriority;
+    public bool ACTIVE = true;
 
     private string password;
 
@@ -61,11 +62,15 @@ public class displayCode : MonoBehaviour {
             resultB = true;
 
         if (displayWithPriority != null && displayWithPriority.shouldDisplay())
+        {
             resultC = false;
+            displayWithPriority.ACTIVATE();
+            displayWithPriority.setManager();
+        }
         else
             resultC = true;
 
-        Debug.Log("Priority is " + resultC);
+        Debug.Log("Conditions for " + numberOfDisplayInFloor + " are " + resultA + ", " + resultB + ", " + resultC + ", " + ACTIVE);
 
         if (resultA && resultB && resultC)
             return true;
@@ -99,7 +104,7 @@ public class displayCode : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         password = highManager.getPassword(numberOfDisplayInFloor);
 
-        if (shouldDisplay())
+        if (ACTIVE && shouldDisplay())
         {
             if (displayType == typeOfDisplay.GUIText)
             {
@@ -110,5 +115,10 @@ public class displayCode : MonoBehaviour {
                 textMesh.text = password;
             }
         }
+    }
+
+    public void ACTIVATE()
+    {
+        ACTIVE = true;
     }
 }

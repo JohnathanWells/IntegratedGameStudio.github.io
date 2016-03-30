@@ -120,14 +120,6 @@ public class CombatScript : MonoBehaviour {
             {
                 poison();
             }
-            if (burning)
-            {
-                Burn();
-            }
-            else if (!burning && burnTaim > 0)
-            {
-                burnTaim -= Time.deltaTime;
-            }
 
             if (Input.GetButtonDown("Swing Direction") && canPunch)
             {
@@ -139,12 +131,24 @@ public class CombatScript : MonoBehaviour {
 
     void OnTriggerStay(Collider c)
     {
-        if (c.CompareTag("Boulder") && !dead)
+        if (!dead)
         {
-            BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
+            if (c.CompareTag("Boulder"))
+            {
+                BoulderScript boulderProperties = c.GetComponent<BoulderScript>();
 
-            receiveDamage(boulderProperties.damage);
-            boulderProperties.DestroyBoulder();
+                receiveDamage(boulderProperties.damage);
+                boulderProperties.DestroyBoulder();
+            }
+
+            if (c.tag == "Fire")
+            {
+                Burn();
+            }
+            else if (c.tag != "Fire" && burnTaim > 0)
+            {
+                burnTaim -= Time.deltaTime;
+            }
         }
     }
 
@@ -202,7 +206,7 @@ public class CombatScript : MonoBehaviour {
         highManager.SendMessage("accumulateDamage", damage);
         SFX.PlaySound(receiveDamageSound);
 
-        Debug.Log("HP: " + damage);
+        //Debug.Log("HP: " + damage);
 
         if (currentHealth <= 0)
         {
@@ -270,7 +274,7 @@ public class CombatScript : MonoBehaviour {
     }
     IEnumerator Pain()
     {
-        Debug.Log("Begin");
+        //Debug.Log("Begin");
 
         yield return new WaitForSeconds(painanimation);
         {
