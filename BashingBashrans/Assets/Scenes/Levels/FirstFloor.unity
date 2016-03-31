@@ -9998,7 +9998,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1481871762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.17, y: 5.99, z: 17.985}
+  m_LocalPosition: {x: 30.97, y: 5.99, z: 17.985}
   m_LocalScale: {x: 0.25, y: 2, z: 1}
   m_Children:
   - {fileID: 1633286547}
@@ -10030,8 +10030,8 @@ MonoBehaviour:
   roomNumber: 5
   playerObjective: {fileID: 1633286547}
   managerOfRoom: {fileID: 1961660814}
-  orderTransX: 1
-  orderTransY: 2
+  orderTransX: 2
+  orderTransY: 1
   orderTransZ: 0
   orderTransR: 3
   orderTransF: 4
@@ -12954,7 +12954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 19.5
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12978,11 +12978,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 7.798654
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.9999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
@@ -13439,8 +13443,8 @@ MonoBehaviour:
   roomNumber: 4
   playerObjective: {fileID: 409257870}
   managerOfRoom: {fileID: 1056312504}
-  orderTransX: 2
-  orderTransY: 3
+  orderTransX: 3
+  orderTransY: 2
   orderTransZ: 1
   orderTransR: 4
   orderTransF: 0

@@ -113,6 +113,7 @@ public class levelManager : MonoBehaviour {
             playerHealthText.transform.parent.gameObject.SetActive(false);
             pauseMenu.SetActive(true);
             SaveLoad.Load();
+            pauseMenu.SendMessage("setActiveButtons");
             Time.timeScale = 0f;
         }
         else
@@ -289,6 +290,8 @@ public class levelManager : MonoBehaviour {
     public void floorIsCleared()
     {
         floorCleared = true;
+        SaveLoad.Load();
+        SaveLoad.savedGame.setUnlockFloor(floorNumber + 1, true);
     }
 
     public void accumulateDamage(int damage)

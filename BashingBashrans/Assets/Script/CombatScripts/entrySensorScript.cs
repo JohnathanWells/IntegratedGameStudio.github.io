@@ -43,7 +43,7 @@ public class entrySensorScript : MonoBehaviour {
         //cameraControl = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
     }
 
-    void OnTriggerEnter(Collider c)
+    void OnTriggerStay(Collider c)
     {
         if (c.CompareTag("Player") && managerOfRoom.getStatusOfStage())
         {
