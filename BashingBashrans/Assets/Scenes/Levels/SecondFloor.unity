@@ -5542,7 +5542,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: burstCooling
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: projectilesByBurst
