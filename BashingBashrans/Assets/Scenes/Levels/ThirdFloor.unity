@@ -9468,6 +9468,10 @@ Prefab:
       propertyPath: requiredPreviouslyUnlockedLogs.Array.data[9]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11470328, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_Text
+      value: "Floor 3 \nCleared!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
   m_IsPrefabParent: 0
