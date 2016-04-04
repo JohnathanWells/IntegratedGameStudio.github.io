@@ -11,11 +11,11 @@ GameObject:
   - 33: {fileID: 3343496}
   - 135: {fileID: 13578206}
   - 23: {fileID: 2320700}
-  - 54: {fileID: 5479870}
-  - 114: {fileID: 11466800}
+  - 114: {fileID: 11445604}
+  - 54: {fileID: 5414838}
   m_Layer: 0
-  m_Name: Line Bomb 2
-  m_TagString: Bomb
+  m_Name: Boss Yellow Bullet 1
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 767ca5f32121bfe41aadae8ec6b76561, type: 2}
+  - {fileID: 2100000, guid: 2fabe6e4d55babe4bacc388496ef23f9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -64,8 +64,8 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169498}
-  m_Mesh: {fileID: 4300016, guid: a19a5b6f3214d2f4a9b05c7248adbf26, type: 3}
---- !u!54 &5479870
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5414838
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -80,7 +80,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11466800
+--- !u!114 &11445604
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,35 +88,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 169498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f998fd0987f1847b6f787814cbf2ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
+  movement: 0
+  direction: 0
   canBePunched: 0
+  blockedByStanding: 0
   angleOfDesviation: 180
-  desviationMaterial: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
-  preExplosionMaterial: {fileID: 2100000, guid: 3f142bfe31f228c40ae3d80c9384ff86,
-    type: 2}
-  renderer: {fileID: 2320700}
-  bombType: 1
-  lineDirection: 2
-  condition: 1
   speed: 5
-  desviationSpeed: 4
-  lineRange: 4
-  halflife: 2
-  distanceCondition: 6.5
-  timeBetweenSubExplosions: 0
-  subExplosions: {fileID: 459216, guid: 3a07980cd44c0d543bb5806cfb22c2ff, type: 2}
-  explosionParticle: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4, type: 2}
+  desviationSpeed: 8
+  initialOffset: 0
+  desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
+  renderer: {fileID: 2320700}
+  effectOfProjectile: 0
+  condition: 0
+  Damage: 50
+  Peffecttmemin: 1
+  Peffecttmemax: 10
+  halflife: 6.75
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
+  playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
+  enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
   muzzleParticles: {fileID: 19811200, guid: f0bbc5eecf641c540b6c4eb339c9b1ea, type: 2}
-  shootingSound: {fileID: 8300000, guid: 168666fb679d0a045af79589e452fb57, type: 3}
-  destructionSound: {fileID: 8300000, guid: 08c02b33c210cd9459e481af6fc45824, type: 3}
-  explosionSound: {fileID: 8300000, guid: ed623af5c86d623428806683c2e3c157, type: 3}
-  beforeExplosionSound: {fileID: 8300000, guid: 841e8a3c581aaae4581c39b711d87158,
-    type: 3}
+  shootingSound: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
+  destructionSound: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
+  explosionSound: {fileID: 0}
+  beforeExplosionSound: {fileID: 0}
+  minSick: 0
+  maxSick: 0
+  wavelength: 1
+  bnceAng: 45
 --- !u!135 &13578206
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -139,7 +142,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
+      objectReference: {fileID: 2100000, guid: 4e4fcb3f64b37e2478ad8abdde3b8629, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: .5
@@ -215,7 +218,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: muzzleParticles
       value: 
-      objectReference: {fileID: 19811200, guid: 18c4c9dedbd582c4286cc282e12928ab,
+      objectReference: {fileID: 19811200, guid: f0bbc5eecf641c540b6c4eb339c9b1ea,
         type: 2}
     - target: {fileID: 0}
       propertyPath: shootingSound
@@ -236,6 +239,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Damage
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canBePunched
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

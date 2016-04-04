@@ -132,6 +132,7 @@ MonoBehaviour:
   angleOfDesviation: 90
   speed: 4
   desviationSpeed: 8
+  initialOffset: 0
   desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
   renderer: {fileID: 2373198}
   effectOfProjectile: 0
@@ -151,7 +152,7 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 0
   maxSick: 0
-  amplitude: 1
+  wavelength: 1
   bnceAng: 90
 --- !u!135 &13565868
 SphereCollider:

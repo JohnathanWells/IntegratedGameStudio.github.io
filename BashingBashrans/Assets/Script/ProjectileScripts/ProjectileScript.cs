@@ -20,6 +20,7 @@ public class ProjectileScript : MonoBehaviour
     public float angleOfDesviation = 180;
     public float speed = 2;
     public float desviationSpeed = 4;
+    public float initialOffset = 0;
     private float originalSpeed;
     private bool beingReturned = false;
     public Material desviationMaterial;
@@ -57,11 +58,11 @@ public class ProjectileScript : MonoBehaviour
     public float maxSick;
 
     [Header("Curvy")]
-    public float amplitude;
-    Vector2 crv;
-    private float maxZ;
-    private float minZ;
-    private float axis;
+    public float wavelength = 1;
+    //Vector2 crv;
+    //private float maxZ;
+    //private float minZ;
+    //private float axis;
 
     [Header("Bouncy")]
     public float bnceAng = 90.0f;
@@ -81,12 +82,14 @@ public class ProjectileScript : MonoBehaviour
         originalSpeed = speed;
         originalMaterial = renderer.material;
 
-        if (movement == typeMovement.Curvy)
-        {
-            axis = transform.position.z;
-            maxZ = transform.position.z + amplitude;
-            minZ = transform.position.z - amplitude;
-        }
+        distanceTraveled = initialOffset;
+
+        //if (movement == typeMovement.Curvy)
+        //{
+        //    axis = transform.position.z;
+        //    maxZ = transform.position.z + amplitude;
+        //    minZ = transform.position.z - amplitude;
+        //}
 
         if (direction == movementDirection.left)
             directionOfProjectile = -1;
@@ -111,7 +114,6 @@ public class ProjectileScript : MonoBehaviour
                 Destroy(gameObject);
         }
 
-
         projectileMovement();
 	}
     
@@ -122,7 +124,7 @@ public class ProjectileScript : MonoBehaviour
         if (movement == typeMovement.Curvy)
         {
             float xMovement = directionOfProjectile * speed * Time.deltaTime;
-            float zMovement = Mathf.Cos(distanceTraveled) * speed * Time.deltaTime;
+            float zMovement = Mathf.Cos(distanceTraveled * wavelength) * speed * Time.deltaTime;
             translation = new Vector3(xMovement, 0, zMovement);
             transform.Translate(translation);
         }
@@ -227,10 +229,10 @@ public class ProjectileScript : MonoBehaviour
         float angle = bnceAng;
         Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad * (angle + transform.rotation.x)), 0, Mathf.Cos(Mathf.Deg2Rad * (angle + transform.rotation.z))) * angle; 
 
-        Debug.DrawRay(transform.position, direction);
+        //Debug.DrawRay(transform.position, direction);
 
-        if (Physics.Raycast(transform.position, direction))
-            angle = -bnceAng;
+        //if (Physics.Raycast(transform.position, direction))
+        //    angle = -bnceAng;
 
         transform.Rotate(0, bnceAng, 0);
     }
@@ -263,7 +265,7 @@ public class ProjectileScript : MonoBehaviour
 
     public float rotateRelativelyToHit(Vector3 hitPos)
     {
-        if ((transform.position.x > hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y >= -90 && transform.eulerAngles.y < 90)) || (transform.position.x < hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y < 270 && transform.eulerAngles.y >= 90)))
+        if ((transform.position.x >= hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y >= -90 && transform.eulerAngles.y < 90)) || (transform.position.x <= hitPos.x && direction == movementDirection.left && (transform.eulerAngles.y < 270 && transform.eulerAngles.y >= 90)))
         {
             return angleOfDesviation;
         }

@@ -1,48 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &169498
+--- !u!1 &140492
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 417626}
-  - 33: {fileID: 3343496}
-  - 135: {fileID: 13578206}
-  - 23: {fileID: 2320700}
-  - 54: {fileID: 5479870}
-  - 114: {fileID: 11466800}
+  - 4: {fileID: 441462}
+  - 33: {fileID: 3323848}
+  - 135: {fileID: 13565868}
+  - 23: {fileID: 2373198}
+  - 114: {fileID: 11489220}
+  - 108: {fileID: 10868650}
+  - 54: {fileID: 5478946}
   m_Layer: 0
-  m_Name: Line Bomb 2
-  m_TagString: Bomb
+  m_Name: Boss Curvy
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &417626
+--- !u!4 &441462
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
+  m_GameObject: {fileID: 140492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2320700
+--- !u!23 &2373198
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
+  m_GameObject: {fileID: 140492}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 767ca5f32121bfe41aadae8ec6b76561, type: 2}
+  - {fileID: 2100000, guid: 109b4b979ca7ca24aaf3793ee669721b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -58,19 +59,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3343496
+--- !u!33 &3323848
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
-  m_Mesh: {fileID: 4300016, guid: a19a5b6f3214d2f4a9b05c7248adbf26, type: 3}
---- !u!54 &5479870
+  m_GameObject: {fileID: 140492}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5478946
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
+  m_GameObject: {fileID: 140492}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -80,49 +81,85 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11466800
+--- !u!108 &10868650
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140492}
+  m_Enabled: 0
+  serializedVersion: 6
+  m_Type: 2
+  m_Color: {r: 0.19999981, g: 0, b: 1, a: 1}
+  m_Intensity: 0.01
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11489220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
+  m_GameObject: {fileID: 140492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f998fd0987f1847b6f787814cbf2ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 13aff1254d948974e8afefc6b3846aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
+  movement: 2
+  direction: 0
   canBePunched: 0
-  angleOfDesviation: 180
-  desviationMaterial: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
-  preExplosionMaterial: {fileID: 2100000, guid: 3f142bfe31f228c40ae3d80c9384ff86,
-    type: 2}
-  renderer: {fileID: 2320700}
-  bombType: 1
-  lineDirection: 2
-  condition: 1
-  speed: 5
-  desviationSpeed: 4
-  lineRange: 4
-  halflife: 2
-  distanceCondition: 6.5
-  timeBetweenSubExplosions: 0
-  subExplosions: {fileID: 459216, guid: 3a07980cd44c0d543bb5806cfb22c2ff, type: 2}
-  explosionParticle: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4, type: 2}
+  blockedByStanding: 0
+  angleOfDesviation: 90
+  speed: 2
+  desviationSpeed: 8
+  initialOffset: 3
+  desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
+  renderer: {fileID: 2373198}
+  effectOfProjectile: 0
+  condition: 0
+  Damage: 25
+  Peffecttmemin: 1
+  Peffecttmemax: 10
+  halflife: 7
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
+  playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
+  enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
   muzzleParticles: {fileID: 19811200, guid: f0bbc5eecf641c540b6c4eb339c9b1ea, type: 2}
-  shootingSound: {fileID: 8300000, guid: 168666fb679d0a045af79589e452fb57, type: 3}
-  destructionSound: {fileID: 8300000, guid: 08c02b33c210cd9459e481af6fc45824, type: 3}
-  explosionSound: {fileID: 8300000, guid: ed623af5c86d623428806683c2e3c157, type: 3}
-  beforeExplosionSound: {fileID: 8300000, guid: 841e8a3c581aaae4581c39b711d87158,
-    type: 3}
---- !u!135 &13578206
+  shootingSound: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
+  destructionSound: {fileID: 8300000, guid: 0ea155c59eca3204f95c12e51d0558c3, type: 3}
+  explosionSound: {fileID: 0}
+  beforeExplosionSound: {fileID: 0}
+  minSick: 0
+  maxSick: 0
+  wavelength: 0.5
+  bnceAng: 90
+--- !u!135 &13565868
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169498}
+  m_GameObject: {fileID: 140492}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -137,20 +174,16 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 97e8739b777eacb409ef757821c1aaa4, type: 2}
-    - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: .5
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: .5
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
-      value: .5
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -170,15 +203,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: 0
+      value: .199999809
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: .172413826
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_DrawHalo
@@ -202,42 +235,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 6
+      value: 1.39999998
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: halflife
-      value: 6.75
+      value: 3.79999995
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: timedExplosion
+      propertyPath: canBePunched
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: muzzleParticles
-      value: 
-      objectReference: {fileID: 19811200, guid: 18c4c9dedbd582c4286cc282e12928ab,
-        type: 2}
+      propertyPath: blockedByStanding
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: shootingSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 9aca0f7a6647e9f4b9a87cb185fc1a7a, type: 3}
-    - target: {fileID: 0}
-      propertyPath: destructionSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 8b6ead1ef66af80488154ee8a5094a50, type: 3}
-    - target: {fileID: 0}
-      propertyPath: desviationMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 1c865c7782e984746bb4f4292546e760, type: 2}
-    - target: {fileID: 0}
-      propertyPath: renderer
-      value: 
-      objectReference: {fileID: 2320700}
-    - target: {fileID: 0}
-      propertyPath: Damage
-      value: 100
+      propertyPath: angleOfDesviation
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 169498}
+  m_RootGameObject: {fileID: 140492}
   m_IsPrefabParent: 1

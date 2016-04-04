@@ -3089,6 +3089,7 @@ MonoBehaviour:
   Health: 1000
   Name: Basurvter
   Phase2StartsAt: 500
+  phaseTriggers: e8030000f4010000
   healthText: {fileID: 426941407}
   PatternsTexts:
   - (21)(31)(41)(51)(11)(21)(31)(41)(00)(00)(52)(42)(32)(22)(12)
@@ -3116,8 +3117,9 @@ MonoBehaviour:
   - 0.35
   - 0.25
   - 0.25
-  phase1Attacks: 0000000001000000020000000300000004000000
-  phase2Attacks: 05000000060000000700000008000000
+  PhaseAttacks:
+  - AttacksForPhase: 0000000001000000020000000300000004000000
+  - AttacksForPhase: 05000000060000000700000008000000
   attackToTest: 7
   testingAttacks: 0
   cooldownTime: 2
@@ -4666,6 +4668,10 @@ Prefab:
     - target: {fileID: 196290, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
       propertyPath: m_Name
       value: Interface
+      objectReference: {fileID: 0}
+    - target: {fileID: 9501940, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}

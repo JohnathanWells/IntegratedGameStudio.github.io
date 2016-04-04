@@ -3,17 +3,17 @@ using System.Collections;
 
 public class Wall_Script : MonoBehaviour {
 
-    //GameManager manager;
-	// Use this for initialization
-	void Start () {
-        //manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
+    //float bounceCooldown = 0;
+    //const float bc = 0.1f;
+    //const float maxbc = 1f;
+
+    //void Update()
+    //{
+    //    if (bounceCooldown >= maxbc)
+    //    {
+    //        bounceCooldown += Time.deltaTime;
+    //    }
+    //}
 
     public void OnTriggerEnter(Collider w)
     {
@@ -21,7 +21,13 @@ public class Wall_Script : MonoBehaviour {
         {
             ProjectileScript pr = w.GetComponent<ProjectileScript>();
             if (pr.movement == typeMovement.Bouncy)
-                pr.bouncy();
+            {
+            //    if (bounceCooldown >= bc)
+            //    {
+                    pr.bouncy();
+                //    bounceCooldown = 0;
+                //}
+            }
             else
                 pr.SendMessage("projectileCrash", 2);
         }
