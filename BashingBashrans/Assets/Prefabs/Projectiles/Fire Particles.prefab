@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459216}
-  - 198: {fileID: 19820456}
-  - 199: {fileID: 19979684}
   - 114: {fileID: 11416242}
   - 65: {fileID: 6596684}
+  - 198: {fileID: 19820456}
+  - 199: {fileID: 19979684}
   m_Layer: 0
   m_Name: Fire Particles
   m_TagString: Fire
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161878}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.6027517, y: 1, z: 0}
+  m_LocalPosition: {x: 0.6685307, y: 1.3715038, z: -13.280188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,6 +57,7 @@ MonoBehaviour:
   damagePerSecond: 10
   burningTime: 3
   fireParticles: {fileID: 19820456}
+  fireBox: {fileID: 6596684}
   lifetime: 0
 --- !u!198 &19820456
 ParticleSystem:
@@ -65,7 +66,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161878}
   serializedVersion: 2
-  lengthInSec: 1
+  lengthInSec: 3.3
   startDelay:
     scalar: 0
     maxCurve:
@@ -103,7 +104,7 @@ ParticleSystem:
     minMaxState: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
@@ -147,7 +148,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0.5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -453,14 +454,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -502,6 +498,11 @@ ParticleSystem:
           value: 1
           inSlope: -2
           outSlope: -2
+          tangentMode: 0
+        - time: 0.6088341
+          value: 0
+          inSlope: -0.51766634
+          outSlope: -0.51766634
           tangentMode: 0
         - time: 1
           value: 0
@@ -642,19 +643,19 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4278255611
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4278255355
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 50175
         key3:
           serializedVersion: 2
-          rgba: 0
+          rgba: 255
         key4:
           serializedVersion: 2
-          rgba: 0
+          rgba: 255
         key5:
           serializedVersion: 2
           rgba: 0
@@ -665,10 +666,10 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime1: 15227
+        ctime2: 43947
+        ctime3: 65150
+        ctime4: 65150
         ctime5: 0
         ctime6: 0
         ctime7: 0
@@ -680,7 +681,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         key0:
