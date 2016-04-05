@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Boss01 : MonoBehaviour {
 
@@ -37,13 +38,19 @@ public class Boss01 : MonoBehaviour {
             steps = new Step[numberOfSteps];
         }
     }
+    [System.Serializable]
+    public class phaseAttacks
+    {
+        public int[] AttacksForPhase;
+    }
 
     //A step is simultaneous attacks. For example if the enemy shoots at lane 0 and 4 at the same time, that's a step.
     //Each step must be expressed between parenthesis. Each bullet has two values: A number and a letter. The number decides the lane it will be shooted at, the letter what type of projectile it is.
     [Header("Health Variables")]
     public int Health = 1000;
     public string Name = "Pedro";
-    public int Phase2StartsAt = 300;
+    //public int Phase2StartsAt = 300;
+    public List<int> phaseTriggers;
     private int currentHealth;
 
     [Header("UI")]
@@ -55,8 +62,7 @@ public class Boss01 : MonoBehaviour {
     public cannonScript[] muzzles;
     public Attack[] attacks;
     public float[] cooldownsBetweenSteps;
-    public int[] phase1Attacks;
-    public int[] phase2Attacks;
+    public phaseAttacks[] PhaseAttacks;
     public int attackToTest = 0;
     public bool testingAttacks = true;
     public float cooldownTime = 1;
@@ -148,17 +154,24 @@ public class Boss01 : MonoBehaviour {
     void nextAttack()
     {
         int nextAttack;
+        phaseAttacks temp = PhaseAttacks[phase - 1];
+        int lenght = temp.AttacksForPhase.Length;
 
-        if (phase == 1)
-        {
-            nextAttack = phase1Attacks[Random.Range(0, phase1Attacks.Length)];
-        }
+        nextAttack = temp.AttacksForPhase[Random.Range(0, lenght)];
+
+        if (nextAttack != currentAttack && lenght > 1)
+            currentAttack = nextAttack;
         else
         {
-            nextAttack = phase2Attacks[Random.Range(0, phase2Attacks.Length)];
+            if (nextAttack == 0)
+            {
+                currentAttack++;
+            }
+            else
+            {
+                currentAttack--;
+            }
         }
-
-        currentAttack = nextAttack;
     }
     
     void shoot(int muzzleNum, int projType)
@@ -176,6 +189,7 @@ public class Boss01 : MonoBehaviour {
         if (cooled && stepCooled)
         {
             Step temp = attacks[attackSelected].steps[countOfStep];
+            animator.Play("Attack" + attackSelected);
             //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
@@ -294,18 +308,23 @@ public class Boss01 : MonoBehaviour {
     public void ReceiveDamage(int damage)
     {
         //SFX.PlaySound(damageSound);
-        animator.SetTrigger("DamageReceived");
+        animator.Play("Damage");
 
         currentHealth -= damage;
         
-        if (currentHealth <= Phase2StartsAt)
+        if (phaseTriggers.Contains(currentHealth))
         {
-            phase = 2;
+            phase = phaseTriggers.IndexOf(currentHealth) + 1;
         }
-        else
-        {
-            phase = 1;
-        }
+
+        //if (currentHealth <= Phase2StartsAt)
+        //{
+        //    phase = 2;
+        //}
+        //else
+        //{
+        //    phase = 1;
+        //}
 
         animator.SetInteger("Phase", phase);
 
@@ -313,7 +332,7 @@ public class Boss01 : MonoBehaviour {
         {
             currentHealth = 0;
             dead = true;
-            
+
             animator.SetBool("Dead", true);
             Debug.Log("Enemy defeated");
             //DestroyTurret();

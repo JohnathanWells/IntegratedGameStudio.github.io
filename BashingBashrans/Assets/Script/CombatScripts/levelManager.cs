@@ -21,7 +21,7 @@ public class levelManager : MonoBehaviour {
 
     private int currentTransCount = 0;
     private bool inTransition = false;
-    private int currentManagerCount = 0;
+    public int currentManagerCount = 0;
     public int objectiveManagerNumber = 0;
     bool floorCleared = false;
     int acumulatedDamage = 0;
@@ -44,12 +44,14 @@ public class levelManager : MonoBehaviour {
         //cameras = new Transform[levelParents.Length];
         //managers = new GameManager[levelParents.Length];
 
-        for (int a = 1; a < managers.Length; a++)
+        for (int a = 0; a < managers.Length; a++)
         {
             managers[a].enemiesFolder.gameObject.SetActive(false);
             //cameras[a] = levelParents[a].GetComponentInChildren<Camera>().transform;
             //managers[a] = cameras[a].GetComponentInChildren<GameManager>();
         }
+
+        managers[currentManagerCount].enemiesFolder.gameObject.SetActive(true);
 
         playerScript = Player.GetComponentInChildren<CombatScript>();
         //musicManager = GameObject.FindGameObjectWithTag("Music Manager").GetComponent<MusicScript>();
@@ -227,6 +229,7 @@ public class levelManager : MonoBehaviour {
             changeManager(currentManagerCount, objectiveManagerNumber);
             currentManagerCount = objectiveManagerNumber;
             managers[currentManagerCount].SendMessage("closeEntry");
+            Player.GetComponent<PlayerMovement>().changeCanMove(true);
         }
     }
 
@@ -264,7 +267,8 @@ public class levelManager : MonoBehaviour {
 
     public string getPassword(int numberOfPassword)
     {
-        Debug.Log("Number: " + numberOfPassword);
+        //Debug.Log("Number: " + numberOfPassword);
+        print(numberOfPassword + ": " + passwords[numberOfPassword]);
         return passwords[numberOfPassword];
     }
 

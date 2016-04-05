@@ -136,6 +136,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             playerAnimator.SetBool("Walking", false);
             inTransition = false;
+            canMove = false;
             combatScript.transitionHappening(false);
             manager.transitionFunction(false, currentRoom);
         }

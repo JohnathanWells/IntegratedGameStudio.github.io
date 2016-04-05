@@ -243,4 +243,14 @@ public class Game
     {
         unlockedFloors[floor - 1] = value;
     }
+
+    public void setNewTimeRecord(float newTime, int floor)
+    {
+        bestTimes[floor] = newTime;
+    }
+
+    public void setDamageRecord(int newDamage, int floor)
+    {
+        lessDamageReceivedByFloor[floor] = newDamage;
+    }
 }
