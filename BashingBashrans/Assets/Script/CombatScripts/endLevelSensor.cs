@@ -16,10 +16,16 @@ public class endLevelSensor : MonoBehaviour {
         if (c.tag == "Player")
         {
             highManager.musicManager.SendMessage("playVictory");
-            highManager.SendMessage("floorIsCleared");
-            floorClearedScreen.SetActive(true);
-            floorClearedScreen.BroadcastMessage("setManager");
             playerAnimator.SetBool("Victory", true);
+			StartCoroutine(IWin());
         }
     }
+
+	IEnumerator IWin()
+
+	{yield return new WaitForSeconds (1);
+		highManager.SendMessage("floorIsCleared");
+		floorClearedScreen.SetActive(true);
+		floorClearedScreen.BroadcastMessage("setManager");
+	}
 }

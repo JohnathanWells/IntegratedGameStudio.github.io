@@ -3088,7 +3088,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1000
   Name: Basurvter
-  Phase2StartsAt: 500
   phaseTriggers: e8030000f4010000
   healthText: {fileID: 426941407}
   PatternsTexts:
@@ -7774,6 +7773,10 @@ Prefab:
       propertyPath: changeSpeedOfBullets
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9527492, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -12034,6 +12037,7 @@ MonoBehaviour:
   Player: {fileID: 804283708}
   CoolTransition: 1
   musicManager: {fileID: 1222868579}
+  currentManagerCount: 0
   objectiveManagerNumber: 0
   playerHealthText: {fileID: 1122580099}
   TimeText: {fileID: 1202082980}

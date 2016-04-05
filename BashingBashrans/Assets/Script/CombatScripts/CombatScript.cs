@@ -78,6 +78,8 @@ public class CombatScript : MonoBehaviour {
                     receiveDamage(Proj.Damage);
                     Proj.projectileCrash(1);
                     StartCoroutine(Pain());
+
+
                     //if ((!weapon.getPunching() && Proj.blockedByStanding))
                     //{
                     //    SFX.PlaySound(returnPassiveProjectileSound);
@@ -211,12 +213,15 @@ public class CombatScript : MonoBehaviour {
         if (currentHealth <= 0)
         {
             dead = true;
-            manager.GameOver();
+            
             currentHealth = 0;
-            playerAnimator.SetBool("Alive", false);
+            
 
-            if (!godMode)
-                manager.SendMessage("GameOver");
+			if (!godMode) {
+				playerAnimator.SetBool("Alive", false);
+				StartCoroutine(PlayerisKill());
+
+			}
         }
     }
 
@@ -281,5 +286,10 @@ public class CombatScript : MonoBehaviour {
             playerAnimator.SetBool("Hurt", false);
         }
     }
+	IEnumerator PlayerisKill()
 
+	{yield return new WaitForSeconds (1);
+		manager.GameOver();
+		manager.SendMessage ("GameOver");
+	}
 }
