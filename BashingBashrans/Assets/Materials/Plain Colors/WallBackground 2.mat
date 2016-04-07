@@ -82,7 +82,7 @@ Material:
         first:
           name: _ToonShade
         second:
-          m_Texture: {fileID: 8900000, guid: 9fcd0539b8ed3d24f83a2dee57e1ab78, type: 3}
+          m_Texture: {fileID: 8900000, guid: b995d4bd9d11078d11005b9844295342, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -146,7 +146,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.38062286, g: 0.63963705, b: 0.9411765, a: 1}
+        second: {r: 1, g: 0.847, b: 0.847, a: 1}
       data:
         first:
           name: _OutlineColor
