@@ -336,11 +336,11 @@ MonoBehaviour:
   roomNumber: 3
   playerObjective: {fileID: 1357479307}
   managerOfRoom: {fileID: 625499837}
-  orderTransX: 3
+  orderTransX: 4
   orderTransY: 0
-  orderTransZ: 4
-  orderTransR: 1
-  orderTransF: 2
+  orderTransZ: 1
+  orderTransR: 2
+  orderTransF: 3
   speedOfPositionTransition: 16
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
@@ -1115,7 +1115,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: a45af35a64ef63946853eaef4396db7f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.76
+      value: 29.3
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a45af35a64ef63946853eaef4396db7f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1655,6 +1655,7 @@ Transform:
   - {fileID: 1032705503}
   - {fileID: 975477870}
   - {fileID: 489368727}
+  - {fileID: 828831925}
   m_Father: {fileID: 944432758}
   m_RootOrder: 3
 --- !u!1001 &378612265
@@ -3063,7 +3064,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787727107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.26, y: 0, z: 12}
+  m_LocalPosition: {x: -5.78, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 254432682}
@@ -3132,6 +3133,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_PrefabInternal: {fileID: 789064282}
+--- !u!4 &828831925 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
+  m_PrefabInternal: {fileID: 1233953013}
 --- !u!1 &838251701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,7 +4023,7 @@ Transform:
   - {fileID: 1059578902}
   - {fileID: 303913872}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &970166289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,7 +4319,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1005612837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.32, y: 0, z: 12.04}
+  m_LocalPosition: {x: -5.88, y: 0, z: 12.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 84322867}
@@ -5306,7 +5311,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 371336298}
     m_Modifications:
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5338,7 +5343,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.z
@@ -6289,11 +6294,11 @@ MonoBehaviour:
   roomNumber: 2
   playerObjective: {fileID: 321149918}
   managerOfRoom: {fileID: 1843068242}
-  orderTransX: 3
-  orderTransY: 0
-  orderTransZ: 4
-  orderTransR: 1
-  orderTransF: 2
+  orderTransX: 0
+  orderTransY: 4
+  orderTransZ: 2
+  orderTransR: 3
+  orderTransF: 1
   speedOfPositionTransition: 16
   speedOfRotationTransition: 16
   speedOfFieldTransition: 32
@@ -6874,6 +6879,38 @@ Prefab:
     - target: {fileID: 416392, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: moveUpAndDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: maxLane
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: marginOFDisplacement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: shootBurstInSingleLine
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: canReturnProjectiles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: meelable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
@@ -7843,7 +7880,7 @@ Transform:
   m_Children:
   - {fileID: 1091939719}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
 --- !u!114 &1724669672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8260,7 +8297,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 70.75
+      value: 70.66
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8292,7 +8329,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
       propertyPath: m_LocalScale.y
@@ -8491,7 +8528,7 @@ Transform:
   - {fileID: 1843068241}
   - {fileID: 79808918}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &1856228808 stripped
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
@@ -8542,6 +8579,22 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 441462, guid: 72d3522a35357f841b554d3ce2dd88b2, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: burstCooling
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -8864,7 +8917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a731b9f450b2447b8b5c4e202ee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 1
+  roomNumber: 6
   playerObjective: {fileID: 220093616}
   managerOfRoom: {fileID: 787727106}
   orderTransX: 3
@@ -9938,10 +9991,22 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: cdf2e764fb96c24458f37280b8914c8c, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: burstCooling
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -10120,7 +10185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a731b9f450b2447b8b5c4e202ee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 1
+  roomNumber: 5
   playerObjective: {fileID: 1443210069}
   managerOfRoom: {fileID: 1005612836}
   orderTransX: 3
