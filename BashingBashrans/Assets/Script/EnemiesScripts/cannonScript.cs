@@ -9,7 +9,9 @@ public class cannonScript : MonoBehaviour {
     public Transform mainBody;
     public bool shootMode = true;
     public bool changeSpeedOfBullets = false;
+    public bool changeDistanceOfBombs = false;
     public float[] newSpeed;
+    public float[] newDist;
     ParticleSystem[] muzzleParticles;
     AudioClip[] ProjectilesSounds;
     int directionFacing;
@@ -46,6 +48,15 @@ public class cannonScript : MonoBehaviour {
             
             if (changeSpeedOfBullets)
                 shoot.GetComponent<ProjectileScript>().speed = newSpeed[currentAmmo];
+
+            if (changeDistanceOfBombs)
+            {
+                bombScript script = shoot.GetComponent<bombScript>();
+                if (script != null)
+                {
+                    script.SendMessage("changeDistanceCondition", (newDist[currentAmmo]));
+                }
+            }
         }
     }
 

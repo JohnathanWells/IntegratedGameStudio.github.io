@@ -87,7 +87,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169498}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 0.759, g: 0.341, b: 0.209, a: 1}

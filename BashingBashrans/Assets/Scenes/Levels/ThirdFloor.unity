@@ -2542,6 +2542,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 787727104}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.76
@@ -2585,6 +2589,10 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -3101,6 +3109,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 625499835}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 67.78
@@ -3140,10 +3156,34 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: 965be123d89125d448cebdc6003bd3a6, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[1]
+      value: 
+      objectReference: {fileID: 417626, guid: 965be123d89125d448cebdc6003bd3a6, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[2]
+      value: 
+      objectReference: {fileID: 417626, guid: e0647ff18783b14408c8fbae22f7342e, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[1]
+      value: 9.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -5468,6 +5508,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2033455511}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 19.2
@@ -5520,6 +5564,14 @@ Prefab:
       propertyPath: cooldownTime
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -5534,6 +5586,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1843068240}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 46
@@ -5577,6 +5637,30 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[1]
+      value: 
+      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[1]
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -5731,6 +5815,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2033455511}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 20.2
@@ -5770,7 +5858,7 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 6a957cdce8ee51543878b47aef7bc858, type: 2}
+      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
@@ -5786,6 +5874,14 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -6640,6 +6736,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2033455511}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 19.2
@@ -6675,7 +6775,7 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 596909c9d1bd2fb438c438bf5534a17f, type: 2}
+      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
@@ -6691,6 +6791,14 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -6921,7 +7029,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416392, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.8000002
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 416392, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6942,6 +7050,30 @@ Prefab:
     - target: {fileID: 416392, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: moveUpAndDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: maxLane
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: shootBurstInSingleLine
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: marginOFDisplacement
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: projectilesByBurst
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420424, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
+      propertyPath: direction
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ddc6dc96610af644ab2a523df3aa82d, type: 2}
@@ -7954,6 +8086,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2033455511}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 20.2
@@ -7993,7 +8129,7 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: d1a18a4654af3c54983f213d8d8df521, type: 2}
+      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
@@ -8009,6 +8145,14 @@ Prefab:
     - target: {fileID: 163166, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 9.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -8634,6 +8778,22 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[0]
+      value: 
+      objectReference: {fileID: 417626, guid: cdf2e764fb96c24458f37280b8914c8c, type: 2}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: burstCooling
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: projectilesByBurst
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: cooldownTime
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -9423,6 +9583,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 89725f8e86254654f99a8db932423a6b, type: 3}
+    - target: {fileID: 11436656, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
+      propertyPath: timeBetweenBurningDamage
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
   m_IsPrefabParent: 0
@@ -10007,6 +10171,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1507619571}
     m_Modifications:
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 55.296
@@ -10046,10 +10218,26 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: possibleAmmo.Array.data[0]
       value: 
-      objectReference: {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
+      objectReference: {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: changeSpeedOfBullets
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[1]
+      value: 
+      objectReference: {fileID: 417626, guid: aa5a297049bc0be44bc894b4f8e3f917, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: possibleAmmo.Array.data[2]
+      value: 
+      objectReference: {fileID: 417626, guid: e0647ff18783b14408c8fbae22f7342e, type: 2}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: changeDistanceOfBombs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: newDist.Array.data[0]
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}

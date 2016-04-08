@@ -279,12 +279,12 @@ public class bombScript : MonoBehaviour {
             if (directions[a].x > 0  && numberOfExplosionsA > 0)
             {
                 switches++;
-                StartCoroutine(simultaneousDirections(numberOfExplosionsA, directions[a], center));
+                StartCoroutine(simultaneousDirections(lineRange, directions[a], center));
             }
             else if (directions[a].x < 0 && numberOfExplosionsB > 0)
             {
                 switches++;
-                StartCoroutine(simultaneousDirections(numberOfExplosionsB, directions[a], center));
+                StartCoroutine(simultaneousDirections(lineRange, directions[a], center));
             }
 
             if (directions[a].z > 0 && numberOfExplosionsA > 0)
@@ -331,5 +331,10 @@ public class bombScript : MonoBehaviour {
         {
             transform.Translate(new Vector3(speed * dir * Time.deltaTime, 0, 0));
         }
+    }
+
+    public void changeDistanceCondition(float n)
+    {
+        distanceCondition = n;
     }
 }
