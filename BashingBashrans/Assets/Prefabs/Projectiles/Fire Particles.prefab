@@ -12,6 +12,8 @@ GameObject:
   - 65: {fileID: 6596684}
   - 198: {fileID: 19820456}
   - 199: {fileID: 19979684}
+  - 33: {fileID: 3393946}
+  - 23: {fileID: 2324360}
   m_Layer: 0
   m_Name: Fire Particles
   m_TagString: Fire
@@ -26,11 +28,44 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161878}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6685307, y: 1.3715038, z: -13.280188}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 9.096375, y: 1, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!23 &2324360
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161878}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 06293c186e587ae46ad7a8d5f238641a, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3393946
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161878}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6596684
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -41,7 +76,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11416242
 MonoBehaviour:
@@ -57,6 +92,7 @@ MonoBehaviour:
   damagePerSecond: 10
   burningTime: 3
   fireParticles: {fileID: 19820456}
+  renderer: {fileID: 2324360}
   fireBox: {fileID: 6596684}
   lifetime: 0
 --- !u!198 &19820456
@@ -666,7 +702,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 15227
+        ctime1: 37972
         ctime2: 43947
         ctime3: 65150
         ctime4: 65150

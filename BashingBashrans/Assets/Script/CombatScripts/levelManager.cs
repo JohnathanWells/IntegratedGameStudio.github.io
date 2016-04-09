@@ -12,6 +12,9 @@ public class levelManager : MonoBehaviour {
     public Transform Player;
     public bool CoolTransition = true;
     public MusicScript musicManager;
+    public SoundEffectManager SFXManager;
+    private AudioSource musicSource;
+    private AudioSource soundSource;
 
     private int[] orderOfTrans;
     private float[] speedsOfTrans;
@@ -62,6 +65,8 @@ public class levelManager : MonoBehaviour {
         //playerHealthText.fontSize = playerHealthText.fontSize * Screen.width / 558;
         //TimeText.rectTransform.position = new Vector2(TimeText.rectTransform.position.x * Screen.width / 558, TimeText.rectTransform.position.y * Screen.height / 314);
         obtainPasswords();
+        musicSource = musicManager.source;
+        soundSource = SFXManager.source;
         //levelParents[0].SetActive(true);
 	}
 	
@@ -107,12 +112,14 @@ public class levelManager : MonoBehaviour {
         playerHealthText.text = "HP: " + playerScript.getHealth();
     }
 
-    void togglePause()
+    public void togglePause()
     {
         if (!paused)
         {
             paused = true;
             playerHealthText.transform.parent.gameObject.SetActive(false);
+            soundSource.Pause();
+            musicSource.Pause();
             pauseMenu.SetActive(true);
             SaveLoad.Load();
             pauseMenu.SendMessage("setActiveButtons");
@@ -121,6 +128,8 @@ public class levelManager : MonoBehaviour {
         else
         {
             Time.timeScale = 1f;
+            soundSource.UnPause();
+            musicSource.UnPause();
             playerHealthText.transform.parent.gameObject.SetActive(true);
             pauseMenu.SetActive(false);
             paused = false;
@@ -306,5 +315,10 @@ public class levelManager : MonoBehaviour {
     public int getAccumulatedDamage()
     {
         return acumulatedDamage;
+    }
+
+    public void healPlayer()
+    {
+        playerScript.SendMessage("healPlayer");
     }
 }

@@ -262,7 +262,7 @@ public class bombScript : MonoBehaviour {
     {
         int numberOfExplosionsA = numOfLanes - (lane + 1);
         int numberOfExplosionsB = lane;
-        Debug.Log(transform.name + "\n" + numOfLanes + " - " + lane++);
+        //Debug.Log(transform.name + "\n" + numOfLanes + " - " + lane++);
         //if (numberOfExplosionsA > lineRange)
         //{
         //    numberOfExplosionsA = lineRange;

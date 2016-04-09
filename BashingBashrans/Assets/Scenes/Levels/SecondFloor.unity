@@ -183,13 +183,53 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11412810, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SecondFloor
+    - target: {fileID: 11466546, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1125098588}
+    - target: {fileID: 11416766, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1125098588}
+    - target: {fileID: 11473382, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1125098584}
+    - target: {fileID: 11473382, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_volume
       objectReference: {fileID: 0}
-    - target: {fileID: 11434446, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ThirdFloor
+    - target: {fileID: 11473382, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1264199815}
+    - target: {fileID: 11473382, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413276, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1264199815}
+    - target: {fileID: 11413276, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432402, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1125098584}
+    - target: {fileID: 11432402, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416766, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1125098585}
+    - target: {fileID: 11416766, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendMessage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
@@ -2362,42 +2402,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &450429470 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 196290, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
-  m_PrefabInternal: {fileID: 13236150}
---- !u!114 &450429471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 450429470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &450429475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 450429470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
 --- !u!4 &462507012 stripped
 Transform:
   m_PrefabParentObject: {fileID: 426572, guid: e32efecd9fafee64c8ae51a74aec8022, type: 2}
@@ -3066,8 +3070,10 @@ MonoBehaviour:
   mainBody: {fileID: 21406459}
   shootMode: 1
   changeSpeedOfBullets: 0
+  changeDistanceOfBombs: 0
   newSpeed:
   - 5
+  newDist: []
 --- !u!33 &560689591
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5641,6 +5647,7 @@ MonoBehaviour:
   Player: {fileID: 2086588140}
   CoolTransition: 1
   musicManager: {fileID: 874062869}
+  SFXManager: {fileID: 1125098588}
   currentManagerCount: 0
   objectiveManagerNumber: 0
   playerHealthText: {fileID: 1034427924}
@@ -6424,6 +6431,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
   m_IsPrefabParent: 0
+--- !u!82 &1264199815 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 8279472, guid: 3626275270bfa2b4aa9e38f595a28db9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1264199814}
 --- !u!1 &1265537557
 GameObject:
   m_ObjectHideFlags: 0
@@ -9014,8 +9026,10 @@ MonoBehaviour:
   mainBody: {fileID: 440009736}
   shootMode: 1
   changeSpeedOfBullets: 0
+  changeDistanceOfBombs: 0
   newSpeed:
   - 5
+  newDist: []
 --- !u!33 &1772267570
 MeshFilter:
   m_ObjectHideFlags: 0

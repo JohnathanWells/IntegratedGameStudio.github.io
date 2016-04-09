@@ -7,16 +7,19 @@ public class pauseMenuScript : MonoBehaviour {
     public InputField passwordEnter;
     public Button[] logs;
     public Text messageDisplay;
+    public AudioClip wrongMessageSound;
+    public AudioClip rightMessageSound;
 
     private string lastInput;
     private bool checkingPassword = false;
 
     levelManager highManager;
+    SoundEffectManager sfx;
 
     void Start()
     {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
-
+        sfx = highManager.SFXManager;
     }
 
     void OnGUI()
@@ -44,11 +47,14 @@ public class pauseMenuScript : MonoBehaviour {
         SaveLoad.Load();
         if (password != lastInput && !checkingPassword && SaveLoad.savedGame.checkPassword(password))
         {
-            passwordEnter.text = "";
+            sfx.PlaySound(rightMessageSound);
+            passwordEnter.text = "LOG UNLOCKED";
             setActiveButtons();
+            highManager.SendMessage("healPlayer");
         }
         else
         {
+            sfx.PlaySound(wrongMessageSound);
             passwordEnter.text = "ERROR";
             setActiveButtons();
         }
@@ -100,5 +106,11 @@ public class pauseMenuScript : MonoBehaviour {
     public void showMessage(int a)
     {
         messageDisplay.text = SaveLoad.savedGame.returnMessage(a);
+    }
+
+    public void quitGame()
+    {
+        SaveLoad.Save();
+        Application.Quit();
     }
 }
