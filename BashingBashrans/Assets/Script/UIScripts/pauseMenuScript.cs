@@ -10,16 +10,23 @@ public class pauseMenuScript : MonoBehaviour {
     public AudioClip wrongMessageSound;
     public AudioClip rightMessageSound;
 
+    [Header("Options")]
+    public Slider MasterV;
+    public Slider MusicV;
+    public Slider SFXV;
+
     private string lastInput;
     private bool checkingPassword = false;
 
     levelManager highManager;
     SoundEffectManager sfx;
+    MusicScript music;
 
     void Start()
     {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         sfx = highManager.SFXManager;
+        music = highManager.musicManager;
     }
 
     void OnGUI()
@@ -112,5 +119,21 @@ public class pauseMenuScript : MonoBehaviour {
     {
         SaveLoad.Save();
         Application.Quit();
+    }
+
+    public void saveOptions()
+    {
+        sfx.SendMessage("saveSFX");
+        music.SendMessage("saveMusic");
+        SaveLoad.Save();
+    }
+
+    void fixSoundSliders()
+    {
+        SaveLoad.Load();
+        Game temp = SaveLoad.savedGame;
+        MasterV.value = temp.MasterVolume;
+        MusicV.value = temp.MusicVolume;
+        SFXV.value = temp.SFXVolume;
     }
 }

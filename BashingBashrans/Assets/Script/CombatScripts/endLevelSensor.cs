@@ -22,7 +22,6 @@ public class endLevelSensor : MonoBehaviour {
     }
 
 	IEnumerator IWin()
-
 	{yield return new WaitForSeconds (1);
 		highManager.SendMessage("floorIsCleared");
 		floorClearedScreen.SetActive(true);

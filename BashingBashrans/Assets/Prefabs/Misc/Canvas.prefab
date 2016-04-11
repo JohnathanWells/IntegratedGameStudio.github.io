@@ -1491,8 +1491,6 @@ GameObject:
   - 114: {fileID: 11418724}
   - 114: {fileID: 11442456}
   - 114: {fileID: 11416210}
-  - 114: {fileID: 11494708}
-  - 114: {fileID: 11494226}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1945,12 +1943,12 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: set_volume
+        m_MethodName: OnMasterChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2186,6 +2184,17 @@ MonoBehaviour:
       - m_Target: {fileID: 100652}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11472766}
+        m_MethodName: saveOptions
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2556,12 +2565,12 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: set_volume
+        m_MethodName: OnMasterChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4477,6 +4486,9 @@ MonoBehaviour:
   messageDisplay: {fileID: 11454494}
   wrongMessageSound: {fileID: 8300000, guid: 65c5fa85f4ed89d4dbd1fcbb89920dc3, type: 3}
   rightMessageSound: {fileID: 8300000, guid: a102647b7ad7d1545b6fd9381b845d35, type: 3}
+  MasterV: {fileID: 11473382}
+  MusicV: {fileID: 11413276}
+  SFXV: {fileID: 11432402}
 --- !u!114 &11473382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4519,12 +4531,12 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: set_volume
+        m_MethodName: OnMasterChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4535,7 +4547,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: set_volume
+        m_MethodName: OnMasterChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5157,20 +5169,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &11494226
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
 --- !u!114 &11494622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5190,24 +5188,6 @@ MonoBehaviour:
   otherTexts:
   - {fileID: 11463070}
   - {fileID: 11453722}
---- !u!114 &11494708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &11495076
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,8 @@ public class Game
     #region settingsVariables
     public float SFXVolume;
     public float MusicVolume;
+    public float MasterVolume;
+    //public Input keybinds;
     #endregion
 
     #region passwordSystemVariables
@@ -26,12 +28,14 @@ public class Game
     private string[] messages = new string[11];
     private int numberOfFloors = 3;
     private int numberOfPasswords = 11;
+    private const int lenghtOfPasswords = 9;
     #endregion
 
     public Game()
     {
         MusicVolume = 1f;
         SFXVolume = 1f;
+        MasterVolume = 1f;
         listOfPasswords = new string[numberOfPasswords];
         unlockedPasswords = new bool[numberOfPasswords];
         bestTimes = new float[numberOfFloors];
@@ -41,15 +45,15 @@ public class Game
 
         for (int a = 0; a < numberOfFloors; a++)
         {
-            bestTimes[a] = 10000000000000;
-            lessDamageReceivedByFloor[a] = 100000000;
+            bestTimes[a] = 999999999;
+            lessDamageReceivedByFloor[a] = 999999999;
         }
 
         do
         {
             for (int a = 1; a < numberOfPasswords; a++)
             {
-                listOfPasswords[a] = generatePassword(10);
+                listOfPasswords[a] = generatePassword(lenghtOfPasswords);
                 unlockedPasswords[a] = false;
             }
 

@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
+        //gameOverScreen.SetActive(true);
         //SFX.PlaySound(gameOverSound);
         highManager.musicManager.SendMessage("playGameOver");
         gameOver = true;
@@ -317,7 +317,7 @@ public class GameManager : MonoBehaviour {
     {
         enemiesDestroyed++;
 
-        Debug.Log(enemiesDestroyed + "/" + enemiesAtBeginning);
+        //Debug.Log(enemiesDestroyed + "/" + enemiesAtBeginning);
 
         checkIfCleared();
     }

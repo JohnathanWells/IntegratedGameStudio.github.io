@@ -110,7 +110,7 @@ public class bombScript : MonoBehaviour {
 
     void explodeBomb()
     {
-        Debug.Log("Boom");
+        //Debug.Log("Boom");
         SFX.PlaySound(explosionSound);
         PM.spawnParticles(explosionParticle, transform.position, explosionParticle.duration);
 
@@ -260,7 +260,14 @@ public class bombScript : MonoBehaviour {
 
     void lineExplosion(Vector3 center, Vector3[] directions)
     {
-        int numberOfExplosionsA = numOfLanes - (lane + 1);
+        int numberOfExplosionsA;
+
+        if (bombType == typeOfBomb.horizontalLineBomb)
+            numberOfExplosionsA = lineRange;
+        else
+            numberOfExplosionsA = numOfLanes - (lane + 1);
+            
+
         int numberOfExplosionsB = lane;
         //Debug.Log(transform.name + "\n" + numOfLanes + " - " + lane++);
         //if (numberOfExplosionsA > lineRange)
@@ -279,12 +286,12 @@ public class bombScript : MonoBehaviour {
             if (directions[a].x > 0  && numberOfExplosionsA > 0)
             {
                 switches++;
-                StartCoroutine(simultaneousDirections(lineRange, directions[a], center));
+                StartCoroutine(simultaneousDirections(numberOfExplosionsA, directions[a], center));
             }
-            else if (directions[a].x < 0 && numberOfExplosionsB > 0)
+            else if (directions[a].x < 0 && numberOfExplosionsA > 0)
             {
                 switches++;
-                StartCoroutine(simultaneousDirections(lineRange, directions[a], center));
+                StartCoroutine(simultaneousDirections(numberOfExplosionsA, directions[a], center));
             }
 
             if (directions[a].z > 0 && numberOfExplosionsA > 0)

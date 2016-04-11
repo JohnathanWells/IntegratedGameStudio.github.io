@@ -27,7 +27,7 @@ public class WeaponScript : MonoBehaviour {
                     if (Proj.canBePunched)
                     {
                         SFX.PlaySound(returnProjectileSound);
-                        Debug.Log(transform.position.x + " vs " + c.transform.position.x);
+                        //Debug.Log(transform.position.x + " vs " + c.transform.position.x);
                         Proj.changeDirection(Proj.rotateRelativelyToHit(transform.position));
                     }
                 }

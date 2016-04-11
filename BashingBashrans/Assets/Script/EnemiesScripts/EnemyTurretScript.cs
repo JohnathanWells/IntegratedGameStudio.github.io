@@ -112,8 +112,8 @@ public class EnemyTurretScript : MonoBehaviour {
         if (!shootBurstInSingleLine || (shootBurstInSingleLine && canMove))
         {
             float downCorner = manager.LeftDownCorner.position.z;
-            float Max = downCorner + maxLane;
-            float Min = downCorner + minLane;
+            float Max = downCorner + maxLane * distanceBetweenLanes;
+            float Min = downCorner + minLane * distanceBetweenLanes;
 
             //Debug.Log(Max + "M, " + Min + "m, " + feet.position.z + "p, " + direction + "d");
 

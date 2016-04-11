@@ -8,13 +8,16 @@ public class MusicScript : MonoBehaviour {
     public AudioClip gameOverSong;
     public AudioClip victorySong;
     public AudioSource source;
-    private float volume;
+
+    private float MusicVolume;
+    private float MasterVolume;
 
 	// Use this for initialization
 	public void Start () {
         SaveLoad.Load();
-        volume = SaveLoad.savedGame.MusicVolume;
-        source.volume = volume;
+        MusicVolume = SaveLoad.savedGame.MusicVolume;
+        MasterVolume = SaveLoad.savedGame.MasterVolume;
+        refreshVolume();
 	}
 
     public void playFloor()
@@ -45,5 +48,27 @@ public class MusicScript : MonoBehaviour {
     {
         source.clip = victorySong;
         source.Play();
+    }
+
+    public void refreshVolume()
+    {
+        source.volume = MusicVolume * MasterVolume;
+    }
+
+    public void OnMasterChange(float newMasterVolume)
+    {
+        MasterVolume = newMasterVolume;
+        refreshVolume();
+    }
+
+    public void OnMusicChange(float newSFXVolume)
+    {
+        MusicVolume = newSFXVolume;
+        refreshVolume();
+    }
+
+    public void saveMusic()
+    {
+        SaveLoad.savedGame.MusicVolume = MusicVolume;
     }
 }
