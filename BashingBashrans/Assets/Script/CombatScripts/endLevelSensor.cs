@@ -26,7 +26,7 @@ public class endLevelSensor : MonoBehaviour {
 	{
         highManager.SendMessage("changePlayerCanMove", false);
         playerAnimator.SetBool("Victory", true);
-        yield return new WaitForSeconds (0.5f);
+        yield return new WaitForSeconds (0f);
 		highManager.SendMessage("floorIsCleared");
 		floorClearedScreen.SetActive(true);
 		floorClearedScreen.BroadcastMessage("setManager");
