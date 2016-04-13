@@ -10,6 +10,7 @@ public class floorClearedScreen : MonoBehaviour {
     public Text timeText;
     public Text damageReceivedText;
     public Text[] otherTexts;
+    public string surveyLink;
     private int damageReceived = 0;
     private float timeTaken = 0;
 
@@ -106,5 +107,10 @@ public class floorClearedScreen : MonoBehaviour {
         titleText.fontSize = titleText.fontSize * Screen.width / 560;
         titleText.rectTransform.position = titleText.rectTransform.position * Screen.width / 560;
         titleText.rectTransform.sizeDelta = titleText.rectTransform.sizeDelta * Screen.width / 560;
+    }
+
+    public void TakeToSurvey()
+    {
+        Application.OpenURL(surveyLink);
     }
 }

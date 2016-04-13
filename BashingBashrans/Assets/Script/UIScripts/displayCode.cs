@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public enum typeOfDisplay {worldScreen, GUIText};
 
-public enum conditionForDisplay { Time, Health, None};
+public enum conditionForDisplay { Time, Health, None, Both};
 
 public class displayCode : MonoBehaviour {
 
@@ -51,6 +51,15 @@ public class displayCode : MonoBehaviour {
             else
                 resultA = false;
         }
+        else if (condition == conditionForDisplay.Both)
+        {
+            if (healthCondition <= highManager.getPlayerHealth() && timeCondition >= highManager.getTime())
+            {
+                resultA = true;
+            }
+            else
+                resultA = false;
+        }
         else
             resultA = true;
 
@@ -70,7 +79,7 @@ public class displayCode : MonoBehaviour {
         else
             resultC = true;
 
-        Debug.Log("Conditions for " + numberOfDisplayInFloor + " are " + resultA + ", " + resultB + ", " + resultC + ", " + ACTIVE);
+        //Debug.Log("Conditions for " + numberOfDisplayInFloor + " are " + resultA + ", " + resultB + ", " + resultC + ", " + ACTIVE);
 
         if (resultA && resultB && resultC)
             return true;
@@ -108,11 +117,11 @@ public class displayCode : MonoBehaviour {
         {
             if (displayType == typeOfDisplay.GUIText)
             {
-                textUI.text = password;
+                textUI.text = passwordOnDisplay(password);
             }
             else
             {
-                textMesh.text = password;
+                textMesh.text = passwordOnDisplay(password);
             }
         }
     }
@@ -120,5 +129,21 @@ public class displayCode : MonoBehaviour {
     public void ACTIVATE()
     {
         ACTIVE = true;
+    }
+
+    string passwordOnDisplay(string input)
+    {
+        string result = "";
+        int l = input.Length;
+
+        for (int a = 0; a < l; a++)
+        {
+            if (a != 0 && a % 3 == 0)
+                result += "-";
+
+            result += input[a];
+        }
+
+        return result;
     }
 }
