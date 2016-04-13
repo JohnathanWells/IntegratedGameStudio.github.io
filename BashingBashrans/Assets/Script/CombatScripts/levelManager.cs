@@ -312,6 +312,7 @@ public class levelManager : MonoBehaviour {
         floorCleared = true;
         SaveLoad.Load();
         SaveLoad.savedGame.setUnlockFloor(floorNumber + 1, true);
+        SaveLoad.Save();
     }
 
     public void accumulateDamage(int damage)

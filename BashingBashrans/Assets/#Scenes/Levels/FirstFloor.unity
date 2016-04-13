@@ -1921,7 +1921,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: quitGame
+          m_StringArgument: backToMainMenu
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6879,7 +6879,7 @@ MonoBehaviour:
   textUI: {fileID: 1466718805}
   displayType: 1
   condition: 0
-  requiresPreviousLogs: 0
+  requiresPreviousLogs: 1
   timeCondition: 180
   healthCondition: 700
   requiredPreviouslyUnlockedLogs: 0000000000000001010000
@@ -12818,6 +12818,7 @@ MonoBehaviour:
   messageDisplay: {fileID: 1514005738}
   wrongMessageSound: {fileID: 8300000, guid: 65c5fa85f4ed89d4dbd1fcbb89920dc3, type: 3}
   rightMessageSound: {fileID: 8300000, guid: b6db582eb9aa4154daaa2ca70db0b920, type: 3}
+  mainMenuName: LevelSelection
   MasterV: {fileID: 25196309}
   MusicV: {fileID: 1481975322}
   SFXV: {fileID: 2112386447}
@@ -21717,7 +21718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}

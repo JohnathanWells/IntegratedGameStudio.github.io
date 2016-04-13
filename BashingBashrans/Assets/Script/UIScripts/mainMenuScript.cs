@@ -28,7 +28,7 @@ public class mainMenuScript : MonoBehaviour {
         musicSlider.value = MusicVolume;
         sfxSlider.value = SFX.getSFXVolume();
         musicSource.Play();
-        disableLockedLevels();
+        //disableLockedLevels();
     }
 
     public void save()
@@ -61,7 +61,7 @@ public class mainMenuScript : MonoBehaviour {
         Application.Quit();
     }
 
-    void disableLockedLevels()
+    public void disableLockedLevels()
     {
         bool[] unlockedLevels = SaveLoad.savedGame.returnUnlockedFloors();
         int l = levelButtons.Length;

@@ -7,6 +7,7 @@ public class WeaponScript : MonoBehaviour {
     public SoundEffectManager SFX;
     public AudioClip returnProjectileSound;
     public AudioClip meleeAttackSound;
+    public AudioClip failedMeleeAttackSound;
     public int damage = 100;
     public bool animationHappening = false;
 
@@ -76,6 +77,11 @@ public class WeaponScript : MonoBehaviour {
         {
             SFX.PlaySound(meleeAttackSound);
             enemy.SendMessage("ReceiveDamage", damage);
+            animationHappening = true;
+        }
+        else
+        {
+            SFX.PlaySound(failedMeleeAttackSound);
             animationHappening = true;
         }
     }

@@ -10,6 +10,7 @@ public class pauseMenuScript : MonoBehaviour {
     public Text messageDisplay;
     public AudioClip wrongMessageSound;
     public AudioClip rightMessageSound;
+    public string mainMenuName;
 
     [Header("Options")]
     public Slider MasterV;
@@ -141,6 +142,6 @@ public class pauseMenuScript : MonoBehaviour {
     public void backToMainMenu()
     {
         SaveLoad.Save();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(mainMenuName);
     }
 }
