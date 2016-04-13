@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.IO;
 
 public class levelManager : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class levelManager : MonoBehaviour {
     public bool CoolTransition = true;
     public MusicScript musicManager;
     public SoundEffectManager SFXManager;
+    public ParticleManager PM;
     private AudioSource musicSource;
     private AudioSource soundSource;
 
@@ -33,6 +35,9 @@ public class levelManager : MonoBehaviour {
     public Text playerHealthText;
     public Text TimeText;
     public GameObject pauseMenu;
+    public Text gameMessages;
+    public float gameMessageFadingTime = 1f;
+    public Text recoveryItems;
     private float time = 0;
     private bool paused = false;
 
@@ -41,7 +46,6 @@ public class levelManager : MonoBehaviour {
     public string[] passwords;
 
 	void Start () {
-        SaveLoad.Load();
         Time.timeScale = 1f;
         //SaveLoad.Delete();
         //cameras = new Transform[levelParents.Length];
@@ -67,6 +71,8 @@ public class levelManager : MonoBehaviour {
         obtainPasswords();
         musicSource = musicManager.source;
         soundSource = SFXManager.source;
+        PM = GetComponent<ParticleManager>();
+        //screenshotScript.getScreenshotsInDirectory();
         //levelParents[0].SetActive(true);
 	}
 	
@@ -84,9 +90,9 @@ public class levelManager : MonoBehaviour {
                 inTransition = false;
         }
 
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetButtonDown("PrtSc"))
         {
-            Application.CaptureScreenshot("Screenshot.png");
+            takeScreenshot();
         }
 
         if (Input.GetButtonDown("Pause"))
@@ -130,6 +136,7 @@ public class levelManager : MonoBehaviour {
             Time.timeScale = 1f;
             soundSource.UnPause();
             musicSource.UnPause();
+            SaveLoad.Save();
             playerHealthText.transform.parent.gameObject.SetActive(true);
             pauseMenu.SetActive(false);
             paused = false;
@@ -277,7 +284,7 @@ public class levelManager : MonoBehaviour {
     public string getPassword(int numberOfPassword)
     {
         //Debug.Log("Number: " + numberOfPassword);
-        print(numberOfPassword + ": " + passwords[numberOfPassword]);
+        //print(numberOfPassword + ": " + passwords[numberOfPassword]);
         return passwords[numberOfPassword];
     }
 
@@ -317,8 +324,45 @@ public class levelManager : MonoBehaviour {
         return acumulatedDamage;
     }
 
-    public void healPlayer()
+    public void takeScreenshot()
     {
-        playerScript.SendMessage("healPlayer");
+        string attempt = screenshotScript.saveNewScreenshot();
+        if (attempt!= "ERROR")
+        {
+            //Debug.Log("Screenshot saved as " + attempt);
+            StartCoroutine(gameMessage("Screenshot saved as " + attempt + " in the screenshots directory"));
+        }
+        else
+        {
+            StartCoroutine(gameMessage("SCREENSHOT FAILED, YOU HAVE TOO MANY"));
+        }
+    }
+
+    IEnumerator gameMessage(string input)
+    {
+        yield return new WaitForSeconds(1f);
+        gameMessages.text = input;
+        yield return new WaitForSeconds(gameMessageFadingTime);
+        gameMessages.text = "";
+    }
+
+    public bool getPaused()
+    {
+        return paused;
+    }
+
+    public void updateNumberOfItems(int newNum)
+    {
+        recoveryItems.text = "x" + newNum;
+    }
+
+    public CombatScript getPlayerCombatScript()
+    {
+        return playerScript;
+    }
+
+    public void changePlayerCanMove(bool value)
+    {
+        playerScript.movementScript.changeCanMove(value);
     }
 }

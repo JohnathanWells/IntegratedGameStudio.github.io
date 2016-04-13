@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
             froze();
 
         }
-        else if (!manager.gameOver && canMove && !inTransition && isff == false)
+        else if (!manager.gameOver && canMove && !inTransition && isff == false && !manager.gameOver)
         {
             if (Input.GetButton("Horizontal"))
             {

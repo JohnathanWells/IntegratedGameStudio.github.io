@@ -97,7 +97,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 48cbaec1f1f95a34f9d59f332613d2a8, type: 3}
+  - {fileID: 2100000, guid: a7b03804e7c260f4594541dba8217849, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -140,7 +140,7 @@ TextMesh:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170554}
   m_Text: 
-  m_OffsetZ: 0
+  m_OffsetZ: -1.26
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4

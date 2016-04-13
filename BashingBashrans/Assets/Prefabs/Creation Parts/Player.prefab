@@ -4098,6 +4098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 1000
   godMode: 0
+  recoverItems: 1
   punchingTime: 0.3
   punchCooldown: 0
   punchingColor: {r: 1, g: 0, b: 0, a: 1}
@@ -4107,14 +4108,11 @@ MonoBehaviour:
   receiveDamageSound: {fileID: 8300000, guid: f4bba886bac046b4ab0702a64c11869f, type: 3}
   returnPassiveProjectileSound: {fileID: 0}
   punchSound: {fileID: 0}
+  healSound: {fileID: 8300000, guid: 842533af05bf4754997045667d638ff2, type: 3}
+  healingParticles: {fileID: 19885104, guid: 39ac63854e38a684d88818abd9344e60, type: 2}
   animation: {fileID: 0}
   movementScript: {fileID: 11420892}
   timeBetweenBurningDamage: 0.3
-  minsick: 2
-  maxsick: 4
-  sick: 0
-  ptime: 0
-  isp: 0
   pm: {fileID: 11420892}
   feet: {fileID: 426868}
   sensors: {fileID: 492798}

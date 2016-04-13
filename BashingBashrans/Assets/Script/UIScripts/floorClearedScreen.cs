@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class floorClearedScreen : MonoBehaviour {
 
@@ -112,5 +113,10 @@ public class floorClearedScreen : MonoBehaviour {
     public void TakeToSurvey()
     {
         Application.OpenURL(surveyLink);
+    }
+
+    public void loadLevel(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

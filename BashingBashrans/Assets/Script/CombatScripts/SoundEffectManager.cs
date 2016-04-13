@@ -45,4 +45,9 @@ public class SoundEffectManager : MonoBehaviour {
         SaveLoad.savedGame.SFXVolume = SFXVolume;
         SaveLoad.savedGame.MasterVolume = MasterVolume;
     }
+
+    public float getSFXVolume()
+    {
+        return SFXVolume;
+    }
 }

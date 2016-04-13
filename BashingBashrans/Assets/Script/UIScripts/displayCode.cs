@@ -90,7 +90,7 @@ public class displayCode : MonoBehaviour {
     bool checkUnlockedLogs()
     {
         SaveLoad.Load();
-        bool[] temp = SaveLoad.savedGame.unlockedPasswords;
+        bool[] temp = SaveLoad.savedGame.returnUnlockedPasswords();
         int size = temp.Length;
 
         for (int a = 0; a < size; a++)

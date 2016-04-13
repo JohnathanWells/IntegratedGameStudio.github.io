@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class pauseMenuScript : MonoBehaviour {
 
@@ -18,15 +19,19 @@ public class pauseMenuScript : MonoBehaviour {
     private string lastInput;
     private bool checkingPassword = false;
 
+    private const int kitsByCode = 1;
+
     levelManager highManager;
     SoundEffectManager sfx;
     MusicScript music;
+    CombatScript player;
 
     void Start()
     {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         sfx = highManager.SFXManager;
         music = highManager.musicManager;
+        player = highManager.getPlayerCombatScript();
     }
 
     void OnGUI()
@@ -57,7 +62,7 @@ public class pauseMenuScript : MonoBehaviour {
             sfx.PlaySound(rightMessageSound);
             passwordEnter.text = "LOG UNLOCKED";
             setActiveButtons();
-            highManager.SendMessage("healPlayer");
+            player.SendMessage("addKits", kitsByCode);
         }
         else
         {
@@ -70,7 +75,7 @@ public class pauseMenuScript : MonoBehaviour {
     public void setActiveButtons()
     {
         SaveLoad.Load();
-        bool[] temp = SaveLoad.savedGame.unlockedPasswords;
+        bool[] temp = SaveLoad.savedGame.returnUnlockedPasswords();
         int l = temp.Length;
 
         for (int a = 0; a < l; a++)
@@ -85,12 +90,8 @@ public class pauseMenuScript : MonoBehaviour {
     {
         if (type == 0)
         {
-            int l = SaveLoad.savedGame.unlockedPasswords.Length;
-
-            for (int a = 0; a < l; a++)
-            {
-                SaveLoad.savedGame.unlockedPasswords[a] = true;
-            }
+            SaveLoad.Load();
+            SaveLoad.savedGame.unlockAllPasswords();
             SaveLoad.Save();
             setActiveButtons();
 
@@ -135,5 +136,11 @@ public class pauseMenuScript : MonoBehaviour {
         MasterV.value = temp.MasterVolume;
         MusicV.value = temp.MusicVolume;
         SFXV.value = temp.SFXVolume;
+    }
+
+    public void backToMainMenu()
+    {
+        SaveLoad.Save();
+        SceneManager.LoadScene(0);
     }
 }

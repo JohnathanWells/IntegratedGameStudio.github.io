@@ -6,6 +6,7 @@ public class CombatScript : MonoBehaviour {
     [Header("Health")]
     public int initialHealth = 100;
     public bool godMode = false;
+    public int recoverItems = 1;
     private int currentHealth;
     private bool dead = false;
 
@@ -22,6 +23,10 @@ public class CombatScript : MonoBehaviour {
     public AudioClip receiveDamageSound;
     public AudioClip returnPassiveProjectileSound;
     public AudioClip punchSound;
+    public AudioClip healSound;
+
+    [Header("Particles")]
+    public ParticleSystem healingParticles;
 
     [Header("Other Scripts Access")]
     public Animation animation;
@@ -29,6 +34,7 @@ public class CombatScript : MonoBehaviour {
     private GameManager manager;
     private levelManager highManager;
     private SoundEffectManager SFX;
+    private ParticleManager PM;
 
     [Header("Burns")]
     public float timeBetweenBurningDamage = 1;
@@ -38,12 +44,12 @@ public class CombatScript : MonoBehaviour {
 
     private bool inTransition = false;
 
-    [Header("Poison")]
-    public float minsick = 2;
-    public float maxsick = 4;
-    public float sick = 0;
-    public float ptime = 0;
-    public bool isp = false;
+    //[Header("Poison")]
+    //public float minsick = 2;
+    //public float maxsick = 4;
+    //public float sick = 0;
+    //public float ptime = 0;
+    //public bool isp = false;
 
     public PlayerMovement pm;
     public Transform feet;
@@ -58,6 +64,11 @@ public class CombatScript : MonoBehaviour {
     void Start () {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
+        PM = highManager.PM;
+
+        SaveLoad.Load();
+        recoverItems = SaveLoad.savedGame.healthKits;
+        highManager.SendMessage("updateNumberOfItems", recoverItems);
 
         setManager();
         currentHealth = initialHealth;
@@ -91,13 +102,13 @@ public class CombatScript : MonoBehaviour {
                     //    Proj.projectileCrash(1);
                     //}
 
-                    if (Proj.getEffectType() == "poison")
-                    {
-                        sick = Random.Range(Proj.minSick, Proj.maxSick);
-                        ptime = Random.Range(minsick, maxsick);
-                        sick = (int)sick;
-                        isp = true;
-                    }
+                    //if (Proj.getEffectType() == "poison")
+                    //{
+                    //    sick = Random.Range(Proj.minSick, Proj.maxSick);
+                    //    ptime = Random.Range(minsick, maxsick);
+                    //    sick = (int)sick;
+                    //    isp = true;
+                    //}
                     
                     if (Proj.getEffectType() == "freeze")
                     {
@@ -116,17 +127,22 @@ public class CombatScript : MonoBehaviour {
 
 	void Update () {
 
-        if (!dead)
+        if (!dead && !highManager.getPaused())
         {
-            if (isp && ptime > 0)
-            {
-                poison();
-            }
+            //if (isp && ptime > 0)
+            //{
+            //    poison();
+            //}
 
             if (Input.GetButtonDown("Swing Direction") && canPunch)
             {
                 playerAnimator.SetBool("Swinging", true);
                 StartCoroutine(punchStuff(-Mathf.RoundToInt(Input.GetAxisRaw("Swing Direction"))));
+            }
+
+            if (Input.GetButtonDown("UseRecover"))
+            {
+                useKit();
             }
         }
 	}
@@ -261,22 +277,23 @@ public class CombatScript : MonoBehaviour {
         }
     }*/
 
-    public void poison()
-    {
-        if (currentHealth <= 100)
-        {
-            currentHealth = 0;
-        }
-        else if (currentHealth > 100)
-        {
-            currentHealth -= (int)(sick * sick);
-        }
-        ptime -= (Time.deltaTime * 60);
-        if (ptime <= 0)
-        {
-            isp = false;
-        }
-    }
+    //public void poison()
+    //{
+    //    if (currentHealth <= 100)
+    //    {
+    //        currentHealth = 0;
+    //    }
+    //    else if (currentHealth > 100)
+    //    {
+    //        currentHealth -= (int)(sick * sick);
+    //    }
+    //    ptime -= (Time.deltaTime * 60);
+    //    if (ptime <= 0)
+    //    {
+    //        isp = false;
+    //    }
+    //}
+
     IEnumerator Pain()
     {
         //Debug.Log("Begin");
@@ -295,5 +312,23 @@ public class CombatScript : MonoBehaviour {
     public void healPlayer()
     {
         currentHealth = initialHealth;
+    }
+
+    public void useKit()
+    {
+        if (recoverItems > 0)
+        {
+            recoverItems--;
+            PM.spawnParticles(healingParticles, feet.position, healingParticles.duration);
+            healPlayer();
+            highManager.SendMessage("updateNumberOfItems", recoverItems);
+            SFX.PlaySound(healSound);
+        }
+    }
+
+    public void addKits(int newKits)
+    {
+        recoverItems += newKits;
+        highManager.SendMessage("updateNumberOfItems", recoverItems);
     }
 }
