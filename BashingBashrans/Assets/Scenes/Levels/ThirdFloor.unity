@@ -4403,8 +4403,8 @@ Transform:
   m_PrefabParentObject: {fileID: 445580, guid: f5415964b39a2034daa6c24d3e11fe79, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865883611}
-  m_LocalRotation: {x: 0.29237175, y: 0, z: 0, w: 0.9563048}
-  m_LocalPosition: {x: 43.6, y: 9.43, z: -32.06}
+  m_LocalRotation: {x: 0.24361505, y: 0, z: 0, w: 0.969872}
+  m_LocalPosition: {x: 43.6, y: 8.32, z: -33.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716310848}
@@ -6372,6 +6372,10 @@ Prefab:
     - target: {fileID: 11442588, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: newDist.Array.data[0]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: InitialHealth
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
@@ -8558,6 +8562,10 @@ Prefab:
       propertyPath: newDist.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
+      propertyPath: InitialHealth
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_IsPrefabParent: 0
@@ -10509,7 +10517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: cooldownTime
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11483516, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
       propertyPath: projectilesByBurst
