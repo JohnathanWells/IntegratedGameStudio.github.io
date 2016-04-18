@@ -2559,7 +2559,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 26.08
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2567,7 +2567,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 426868, guid: 8eb00c93041eed240a82d0433ca165b2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -18192,7 +18192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelParents:
-  - {fileID: 172035440}
+  - {fileID: 1301739245}
   - {fileID: 485966528}
   - {fileID: 941111531}
   - {fileID: 1721156890}
@@ -18201,7 +18201,7 @@ MonoBehaviour:
   - {fileID: 172035440}
   - {fileID: 211342626}
   cameras:
-  - {fileID: 812629346}
+  - {fileID: 703034139}
   - {fileID: 7264251}
   - {fileID: 752579222}
   - {fileID: 666343904}
@@ -18210,7 +18210,7 @@ MonoBehaviour:
   - {fileID: 812629346}
   - {fileID: 2055706978}
   managers:
-  - {fileID: 843517099}
+  - {fileID: 1847867733}
   - {fileID: 1218139918}
   - {fileID: 1942193958}
   - {fileID: 2010725424}
@@ -20578,7 +20578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1301739246
 Transform:
   m_ObjectHideFlags: 0
