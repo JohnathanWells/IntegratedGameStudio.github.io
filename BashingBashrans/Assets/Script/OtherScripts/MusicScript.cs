@@ -61,9 +61,9 @@ public class MusicScript : MonoBehaviour {
         refreshVolume();
     }
 
-    public void OnMusicChange(float newSFXVolume)
+    public void OnMusicChange(float newMusicVolume)
     {
-        MusicVolume = newSFXVolume;
+        MusicVolume = newMusicVolume;
         refreshVolume();
     }
 

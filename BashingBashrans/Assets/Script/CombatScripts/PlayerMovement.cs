@@ -205,6 +205,7 @@ public class PlayerMovement : MonoBehaviour {
             lane += dir;
 
             VerticalD = distanceBetweenLanes * dir;
+            Debug.Log(distanceBetweenLanes);
 
             transform.Translate(new Vector3(0, 0, VerticalD));
         }

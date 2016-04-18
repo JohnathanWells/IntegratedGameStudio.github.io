@@ -29,11 +29,13 @@ public class introductionScript : MonoBehaviour {
     {
         StartCoroutine(loadLevel(levelName));
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0f);
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+        SceneManager.LoadScene(levelName);
 
-        while (!async.isDone)
-            yield return null;
+        //AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+
+        //while (!async.isDone)
+        //    yield return null;
     }
 }

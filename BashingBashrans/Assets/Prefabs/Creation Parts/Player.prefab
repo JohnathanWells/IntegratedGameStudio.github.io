@@ -977,6 +977,8 @@ GameObject:
   - 65: {fileID: 6538778}
   - 114: {fileID: 11430914}
   - 54: {fileID: 5405012}
+  - 23: {fileID: 2391184}
+  - 33: {fileID: 3336896}
   m_Layer: 0
   m_Name: WeaponCollider
   m_TagString: Untagged
@@ -2583,7 +2585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188426}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.34}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0.55}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 435524}
@@ -2611,7 +2613,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.36, y: 4, z: 0}
+  m_LocalPosition: {x: 26.08, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426336}
@@ -2666,7 +2668,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196672}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 0.10000002, y: 0.1, z: 0.10000002}
   m_Children: []
   m_Father: {fileID: 492798}
@@ -2943,7 +2945,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127652}
   m_LocalRotation: {x: 0, y: 0.9821234, z: 0, w: 0.18823831}
-  m_LocalPosition: {x: 0, y: 0.495, z: 0}
+  m_LocalPosition: {x: 0, y: 0.495, z: 0.251}
   m_LocalScale: {x: 1.495113, y: 1.4951133, z: 1.4951133}
   m_Children:
   - {fileID: 421502}
@@ -3046,7 +3048,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148714}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0.419}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.2, y: 0.5, z: 0.37}
   m_Children: []
   m_Father: {fileID: 426336}
@@ -3850,6 +3852,39 @@ Transform:
   - {fileID: 431844}
   m_Father: {fileID: 403938}
   m_RootOrder: 0
+--- !u!23 &2391184
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148714}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3336896
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148714}
+  m_Mesh: {fileID: 4300002, guid: d74e0d0e2b48e84418222022b6c007d1, type: 3}
 --- !u!54 &5402018
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3987,7 +4022,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.37, y: 0.88, z: 0.43}
-  m_Center: {x: 0, y: 0, z: 0.16}
+  m_Center: {x: 0, y: 0, z: 0.31}
 --- !u!65 &6528034
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4011,7 +4046,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.57, y: 0, z: 0}
+  m_Center: {x: -0.59, y: 0, z: 0}
 --- !u!95 &9593034
 Animator:
   serializedVersion: 3
@@ -4065,7 +4100,7 @@ MonoBehaviour:
   horizontalSensor: 0
   verticalSensor: 1
   fixPosition: 1
-  directionWithPlayer: {x: 0, y: 0}
+  directionWithPlayer: {x: 0, y: 1}
   feet: {fileID: 426868}
 --- !u!114 &11430914
 MonoBehaviour:
@@ -4082,6 +4117,7 @@ MonoBehaviour:
   returnProjectileSound: {fileID: 8300000, guid: d9b3c20568762e240b4da9b9568fc87b,
     type: 3}
   meleeAttackSound: {fileID: 8300000, guid: 6153021afbda1ed48823c6561e94680c, type: 3}
+  failedMeleeAttackSound: {fileID: 0}
   damage: 400
   animationHappening: 0
   manager: {fileID: 0}
@@ -4116,7 +4152,7 @@ MonoBehaviour:
   pm: {fileID: 11420892}
   feet: {fileID: 426868}
   sensors: {fileID: 492798}
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 9593034}
   painanimation: 0.3
   defeatanimation: 2
   winanimation: 2
@@ -4135,7 +4171,7 @@ MonoBehaviour:
   horizontalSensor: 0
   verticalSensor: 1
   fixPosition: 1
-  directionWithPlayer: {x: 0, y: 0}
+  directionWithPlayer: {x: 0, y: -1}
   feet: {fileID: 426868}
 --- !u!114 &11464530
 MonoBehaviour:
@@ -4152,7 +4188,7 @@ MonoBehaviour:
   horizontalSensor: 1
   verticalSensor: 0
   fixPosition: 1
-  directionWithPlayer: {x: 0, y: 0}
+  directionWithPlayer: {x: -1, y: 0}
   feet: {fileID: 426868}
 --- !u!114 &11498386
 MonoBehaviour:
@@ -4169,7 +4205,7 @@ MonoBehaviour:
   horizontalSensor: 1
   verticalSensor: 0
   fixPosition: 1
-  directionWithPlayer: {x: 0, y: 0}
+  directionWithPlayer: {x: 1, y: 0}
   feet: {fileID: 426868}
 --- !u!137 &13709448
 SkinnedMeshRenderer:

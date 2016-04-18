@@ -304,7 +304,9 @@ public class CombatScript : MonoBehaviour {
         }
     }
 	IEnumerator PlayerisKill()
-	{yield return new WaitForSeconds (1);
+	{
+        movementScript.SendMessage("changeCanMove", false);
+        yield return new WaitForSeconds (1);
 		manager.GameOver();
 		manager.SendMessage ("GameOver");
 	}

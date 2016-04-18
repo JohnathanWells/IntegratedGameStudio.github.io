@@ -149,6 +149,9 @@ public class Boss01 : MonoBehaviour {
 
             proj.projectileCrash(0);
         }
+
+        if (c.CompareTag("Boulder"))
+            boulderReceived(c.transform);
     }
 
     void nextAttack()
@@ -189,7 +192,7 @@ public class Boss01 : MonoBehaviour {
         if (cooled && stepCooled)
         {
             Step temp = attacks[attackSelected].steps[countOfStep];
-            animator.Play("Attack" + attackSelected);
+            animator.Play("Attack" + (attackSelected + 1));
             //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
@@ -342,5 +345,13 @@ public class Boss01 : MonoBehaviour {
     public void inTransition(bool value)
     {
         inTrans = value;
+    }
+
+    void boulderReceived(Transform c)
+    {
+        BoulderScript bould = c.GetComponent<BoulderScript>();
+
+        ReceiveDamage(bould.damage);
+        bould.DestroyBoulder();
     }
 }

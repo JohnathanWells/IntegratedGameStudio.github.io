@@ -15,17 +15,17 @@ public class SensorScript : MonoBehaviour {
     void Start()
     {
         setManager();
-        obtainDirectionWithPlayer();
+        //obtainDirectionWithPlayer();
         if (verticalSensor && fixPosition)
         {
             fixPositionOfSensor();
         }
     }
 
-    void Update()
-    {
-        obtainDirectionWithPlayer();
-    }
+    //void Update()
+    //{
+    //    obtainDirectionWithPlayer();
+    //}
 
     void OnTriggerStay(Collider c)
     {
@@ -53,6 +53,7 @@ public class SensorScript : MonoBehaviour {
     void fixPositionOfSensor()
     {
         int direction = Mathf.RoundToInt(directionWithPlayer.y);
+        //Debug.Log(manager.obtainDistanceBetweenLanes());
         transform.position = new Vector3(feet.position.x, feet.position.y, feet.position.z + manager.obtainDistanceBetweenLanes() * direction);
     }
 
@@ -67,6 +68,7 @@ public class SensorScript : MonoBehaviour {
         }
         else if (verticalSensor)
         {
+            //Debug.Log(transform.position.z + " vs " + movementScript.transform.position.z);
             if (transform.position.z > movementScript.transform.position.z)
                 directionWithPlayer = Vector2.up;
             else
@@ -80,7 +82,7 @@ public class SensorScript : MonoBehaviour {
         
         if (verticalSensor && fixPosition)
         {
-            obtainDirectionWithPlayer();
+            //obtainDirectionWithPlayer();
             fixPositionOfSensor();
         }
     }

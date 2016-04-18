@@ -221,7 +221,7 @@ public class Game
         floorForEachPassword = new int[messages.Length];
 
         messages[0] = "(You found a coded quartz. Bashrans used them to store big chunks of information for almost unlimited periods of time. However, the information encoded inside is encrypted with multiple keys. Passwords are required to decrypt it.\nBy unlocking information you may also unlock energy locked in the quartz that you may use for healing.)";
-        floorForEachPassword[0] = 1;
+        floorForEachPassword[0] = 0;
 
         messages[1] = "Translating information.\n\nSecurity Level 2 - 21201028\n\n\nThe Bashran Council got the best technicians on the planet and put them all together in a room. Our mission is to build a machine to save our civilization.\n\nAnd they put me in charge of keeping a complete registry of the development of this machine.\n\nThis will be interesting to say the least.";
         floorForEachPassword[1] = 1;

@@ -80,6 +80,10 @@ public class cannonScript : MonoBehaviour {
             else
             {
                 Temp = possibleAmmo[n].GetComponent<bombScript>();
+
+                if (Temp == null)
+                    return;
+
                 part = Instantiate(Temp.getMuzzleParticles(), Vector3.zero, Quaternion.Euler(new Vector3(0, -90, 0))) as ParticleSystem;
                 ProjectilesSounds[n] = Temp.getShootingSounds();
 

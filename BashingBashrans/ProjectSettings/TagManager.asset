@@ -20,6 +20,7 @@ TagManager:
   - PlayerModel
   - Music Manager
   - Bomb
+  - gameOverScreen
   layers:
   - Default
   - TransparentFX

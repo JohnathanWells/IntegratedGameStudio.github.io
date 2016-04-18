@@ -72,7 +72,7 @@ public class levelManager : MonoBehaviour {
         musicSource = musicManager.source;
         soundSource = SFXManager.source;
         PM = GetComponent<ParticleManager>();
-        //screenshotScript.getScreenshotsInDirectory();
+        screenshotScript.getScreenshotsInDirectory();
         //levelParents[0].SetActive(true);
 	}
 	
@@ -138,6 +138,7 @@ public class levelManager : MonoBehaviour {
             musicSource.UnPause();
             SaveLoad.Save();
             playerHealthText.transform.parent.gameObject.SetActive(true);
+            pauseMenu.SendMessage("saveOptions");
             pauseMenu.SetActive(false);
             paused = false;
         }
@@ -268,6 +269,7 @@ public class levelManager : MonoBehaviour {
         managers[newManager].enemiesFolder.gameObject.SetActive(true);
         //managers[oldManager].ProjectilesFolder.SendMessage("hideProjectiles", false);
         Player.BroadcastMessage("setManager");
+
         levelParents[newManager].BroadcastMessage("setManager");
     }
 
@@ -293,8 +295,8 @@ public class levelManager : MonoBehaviour {
         SaveLoad.Load();
         passwords = SaveLoad.savedGame.getAllPasswordsFromAFloor(floorNumber);
 
-        //for (int a = 0; a < passwords.Length; a++)
-            //Debug.Log("Password " + a + ": " + passwords[a]);
+        for (int a = 0; a < passwords.Length; a++)
+            Debug.Log("Password " + a + ": " + passwords[a]);
     }
 
     public float getTime()
@@ -365,5 +367,10 @@ public class levelManager : MonoBehaviour {
     public void changePlayerCanMove(bool value)
     {
         playerScript.movementScript.changeCanMove(value);
+    }
+
+    public void restartLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

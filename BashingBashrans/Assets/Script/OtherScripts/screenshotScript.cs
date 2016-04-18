@@ -20,20 +20,23 @@ public class screenshotScript{
         if (!Directory.Exists(screenshotDirectory))
             Directory.CreateDirectory(screenshotDirectory);
 
-        string [] dir = Directory.GetFiles(screenshotDirectory);
-        existingScreenshots = new List<string>(dir);
+        existingScreenshots = new List<string>(Directory.GetFiles(screenshotDirectory));
+        //Debug.Log(existingScreenshots[0]);
     }
 
     public static string saveNewScreenshot()
     {
         string defaultName = "Security_Picture_";
+        string tempName;
         
         for (int a = 0; a < overflow; a++)
         {
-            if (!existingScreenshots.Contains(defaultName + a + ".png"))
+            tempName = screenshotDirectory + "\\" + defaultName + a + ".png";
+            //Debug.Log(tempName);
+            if (!existingScreenshots.Contains(tempName))
             {
-                Application.CaptureScreenshot(screenshotDirectory + "/" + defaultName + "" + a + ".png");
-                existingScreenshots.Add(defaultName + "" + a + ".png");
+                Application.CaptureScreenshot(tempName);
+                existingScreenshots.Add(tempName);
                 return defaultName + "" + a;
             }
         }

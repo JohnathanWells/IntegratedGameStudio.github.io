@@ -33,6 +33,7 @@ public class pauseMenuScript : MonoBehaviour {
         sfx = highManager.SFXManager;
         music = highManager.musicManager;
         player = highManager.getPlayerCombatScript();
+        fixSoundSliders();
     }
 
     void OnGUI()

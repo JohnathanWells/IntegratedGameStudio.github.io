@@ -210,6 +210,21 @@ AnimationClip:
     path: Main Camera B/Manager
     classID: 114
     script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: BouldersActivated
+    path: Main Camera B/Manager B
+    classID: 114
+    script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -249,6 +264,12 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - path: 2296686063
+      attribute: 4122120185
+      script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 869606977
       attribute: 4122120185
       script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
       classID: 114
@@ -901,6 +922,21 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: BouldersActivated
     path: Main Camera B/Manager
+    classID: 114
+    script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: BouldersActivated
+    path: Main Camera B/Manager B
     classID: 114
     script: {fileID: 11500000, guid: e9269721edfb21f4b860d649e06c84fc, type: 3}
   m_EulerEditorCurves:

@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
-        //gameOverScreen.SetActive(true);
+        gameOverScreen.SetActive(true);
         //SFX.PlaySound(gameOverSound);
         highManager.musicManager.SendMessage("playGameOver");
         gameOver = true;
@@ -270,7 +270,10 @@ public class GameManager : MonoBehaviour {
 
     public float obtainDistanceBetweenLanes()
     {
-        return Mathf.Abs((RightUpCorner.position.z - LeftDownCorner.position.z + LeftDownCorner.lossyScale.z/2 + RightUpCorner.lossyScale.z/2) / numberOfLanes);
+        if (numberOfLanes - 1 == 0)
+            return 0;
+        else
+            return Mathf.Abs((RightUpCorner.position.z - LeftDownCorner.position.z/*+ LeftDownCorner.lossyScale.z/2 + RightUpCorner.lossyScale.z/2*/) / (numberOfLanes-1));
     }
 
     public int obtainLane(Transform questioner)
@@ -344,6 +347,7 @@ public class GameManager : MonoBehaviour {
         //DoorAnimator = exitDoor.GetComponent<Animator>();
         SFX = highManager.transform.GetComponent<SoundEffectManager>();
         PM = highManager.transform.GetComponent<ParticleManager>();
+        //gameOverScreen = GameObject.FindGameObjectWithTag("gameOverScreen");
 
         if (emptyRoom)
             checkIfCleared();

@@ -59,6 +59,7 @@ public class ProjectileScript : MonoBehaviour
 
     [Header("Curvy")]
     public float wavelength = 1;
+    public float amplitude = 1;
     //Vector2 crv;
     //private float maxZ;
     //private float minZ;
@@ -124,7 +125,7 @@ public class ProjectileScript : MonoBehaviour
         if (movement == typeMovement.Curvy)
         {
             float xMovement = directionOfProjectile * speed * Time.deltaTime;
-            float zMovement = Mathf.Cos(distanceTraveled * wavelength) * speed * Time.deltaTime;
+            float zMovement = amplitude * Mathf.Cos(distanceTraveled * wavelength) * speed * Time.deltaTime;
             translation = new Vector3(xMovement, 0, zMovement);
             transform.Translate(translation);
         }

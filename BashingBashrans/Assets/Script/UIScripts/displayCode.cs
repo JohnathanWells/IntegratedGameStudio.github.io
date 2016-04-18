@@ -25,7 +25,7 @@ public class displayCode : MonoBehaviour {
     private string password;
 
     private levelManager highManager;
-    private GameManager manager;
+    //private GameManager manager;
 
     public bool shouldDisplay()
     {
@@ -35,6 +35,7 @@ public class displayCode : MonoBehaviour {
 
         if (condition == conditionForDisplay.Time)
         {
+            Debug.Log(highManager.getTime() + ": " + timeCondition);
             if (timeCondition >= highManager.getTime())
             {
                 resultA = true;
@@ -74,7 +75,7 @@ public class displayCode : MonoBehaviour {
         {
             resultC = false;
             displayWithPriority.ACTIVATE();
-            displayWithPriority.setManager();
+            //displayWithPriority.setManager();
         }
         else
             resultC = true;
@@ -110,8 +111,8 @@ public class displayCode : MonoBehaviour {
     public void setManager()
     {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
-        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        password = highManager.getPassword(numberOfDisplayInFloor);
+        //manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        password = highManager.getPassword(numberOfDisplayInFloor - 1);
 
         if (ACTIVE && shouldDisplay())
         {
@@ -129,6 +130,7 @@ public class displayCode : MonoBehaviour {
     public void ACTIVATE()
     {
         ACTIVE = true;
+        setManager();
     }
 
     string passwordOnDisplay(string input)

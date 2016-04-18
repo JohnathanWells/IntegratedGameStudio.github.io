@@ -93,10 +93,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 3
   direction: 0
-  canBePunched: 1
+  canBePunched: 0
   blockedByStanding: 0
   angleOfDesviation: 90
-  speed: 4
+  speed: 6
   desviationSpeed: 8
   initialOffset: 0
   desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
@@ -106,7 +106,7 @@ MonoBehaviour:
   Damage: 50
   Peffecttmemin: 1
   Peffecttmemax: 10
-  halflife: 8
+  halflife: 9
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
     type: 2}
   playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
@@ -119,7 +119,8 @@ MonoBehaviour:
   minSick: 1
   maxSick: 5
   wavelength: 1
-  bnceAng: 30
+  amplitude: 1
+  bnceAng: 210
 --- !u!135 &13578206
 SphereCollider:
   m_ObjectHideFlags: 1
