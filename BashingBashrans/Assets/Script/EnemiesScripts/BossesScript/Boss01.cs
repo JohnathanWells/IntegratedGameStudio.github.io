@@ -24,8 +24,16 @@ public class Boss01 : MonoBehaviour {
             for (int a = 0; a < length; a += 2)
             {
                 //Debug.Log("lane: " + text[a] + "\ntype: " + text[a + 1]);
-                lane[a / 2] = (int)text[a] - 49;
-                type[a / 2] = (int)text[a + 1] - 49;
+                if ((int)text[a] > 47 && (int)text[a] < 58)
+                    lane[a / 2] = (int)text[a] - 49;
+                else if ((int)text[a] > 96 && (int)text[a] < 123)
+                    lane[a / 2] = (int)text[a] - 88;
+
+                if ((int)text[a + 1] > 47 && (int)text[a + 1] < 58)
+                    type[a / 2] = (int)text[a + 1] - 49;
+                else if ((int)text[a] > 96 && (int)text[a] < 123)
+                    type[a / 2] = (int)text[a + 1] - 88;
+
                 muzzleNumber[a / 2] = lane[a / 2];
             }
         }
@@ -159,22 +167,26 @@ public class Boss01 : MonoBehaviour {
         int nextAttack;
         phaseAttacks temp = PhaseAttacks[phase - 1];
         int lenght = temp.AttacksForPhase.Length;
+        int tempN = Random.Range(0, lenght);
 
-        nextAttack = temp.AttacksForPhase[Random.Range(0, lenght)];
+        nextAttack = temp.AttacksForPhase[tempN];
+        //Debug.Log("next attack is: " + nextAttack);
 
         if (nextAttack != currentAttack && lenght > 1)
             currentAttack = nextAttack;
         else
         {
-            if (nextAttack == 0)
+            if (tempN == 0)
             {
-                currentAttack++;
+                currentAttack = temp.AttacksForPhase[tempN + 1];
             }
             else
             {
-                currentAttack--;
+                currentAttack = temp.AttacksForPhase[tempN - 1];
             }
         }
+
+        //Debug.Log("But it was changed to: " + currentAttack);
     }
     
     void shoot(int muzzleNum, int projType)

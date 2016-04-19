@@ -8756,7 +8756,7 @@ Prefab:
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: bossSong
       value: 
-      objectReference: {fileID: 8300000, guid: a1691affd0961454f8f84a55aa38e68a, type: 3}
+      objectReference: {fileID: 8300000, guid: 75e08f73ec897ce499a6b9cb13614164, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
   m_IsPrefabParent: 0

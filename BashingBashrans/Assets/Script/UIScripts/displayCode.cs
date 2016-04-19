@@ -35,7 +35,7 @@ public class displayCode : MonoBehaviour {
 
         if (condition == conditionForDisplay.Time)
         {
-            Debug.Log(highManager.getTime() + ": " + timeCondition);
+            //Debug.Log(highManager.getTime() + ": " + timeCondition);
             if (timeCondition >= highManager.getTime())
             {
                 resultA = true;

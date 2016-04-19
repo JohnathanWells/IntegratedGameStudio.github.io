@@ -310,7 +310,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4278226687
+        rgba: 4294967295
       minMaxState: 0
     startSize:
       scalar: 1
@@ -685,7 +685,7 @@ ParticleSystem:
           rgba: 4280164076
         key2:
           serializedVersion: 2
-          rgba: 197434
+          rgba: 4278387514
         key3:
           serializedVersion: 2
           rgba: 2368551
@@ -694,7 +694,7 @@ ParticleSystem:
           rgba: 65803
         key5:
           serializedVersion: 2
-          rgba: 65803
+          rgba: 685047
         key6:
           serializedVersion: 2
           rgba: 0
@@ -706,12 +706,12 @@ ParticleSystem:
         ctime2: 15227
         ctime3: 39707
         ctime4: 55319
-        ctime5: 55319
+        ctime5: 65535
         ctime6: 0
         ctime7: 0
         atime0: 0
         atime1: 65535
-        atime2: 0
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -1621,7 +1621,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_RenderMode: 0
-  m_SortMode: 0
+  m_SortMode: 2
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.04
   m_CameraVelocityScale: 0
