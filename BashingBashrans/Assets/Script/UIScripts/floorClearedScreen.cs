@@ -52,7 +52,7 @@ public class floorClearedScreen : MonoBehaviour {
 
         damageReceivedText.text = damageCount + " HP";
 
-        if (damageCount == damageReceived && recordDamage > damageReceived)
+        if (damageCount == damageReceived || recordDamage > damageReceived)
         {
             //Debug.Log(recordDamage);
             damageReceivedText.text += "\nNewRecord!";

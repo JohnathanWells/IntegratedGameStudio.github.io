@@ -65,6 +65,8 @@ public class pauseMenuScript : MonoBehaviour {
             passwordEnter.text = "LOG UNLOCKED";
             setActiveButtons();
             player.SendMessage("addKits", kitsByCode);
+            SaveLoad.savedGame.healthKits += kitsByCode;
+            SaveLoad.Save();
         }
         else
         {
