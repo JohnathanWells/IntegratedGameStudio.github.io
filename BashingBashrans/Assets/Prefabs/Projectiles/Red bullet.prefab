@@ -107,7 +107,7 @@ MonoBehaviour:
   Peffecttmemin: 1
   Peffecttmemax: 10
   halflife: 6.75
-  projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
+  projectileCollision: {fileID: 19805410, guid: 72d989f4e7981c8449107f5fd763822b,
     type: 2}
   playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
   enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
@@ -119,6 +119,7 @@ MonoBehaviour:
   minSick: 0
   maxSick: 0
   wavelength: 1
+  amplitude: 1
   bnceAng: 45
 --- !u!135 &13578206
 SphereCollider:
