@@ -98,6 +98,7 @@ MonoBehaviour:
   angleOfDesviation: 90
   speed: 4
   desviationSpeed: 8
+  initialOffset: 0
   desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
   renderer: {fileID: 2320700}
   effectOfProjectile: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   Peffecttmemin: 1
   Peffecttmemax: 10
   halflife: 8
-  projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,
+  projectileCollision: {fileID: 19857196, guid: e3631105b598f34439937950862070ca,
     type: 2}
   playerHit: {fileID: 19802172, guid: a3892d820207fb4459a092db5258cdf2, type: 2}
   enemyHit: {fileID: 19859488, guid: ff3a5a95285afc746bedb34e98d2fb80, type: 2}
@@ -117,6 +118,7 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 1
   maxSick: 5
+  wavelength: 1
   amplitude: 0
   bnceAng: -90
 --- !u!135 &13578206

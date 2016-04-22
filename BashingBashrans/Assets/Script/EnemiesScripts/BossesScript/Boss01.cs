@@ -87,11 +87,14 @@ public class Boss01 : MonoBehaviour {
 
     [Header("Animation")]
     public Animator animator;
-
+    public ParticleSystem Smoke;
+    private ParticleManager PM;
     private GameManager manager;
     private levelManager highManager;
 
 	void Awake () {
+        highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
+        PM = highManager.PM;
         attacks = new Attack[PatternsTexts.Length];
         currentHealth = Health;
         setListOfAttacks(attacks, PatternsTexts);
@@ -347,6 +350,7 @@ public class Boss01 : MonoBehaviour {
         {
             currentHealth = 0;
             dead = true;
+            PM.spawnParticles(Smoke, transform.position, Smoke.duration);
 
             animator.SetBool("Dead", true);
             Debug.Log("Enemy defeated");
