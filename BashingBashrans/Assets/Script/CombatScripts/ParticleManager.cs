@@ -6,7 +6,7 @@ public class ParticleManager : MonoBehaviour {
 
     public void spawnParticles(ParticleSystem particles, Vector3 location, float despawnTime)
     {
-        ParticleSystem part = Instantiate(particles, location, Quaternion.identity) as ParticleSystem;
+        ParticleSystem part = Instantiate(particles, location, particles.transform.rotation) as ParticleSystem;
         StartCoroutine(mementoMori(part, despawnTime));
     }
 

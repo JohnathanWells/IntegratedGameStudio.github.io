@@ -27,6 +27,7 @@ public class CombatScript : MonoBehaviour {
 
     [Header("Particles")]
     public ParticleSystem healingParticles;
+    private ParticleSystem healingEffect;
 
     [Header("Other Scripts Access")]
     public Animation animation;
@@ -65,6 +66,9 @@ public class CombatScript : MonoBehaviour {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
         PM = highManager.PM;
+        healingEffect = Instantiate(healingParticles, feet.position, healingParticles.transform.rotation) as ParticleSystem;
+        healingEffect.transform.parent = feet;
+        healingEffect.gameObject.SetActive(false);
 
         SaveLoad.Load();
         recoverItems = SaveLoad.savedGame.healthKits;
@@ -321,7 +325,10 @@ public class CombatScript : MonoBehaviour {
         if (recoverItems > 0)
         {
             recoverItems--;
-            PM.spawnParticles(healingParticles, feet.position, healingParticles.duration);
+            //PM.spawnParticles(healingParticles, feet.position, healingParticles.duration);
+            StopCoroutine("spawnHealingPart");
+            StartCoroutine("spawnHealingPart");
+
             healPlayer();
             highManager.SendMessage("updateNumberOfItems", recoverItems);
             SFX.PlaySound(healSound);
@@ -332,5 +339,13 @@ public class CombatScript : MonoBehaviour {
     {
         recoverItems += newKits;
         highManager.SendMessage("updateNumberOfItems", recoverItems);
+    }
+
+    IEnumerator spawnHealingPart()
+    {
+        healingEffect.time = 0f;
+        healingEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(healingEffect.duration);
+        healingEffect.gameObject.SetActive(false);
     }
 }
