@@ -142,13 +142,14 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, int [] newOrder, float [] newSpeeds, bool smoothTrans)
+    public void startTransMovement(Vector3 posTo, Quaternion angTo, int newRoom, int [] newOrder, float [] newSpeeds, bool smoothTrans, bool inCoolTransition)
     {
         inTransition = true;
         currentRoom = newRoom;
         combatScript.transitionHappening(true);
         highManager.changeOrderOfTrans(newOrder, newSpeeds, smoothTrans);
 
+        coolTransition = inCoolTransition;
         pointTowards = posTo;
         angleTowards = angTo;
     }

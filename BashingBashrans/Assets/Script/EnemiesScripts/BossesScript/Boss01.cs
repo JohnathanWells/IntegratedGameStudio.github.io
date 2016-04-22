@@ -31,10 +31,12 @@ public class Boss01 : MonoBehaviour {
 
                 if ((int)text[a + 1] > 47 && (int)text[a + 1] < 58)
                     type[a / 2] = (int)text[a + 1] - 49;
-                else if ((int)text[a] > 96 && (int)text[a] < 123)
+                else if ((int)text[a + 1] > 96 && (int)text[a] < 123)
                     type[a / 2] = (int)text[a + 1] - 88;
 
                 muzzleNumber[a / 2] = lane[a / 2];
+
+                //Debug.Log(muzzleNumber[a / 2] + ": " + type[a / 2]);
             }
         }
     };
@@ -205,7 +207,7 @@ public class Boss01 : MonoBehaviour {
         {
             Step temp = attacks[attackSelected].steps[countOfStep];
             animator.Play("Attack" + (attackSelected + 1));
-            //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
+            Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
             {
