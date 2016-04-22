@@ -252,7 +252,7 @@ public class bombScript : MonoBehaviour {
 
         for (int a = 0; a < 9; a++)
         {
-            Debug.Log("parent of " + a + " set");
+            //Debug.Log("parent of " + a + " set");
             explosions[a].parent = projectileFolder;
         }
 

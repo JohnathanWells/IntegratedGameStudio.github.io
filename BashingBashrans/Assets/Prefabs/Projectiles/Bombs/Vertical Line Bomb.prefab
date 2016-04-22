@@ -106,7 +106,7 @@ MonoBehaviour:
   lineRange: 4
   halflife: 1.5
   distanceCondition: 0.5
-  timeBetweenSubExplosions: 0.4
+  timeBetweenSubExplosions: 0
   subExplosions: {fileID: 459216, guid: 3a07980cd44c0d543bb5806cfb22c2ff, type: 2}
   explosionParticle: {fileID: 19820456, guid: 0c75d5704fe1e0f4782bc222e9495fa4, type: 2}
   projectileCollision: {fileID: 19820456, guid: a753657aab24e3840990483abe86cfe3,

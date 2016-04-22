@@ -6,6 +6,7 @@ public class entrySensorScript : MonoBehaviour {
     public int roomNumber = 0;
     public Transform playerObjective;
     public GameManager managerOfRoom;
+    public bool playerCoolTransition = true;
 
     [Range(0, 4)]
     public int orderTransX = 0;
@@ -47,7 +48,7 @@ public class entrySensorScript : MonoBehaviour {
     {
         if (c.CompareTag("Player") && managerOfRoom.getStatusOfStage())
         {
-            c.GetComponentInParent<PlayerMovement>().startTransMovement(playerObjective.position, playerObjective.rotation, roomNumber, orderOfTrans, speedsOfTrans, smoothTransition);
+            c.GetComponentInParent<PlayerMovement>().startTransMovement(playerObjective.position, playerObjective.rotation, roomNumber, orderOfTrans, speedsOfTrans, smoothTransition, playerCoolTransition);
             managerOfRoom.SendMessage("hideProjectiles", false);
             changeMusic();
         }

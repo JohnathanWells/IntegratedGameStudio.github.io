@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &159536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 416044}
+  - 33: {fileID: 3358470}
+  - 23: {fileID: 2384526}
+  m_Layer: 0
+  m_Name: Floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &161878
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,8 +29,6 @@ GameObject:
   - 65: {fileID: 6596684}
   - 198: {fileID: 19820456}
   - 199: {fileID: 19979684}
-  - 33: {fileID: 3393946}
-  - 23: {fileID: 2324360}
   m_Layer: 0
   m_Name: Fire Particles
   m_TagString: Fire
@@ -21,6 +36,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &416044
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459216}
+  m_RootOrder: 0
 --- !u!4 &459216
 Transform:
   m_ObjectHideFlags: 1
@@ -28,17 +55,18 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161878}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9.096375, y: 1, z: -1}
+  m_LocalPosition: {x: 38.000458, y: -98.596, z: -40.051266}
   m_LocalScale: {x: 1, y: 1, z: 0.25}
-  m_Children: []
+  m_Children:
+  - {fileID: 416044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2324360
+--- !u!23 &2384526
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161878}
+  m_GameObject: {fileID: 159536}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,12 +87,12 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3393946
+--- !u!33 &3358470
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161878}
+  m_GameObject: {fileID: 159536}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6596684
 BoxCollider:
@@ -76,7 +104,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 4}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11416242
 MonoBehaviour:
@@ -91,8 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerSecond: 10
   burningTime: 3
+  timeBeforeFire: 1
+  foreshadowMaterial: {fileID: 2100000, guid: 53807fb8e008aae449d492f9118fde33, type: 2}
+  damagingMaterial: {fileID: 2100000, guid: 06293c186e587ae46ad7a8d5f238641a, type: 2}
   fireParticles: {fileID: 19820456}
-  renderer: {fileID: 2324360}
+  renderer: {fileID: 2384526}
   fireBox: {fileID: 6596684}
   lifetime: 0
 --- !u!198 &19820456
@@ -1623,14 +1654,14 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 2
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.04
+  m_MaxParticleSize: 0.13
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
-  m_Pivot: {x: 0, y: 0, z: 0}
+  m_Pivot: {x: 0, y: 0, z: 1}
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}

@@ -9380,6 +9380,7 @@ MonoBehaviour:
   roomNumber: 3
   playerObjective: {fileID: 762263355}
   managerOfRoom: {fileID: 1942193958}
+  playerCoolTransition: 1
   orderTransX: 0
   orderTransY: 1
   orderTransZ: 2
@@ -9576,6 +9577,7 @@ MonoBehaviour:
   roomNumber: 2
   playerObjective: {fileID: 2060483411}
   managerOfRoom: {fileID: 1218139918}
+  playerCoolTransition: 1
   orderTransX: 3
   orderTransY: 0
   orderTransZ: 4
@@ -10001,6 +10003,7 @@ MonoBehaviour:
   roomNumber: 6
   playerObjective: {fileID: 141020496}
   managerOfRoom: {fileID: 536807280}
+  playerCoolTransition: 1
   orderTransX: 4
   orderTransY: 3
   orderTransZ: 2
@@ -10683,6 +10686,7 @@ MonoBehaviour:
   roomNumber: 5
   playerObjective: {fileID: 1244980927}
   managerOfRoom: {fileID: 337017209}
+  playerCoolTransition: 1
   orderTransX: 3
   orderTransY: 1
   orderTransZ: 4
@@ -17365,6 +17369,7 @@ MonoBehaviour:
   roomNumber: 7
   playerObjective: {fileID: 948724017}
   managerOfRoom: {fileID: 843517099}
+  playerCoolTransition: 1
   orderTransX: 1
   orderTransY: 2
   orderTransZ: 0
@@ -30804,6 +30809,7 @@ MonoBehaviour:
   roomNumber: 1
   playerObjective: {fileID: 1736206128}
   managerOfRoom: {fileID: 1847867733}
+  playerCoolTransition: 1
   orderTransX: 0
   orderTransY: 3
   orderTransZ: 2
@@ -30863,7 +30869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 2500
-  Name: AdSeMea
+  Name: Adsemea
   phaseTriggers: 88130000f4010000
   healthText: {fileID: 13236151}
   PatternsTexts:
@@ -32618,6 +32624,7 @@ MonoBehaviour:
   roomNumber: 4
   playerObjective: {fileID: 854763714}
   managerOfRoom: {fileID: 2010725424}
+  playerCoolTransition: 1
   orderTransX: 3
   orderTransY: 0
   orderTransZ: 4
