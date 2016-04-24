@@ -15,7 +15,7 @@ GameObject:
   - 108: {fileID: 10868650}
   - 54: {fileID: 5478946}
   m_Layer: 0
-  m_Name: Boss Curvy 3
+  m_Name: Boss Curvy 3 L
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,8 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 0
   maxSick: 0
-  wavelength: -0.5
-  amplitude: 1
+  wavelength: 0.5
+  amplitude: 0.5
   bnceAng: 90
 --- !u!135 &13565868
 SphereCollider:

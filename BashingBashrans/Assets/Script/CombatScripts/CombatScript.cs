@@ -307,6 +307,7 @@ public class CombatScript : MonoBehaviour {
             playerAnimator.SetBool("Hurt", false);
         }
     }
+
 	IEnumerator PlayerisKill()
 	{
         movementScript.SendMessage("changeCanMove", false);

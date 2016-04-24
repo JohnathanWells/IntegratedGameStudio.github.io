@@ -36,7 +36,15 @@ public class WeaponScript : MonoBehaviour {
 
             if (c.CompareTag("Enemy") && !animationHappening)
             {
-                meleeEnemy(c.GetComponent<EnemyTurretScript>());
+                EnemyTurretScript temp = c.GetComponent<EnemyTurretScript>();
+                ApendageScript Temp = c.GetComponent<ApendageScript>();
+                Debug.Log(Temp == null);
+
+                if (temp != null)
+                    meleeEnemy(temp);
+                
+                if (Temp != null)
+                    meleeEnemy(Temp);
             }
 
             if (c.CompareTag("Boulder"))
@@ -77,6 +85,21 @@ public class WeaponScript : MonoBehaviour {
         {
             SFX.PlaySound(meleeAttackSound);
             enemy.SendMessage("ReceiveDamage", damage);
+            animationHappening = true;
+        }
+        else
+        {
+            SFX.PlaySound(failedMeleeAttackSound);
+            animationHappening = true;
+        }
+    }
+
+    void meleeEnemy(ApendageScript enemy)
+    {
+        if (enemy.getIfMeelable())
+        {
+            SFX.PlaySound(meleeAttackSound);
+            enemy.SendMessage("Damage", damage);
             animationHappening = true;
         }
         else

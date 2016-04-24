@@ -174,6 +174,8 @@ public class Boss01 : MonoBehaviour {
         int lenght = temp.AttacksForPhase.Length;
         int tempN = Random.Range(0, lenght);
 
+        Debug.Log("Lenght of phase " + phase + " is " + lenght);
+
         nextAttack = temp.AttacksForPhase[tempN];
         //Debug.Log("next attack is: " + nextAttack);
 
@@ -181,14 +183,19 @@ public class Boss01 : MonoBehaviour {
             currentAttack = nextAttack;
         else
         {
-            if (tempN == 0)
+            if (lenght > 1)
             {
-                currentAttack = temp.AttacksForPhase[tempN + 1];
+                if (tempN == 0)
+                {
+                    currentAttack = temp.AttacksForPhase[tempN + 1];
+                }
+                else
+                {
+                    currentAttack = temp.AttacksForPhase[tempN - 1];
+                }
             }
             else
-            {
-                currentAttack = temp.AttacksForPhase[tempN - 1];
-            }
+                currentAttack = nextAttack;
         }
 
         //Debug.Log("But it was changed to: " + currentAttack);
@@ -210,7 +217,7 @@ public class Boss01 : MonoBehaviour {
         {
             Step temp = attacks[attackSelected].steps[countOfStep];
             animator.Play("Attack" + (attackSelected + 1));
-            Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
+            //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
 
             for (int a = 0; a < temp.muzzleNumber.Length; a++)
             {
@@ -335,6 +342,8 @@ public class Boss01 : MonoBehaviour {
         if (phaseTriggers.Contains(currentHealth))
         {
             phase = phaseTriggers.IndexOf(currentHealth) + 1;
+
+            Debug.Log("Phase " + phase);
         }
 
         //if (currentHealth <= Phase2StartsAt)
@@ -352,7 +361,7 @@ public class Boss01 : MonoBehaviour {
         {
             currentHealth = 0;
             dead = true;
-            PM.spawnParticles(Smoke, transform.position, Smoke.duration);
+            //PM.spawnParticles(Smoke, transform.position, Smoke.duration);
 
             animator.SetBool("Dead", true);
             Debug.Log("Enemy defeated");

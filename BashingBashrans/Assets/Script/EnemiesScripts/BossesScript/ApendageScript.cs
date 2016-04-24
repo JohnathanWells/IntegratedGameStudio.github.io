@@ -15,6 +15,7 @@ public class ApendageScript : MonoBehaviour {
     public Boss01 mainScript;
     public Animator animator;
     public AnimationsHP[] animations;
+    public bool meelable = false;
     private int currentHealth;
 
 	// Use this for initialization
@@ -35,7 +36,7 @@ public class ApendageScript : MonoBehaviour {
         }
     }
 
-    void Damage(int damage)
+    public void Damage(int damage)
     {
         currentHealth -= damage;
 
@@ -46,6 +47,11 @@ public class ApendageScript : MonoBehaviour {
             mainScript.ReceiveDamage(damageToBoss);
             animator.SetBool(deathAnimationTriggerName, true);
         }
+    }
+
+    public bool getIfMeelable()
+    {
+        return meelable;
     }
 
     void checkIfHealthTriggerIsAchieved(int num)

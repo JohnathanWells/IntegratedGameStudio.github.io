@@ -19739,7 +19739,7 @@ Prefab:
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: floorSong
       value: 
-      objectReference: {fileID: 8300000, guid: 43825946f20d60e4ebbda8588d8ef5d9, type: 3}
+      objectReference: {fileID: 8300000, guid: c10eafdcc6580e04bb7496c484089eec, type: 3}
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: bossSong
       value: 
@@ -30908,6 +30908,7 @@ MonoBehaviour:
   cooled: 1
   stepCooled: 1
   animator: {fileID: 1988887419}
+  Smoke: {fileID: 0}
 --- !u!95 &1988887419
 Animator:
   serializedVersion: 3
@@ -33343,6 +33344,10 @@ Prefab:
     - target: {fileID: 11406330, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
       propertyPath: timeCondition
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497524, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ThirdFloor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}

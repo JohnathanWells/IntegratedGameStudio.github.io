@@ -278,9 +278,9 @@ GameObject:
   - 114: {fileID: 35457234}
   - 65: {fileID: 35457233}
   m_Layer: 0
-  m_Name: Apendage Gun (2)
+  m_Name: Apendage Gun 3
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -325,6 +325,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &35457235
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -637,7 +638,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87809266}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -673,6 +674,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -682,18 +686,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &98296239
 Prefab:
@@ -1594,9 +1598,9 @@ GameObject:
   - 114: {fileID: 215307293}
   - 65: {fileID: 215307292}
   m_Layer: 0
-  m_Name: Apendage Gun (4)
+  m_Name: Apendage Gun 5
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1641,6 +1645,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &215307294
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2647,6 +2652,60 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 446202, guid: 90589ce7ae7d5104186849bef3dac13b, type: 2}
   m_PrefabInternal: {fileID: 429669999}
+--- !u!1 &435051445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 435051446}
+  - 65: {fileID: 435051448}
+  - 114: {fileID: 435051447}
+  m_Layer: 0
+  m_Name: EndLevelTrigger
+  m_TagString: Floor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &435051446
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435051445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_Children: []
+  m_Father: {fileID: 1458389833}
+  m_RootOrder: 1
+--- !u!114 &435051447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435051445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ea66cfe1f780f40855278eea9d0a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorClearedScreen: {fileID: 716107428}
+  playerAnimator: {fileID: 975019579}
+--- !u!65 &435051448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435051445}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &440303325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,9 +2818,9 @@ GameObject:
   - 114: {fileID: 451924492}
   - 65: {fileID: 451924491}
   m_Layer: 0
-  m_Name: Apendage Gun
+  m_Name: Apendage Gun 1
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2806,6 +2865,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &451924493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3102,9 +3162,9 @@ GameObject:
   - 114: {fileID: 501683021}
   - 65: {fileID: 501683020}
   m_Layer: 0
-  m_Name: Apendage Gun (8)
+  m_Name: Apendage Gun 9
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3149,6 +3209,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &501683022
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3266,9 +3327,9 @@ GameObject:
   - 114: {fileID: 543416927}
   - 65: {fileID: 543416926}
   m_Layer: 0
-  m_Name: Apendage Gun (6)
+  m_Name: Apendage Gun 7
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3313,6 +3374,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &543416928
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3448,9 +3510,9 @@ GameObject:
   - 114: {fileID: 590212672}
   - 65: {fileID: 590212671}
   m_Layer: 0
-  m_Name: Apendage Gun (1)
+  m_Name: Apendage Gun 2
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3495,6 +3557,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &590212673
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3552,7 +3615,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 609152472}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3588,6 +3651,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -3597,18 +3663,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &611021590
 Prefab:
@@ -4095,7 +4161,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 710657508}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4131,6 +4197,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -4140,18 +4209,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &711788852
 Prefab:
@@ -4267,6 +4336,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 424968, guid: fa657cab4bf72e447943d0378b8599b0, type: 2}
   m_PrefabInternal: {fileID: 711788852}
+--- !u!1 &716107428 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 108690, guid: 9c5e0012a50338943a8769c70d1f0ea8, type: 2}
+  m_PrefabInternal: {fileID: 1993281916}
 --- !u!1 &716310847
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,9 +5139,9 @@ GameObject:
   - 114: {fileID: 831629912}
   - 65: {fileID: 831629911}
   m_Layer: 0
-  m_Name: Apendage Gun (7)
+  m_Name: Apendage Gun 8
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5113,6 +5186,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &831629913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5652,7 +5726,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865808695}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5688,6 +5762,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -5697,18 +5774,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &865932295
 Prefab:
@@ -6278,6 +6355,11 @@ Transform:
   - {fileID: 65701409}
   m_Father: {fileID: 625499839}
   m_RootOrder: 5
+--- !u!95 &975019579 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9593034, guid: 8eb00c93041eed240a82d0433ca165b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 2015769494}
 --- !u!1001 &975477869
 Prefab:
   m_ObjectHideFlags: 0
@@ -7062,7 +7144,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1038380928}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 38.8, y: -55, z: -40}
+  m_LocalPosition: {x: 39, y: -55, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 242493643}
@@ -7503,7 +7585,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1128522542}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7539,6 +7621,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -7548,18 +7633,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &1131722076
 Prefab:
@@ -7803,9 +7888,9 @@ GameObject:
   - 114: {fileID: 1179366212}
   - 65: {fileID: 1179366211}
   m_Layer: 0
-  m_Name: Apendage Gun (9)
+  m_Name: Apendage Gun 10
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7850,6 +7935,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &1179366213
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9003,9 +9089,9 @@ GameObject:
   - 114: {fileID: 1312190371}
   - 65: {fileID: 1312190370}
   m_Layer: 0
-  m_Name: Apendage Gun (3)
+  m_Name: Apendage Gun 4
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9050,6 +9136,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &1312190372
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9299,7 +9386,7 @@ Prefab:
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: floorSong
       value: 
-      objectReference: {fileID: 8300000, guid: 57135cae0e8e534458103d5e4fff302c, type: 3}
+      objectReference: {fileID: 8300000, guid: b7e8674e97ce0ae4aa1270eff4cfe922, type: 3}
     - target: {fileID: 11481240, guid: 3626275270bfa2b4aa9e38f595a28db9, type: 2}
       propertyPath: bossSong
       value: 
@@ -9917,7 +10004,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424193361}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9953,6 +10040,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -9962,18 +10052,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1 &1431278163
 GameObject:
@@ -10121,7 +10211,7 @@ GameObject:
   m_Layer: 0
   m_Name: Ceconex
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10136,6 +10226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444406333}
+  - {fileID: 435051446}
   m_Father: {fileID: 1431278164}
   m_RootOrder: 0
 --- !u!114 &1458389834
@@ -10155,17 +10246,16 @@ MonoBehaviour:
   healthText: {fileID: 850702889}
   PatternsTexts:
   - (00)(00)(2f1e365a4b)(00)(00)(00)(00)(00)(00)(00)(00)(61a1)(617191a1)(718291)(617191a1)(61a1)
-  - (19)(2a)(3b)(4c)(5d)(64)(75)(86)(97)(a8)
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - (00)(00)(11214151)(00)(00)(21314151)(00)(00)(11213141)(00)(00)(00)(11214151)(00)(00)(00)(00)(61)(71)(81)(91)(00)(00)(71)(81)(91)(a1)(00)(00)(61)(71)(82)(00)(00)
+  - (00)(00)(6e)(7f)(9a)(ab)(00)(00)(11213141)(00)(11213151)(00)(11214151)(00)(11314151)(00)(00)(1121314251)
+  - (00)(00)(6e)(7f)(9a)(ab)(00)(00)(11213151)(112131)(11213141)(00)(11314151)(1151)(1121314251)
+  - (00)(00)(6e)(7f)(9a)(ab)(00)(00)(1h2h435h)(1h2h435h)(1h2h435h)(1h2h435h)(1h2h435h)(00)(00)(00)(7393ah)(7393ah)(7393ah)(7393ah)(7393ah)(62)
+  - (00)(00)(00)(00)(00)(21)(21)(21)(21)(21)(21)(11)(11)(11)(11)(11)(a1)(a1)(a1)(a1)(a1)(91)(91)(91)(91)(91)(71)(71)(71)(71)(71)(51)(51)(51)(51)(51)(51)(00)(00)(21)(21)(21)(21)(21)(21)(11)(11)(11)(11)(11)(a1)(a1)(a1)(a1)(a1)(91)(91)(91)(91)(91)(71)(71)(71)(71)(71)(51)(51)(51)(51)(51)(51)(00)(00)(21)(21)(21)(21)(21)(21)(11)(11)(11)(11)(11)(a1)(a1)(a1)(a1)(a1)(91)(91)(91)(91)(91)(71)(71)(71)(71)(71)(51)(51)(51)(51)(51)(51)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(3151)(00)(00)(2171)(00)(00)(1191)(00)(00)(00)(00)(00)(00)(00)(00)(00)(3151)(00)(00)(2171)(00)(00)(1191)(00)(00)(00)(00)(00)(00)(00)(00)(00)(3151)(00)(00)(2171)(00)(00)(1191)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(112131517191)(112131517191)(112131517191)(112131517191)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(00)(a2)
+  - (2131119171)(9171)(9171)(31118171)(119171)(21519171)(21319171)(21319171)(21319171)(2151119171)(00)(00)(00)(00)
+  - (2i3i119i7i)(11)(11)(2i3i119i7i)(00)(00)(00)(00)(00)(00)(00)
+  - (231h)(2h13)(2h13)(231h)(231h)(2h13)(2h13)(231h)(231h)(2h13)(2h13)(231h)(00)(91)(91)(91)(91)(91)(91)(92)(92)(92)(92)(92)(92)
+  - (14)(15)(16)(21)(21)(21)(21)(22)(22)(22)
+  - (1g)(14)(19)(00)(17)(00)(00)(00)(00)(00)(00)(1a)(1b)(1c)(1d)(1e)(00)(00)(00)(00)(00)(12)
   muzzles:
   - {fileID: 1893660591}
   - {fileID: 1578881331}
@@ -10179,12 +10269,12 @@ MonoBehaviour:
   - {fileID: 2121875022}
   cooldownsBetweenSteps:
   - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
+  - 0.3
+  - 0.6
+  - 0.4
+  - 0.3
+  - 0.1
+  - 0.2
   - 0.5
   - 0.5
   - 0.5
@@ -10200,15 +10290,16 @@ MonoBehaviour:
   - AttacksForPhase: 07000000
   - AttacksForPhase: 08000000
   - AttacksForPhase: 09000000
-  - AttacksForPhase: 0a0000000b000000
-  attackToTest: 0
-  testingAttacks: 1
-  cooldownTime: 2
+  - AttacksForPhase: 0a000000
+  attackToTest: 10
+  testingAttacks: 0
+  cooldownTime: 3
   currentCooldown: 0
   currentStepCooldown: 0
   cooled: 1
   stepCooled: 1
   animator: {fileID: 1458389835}
+  Smoke: {fileID: 0}
 --- !u!95 &1458389835
 Animator:
   serializedVersion: 3
@@ -10218,7 +10309,7 @@ Animator:
   m_GameObject: {fileID: 1458389832}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b026db988d559d4690e37c312f3064e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10739,7 +10830,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563244155}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10775,6 +10866,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -10784,18 +10878,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &1565888437
 Prefab:
@@ -10955,7 +11049,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578881329}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10991,6 +11085,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -11000,18 +11097,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1 &1588362322
 GameObject:
@@ -12104,9 +12201,9 @@ GameObject:
   - 114: {fileID: 1755098269}
   - 65: {fileID: 1755098268}
   m_Layer: 0
-  m_Name: Apendage Gun (5)
+  m_Name: Apendage Gun 6
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12151,6 +12248,7 @@ MonoBehaviour:
   deathAnimationTriggerName: 
   mainScript: {fileID: 1458389834}
   animator: {fileID: 1458389835}
+  meelable: 0
 --- !u!23 &1755098270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12945,7 +13043,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893660589}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12981,6 +13079,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -12990,18 +13091,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &1899316820
 Prefab:
@@ -14488,7 +14589,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2121875020}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0.5000001, y: 0.5, z: 0.5, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -14524,6 +14625,9 @@ MonoBehaviour:
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: 729806d1153f26c4ab3723d2ac86c49a, type: 2}
   - {fileID: 417626, guid: bb54348cd8109f540bffe53c325f1f4d, type: 2}
+  - {fileID: 441462, guid: fdcea94aa240f9242b6cfc7f6b825307, type: 2}
+  - {fileID: 417626, guid: 3b130e7313a6ee4408d5e3b3460b0535, type: 2}
+  - {fileID: 417626, guid: 178ddb4673d7fda4c800f5555942000e, type: 2}
   mainBody: {fileID: 1458389833}
   shootMode: 1
   changeSpeedOfBullets: 0
@@ -14533,18 +14637,18 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
+  - 2.275
+  - 3.275
+  - 4.275
+  - 5.275
+  - 6.275
+  - 7.275
   - 2
 --- !u!1001 &2124699589
 Prefab:

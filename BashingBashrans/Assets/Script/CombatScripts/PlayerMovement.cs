@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float XVelocity = 2f;
     public Transform playerModel;
+    public Animator animator;
     //public Animation animation;
     //public float YVelocity = 1f;
     //public bool squareMovementX = false;
