@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool canMoveToLeft = true;
     private bool canMoveUp = true;
     private bool canMoveDown = true;
+    private bool allowedToMove = true;
 
     public CombatScript combatScript;
 
@@ -211,6 +212,11 @@ public class PlayerMovement : MonoBehaviour {
 
             transform.Translate(new Vector3(0, 0, VerticalD));
         }
+    }
+
+    public void changeAllowedToMove(bool value)
+    {
+        allowedToMove = value;
     }
 
     //public void transitionHappening(bool happening)
