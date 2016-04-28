@@ -23,6 +23,7 @@ public class levelManager : MonoBehaviour {
     private Camera tempCam;
     private Camera tempObCam;
     private CombatScript playerScript;
+    private PlayerMovement movementScript;
 
     private int currentTransCount = 0;
     private bool inTransition = false;
@@ -34,12 +35,17 @@ public class levelManager : MonoBehaviour {
     [Header("UI", order = 1)]
     public Text playerHealthText;
     public Text TimeText;
+    public pauseMenuScript pauseScript;
     public GameObject pauseMenu;
+    public GameObject codeMenu;
     public Text gameMessages;
     public float gameMessageFadingTime = 1f;
     public Text recoveryItems;
+    public AudioClip codeOpenSound;
+    public AudioClip codeCloseSound;
     private float time = 0;
     private bool paused = false;
+    private bool menuOpen = false;
 
     [Header("Passwords")]
     public int floorNumber = 0;
@@ -61,6 +67,7 @@ public class levelManager : MonoBehaviour {
         managers[currentManagerCount].enemiesFolder.gameObject.SetActive(true);
 
         playerScript = Player.GetComponentInChildren<CombatScript>();
+        movementScript = Player.GetComponent<PlayerMovement>();
         //musicManager = GameObject.FindGameObjectWithTag("Music Manager").GetComponent<MusicScript>();
         musicManager.SendMessage("playFloor");
 
@@ -99,6 +106,11 @@ public class levelManager : MonoBehaviour {
         {
             togglePause();
         }
+
+        if (Input.GetButtonDown("CodeMenu") && !paused)
+        {
+            toggleCode();
+        }
 	}
 
     void OnGUI()
@@ -128,7 +140,7 @@ public class levelManager : MonoBehaviour {
             musicSource.Pause();
             pauseMenu.SetActive(true);
             SaveLoad.Load();
-            pauseMenu.SendMessage("setActiveButtons");
+            //pauseMenu.SendMessage("setActiveButtons");
             Time.timeScale = 0f;
         }
         else
@@ -138,9 +150,38 @@ public class levelManager : MonoBehaviour {
             musicSource.UnPause();
             SaveLoad.Save();
             playerHealthText.transform.parent.gameObject.SetActive(true);
-            pauseMenu.SendMessage("saveOptions");
+            pauseScript.SendMessage("saveOptions");
             pauseMenu.SetActive(false);
             paused = false;
+        }
+    }
+
+    public void toggleCode()
+    {
+        if (!menuOpen)
+        {
+            menuOpen = true;
+            playerHealthText.transform.parent.gameObject.SetActive(false);
+            SFXManager.PlaySound(codeOpenSound);
+            movementScript.SendMessage("changeAllowedToMove", false);
+            //musicSource.Pause();
+            codeMenu.SetActive(true);
+            SaveLoad.Load();
+            pauseScript.SendMessage("setActiveButtons");
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            soundSource.UnPause();
+            musicSource.UnPause();
+            SaveLoad.Save();
+            playerHealthText.transform.parent.gameObject.SetActive(true);
+            //pauseMenu.SendMessage("saveOptions");
+            codeMenu.SetActive(false);
+            movementScript.SendMessage("changeAllowedToMove", false);
+            SFXManager.PlaySound(codeCloseSound);
+            //paused = false;
         }
     }
 

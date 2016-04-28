@@ -46,7 +46,7 @@ public class pauseMenuScript : MonoBehaviour {
     {
         string password = passwordEnter.text;
 
-        if (password == "cakeisalie")
+        if (password == "cakeisali")
         {
             cheats(0);
             return;
