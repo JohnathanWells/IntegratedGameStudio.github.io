@@ -381,4 +381,9 @@ public class Boss01 : MonoBehaviour {
         ReceiveDamage(bould.damage);
         bould.DestroyBoulder();
     }
+
+    public void readyGuns()
+    {
+        currentCooldown = cooldownTime;
+    }
 }
