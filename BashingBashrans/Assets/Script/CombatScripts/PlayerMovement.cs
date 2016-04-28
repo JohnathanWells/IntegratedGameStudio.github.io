@@ -53,11 +53,12 @@ public class PlayerMovement : MonoBehaviour {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         setManager();
 
-       playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
+     //  playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
 
     }
 
     void Update () {
+		
 
         if (inTransition)
         {
@@ -74,10 +75,14 @@ public class PlayerMovement : MonoBehaviour {
             {
                 moveHorizontally(Input.GetAxisRaw("Horizontal"));
                 playerAnimator.SetBool("Walking", true);
+				playerAnimator.SetFloat("Direction", (Input.GetAxisRaw("Horizontal")));
+
             }
             else if (Input.GetButtonUp("Horizontal"))
             {
                playerAnimator.SetBool("Walking", false);
+				playerAnimator.SetFloat("Direction", (Input.GetAxisRaw("Horizontal")));
+
             }
 
             if (Input.GetButtonDown("Vertical"))

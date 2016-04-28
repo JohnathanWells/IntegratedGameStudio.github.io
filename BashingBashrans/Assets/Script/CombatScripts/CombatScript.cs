@@ -64,7 +64,7 @@ public class CombatScript : MonoBehaviour {
 
     void Start () {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
-        playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
+      //  playerAnimator = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
         PM = highManager.PM;
         healingEffect = Instantiate(healingParticles, feet.position, healingParticles.transform.rotation) as ParticleSystem;
         healingEffect.transform.parent = feet;
@@ -130,6 +130,7 @@ public class CombatScript : MonoBehaviour {
     }
 
 	void Update () {
+		
 
         if (!dead && !highManager.getPaused())
         {
