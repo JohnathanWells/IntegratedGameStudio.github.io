@@ -8,6 +8,7 @@ public class MusicScript : MonoBehaviour {
     public AudioClip gameOverSong;
     public AudioClip victorySong;
     public AudioSource source;
+    public float fadingSpeed = 0.05f;
 
     private float MusicVolume;
     private float MasterVolume;
@@ -17,7 +18,8 @@ public class MusicScript : MonoBehaviour {
         SaveLoad.Load();
         MusicVolume = SaveLoad.savedGame.MusicVolume;
         MasterVolume = SaveLoad.savedGame.MasterVolume;
-        refreshVolume();
+        //refreshVolume();
+        StartCoroutine(fadeMusic(1));
 	}
 
     public void playFloor()
@@ -70,5 +72,30 @@ public class MusicScript : MonoBehaviour {
     public void saveMusic()
     {
         SaveLoad.savedGame.MusicVolume = MusicVolume;
+    }
+
+    IEnumerator fadeMusic(int dir)
+    {
+        if (dir > 1)
+        {
+            for (float a = 0; a < 1; a += fadingSpeed)
+            {
+                yield return new WaitForSeconds(0.1f);
+                source.volume = MusicVolume * MasterVolume * a;
+            }
+        }
+        else
+        {
+            for (float a = 1; a > 0; a -= fadingSpeed)
+            {
+                yield return new WaitForSeconds(0.1f);
+                source.volume = MusicVolume * MasterVolume * a;
+            }
+        }
+    }
+
+    public void fadeTheMusic(int dir)
+    {
+        StartCoroutine(fadeMusic(dir));
     }
 }

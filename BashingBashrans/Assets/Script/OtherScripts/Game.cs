@@ -42,14 +42,17 @@ public class Game
         unlockedPasswords = new bool[numberOfPasswords];
         bestTimes = new float[numberOfFloors];
         lessDamageReceivedByFloor = new int[numberOfFloors];
-        bool[] temp = { true, false, false };
-        unlockedFloors = temp;
+        //bool[] temp = { true, false, false };
+        unlockedFloors = new bool[numberOfFloors];
 
         for (int a = 0; a < numberOfFloors; a++)
         {
             bestTimes[a] = 999999999;
             lessDamageReceivedByFloor[a] = 999999999;
+            unlockedFloors[a] = false;
         }
+
+        unlockedFloors[0] = true;
 
         newPasswords();
 
@@ -263,7 +266,8 @@ public class Game
 
     public void setUnlockFloor(int floor, bool value)
     {
-        unlockedFloors[floor - 1] = value;
+        if (unlockedFloors.Length < floor)
+            unlockedFloors[floor - 1] = value;
     }
 
     public void setNewTimeRecord(float newTime, int floor)

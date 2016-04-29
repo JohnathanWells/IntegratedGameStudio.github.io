@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 169498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.367823, y: 4.75, z: 6.096486}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   angleOfDesviation: 180
   speed: 6
   desviationSpeed: 8
+  initialOffset: 0
   desviationMaterial: {fileID: 2100000, guid: c0f879010a150ed479d2d85772f5161e, type: 2}
   renderer: {fileID: 2320700}
   effectOfProjectile: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   beforeExplosionSound: {fileID: 0}
   minSick: 0
   maxSick: 0
+  wavelength: 1
   amplitude: 0
   bnceAng: 45
 --- !u!135 &13578206

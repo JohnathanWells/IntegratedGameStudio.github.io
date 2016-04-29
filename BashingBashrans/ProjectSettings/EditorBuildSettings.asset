@@ -15,3 +15,11 @@ EditorBuildSettings:
     path: Assets/#Scenes/Levels/SecondFloor.unity
   - enabled: 1
     path: Assets/#Scenes/Levels/ThirdFloor.unity
+  - enabled: 1
+    path: Assets/#Scenes/Ending.unity
+  - enabled: 1
+    path: Assets/#Scenes/LoadingScreen2.unity
+  - enabled: 1
+    path: Assets/#Scenes/LoadingScreen3.unity
+  - enabled: 1
+    path: Assets/#Scenes/Leaderboard.unity

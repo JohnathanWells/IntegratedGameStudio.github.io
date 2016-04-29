@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b5ba973eca779438853c5ecc781bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: FirstFloor
+  nextLevel: ThirdFloor
   fadingSpeed: 0.07
   timeBetweenFading: 0.1
   timeBetweenMessages: 1
@@ -193,24 +193,13 @@ MonoBehaviour:
   fadingTexture: {fileID: 1824997768}
   skipButton: {fileID: 1175908129}
   textBoxes:
-  - '(It''s the Age of Space.
-
-    A resource crisis is scourging the colonies. There is no known technology to solve
-    this issue.)'
-  - '(Civilization itself is in risk of chaos and extinction.
-
-    But there is still hope.)'
-  - "(It is believed that the Bashrans, an ancient alien civilization, developed the
-    technology to solve these kind of problems.)\t"
-  - (However, they went extinct almost a million years ago, and not much of their
-    technology have been found.)
-  - (Energy companies have been sending numerous expeditions to rediscover this technology,
-    and maybe find a solution in the process.)
-  - (You are part of an expedition to Fermidox, the Bashran homeworld.)
-  - (You were exploring an apparently small building alone, when the security system
-    suddenly activated aggresive measures and locked the doors behing you.)
-  - (The only way to escape will be to disable the central nexus manually.)
-  - (You unsheat your multi-tool and prepare for action.)
+  - (Silver enemies cannot be physically damaged. The only way to destroy them is
+    to hit projectiles back at them.)
+  - (The logs in the quartz seem to be classified according to some tags the original
+    recorder used. Some logs may be required to decipher others.)
+  - '(After the year 2050, humanity started engraving cosmic maps pointing to Earth
+    on every robotic probe. Finding something is just a terrifying as not finding
+    anything at all.) '
   textDisplay: {fileID: 1246442421}
 --- !u!1 &673314214
 GameObject:
@@ -546,7 +535,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.24992734, y: 0}
-  m_SizeDelta: {x: 700, y: 200}
+  m_SizeDelta: {x: 766, y: 97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246442421
 MonoBehaviour:
@@ -911,8 +900,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -34.6}
-  m_SizeDelta: {x: 765.5, y: 250}
+  m_AnchoredPosition: {x: -8, y: -90}
+  m_SizeDelta: {x: 765.5, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560894871
 MonoBehaviour:

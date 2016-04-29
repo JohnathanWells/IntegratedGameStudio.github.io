@@ -93,12 +93,20 @@ public class Boss01 : MonoBehaviour {
     private ParticleManager PM;
     private GameManager manager;
     private levelManager highManager;
+    private bool[] gunReadied;
 
 	void Awake () {
         highManager = GameObject.FindGameObjectWithTag("High Game Manager").GetComponent<levelManager>();
         PM = highManager.PM;
         attacks = new Attack[PatternsTexts.Length];
         currentHealth = Health;
+
+        gunReadied = new bool[phaseTriggers.Count];
+        for (int a = 0; a < gunReadied.Length; a++ )
+        {
+            gunReadied[a] = false;
+        }
+
         setListOfAttacks(attacks, PatternsTexts);
 
         //animator = GetComponent<Animator>();
@@ -173,6 +181,7 @@ public class Boss01 : MonoBehaviour {
         phaseAttacks temp = PhaseAttacks[phase - 1];
         int lenght = temp.AttacksForPhase.Length;
         int tempN = Random.Range(0, lenght);
+        countOfStep = 0;
 
         Debug.Log("Lenght of phase " + phase + " is " + lenght);
 
@@ -215,6 +224,7 @@ public class Boss01 : MonoBehaviour {
     {
         if (cooled && stepCooled)
         {
+            Debug.Log(attackSelected);
             Step temp = attacks[attackSelected].steps[countOfStep];
             animator.Play("Attack" + (attackSelected + 1));
             //Debug.Log("Step number: " + countOfStep + "/" + attacks[attackToTest].steps.Length + "\nSimProject: " + temp.muzzleNumber.Length);
@@ -382,8 +392,19 @@ public class Boss01 : MonoBehaviour {
         bould.DestroyBoulder();
     }
 
-    public void readyGuns()
+    public void readyGuns(int call)
+    {
+        if (gunReadied[call] == false)
+        {
+            currentCooldown = cooldownTime;
+            gunReadied[call] = true;
+            nextAttack();
+        }
+    }
+
+    public void readyGuns2()
     {
         currentCooldown = cooldownTime;
+        nextAttack();
     }
 }
