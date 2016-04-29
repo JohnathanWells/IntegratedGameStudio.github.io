@@ -1166,8 +1166,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Hurt
       takeName: Take 001
-      firstFrame: 227
-      lastFrame: 237
+      firstFrame: 224
+      lastFrame: 229
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

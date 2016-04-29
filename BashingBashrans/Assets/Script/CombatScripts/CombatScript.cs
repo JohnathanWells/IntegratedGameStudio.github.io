@@ -143,6 +143,8 @@ public class CombatScript : MonoBehaviour {
             {
                 playerAnimator.SetBool("Swinging", true);
                 StartCoroutine(punchStuff(-Mathf.RoundToInt(Input.GetAxisRaw("Swing Direction"))));
+				playerAnimator.SetBool("Walking", false);
+
             }
 
             if (Input.GetButtonDown("UseRecover"))
@@ -226,6 +228,7 @@ public class CombatScript : MonoBehaviour {
     void receiveDamage(int damage)
     {
         currentHealth -= damage;
+		playerAnimator.SetBool("Walking", false);
         highManager.SendMessage("accumulateDamage", damage);
         SFX.PlaySound(receiveDamageSound);
 

@@ -169,6 +169,9 @@ public class PlayerMovement : MonoBehaviour {
         lane = manager.obtainLane(transform);
         //Debug.Log("Lane" + lane);
         distanceBetweenLanes = manager.obtainDistanceBetweenLanes();
+		playerAnimator.SetBool("Walking", false);
+		playerAnimator.SetFloat ("Direction", 0);
+
         //Debug.Log("Distance between lanes: " + distanceBetweenLanes);
     }
 
