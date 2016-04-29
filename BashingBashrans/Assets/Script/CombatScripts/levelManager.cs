@@ -181,6 +181,7 @@ public class levelManager : MonoBehaviour {
             codeMenu.SetActive(false);
             movementScript.SendMessage("changeAllowedToMove", false);
             SFXManager.PlaySound(codeCloseSound);
+            menuOpen = false;
             //paused = false;
         }
     }
