@@ -4520,6 +4520,10 @@ Prefab:
       propertyPath: m_Name
       value: Door Arrow to 2
       objectReference: {fileID: 0}
+    - target: {fileID: 468322, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
   m_IsPrefabParent: 0
@@ -15413,6 +15417,10 @@ Prefab:
     - target: {fileID: 155638, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
       propertyPath: m_Name
       value: Door Arrow to Boss2
+      objectReference: {fileID: 0}
+    - target: {fileID: 468322, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
@@ -29054,6 +29062,10 @@ Prefab:
     - target: {fileID: 155638, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
       propertyPath: m_Name
       value: Door Arrow to 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 468322, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59a5909542324134f92736bfe2c58e91, type: 2}
